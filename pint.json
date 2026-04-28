@@ -1,0 +1,16 @@
+{
+  "preset": "laravel",
+  "exclude": [
+    "storage",
+    "vendor",
+    "bootstrap/cache",
+    "public"
+  ],
+  "paths": [
+    "app",
+    "config",
+    "database",
+    "routes",
+    "tests"
+  ]
+}
