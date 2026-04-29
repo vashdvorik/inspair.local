@@ -41,7 +41,7 @@ $bot->onCommand('start', function (Nutgram $bot) {
         return;
     }
 
-    $bot->sendMessage('К сожалению, твоя заявка не была одобрена. Если есть вопросы — @lesnichenkoP');
+    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
 })->description('Запустить бота');
 
 // Fallback: обрабатывает все сообщения, не попавшие в другие обработчики
@@ -71,7 +71,11 @@ $bot->fallback(function (Nutgram $bot) {
             '🗂️ Кабинет'     => $bot->sendMessage("Раздел в разработке 🚧"),
             default          => null,
         };
+        return;
     }
+
+    // Отклонённый пользователь
+    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
 });
 
 /**

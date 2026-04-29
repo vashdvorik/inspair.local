@@ -16,6 +16,7 @@ use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Log;
 use Nutgram\Laravel\Facades\Telegram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\KeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
+use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 
 class BotUserResource extends Resource
 {
@@ -150,7 +152,15 @@ class BotUserResource extends Resource
                     ->visible(fn (BotUser $record): bool => ! $record->isRejected())
                     ->requiresConfirmation()
                     ->action(function (BotUser $record): void {
+                        $wasApproved = $record->isApproved();
+
                         $record->update(['status' => BotUser::STATUS_REJECTED]);
+
+                        if ($wasApproved) {
+                            self::sendAccessRevokedMessage($record);
+                        } else {
+                            self::sendRejectionMessage($record);
+                        }
 
                         Notification::make()
                             ->title('Заявка отклонена')
@@ -160,6 +170,7 @@ class BotUserResource extends Resource
 
                 ViewAction::make(),
                 EditAction::make(),
+                DeleteAction::make(),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -194,7 +205,7 @@ class BotUserResource extends Resource
         try {
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "🎉 {firstName}, добро пожаловать в Инспайр!
+                text: "🎉 {$firstName}, добро пожаловать в Инспайр!
 
 Ты принят в сообщество активных молодых людей.
 
@@ -208,6 +219,39 @@ class BotUserResource extends Resource
             );
         } catch (\Throwable $e) {
             Log::error('Telegram: не удалось отправить сообщение об одобрении', [
+                'telegram_id' => $record->telegram_id,
+                'error'       => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private static function sendRejectionMessage(BotUser $record): void
+    {
+        $firstName = explode(' ', (string) $record->full_name)[0];
+
+        try {
+            Telegram::sendMessage(
+                chat_id: $record->telegram_id,
+                text: "😔 {$firstName}, к сожалению твоя заявка не была одобрена.\n\nЕсли у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP",
+            );
+        } catch (\Throwable $e) {
+            Log::error('Telegram: не удалось отправить сообщение об отклонении', [
+                'telegram_id' => $record->telegram_id,
+                'error'       => $e->getMessage(),
+            ]);
+        }
+    }
+
+    private static function sendAccessRevokedMessage(BotUser $record): void
+    {
+        try {
+            Telegram::sendMessage(
+                chat_id: $record->telegram_id,
+                text: "🔒 Ваш доступ был закрыт.\n\nЕсли у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP",
+                reply_markup: ReplyKeyboardRemove::make(remove_keyboard: true),
+            );
+        } catch (\Throwable $e) {
+            Log::error('Telegram: не удалось отправить сообщение об отзыве доступа', [
                 'telegram_id' => $record->telegram_id,
                 'error'       => $e->getMessage(),
             ]);
