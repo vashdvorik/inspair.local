@@ -41,6 +41,7 @@
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(124,58,237,.2); border-radius: 4px; }
+        @media (max-width: 1023px) { [x-cloak] { display: none !important; } }
     </style>
     @stack('head')
 </head>
@@ -60,7 +61,7 @@
     <div class="flex h-full">
 
         {{-- ── Sidebar ── --}}
-        <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+        <aside x-cloak :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
                class="fixed inset-y-0 left-0 z-30 flex w-64 shrink-0 flex-col bg-white
                       transition-transform duration-200 ease-out
                       lg:static lg:translate-x-0 lg:z-auto"
