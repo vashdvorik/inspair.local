@@ -7,11 +7,10 @@ declare(strict_types=1);
 use App\Models\BotUser;
 use App\Models\LoginToken;
 use App\Telegram\Conversations\RegistrationConversation;
+use App\Telegram\TelegramKeyboards;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\KeyboardButton;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +18,9 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
 |--------------------------------------------------------------------------
 */
 
-$bot->onCommand('start', function (Nutgram $bot) {    $telegramId = $bot->userId();
+$bot->onCommand('start', function (Nutgram $bot) {
+    $telegramId = $bot->userId();
     $user = BotUser::where('telegram_id', $telegramId)->first();
-
-    // ?start=login deep-link → bot receives "/start login" or "/start@botname login"
-    preg_match('/^\/start(?:@\w+)?\s*(.*)/i', $bot->message()?->text ?? '', $m);
-    $startParam = trim($m[1] ?? '');
 
     if ($user === null) {
         RegistrationConversation::begin($bot);
@@ -40,16 +36,7 @@ $bot->onCommand('start', function (Nutgram $bot) {    $telegramId = $bot->userId
     }
 
     if ($user->isApproved()) {
-        // ?start=login deep-link OR any /start → send login link immediately
-        if ($startParam === 'login' || $startParam === '') {
-            sendLoginLink($bot, $user);
-            return;
-        }
-
-        $bot->sendMessage(
-            text: 'Добро пожаловать! Используй меню ниже 👇',
-            reply_markup: mainMenuKeyboard(),
-        );
+        sendLoginLink($bot, $user);
         return;
     }
 
@@ -90,11 +77,11 @@ $bot->fallback(function (Nutgram $bot) {
     if ($user->isApproved()) {
         $text = $bot->message()?->text;
         match ($text) {
-            '📋 Моя визитка' => $bot->sendMessage("Раздел в разработке 🚧"),
-            '🤝 Матчи'       => $bot->sendMessage("Раздел в разработке 🚧"),
-            '💬 Чат'         => $bot->sendMessage("Раздел в разработке 🚧"),
-            '🗂️ Кабинет'     => sendLoginLink($bot, $user),
-            default          => null,
+            TelegramKeyboards::BTN_CARD    => $bot->sendMessage("Раздел в разработке 🚧"),
+            TelegramKeyboards::BTN_MATCHES => $bot->sendMessage("Раздел в разработке 🚧"),
+            TelegramKeyboards::BTN_CHAT    => $bot->sendMessage("Раздел в разработке 🚧"),
+            TelegramKeyboards::BTN_CABINET => sendLoginLink($bot, $user),
+            default                        => null,
         };
         return;
     }
@@ -102,22 +89,6 @@ $bot->fallback(function (Nutgram $bot) {
     // Отклонённый пользователь
     $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
 });
-
-/**
- * Постоянное меню для одобренных участников.
- */
-function mainMenuKeyboard(): ReplyKeyboardMarkup
-{
-    return ReplyKeyboardMarkup::make(resize_keyboard: true)
-        ->addRow(
-            KeyboardButton::make('📋 Моя визитка'),
-            KeyboardButton::make('🤝 Матчи'),
-        )
-        ->addRow(
-            KeyboardButton::make('💬 Чат'),
-            KeyboardButton::make('🗂️ Кабинет'),
-        );
-}
 
 /**
  * Generate a magic login link and send it to the user.

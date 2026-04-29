@@ -22,10 +22,9 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables;
 use Filament\Tables\Table;
+use App\Telegram\TelegramKeyboards;
 use Illuminate\Support\Facades\Log;
 use Nutgram\Laravel\Facades\Telegram;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\KeyboardButton;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardMarkup;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 
 class BotUserResource extends Resource
@@ -192,15 +191,7 @@ class BotUserResource extends Resource
     {
         $firstName = explode(' ', (string) $record->full_name)[0];
 
-        $mainMenu = ReplyKeyboardMarkup::make(resize_keyboard: true)
-            ->addRow(
-                KeyboardButton::make('📋 Мой кабинет'),
-                KeyboardButton::make('🤝 Матчи'),
-            )
-            ->addRow(
-                KeyboardButton::make('💬 Общий чат'),
-                KeyboardButton::make('🗂️ Визитка'),
-            );
+        $mainMenu = TelegramKeyboards::mainMenu();
 
         try {
             Telegram::sendMessage(

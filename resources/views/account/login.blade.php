@@ -30,16 +30,33 @@
 
         <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm text-center">
             <h2 class="font-semibold text-gray-900 mb-2">Войти через Telegram</h2>
-            <p class="text-sm text-gray-500 mb-6 leading-relaxed">
-                Нажмите кнопку — бот автоматически пришлёт вам ссылку для входа.
-                <br><span class="text-xs text-gray-400">Доступ только для одобренных участников.</span>
-            </p>
-            <a href="https://t.me/Inspiremoldova_bot?start=login" target="_blank"
+
+            <div class="text-left space-y-3 mb-6">
+                <div class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                    <p class="text-sm text-gray-600">Откройте бота по кнопке ниже</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                    <p class="text-sm text-gray-600">
+                        Нажмите кнопку <strong class="text-gray-800">📋 Войти в кабинет</strong>
+                        <span class="text-gray-400"> или отправьте </span>
+                        <code class="bg-gray-100 text-gray-700 px-1.5 py-0.5 rounded font-mono text-xs">/login</code>
+                    </p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
+                    <p class="text-sm text-gray-600">Перейдите по ссылке из сообщения бота</p>
+                </div>
+            </div>
+
+            <a href="https://t.me/Inspiremoldova_bot" target="_blank"
                class="inline-flex items-center justify-center gap-2.5 w-full px-5 py-3 text-sm font-semibold text-white rounded-xl transition hover:shadow-md hover:-translate-y-px"
                style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Открыть Telegram-бота
+                Открыть @Inspiremoldova_bot
             </a>
+            <p class="mt-3 text-xs text-gray-400">Доступ только для одобренных участников</p>
         </div>
 
         <p class="text-center mt-6 text-xs text-gray-400">
