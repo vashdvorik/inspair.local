@@ -780,6 +780,7 @@
             link.addEventListener('click', function (e) {
                 e.preventDefault();
                 tg.openTelegramLink(link.href);
+                tg.close();
             });
         });
     })();

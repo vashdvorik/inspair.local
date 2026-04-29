@@ -77,6 +77,7 @@
                     window.Telegram.WebApp.openTelegramLink(
                         'https://t.me/Inspiremoldova_bot?start=login'
                     );
+                    window.Telegram.WebApp.close();
                 }
                 // Иначе — обычный браузер, открывается стандартная ссылка target="_blank"
             });

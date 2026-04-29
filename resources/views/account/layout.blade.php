@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
@@ -204,5 +205,18 @@
         </div>
     </div>
 
+<script>
+    (function () {
+        if (!window.Telegram || !window.Telegram.WebApp) return;
+        var tg = window.Telegram.WebApp;
+        document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                tg.openTelegramLink(link.href);
+                tg.close();
+            });
+        });
+    })();
+</script>
 </body>
 </html>
