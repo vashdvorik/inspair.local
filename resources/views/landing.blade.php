@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -766,6 +767,22 @@
             });
         });
     }
+</script>
+<script>
+    // Telegram In-App Browser fix:
+    // When the page is opened inside Telegram, links to t.me must be opened
+    // via Telegram.WebApp.openTelegramLink() so the browser closes properly
+    // and the bot chat opens inside the Telegram app.
+    (function () {
+        if (!window.Telegram || !window.Telegram.WebApp) return;
+        var tg = window.Telegram.WebApp;
+        document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                tg.openTelegramLink(link.href);
+            });
+        });
+    })();
 </script>
 </body>
 </html>
