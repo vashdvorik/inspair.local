@@ -1,0 +1,237 @@
+============================================================
+  DEPLOY: INSPIRE Community → Продакшн
+============================================================
+
+
+------------------------------------------------------------
+1. ТРЕБОВАНИЯ К СЕРВЕРУ
+------------------------------------------------------------
+
+PHP 8.2+ с расширениями:
+  pdo_mysql, mbstring, openssl, tokenizer, xml,
+  ctype, json, bcmath, fileinfo, curl
+
+MySQL 8.0+
+Nginx (рекомендуется) или Apache
+Composer 2.x
+Supervisor (для очередей)
+SSL-сертификат (обязателен — Telegram webhook только HTTPS)
+
+
+------------------------------------------------------------
+2. ЗАГРУЗКА КОДА
+------------------------------------------------------------
+
+  # Вариант A — git
+  git clone <repo-url> /var/www/inspair
+  cd /var/www/inspair
+
+  # Вариант B — архив
+  Распаковать в /var/www/inspair
+
+
+------------------------------------------------------------
+3. ЗАВИСИМОСТИ
+------------------------------------------------------------
+
+  composer install --no-dev --optimize-autoloader
+
+
+------------------------------------------------------------
+4. ФАЙЛ .env
+------------------------------------------------------------
+
+Скопировать .env.example → .env и заполнить:
+
+  APP_NAME="INSPIRE Community"
+  APP_ENV=production
+  APP_KEY=                          # заполнится командой ниже
+  APP_DEBUG=false
+  APP_URL=https://inspair.community
+
+  APP_LOCALE=ru
+  APP_FALLBACK_LOCALE=ru
+
+  LOG_CHANNEL=stack
+  LOG_STACK=daily
+  LOG_LEVEL=warning
+
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=inspair
+  DB_USERNAME=inspair_user
+  DB_PASSWORD=<сильный пароль>
+
+  SESSION_DRIVER=database
+  SESSION_LIFETIME=120
+  SESSION_DOMAIN=inspair.community    # домен без https://
+
+  QUEUE_CONNECTION=database
+  CACHE_STORE=database
+
+  # Telegram
+  TELEGRAM_TOKEN=<токен от @BotFather>
+  TELEGRAM_COMMUNITY_URL=https://inspair.community
+  TELEGRAM_LOG_CHANNEL=daily
+
+
+------------------------------------------------------------
+5. КЛЮЧ И МИГРАЦИИ
+------------------------------------------------------------
+
+  php artisan key:generate
+  php artisan migrate --force
+
+
+------------------------------------------------------------
+6. СОЗДАНИЕ АДМИНИСТРАТОРА FILAMENT
+------------------------------------------------------------
+
+  php artisan make:filament-user
+  # ввести имя, email, пароль
+
+
+------------------------------------------------------------
+7. ПРАВА НА ДИРЕКТОРИИ
+------------------------------------------------------------
+
+  chown -R www-data:www-data /var/www/inspair
+  chmod -R 755 /var/www/inspair
+  chmod -R 775 /var/www/inspair/storage
+  chmod -R 775 /var/www/inspair/bootstrap/cache
+
+
+------------------------------------------------------------
+8. КЭШИРОВАНИЕ (ускорение)
+------------------------------------------------------------
+
+  php artisan config:cache
+  php artisan route:cache
+  php artisan view:cache
+  php artisan event:cache
+
+
+------------------------------------------------------------
+9. NGINX — КОНФИГУРАЦИЯ
+------------------------------------------------------------
+
+  server {
+      listen 443 ssl http2;
+      server_name inspair.community;
+
+      root /var/www/inspair/public;
+      index index.php;
+
+      ssl_certificate     /etc/letsencrypt/live/inspair.community/fullchain.pem;
+      ssl_certificate_key /etc/letsencrypt/live/inspair.community/privkey.pem;
+
+      add_header X-Frame-Options "SAMEORIGIN";
+      add_header X-Content-Type-Options "nosniff";
+
+      location / {
+          try_files $uri $uri/ /index.php?$query_string;
+      }
+
+      location ~ \.php$ {
+          fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+          fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+          include fastcgi_params;
+      }
+
+      location ~ /\.(?!well-known).* {
+          deny all;
+      }
+  }
+
+  # HTTP → HTTPS редирект
+  server {
+      listen 80;
+      server_name inspair.community;
+      return 301 https://$host$request_uri;
+  }
+
+  # Применить конфиг:
+  nginx -t && systemctl reload nginx
+
+
+------------------------------------------------------------
+10. TELEGRAM WEBHOOK (вместо polling)
+------------------------------------------------------------
+
+В продакшне НЕ запускать php artisan nutgram:run.
+Вместо этого — webhook:
+
+  # Зарегистрировать один раз:
+  php artisan nutgram:set-webhook --url=https://inspair.community/telegram/webhook
+
+  # Проверить:
+  php artisan nutgram:get-webhook
+
+Маршрут /telegram/webhook описан в routes/web.php.
+safe_mode автоматически включается при APP_ENV=production
+и проверяет IP-адреса Telegram.
+
+
+------------------------------------------------------------
+11. QUEUE WORKER (Supervisor)
+------------------------------------------------------------
+
+Создать /etc/supervisor/conf.d/inspair-worker.conf:
+
+  [program:inspair-worker]
+  process_name=%(program_name)s_%(process_num)02d
+  command=php /var/www/inspair/artisan queue:work database --sleep=3 --tries=3 --max-time=3600
+  directory=/var/www/inspair
+  autostart=true
+  autorestart=true
+  stopasgroup=true
+  killasgroup=true
+  user=www-data
+  numprocs=2
+  redirect_stderr=true
+  stdout_logfile=/var/www/inspair/storage/logs/worker.log
+  stopwaitsecs=3600
+
+  # Применить:
+  supervisorctl reread
+  supervisorctl update
+  supervisorctl start inspair-worker:*
+
+
+------------------------------------------------------------
+12. ПЛАНИРОВЩИК (Cron)
+------------------------------------------------------------
+
+  crontab -e -u www-data
+
+Добавить строку:
+  * * * * * cd /var/www/inspair && php artisan schedule:run >> /dev/null 2>&1
+
+
+------------------------------------------------------------
+13. ФИНАЛЬНАЯ ПРОВЕРКА
+------------------------------------------------------------
+
+  php artisan about                   # состояние приложения
+  php artisan nutgram:get-webhook     # webhook зарегистрирован
+  supervisorctl status                # воркеры запущены
+  curl -I https://inspair.community
+  curl -I https://inspair.community/admin
+
+
+------------------------------------------------------------
+14. ОБНОВЛЕНИЕ (каждый следующий деплой)
+------------------------------------------------------------
+
+  git pull
+  composer install --no-dev --optimize-autoloader
+  php artisan migrate --force
+  php artisan config:cache
+  php artisan route:cache
+  php artisan view:cache
+  php artisan event:cache
+  supervisorctl restart inspair-worker:*
+
+
+============================================================

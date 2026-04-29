@@ -3,53 +3,110 @@
 
 @section('content')
 <div class="max-w-2xl">
-    <h1 class="text-2xl font-semibold text-gray-900 mb-6">Мой профиль</h1>
 
-    <form action="{{ route('account.profile.update') }}" method="POST" class="bg-white border border-gray-100 rounded-2xl p-6 space-y-5">
+    {{-- Header --}}
+    <div class="mb-8">
+        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">Мой профиль</h1>
+        <p class="mt-1.5 text-sm text-gray-500">Информация о тебе, видимая участникам сообщества</p>
+    </div>
+
+    <form action="{{ route('account.profile.update') }}" method="POST" class="space-y-5">
         @csrf
 
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5">Имя и фамилия <span class="text-red-500">*</span></label>
-            <input type="text" name="full_name" value="{{ old('full_name', $accountUser->full_name) }}"
-                   maxlength="120" required
-                   class="w-full px-3.5 py-2.5 text-sm border rounded-xl transition focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
-                          {{ $errors->has('full_name') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
-            @error('full_name')
-            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-            @enderror
+        {{-- Identity --}}
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">Личные данные</h2>
+            <div class="space-y-5">
+
+                <div>
+                    <label class="mb-1.5 block text-sm font-medium text-[#0f172a]">
+                        Имя и фамилия <span class="text-red-400">*</span>
+                    </label>
+                    <input type="text" name="full_name"
+                           value="{{ old('full_name', $accountUser->full_name) }}"
+                           maxlength="120" required
+                           placeholder="Иван Иванов"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0f172a] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('full_name') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('full_name')
+                    <p class="mt-1.5 flex items-center gap-1 text-xs text-red-600">
+                        <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        {{ $message }}
+                    </p>
+                    @enderror
+                </div>
+
+                <div class="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
+                    <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Telegram</p>
+                    <p class="mt-1 text-sm font-medium">
+                        @if($accountUser->telegram_username)
+                        <a href="https://t.me/{{ $accountUser->telegram_username }}" target="_blank"
+                           class="text-brand-600 hover:underline">
+                            @{{ $accountUser->telegram_username }}
+                        </a>
+                        @else
+                        <span class="text-gray-400">Не указан</span>
+                        @endif
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5">Кто ты и чем занимаешься?</label>
-            <textarea name="description" rows="4" maxlength="1000"
-                      placeholder="Роль, сфера, компания. Ссылки приветствуются."
-                      class="w-full px-3.5 py-2.5 text-sm border rounded-xl transition resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
-                             {{ $errors->has('description') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('description', $accountUser->description) }}</textarea>
-            @error('description')
-            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-            @enderror
+        {{-- About --}}
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">О себе</h2>
+            <div class="space-y-5">
+
+                <div>
+                    <label class="mb-1.5 block text-sm font-medium text-[#0f172a]">
+                        Кто ты и чем занимаешься?
+                    </label>
+                    <textarea name="description" rows="4" maxlength="1000"
+                              placeholder="Роль, сфера, компания. Ссылки приветствуются."
+                              class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0f172a] placeholder-gray-300
+                                     transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                     {{ $errors->has('description') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('description', $accountUser->description) }}</textarea>
+                    <p class="mt-1.5 text-xs text-gray-400">Используется алгоритмом для подбора партнёров · до 1000 символов</p>
+                    @error('description')
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label class="mb-1.5 block text-sm font-medium text-[#0f172a]">
+                        Что ждёшь от сообщества?
+                    </label>
+                    <textarea name="expectation" rows="3" maxlength="1000"
+                              placeholder="Чего ищешь и чем можешь быть полезен."
+                              class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0f172a] placeholder-gray-300
+                                     transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                     {{ $errors->has('expectation') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('expectation', $accountUser->expectation) }}</textarea>
+                    @error('expectation')
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    @enderror
+                </div>
+
+            </div>
         </div>
 
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1.5">Что ждёшь от сообщества?</label>
-            <textarea name="expectation" rows="3" maxlength="1000"
-                      placeholder="Чего ищешь и чем можешь быть полезен."
-                      class="w-full px-3.5 py-2.5 text-sm border rounded-xl transition resize-none focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
-                             {{ $errors->has('expectation') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('expectation', $accountUser->expectation) }}</textarea>
-            @error('expectation')
-            <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-            @enderror
-        </div>
-
-        <div class="flex items-center gap-4 pt-1 border-t border-gray-100">
+        {{-- Actions --}}
+        <div class="flex items-center justify-between">
             <button type="submit"
-                class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white rounded-xl transition hover:-translate-y-px hover:shadow-md"
-                style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Сохранить
+                class="inline-flex h-11 items-center gap-2 rounded-xl px-6 text-sm font-semibold text-white
+                       transition-all duration-150 hover:-translate-y-px hover:shadow-lg active:translate-y-0"
+                style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 4px 14px rgba(124,58,237,.3)">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                Сохранить изменения
             </button>
-            <p class="text-xs text-gray-400">Telegram: @{{ $accountUser->telegram_username ?? '—' }}</p>
+            <p class="text-xs text-gray-400">Сохраняется немедленно</p>
         </div>
+
     </form>
 </div>
 @endsection
