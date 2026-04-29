@@ -18,6 +18,32 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 |--------------------------------------------------------------------------
 */
 
+// /start login — deep link from login page (?start=login)
+$bot->onText('/start login', function (Nutgram $bot) {
+    $telegramId = $bot->userId();
+    $user = BotUser::where('telegram_id', $telegramId)->first();
+
+    if ($user === null) {
+        RegistrationConversation::begin($bot);
+        return;
+    }
+
+    if ($user->isPending()) {
+        $firstName = explode(' ', (string) $user->full_name)[0];
+        $bot->sendMessage(
+            "{$firstName}, твоя заявка уже в работе 🙌\n\nАдминистратор лично рассматривает и свяжется в течение 24 часов.\nЕсли есть срочный вопрос — @lesnichenkoP"
+        );
+        return;
+    }
+
+    if ($user->isApproved()) {
+        sendLoginLink($bot, $user);
+        return;
+    }
+
+    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
+});
+
 $bot->onCommand('start', function (Nutgram $bot) {
     $telegramId = $bot->userId();
     $user = BotUser::where('telegram_id', $telegramId)->first();
