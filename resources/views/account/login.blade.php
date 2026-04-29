@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход — INSPIRE Community</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>body { font-family: "Inter", sans-serif; }</style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div class="w-full max-w-sm">
+        <div class="flex flex-col items-center mb-8">
+            <span class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg mb-4" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </span>
+            <h1 style="font-family:'Cormorant Garamond',serif" class="text-3xl font-semibold text-gray-900">INSPIRE</h1>
+            <p class="text-sm text-gray-400 mt-1">Личный кабинет участника</p>
+        </div>
+
+        @if(session('error'))
+        <div class="mb-4 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl">
+            <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{ session('error') }}
+        </div>
+        @endif
+
+        <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm text-center">
+            <h2 class="font-semibold text-gray-900 mb-2">Войти через Telegram</h2>
+            <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                Нажмите кнопку — бот автоматически пришлёт вам ссылку для входа.
+                <br><span class="text-xs text-gray-400">Доступ только для одобренных участников.</span>
+            </p>
+            <a href="https://t.me/Inspiremoldova_bot?start=login" target="_blank"
+               class="inline-flex items-center justify-center gap-2.5 w-full px-5 py-3 text-sm font-semibold text-white rounded-xl transition hover:shadow-md hover:-translate-y-px"
+               style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                Открыть Telegram-бота
+            </a>
+        </div>
+
+        <p class="text-center mt-6 text-xs text-gray-400">
+            <a href="/" class="hover:underline">← Вернуться на сайт</a>
+        </p>
+    </div>
+</body>
+</html>

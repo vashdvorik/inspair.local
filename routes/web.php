@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Account\AccountController;
+use App\Http\Middleware\RequireAccountAuth;
+use App\Models\LoginToken;
 use Illuminate\Support\Facades\Route;
 use SergiX44\Nutgram\Nutgram;
 
@@ -11,4 +14,33 @@ Route::get('/', function () {
 Route::post('/telegram/webhook', function (Nutgram $bot) {
     $bot->run();
 })->name('telegram.webhook');
+
+// Account: magic-link auth (no middleware)
+Route::get('/app/account/auth', [AccountController::class, 'auth'])->name('account.auth');
+Route::get('/app/account/login', [AccountController::class, 'login'])->name('account.login');
+
+// Short-link redirect: /go/{code} — hides the full token from Telegram dialog
+Route::get('/go/{code}', function (string $code) {
+    $token = LoginToken::where('token', 'like', $code . '%')->first();
+
+    if (! $token) {
+        return redirect()->route('account.login')->with('error', 'Ссылка недействительна.');
+    }
+
+    return redirect()->route('account.auth', ['token' => $token->token]);
+})->where('code', '[0-9a-f]{8}')->name('account.go');
+
+// Account: protected cabinet
+Route::middleware(RequireAccountAuth::class)
+    ->prefix('app/account')
+    ->name('account.')
+    ->group(function (): void {
+        Route::get('/', [AccountController::class, 'index'])->name('index');
+        Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+        Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
+        Route::get('/matches', [AccountController::class, 'matches'])->name('matches');
+        Route::get('/people', [AccountController::class, 'people'])->name('people');
+        Route::get('/knowledge', [AccountController::class, 'knowledge'])->name('knowledge');
+        Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
+    });
 

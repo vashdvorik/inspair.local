@@ -194,12 +194,12 @@ class BotUserResource extends Resource
 
         $mainMenu = ReplyKeyboardMarkup::make(resize_keyboard: true)
             ->addRow(
-                KeyboardButton::make('📋 Мой профиль'),
+                KeyboardButton::make('📋 Мой кабинет'),
                 KeyboardButton::make('🤝 Матчи'),
             )
             ->addRow(
                 KeyboardButton::make('💬 Общий чат'),
-                KeyboardButton::make('🗂️ Кабинет'),
+                KeyboardButton::make('🗂️ Визитка'),
             );
 
         try {
