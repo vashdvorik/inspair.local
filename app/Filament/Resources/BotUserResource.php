@@ -194,11 +194,11 @@ class BotUserResource extends Resource
 
         $mainMenu = ReplyKeyboardMarkup::make(resize_keyboard: true)
             ->addRow(
-                KeyboardButton::make('📋 Моя визитка'),
+                KeyboardButton::make('📋 Мой профиль'),
                 KeyboardButton::make('🤝 Матчи'),
             )
             ->addRow(
-                KeyboardButton::make('💬 Чат'),
+                KeyboardButton::make('💬 Общий чат'),
                 KeyboardButton::make('🗂️ Кабинет'),
             );
 
@@ -213,7 +213,6 @@ class BotUserResource extends Resource
 
 ✅ Полный доступ в закрытый чат сообщества
 ✅ Доступ к закрытым обучающим материалам академии
-✅ Ты можешь уведомлять всех о будущих мероприятиях.
 ✅ AI-нетворкинг — когда заполнишь профиль.",
                 reply_markup: $mainMenu,
             );

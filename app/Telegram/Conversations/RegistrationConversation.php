@@ -121,7 +121,7 @@ class RegistrationConversation extends Conversation
         $firstName = explode(' ', (string) $this->fullName)[0];
 
         $bot->sendMessage(
-            "Спасибо, {$firstName}!\n\nЗаявка принята. Мы рассмотрим её и свяжемся с тобой в Telegram в течение 24 часов.\n\nПока можешь посмотреть сайт сообщества:\n".config('nutgram.community_url', 'https://inspair.community'),
+            "Спасибо, {$firstName}!\n\nЗаявка принята. Мы рассмотрим её и свяжемся с тобой в Telegram в течение 24 часов.\n\nПока можешь посмотреть сайт сообщества:\n".config('nutgram.community_url', config('app.url')),
         );
 
         $this->end();

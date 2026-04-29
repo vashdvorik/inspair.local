@@ -3,7 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSPIRE Community</title>
+    <title>INSPIRE Community — Платформа партнёрства Молдовы</title>
+    <meta name="description" content="INSPIRE Community — платформа ИИ-матчинга для молодых лидеров и предпринимателей Молдовы. Найдите партнёра, ментора или соучредителя через Telegram.">
+    <meta property="og:title" content="INSPIRE Community">
+    <meta property="og:description" content="Платформа партнёрства и роста для лидеров Молдовы">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#7c3aed">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -38,7 +43,8 @@
         html:not([lang="ro"]) [data-lang="ro"] { display: none !important; }
 
         * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #faf9fc; color: #1a1225; }
+        html { overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: #faf9fc; color: #1a1225; overflow-x: hidden; }
         h1,h2,h3,.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
 
         .grad-text {
@@ -77,8 +83,8 @@
         .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; }
         .delay-3 { transition-delay: .3s; } .delay-4 { transition-delay: .4s; }
 
-        #navbar { transition: background .3s, box-shadow .3s; }
-        #navbar.scrolled { background: rgba(250,249,252,0.92); box-shadow: 0 1px 0 rgba(124,58,237,0.08); backdrop-filter: blur(16px); }
+        #navbar { background: rgba(250,249,252,0.65); backdrop-filter: blur(10px); transition: background .3s, box-shadow .3s, backdrop-filter .3s; }
+        #navbar.scrolled { background: rgba(250,249,252,0.96); box-shadow: 0 1px 0 rgba(124,58,237,0.1); backdrop-filter: blur(24px); }
 
         details summary::-webkit-details-marker { display: none; }
         details[open] .chevron { transform: rotate(180deg); }
@@ -87,6 +93,26 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f5f3ff; }
         ::-webkit-scrollbar-thumb { background: rgba(124,58,237,.3); border-radius: 3px; }
+        :focus-visible { outline: 2px solid #7c3aed; outline-offset: 3px; border-radius: 4px; }
+
+        /* Hero CSS animations — above-fold content, no JS dependency */
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: none; }
+        }
+        @keyframes heroSlideRight {
+            from { opacity: 0; transform: translateX(56px); }
+            to   { opacity: 1; transform: none; }
+        }
+        .hero-in       { animation: heroFadeUp .9s cubic-bezier(.22,1,.36,1) both; }
+        .hero-in-right { animation: heroSlideRight 1.1s cubic-bezier(.22,1,.36,1) both; animation-delay: .35s; }
+        .hero-in-1 { animation-delay: .04s; }
+        .hero-in-2 { animation-delay: .16s; }
+        .hero-in-3 { animation-delay: .30s; }
+        .hero-in-4 { animation-delay: .46s; }
+
+        /* Stats counter */
+        .stat-num { font-variant-numeric: tabular-nums; }
     </style>
     <script>
         (function() {
@@ -133,8 +159,33 @@
             <a href="https://t.me/Inspiremoldova_bot" target="_blank"
                class="hidden sm:inline-flex items-center gap-1.5 grad-bg text-white text-xs font-semibold px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-shadow">
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Telegram
+                Войти в кабинет
             </a>
+            <button id="mobile-menu-btn"
+                class="sm:hidden p-2 -mr-1 rounded-xl text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition"
+                aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+                <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden sm:hidden absolute top-full inset-x-0 border-b border-brand-100 px-4 py-5 shadow-xl" style="background:rgba(255,255,255,0.98);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);">
+        <div class="flex flex-col gap-1">
+            <a href="#about" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">
+                <span data-lang="ru">О платформе</span><span data-lang="en">About</span><span data-lang="ro">Despre</span>
+            </a>
+            <a href="#values" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">
+                <span data-lang="ru">Ценности</span><span data-lang="en">Values</span><span data-lang="ro">Valori</span>
+            </a>
+            <a href="#network" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">INSPIRE Network</a>
+            <a href="#faq" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">FAQ</a>
+            <div class="border-t border-gray-100 mt-3 pt-4">
+                <a href="https://t.me/Inspiremoldova_bot" target="_blank"
+                   class="flex items-center justify-center gap-2.5 grad-bg text-white font-semibold text-sm px-5 py-3.5 rounded-full shadow-md w-full">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Войти в кабинет
+                </a>
+            </div>
         </div>
     </div>
 </nav>
@@ -147,22 +198,22 @@
 
     <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
         <div>
-            <div class="reveal inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-600 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-8 tracking-wide uppercase">
+            <div class="hero-in hero-in-1 inline-flex items-center gap-2 bg-brand-50 border border-brand-200 text-brand-600 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-8 tracking-wide uppercase">
                 <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
                 INSPIRE Network &middot; Moldova
             </div>
 
-            <h1 class="serif text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.05] tracking-tight mb-6 reveal delay-1">
+            <h1 class="serif text-5xl sm:text-6xl lg:text-7xl font-semibold leading-[1.1] tracking-tight mb-6 hero-in hero-in-2">
                 <span data-lang="ru">Платформа<br><em class="grad-text not-italic">партнёрства</em><br>и роста</span>
                 <span data-lang="en">Platform of<br><em class="grad-text not-italic">partnership</em><br>and growth</span>
                 <span data-lang="ro">Platformă de<br><em class="grad-text not-italic">parteneriat</em><br>și creștere</span>
             </h1>
 
-            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 reveal delay-2" data-lang="ru">Объединяем молодых лидеров и предпринимателей Молдовы через технологии ИИ-матчинга.</p>
-            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 reveal delay-2" data-lang="en">Connecting young leaders and entrepreneurs of Moldova through AI matching technology.</p>
-            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 reveal delay-2" data-lang="ro">Unim tineri lideri și antreprenori ai Moldovei prin tehnologia de matching AI.</p>
+            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 hero-in hero-in-3" data-lang="ru">Объединяем молодых лидеров и предпринимателей Молдовы через технологии ИИ-матчинга.</p>
+            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 hero-in hero-in-3" data-lang="en">Connecting young leaders and entrepreneurs of Moldova through AI matching technology.</p>
+            <p class="text-lg text-gray-500 leading-relaxed max-w-md mb-10 hero-in hero-in-3" data-lang="ro">Unim tineri lideri și antreprenori ai Moldovei prin tehnologia de matching AI.</p>
 
-            <div class="flex flex-wrap items-center gap-4 reveal delay-3">
+            <div class="flex flex-wrap items-center gap-4 hero-in hero-in-4">
                 <a href="https://t.me/Inspiremoldova_bot" target="_blank"
                    class="inline-flex items-center gap-2 grad-bg text-white font-semibold text-sm px-7 py-3.5 rounded-full shadow-lg shadow-brand-600/25 hover:shadow-brand-600/45 hover:-translate-y-0.5 transition-all">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -179,7 +230,7 @@
             </div>
         </div>
 
-        <div class="hidden lg:flex items-center justify-center reveal-right">
+        <div class="hidden lg:flex items-center justify-center hero-in-right">
             <div class="relative w-[440px] h-[440px]">
                 <div class="absolute inset-0 rounded-full border border-brand-200/60 animate-[spin_40s_linear_infinite]"></div>
                 <div class="absolute inset-8 rounded-full border border-brand-300/40 animate-[spin_25s_linear_infinite_reverse]"></div>
@@ -207,8 +258,40 @@
     </div>
 </section>
 
+{{-- STATS --}}
+<section class="py-12 bg-white border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+            <div class="reveal">
+                <div class="serif text-4xl font-bold grad-text stat-num leading-none">150+</div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mt-2">
+                    <span data-lang="ru">участников</span><span data-lang="en">members</span><span data-lang="ro">participanți</span>
+                </p>
+            </div>
+            <div class="reveal delay-1">
+                <div class="serif text-4xl font-bold grad-text stat-num leading-none">5+</div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mt-2">
+                    <span data-lang="ru">университетов</span><span data-lang="en">universities</span><span data-lang="ro">universități</span>
+                </p>
+            </div>
+            <div class="reveal delay-2">
+                <div class="serif text-4xl font-bold grad-text stat-num leading-none">3</div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mt-2">
+                    <span data-lang="ru">языка</span><span data-lang="en">languages</span><span data-lang="ro">limbi</span>
+                </p>
+            </div>
+            <div class="reveal delay-3">
+                <div class="text-3xl leading-none">🇳🇱</div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest mt-2">
+                    <span data-lang="ru">при поддержке NL</span><span data-lang="en">NL backed</span><span data-lang="ro">sprijin NL</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
 {{-- ABOUT --}}
-<section class="py-28 px-4 sm:px-6 bg-white" id="about">
+<section class="py-28 px-4 sm:px-6 bg-white scroll-mt-20" id="about">
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16 reveal">
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-3">
@@ -227,7 +310,7 @@
                 <div class="w-11 h-11 rounded-2xl grad-bg flex items-center justify-center mb-6 shadow-md">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                 </div>
-                <h3 class="serif text-xl font-semibold text-ink mb-3">
+                <h3 class="serif text-2xl font-semibold text-ink mb-3">
                     <span data-lang="ru">Интеллектуальный матчинг</span>
                     <span data-lang="en">Intelligent matching</span>
                     <span data-lang="ro">Matching inteligent</span>
@@ -240,7 +323,7 @@
                 <div class="w-11 h-11 rounded-2xl grad-bg flex items-center justify-center mb-6 shadow-md">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
-                <h3 class="serif text-xl font-semibold text-ink mb-3">
+                <h3 class="serif text-2xl font-semibold text-ink mb-3">
                     <span data-lang="ru">Сообщество лидеров</span>
                     <span data-lang="en">Community of leaders</span>
                     <span data-lang="ro">Comunitate de lideri</span>
@@ -253,7 +336,7 @@
                 <div class="w-11 h-11 rounded-2xl grad-bg flex items-center justify-center mb-6 shadow-md">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 </div>
-                <h3 class="serif text-xl font-semibold text-ink mb-3">
+                <h3 class="serif text-2xl font-semibold text-ink mb-3">
                     <span data-lang="ru">От знакомства к результату</span>
                     <span data-lang="en">From meeting to outcome</span>
                     <span data-lang="ro">De la cunoaștere la rezultat</span>
@@ -267,7 +350,7 @@
 </section>
 
 {{-- STEPS (dark) --}}
-<section class="grad-dark py-28 px-4 sm:px-6 relative overflow-hidden" id="join">
+<section class="grad-dark py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-20" id="join">
     <div class="orb absolute -top-24 right-0 w-[500px] h-[500px]" style="background:radial-gradient(#7c3aed,transparent);opacity:.18;"></div>
     <div class="orb absolute -bottom-32 left-0 w-[400px] h-[400px]" style="background:radial-gradient(#4f46e5,transparent);opacity:.15;"></div>
     <div class="max-w-5xl mx-auto relative">
@@ -331,7 +414,7 @@
 </section>
 
 {{-- VALUES --}}
-<section class="py-28 px-4 sm:px-6 bg-brand-50" id="values">
+<section class="py-28 px-4 sm:px-6 bg-brand-50 scroll-mt-20" id="values">
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16 reveal">
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-3">
@@ -348,7 +431,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-1">
                 <div class="text-3xl mb-4">🤝</div>
-                <h3 class="serif text-lg font-semibold text-ink mb-2">
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
                     <span data-lang="ru">Социальная сплочённость</span>
                     <span data-lang="en">Social cohesion</span>
                     <span data-lang="ro">Coeziune socială</span>
@@ -359,7 +442,7 @@
             </div>
             <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-2">
                 <div class="text-3xl mb-4">🌱</div>
-                <h3 class="serif text-lg font-semibold text-ink mb-2">
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
                     <span data-lang="ru">Устойчивое развитие</span>
                     <span data-lang="en">Sustainable development</span>
                     <span data-lang="ro">Dezvoltare durabilă</span>
@@ -370,7 +453,7 @@
             </div>
             <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-3">
                 <div class="text-3xl mb-4">⚡</div>
-                <h3 class="serif text-lg font-semibold text-ink mb-2">
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
                     <span data-lang="ru">Лидерство через действие</span>
                     <span data-lang="en">Leadership through action</span>
                     <span data-lang="ro">Leadership prin acțiune</span>
@@ -381,7 +464,7 @@
             </div>
             <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-1">
                 <div class="text-3xl mb-4">🌍</div>
-                <h3 class="serif text-lg font-semibold text-ink mb-2">
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
                     <span data-lang="ru">Глобальное гражданство</span>
                     <span data-lang="en">Global citizenship</span>
                     <span data-lang="ro">Cetățenie globală</span>
@@ -392,7 +475,7 @@
             </div>
             <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-2">
                 <div class="text-3xl mb-4">🤖</div>
-                <h3 class="serif text-lg font-semibold text-ink mb-2">
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
                     <span data-lang="ru">Цифровая трансформация</span>
                     <span data-lang="en">Digital transformation</span>
                     <span data-lang="ro">Transformare digitală</span>
@@ -401,12 +484,23 @@
                 <p class="text-sm text-gray-500 leading-relaxed" data-lang="en">We use AI to make collaboration more efficient and accessible.</p>
                 <p class="text-sm text-gray-500 leading-relaxed" data-lang="ro">Folosim AI pentru a face colaborarea mai eficientă și mai accesibilă.</p>
             </div>
+            <div class="glass glow-border rounded-2xl p-6 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 reveal delay-3">
+                <div class="text-3xl mb-4">🎯</div>
+                <h3 class="serif text-2xl font-semibold text-ink mb-2">
+                    <span data-lang="ru">Ориентация на результат</span>
+                    <span data-lang="en">Results-oriented</span>
+                    <span data-lang="ro">Orientare spre rezultat</span>
+                </h3>
+                <p class="text-sm text-gray-500 leading-relaxed" data-lang="ru">Каждая связь имеет цель. Мы создаём реальные проекты и добиваемся измеримых изменений в обществе.</p>
+                <p class="text-sm text-gray-500 leading-relaxed" data-lang="en">Every connection has a purpose. We build real projects and achieve measurable changes in society.</p>
+                <p class="text-sm text-gray-500 leading-relaxed" data-lang="ro">Fiecare conexiune are un scop. Construim proiecte reale și realizăm schimbări măsurabile în societate.</p>
+            </div>
         </div>
     </div>
 </section>
 
 {{-- ABOUT INSPIRE NETWORK --}}
-<section class="py-28 px-4 sm:px-6 bg-white" id="network">
+<section class="py-28 px-4 sm:px-6 bg-white scroll-mt-20" id="network">
     <div class="max-w-5xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <div class="reveal-left">
@@ -470,7 +564,7 @@
 </section>
 
 {{-- FAQ --}}
-<section class="py-28 px-4 sm:px-6 bg-brand-50" id="faq">
+<section class="py-28 px-4 sm:px-6 bg-brand-50 scroll-mt-20" id="faq">
     <div class="max-w-3xl mx-auto">
         <div class="text-center mb-16 reveal">
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-600 mb-3">FAQ</p>
@@ -560,7 +654,7 @@
         <a href="https://t.me/Inspiremoldova_bot" target="_blank"
            class="inline-flex items-center gap-3 grad-bg text-white font-semibold text-lg px-10 py-4 rounded-full shadow-2xl shadow-brand-600/40 hover:shadow-brand-600/60 hover:-translate-y-0.5 transition-all">
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-            @Inspiremoldova_bot
+            Подать заявку
         </a>
     </div>
 </section>
@@ -637,6 +731,29 @@
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu    = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon     = document.getElementById('close-icon');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden', !isOpen);
+            closeIcon.classList.toggle('hidden', isOpen);
+            mobileMenuBtn.setAttribute('aria-expanded', String(!isOpen));
+        });
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 </script>
 </body>
 </html>
