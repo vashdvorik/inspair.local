@@ -26,11 +26,15 @@ class BotUser extends Model
         'expectation',
         'status',
         'approved_at',
+        'embedding',
+        'embedding_updated_at',
     ];
 
     protected $casts = [
-        'telegram_id' => 'integer',
-        'approved_at' => 'datetime',
+        'telegram_id'          => 'integer',
+        'approved_at'          => 'datetime',
+        'embedding'            => 'array',
+        'embedding_updated_at' => 'datetime',
     ];
 
     public function scopePending(Builder $query): Builder

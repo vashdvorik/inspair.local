@@ -232,6 +232,21 @@ safe_mode автоматически включается при APP_ENV=product
   php artisan view:cache
   php artisan event:cache
   supervisorctl restart inspair-worker:*
+  php artisan storage:link
+
+
+------------------------------------------------------------
+15. AI-МАТЧИ (первый запуск)
+------------------------------------------------------------
+
+Прописать в .env:
+  GEMINI_API_KEY=<ключ из Google AI Studio>
+
+После первого деплоя вычислить эмбеддинги для всех участников:
+  php artisan ai:recompute-embeddings
+
+При обновлении профиля эмбеддинги пересчитываются автоматически
+через очередь (queue:work должен быть запущен через Supervisor).
 
 
 ============================================================

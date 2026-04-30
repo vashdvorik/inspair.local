@@ -6,8 +6,10 @@ namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\ProfileUpdateRequest;
+use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
 use App\Models\LoginToken;
+use App\Services\MatchingService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -132,16 +134,24 @@ class AccountController extends Controller
         $user = view()->shared('accountUser');
         $user->update($request->validated());
 
+        // Recompute embedding since profile text changed
+        ComputeUserEmbedding::dispatch($user);
+
         return redirect()->route('account.profile')
             ->with('success', 'Профиль обновлён.');
     }
 
     /**
-     * AI matches page (placeholder).
+     * AI matches page.
      */
-    public function matches(): View
+    public function matches(MatchingService $matcher): View
     {
-        return view('account.matches');
+        /** @var BotUser $accountUser */
+        $accountUser = view()->shared('accountUser');
+
+        $matches = $matcher->topMatches($accountUser);
+
+        return view('account.matches', compact('matches'));
     }
 
     /**

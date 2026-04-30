@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Telegram\Conversations;
 
+use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -121,6 +122,9 @@ class RegistrationConversation extends Conversation
         ]);
 
         $this->downloadAvatar($bot, $botUser);
+
+        // Compute embedding asynchronously — non-blocking
+        ComputeUserEmbedding::dispatch($botUser);
 
         $firstName = explode(' ', (string) $this->fullName)[0];
 

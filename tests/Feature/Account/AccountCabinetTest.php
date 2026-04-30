@@ -6,7 +6,9 @@ namespace Tests\Feature\Account;
 
 use App\Models\BotUser;
 use App\Models\LoginToken;
+use App\Jobs\ComputeUserEmbedding;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Bus;
 use Tests\TestCase;
 
 class AccountCabinetTest extends TestCase
@@ -89,6 +91,8 @@ class AccountCabinetTest extends TestCase
 
     public function test_profile_update_saves_data(): void
     {
+        Bus::fake([ComputeUserEmbedding::class]);
+
         $user = BotUser::factory()->approved()->create();
 
         $this->withSession($this->sessionFor($user))
@@ -106,6 +110,8 @@ class AccountCabinetTest extends TestCase
             'description' => 'Предприниматель',
             'expectation' => 'Партнёрство',
         ]);
+
+        Bus::assertDispatched(ComputeUserEmbedding::class);
     }
 
     public function test_profile_update_validates_required_full_name(): void
