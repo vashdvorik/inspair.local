@@ -160,9 +160,10 @@ class SearchConversation extends Conversation
         }
 
         if ($pos === 1 && $total > 1) {
+            $more = $total - 1;
             $keyboard->addRow(
                 InlineKeyboardButton::make(
-                    "Показать ещё ({$total} найдено) →",
+                    "Показать ещё {$more} →",
                     callback_data: 'search:more'
                 )
             );
