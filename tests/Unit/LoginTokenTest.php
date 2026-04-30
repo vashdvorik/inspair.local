@@ -22,17 +22,6 @@ class LoginTokenTest extends TestCase
         $this->assertTrue($token->isValid());
     }
 
-    public function test_is_valid_returns_false_when_token_is_used(): void
-    {
-        $user = BotUser::factory()->approved()->create();
-
-        $token = LoginToken::generateFor((int) $user->telegram_id);
-        $token->update(['used_at' => now()]);
-        $token->refresh();
-
-        $this->assertFalse($token->isValid());
-    }
-
     public function test_is_valid_returns_false_when_token_is_expired(): void
     {
         $user = BotUser::factory()->approved()->create();
@@ -44,14 +33,14 @@ class LoginTokenTest extends TestCase
         $this->assertFalse($token->isValid());
     }
 
-    public function test_generate_for_creates_token_with_one_hour_expiry(): void
+    public function test_generate_for_creates_token_with_24_hour_expiry(): void
     {
         $user = BotUser::factory()->approved()->create();
 
         $token = LoginToken::generateFor((int) $user->telegram_id);
 
         $this->assertEqualsWithDelta(
-            now()->addHour()->timestamp,
+            now()->addDay()->timestamp,
             $token->expires_at->timestamp,
             5 // seconds tolerance
         );

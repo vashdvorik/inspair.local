@@ -29,12 +29,12 @@ class LoginToken extends Model
 
     public function isValid(): bool
     {
-        return $this->used_at === null && $this->expires_at->isFuture();
+        return $this->expires_at->isFuture();
     }
 
     /**
-     * Generate a fresh 1-hour login token for the given Telegram user.
-     * Deletes any previously unused tokens for that user first.
+     * Generate a reusable 24-hour login token for the given Telegram user.
+     * Deletes any previously issued tokens for that user first.
      */
     public static function generateFor(int $telegramId): self
     {
@@ -43,7 +43,7 @@ class LoginToken extends Model
         return self::create([
             'telegram_id' => $telegramId,
             'token'       => bin2hex(random_bytes(32)),
-            'expires_at'  => now()->addHour(),
+            'expires_at'  => now()->addDay(),
         ]);
     }
 }

@@ -44,18 +44,7 @@ class AccountAuthTest extends TestCase
     {
         $user  = BotUser::factory()->approved()->create();
         $token = LoginToken::generateFor((int) $user->telegram_id);
-        $token->update(['expires_at' => now()->subHour()]);
-
-        $this->get(route('account.auth') . '?token=' . $token->token)
-            ->assertRedirect(route('account.login'))
-            ->assertSessionHas('error');
-    }
-
-    public function test_auth_with_used_token_redirects_to_login_with_error(): void
-    {
-        $user  = BotUser::factory()->approved()->create();
-        $token = LoginToken::generateFor((int) $user->telegram_id);
-        $token->update(['used_at' => now()]);
+        $token->update(['expires_at' => now()->subDay()]);
 
         $this->get(route('account.auth') . '?token=' . $token->token)
             ->assertRedirect(route('account.login'))
@@ -97,27 +86,30 @@ class AccountAuthTest extends TestCase
         $this->assertEquals($user->telegram_id, session('account_telegram_id'));
     }
 
-    public function test_auth_marks_token_as_used(): void
-    {
-        $user  = BotUser::factory()->approved()->create();
-        $token = LoginToken::generateFor((int) $user->telegram_id);
-
-        $this->get(route('account.auth') . '?token=' . $token->token);
-
-        $this->assertNotNull($token->fresh()->used_at);
-    }
-
-    public function test_used_token_cannot_be_reused(): void
+    public function test_valid_token_can_be_used_multiple_times(): void
     {
         $user  = BotUser::factory()->approved()->create();
         $token = LoginToken::generateFor((int) $user->telegram_id);
 
         // First use
-        $this->get(route('account.auth') . '?token=' . $token->token);
-
-        // Second use — fresh client (no session)
         $this->get(route('account.auth') . '?token=' . $token->token)
-            ->assertRedirect(route('account.login'))
-            ->assertSessionHas('error');
+            ->assertRedirect(route('account.index'));
+
+        // Second use — same token still works
+        $this->get(route('account.auth') . '?token=' . $token->token)
+            ->assertRedirect(route('account.index'));
     }
-}
+
+    public function test_token_expires_after_24_hours(): void
+    {
+        $user  = BotUser::factory()->approved()->create();
+        $token = LoginToken::generateFor((int) $user->telegram_id);
+
+        $this->assertEqualsWithDelta(
+            now()->addDay()->timestamp,
+            $token->expires_at->timestamp,
+            5,
+            'Token must expire in 24 hours.'
+        );
+    }
+};

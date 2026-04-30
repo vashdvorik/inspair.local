@@ -52,7 +52,7 @@ class AccountController extends Controller
 
         Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
             'chat_id'      => $user->telegram_id,
-            'text'         => "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 1 час и работает один раз.",
+            'text'         => "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 24 часа.",
             'reply_markup' => json_encode([
                 'inline_keyboard' => [[
                     ['text' => '🔐 Войти в кабинет →', 'url' => $url],
@@ -79,7 +79,7 @@ class AccountController extends Controller
 
         if (! $loginToken || ! $loginToken->isValid()) {
             return redirect()->route('account.login')
-                ->with('error', 'Ссылка истекла или уже была использована. Запросите новую через бот командой /login.');
+                ->with('error', 'Ссылка истекла. Запросите новую через бот командой /login.');
         }
 
         $user = BotUser::where('telegram_id', $loginToken->telegram_id)
@@ -90,9 +90,6 @@ class AccountController extends Controller
             return redirect()->route('account.login')
                 ->with('error', 'Доступ закрыт. Ваша заявка ещё не одобрена или была отозвана.');
         }
-
-        // Mark token as used
-        $loginToken->update(['used_at' => now()]);
 
         // Start session (7 days)
         $request->session()->regenerate();
