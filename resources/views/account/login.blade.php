@@ -13,7 +13,33 @@
     <style>body { font-family: "Inter", sans-serif; }</style>
 </head>
 <body class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-    <div class="w-full max-w-sm">
+
+    {{-- TMA loading overlay (hidden by default, shown via JS when inside Telegram) --}}
+    <div id="tma-loading" style="display:none"
+         class="fixed inset-0 flex flex-col items-center justify-center bg-gray-50 z-50">
+        <div class="w-10 h-10 rounded-full border-4 border-brand-200 border-t-brand-600 animate-spin mb-4"
+             style="border-color:rgba(124,58,237,.2);border-top-color:#7c3aed"></div>
+        <p class="text-sm text-gray-500">Выполняется вход…</p>
+    </div>
+
+    {{-- TMA: not a member message --}}
+    <div id="tma-not-member" style="display:none"
+         class="w-full max-w-sm text-center">
+        <span class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg mb-4 mx-auto"
+              style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+        </span>
+        <h1 style="font-family:'Cormorant Garamond',serif" class="text-3xl font-semibold text-gray-900 mb-2">INSPIRE</h1>
+        <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+            <p class="text-sm text-gray-700 font-medium mb-1">Доступ пока закрыт</p>
+            <p class="text-sm text-gray-500">Ваша заявка ещё не одобрена или не подана. Напишите боту /start чтобы подать заявку.</p>
+        </div>
+    </div>
+
+    {{-- Normal login form (hidden when inside Telegram) --}}
+    <div id="login-form-wrapper" class="w-full max-w-sm">
         <div class="flex flex-col items-center mb-8">
             <span class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg mb-4" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
                 <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -63,15 +89,53 @@
         <p class="text-center mt-6 text-xs text-gray-400">
             <a href="/" class="hover:underline">← Вернуться на сайт</a>
         </p>
-    </div>
+    </div>{{-- /login-form-wrapper --}}
 
     <script>
+        // ── Telegram Mini App: auto-auth ──────────────────────────────────────
+        (function () {
+            var tg = window.Telegram && window.Telegram.WebApp;
+            if (!tg || !tg.initData) return;
+
+            // We're inside Telegram — hide form, show spinner, attempt auto-auth
+            document.getElementById('login-form-wrapper').style.display = 'none';
+            document.getElementById('tma-loading').style.display = 'flex';
+
+            tg.ready();
+
+            fetch('{{ route('account.tma-auth') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ init_data: tg.initData })
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.ok) {
+                    window.location.href = data.redirect;
+                } else if (data.reason === 'not_member') {
+                    document.getElementById('tma-loading').style.display = 'none';
+                    document.getElementById('tma-not-member').style.display = 'block';
+                } else {
+                    // Unexpected error — fall back to normal form
+                    document.getElementById('tma-loading').style.display = 'none';
+                    document.getElementById('login-form-wrapper').style.display = 'block';
+                }
+            })
+            .catch(function () {
+                document.getElementById('tma-loading').style.display = 'none';
+                document.getElementById('login-form-wrapper').style.display = 'block';
+            });
+        })();
+
+        // ── Telegram button behaviour in regular browser ──────────────────────
         (function () {
             var btn = document.getElementById('tg-login-btn');
             if (!btn) return;
 
             btn.addEventListener('click', function (e) {
-                // Если открыто внутри Telegram (встроенный браузер или Mini App)
                 if (window.Telegram && window.Telegram.WebApp) {
                     e.preventDefault();
                     window.Telegram.WebApp.openTelegramLink(

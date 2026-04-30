@@ -210,6 +210,11 @@
     (function () {
         if (!window.Telegram || !window.Telegram.WebApp) return;
         var tg = window.Telegram.WebApp;
+
+        // Signal the app is ready and expand to full height
+        tg.ready();
+        tg.expand();
+
         document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
             link.addEventListener('click', function (e) {
                 e.preventDefault();

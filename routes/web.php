@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\TmaAuthController;
 use App\Http\Middleware\RequireAccountAuth;
 use App\Models\LoginToken;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,7 @@ Route::post('/telegram/webhook', function (Nutgram $bot) {
 // Account: magic-link auth (no middleware)
 Route::get('/app/account/auth', [AccountController::class, 'auth'])->name('account.auth');
 Route::get('/app/account/login', [AccountController::class, 'login'])->name('account.login');
+Route::post('/app/account/tma-auth', [TmaAuthController::class, 'auth'])->name('account.tma-auth');
 
 // Short-link redirect: /go/{code} — hides the full token from Telegram dialog
 Route::get('/go/{code}', function (string $code) {
