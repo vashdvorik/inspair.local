@@ -167,6 +167,14 @@ class AccountController extends Controller
     {
         /** @var BotUser $user */
         $user = view()->shared('accountUser');
+
+        // Remove the bot keyboard from the user's Telegram chat
+        Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
+            'chat_id'      => $user->telegram_id,
+            'text'         => "✅ Ваш профиль удалён.\n\nСпасибо, что были с нами — будем рады видеть вас снова 🙏",
+            'reply_markup' => json_encode(['remove_keyboard' => true]),
+        ]);
+
         $user->delete();
 
         session()->forget('account_telegram_id');
@@ -175,7 +183,7 @@ class AccountController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('account.login')
-            ->with('success', 'Ваш профиль удалён. Спасибо, что были с нами 🙏');
+            ->with('success', 'Ваш профиль удалён.');
     }
 
     /**
