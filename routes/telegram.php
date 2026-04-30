@@ -152,19 +152,8 @@ function sendLoginLink(Nutgram $bot, BotUser $user): void
 
     $firstName = explode(' ', (string) $user->full_name)[0];
 
-    $keyboard = InlineKeyboardMarkup::make()
-        ->addRow(
-            InlineKeyboardButton::make('🔐 Войти в кабинет →', url: $url)
-        );
-
     $bot->sendMessage(
-        "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 24 часа.",
-        reply_markup: $keyboard
-    );
-
-    // Восстанавливаем кнопки меню (могут пропасть после перезапуска чата)
-    $bot->sendMessage(
-        '👇',
+        "Привет, {$firstName}! Нажми ссылку ниже, чтобы войти в личный кабинет.\n\n🔐 {$url}\n\n⏱ Ссылка действует 24 часа.",
         reply_markup: TelegramKeyboards::mainMenu()
     );
 }
