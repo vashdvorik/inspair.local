@@ -1,53 +1,58 @@
+﻿============================================================
+  DEPLOY: INSPIRE Community в†’ inspire.granatlab.com
+  РџРѕСЃР»РµРґРЅРµРµ РѕР±РЅРѕРІР»РµРЅРёРµ: Р°РїСЂРµР»СЊ 2026
 ============================================================
-  DEPLOY: INSPIRE Community → Продакшн
-============================================================
+
+РЎРµСЂРІРµСЂ: shared hosting (cPanel)
+РџСѓС‚СЊ:   /home/tirastyl/public_html/inspire.granatlab.com
+URL:    https://inspire.granatlab.com
 
 
 ------------------------------------------------------------
-1. ТРЕБОВАНИЯ К СЕРВЕРУ
+1. РўР Р•Р‘РћР’РђРќРРЇ
 ------------------------------------------------------------
 
-PHP 8.2+ с расширениями:
+PHP 8.2+ СЃ СЂР°СЃС€РёСЂРµРЅРёСЏРјРё:
   pdo_mysql, mbstring, openssl, tokenizer, xml,
   ctype, json, bcmath, fileinfo, curl
 
 MySQL 8.0+
-Nginx (рекомендуется) или Apache
 Composer 2.x
-Supervisor (для очередей)
-SSL-сертификат (обязателен — Telegram webhook только HTTPS)
+SSL-СЃРµСЂС‚РёС„РёРєР°С‚ (РѕР±СЏР·Р°С‚РµР»РµРЅ вЂ” Telegram webhook С‚РѕР»СЊРєРѕ HTTPS)
 
 
 ------------------------------------------------------------
-2. ЗАГРУЗКА КОДА
+2. РџР•Р Р’Р«Р™ Р”Р•РџР›РћР™
 ------------------------------------------------------------
 
-  # Вариант A — git
-  git clone <repo-url> /var/www/inspair
-  cd /var/www/inspair
+  # Р—Р°РіСЂСѓР·РёС‚СЊ РєРѕРґ РЅР° СЃРµСЂРІРµСЂ (git РёР»Рё Р°СЂС…РёРІ)
+  cd /home/tirastyl/public_html/inspire.granatlab.com
 
-  # Вариант B — архив
-  Распаковать в /var/www/inspair
-
-
-------------------------------------------------------------
-3. ЗАВИСИМОСТИ
-------------------------------------------------------------
-
+  # Р—Р°РІРёСЃРёРјРѕСЃС‚Рё
   composer install --no-dev --optimize-autoloader
 
+  # РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РєР»СЋС‡
+  php artisan key:generate
+
+  # РњРёРіСЂР°С†РёРё
+  php artisan migrate --force
+
+  # РЎРёРјРІРѕР»РёС‡РµСЃРєР°СЏ СЃСЃС‹Р»РєР° РґР»СЏ Р°РІР°С‚Р°СЂРѕРІ
+  php artisan storage:link
+
+  # РћС‡РёСЃС‚РёС‚СЊ РєСЌС€
+  php artisan optimize:clear
+
 
 ------------------------------------------------------------
-4. ФАЙЛ .env
+3. Р¤РђР™Р› .env
 ------------------------------------------------------------
-
-Скопировать .env.example → .env и заполнить:
 
   APP_NAME="INSPIRE Community"
   APP_ENV=production
-  APP_KEY=                          # заполнится командой ниже
+  APP_KEY=                          # РіРµРЅРµСЂРёСЂСѓРµС‚СЃСЏ РєРѕРјР°РЅРґРѕР№ key:generate
   APP_DEBUG=false
-  APP_URL=https://inspair.community
+  APP_URL=https://inspire.granatlab.com
 
   APP_LOCALE=ru
   APP_FALLBACK_LOCALE=ru
@@ -59,194 +64,139 @@ SSL-сертификат (обязателен — Telegram webhook только
   DB_CONNECTION=mysql
   DB_HOST=127.0.0.1
   DB_PORT=3306
-  DB_DATABASE=inspair
-  DB_USERNAME=inspair_user
-  DB_PASSWORD=<сильный пароль>
+  DB_DATABASE=<РЅР°Р·РІР°РЅРёРµ Р‘Р”>
+  DB_USERNAME=<РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ>
+  DB_PASSWORD=<РїР°СЂРѕР»СЊ>
 
   SESSION_DRIVER=database
   SESSION_LIFETIME=120
-  SESSION_DOMAIN=inspair.community    # домен без https://
+  SESSION_DOMAIN=inspire.granatlab.com   # Р±РµР· https://
 
   QUEUE_CONNECTION=database
   CACHE_STORE=database
 
   # Telegram
-  TELEGRAM_TOKEN=<токен от @BotFather>
-  TELEGRAM_COMMUNITY_URL=https://inspair.community
+  TELEGRAM_TOKEN=<С‚РѕРєРµРЅ РѕС‚ @BotFather>
+  TELEGRAM_COMMUNITY_URL=https://inspire.granatlab.com
   TELEGRAM_LOG_CHANNEL=daily
 
-
-------------------------------------------------------------
-5. КЛЮЧ И МИГРАЦИИ
-------------------------------------------------------------
-
-  php artisan key:generate
-  php artisan migrate --force
+  # Gemini AI (РґР»СЏ СЌРјР±РµРґРґРёРЅРіРѕРІ Рё РїРѕРёСЃРєР°)
+  GEMINI_API_KEY=<РєР»СЋС‡ РёР· Google AI Studio: aistudio.google.com>
 
 
 ------------------------------------------------------------
-6. СОЗДАНИЕ АДМИНИСТРАТОРА FILAMENT
+4. РЎРћР—Р”РђРќРР• РђР”РњРРќРРЎРўР РђРўРћР Рђ FILAMENT
 ------------------------------------------------------------
 
   php artisan make:filament-user
-  # ввести имя, email, пароль
+  # Р’РІРµСЃС‚Рё РёРјСЏ, email, РїР°СЂРѕР»СЊ
+  # РџР°РЅРµР»СЊ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°: /admin
 
 
 ------------------------------------------------------------
-7. ПРАВА НА ДИРЕКТОРИИ
+5. TELEGRAM WEBHOOK
 ------------------------------------------------------------
 
-  chown -R www-data:www-data /var/www/inspair
-  chmod -R 755 /var/www/inspair
-  chmod -R 775 /var/www/inspair/storage
-  chmod -R 775 /var/www/inspair/bootstrap/cache
+  # Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ webhook (РѕРґРёРЅ СЂР°Р·):
+  php artisan nutgram:hook:set
 
-
-------------------------------------------------------------
-8. КЭШИРОВАНИЕ (ускорение)
-------------------------------------------------------------
-
-  php artisan config:cache
-  php artisan route:cache
-  php artisan view:cache
-  php artisan event:cache
-
-
-------------------------------------------------------------
-9. NGINX — КОНФИГУРАЦИЯ
-------------------------------------------------------------
-
-  server {
-      listen 443 ssl http2;
-      server_name inspair.community;
-
-      root /var/www/inspair/public;
-      index index.php;
-
-      ssl_certificate     /etc/letsencrypt/live/inspair.community/fullchain.pem;
-      ssl_certificate_key /etc/letsencrypt/live/inspair.community/privkey.pem;
-
-      add_header X-Frame-Options "SAMEORIGIN";
-      add_header X-Content-Type-Options "nosniff";
-
-      location / {
-          try_files $uri $uri/ /index.php?$query_string;
-      }
-
-      location ~ \.php$ {
-          fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
-          fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-          include fastcgi_params;
-      }
-
-      location ~ /\.(?!well-known).* {
-          deny all;
-      }
-  }
-
-  # HTTP → HTTPS редирект
-  server {
-      listen 80;
-      server_name inspair.community;
-      return 301 https://$host$request_uri;
-  }
-
-  # Применить конфиг:
-  nginx -t && systemctl reload nginx
-
-
-------------------------------------------------------------
-10. TELEGRAM WEBHOOK (вместо polling)
-------------------------------------------------------------
-
-В продакшне НЕ запускать php artisan nutgram:run.
-Вместо этого — webhook:
-
-  # Зарегистрировать один раз:
-  php artisan nutgram:set-webhook --url=https://inspair.community/telegram/webhook
-
-  # Проверить:
+  # РџСЂРѕРІРµСЂРёС‚СЊ:
   php artisan nutgram:get-webhook
 
-Маршрут /telegram/webhook описан в routes/web.php.
-safe_mode автоматически включается при APP_ENV=production
-и проверяет IP-адреса Telegram.
+  Р’РђР–РќРћ: РІ РїСЂРѕРґР°РєС€РЅРµ РќР• Р·Р°РїСѓСЃРєР°С‚СЊ php artisan nutgram:run
+  Nutgram Р±РµСЂС‘С‚ APP_URL РёР· .env Рё СЂРµРіРёСЃС‚СЂРёСЂСѓРµС‚ webhook Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё.
+  РњР°СЂС€СЂСѓС‚: POST /telegram/webhook
 
 
 ------------------------------------------------------------
-11. QUEUE WORKER (Supervisor)
+6. РћР§Р•Р Р•Р”Р¬ Р РџР›РђРќРР РћР’Р©РРљ (Cron вЂ” shared hosting)
 ------------------------------------------------------------
 
-Создать /etc/supervisor/conf.d/inspair-worker.conf:
+  РќР°СЃС‚СЂРѕРёС‚СЊ РІ cPanel в†’ Р—Р°РґР°РЅРёСЏ Cron:
 
-  [program:inspair-worker]
-  process_name=%(program_name)s_%(process_num)02d
-  command=php /var/www/inspair/artisan queue:work database --sleep=3 --tries=3 --max-time=3600
-  directory=/var/www/inspair
-  autostart=true
-  autorestart=true
-  stopasgroup=true
-  killasgroup=true
-  user=www-data
-  numprocs=2
-  redirect_stderr=true
-  stdout_logfile=/var/www/inspair/storage/logs/worker.log
-  stopwaitsecs=3600
+  Р—Р°РґР°РЅРёРµ 1 вЂ” РїР»Р°РЅРёСЂРѕРІС‰РёРє Laravel:
+  * * * * * /usr/local/bin/php /home/tirastyl/public_html/inspire.granatlab.com/artisan schedule:run >> /dev/null 2>&1
 
-  # Применить:
-  supervisorctl reread
-  supervisorctl update
-  supervisorctl start inspair-worker:*
+  Р—Р°РґР°РЅРёРµ 2 вЂ” РѕР±СЂР°Р±РѕС‚РєР° РѕС‡РµСЂРµРґРё:
+  * * * * * /usr/local/bin/php /home/tirastyl/public_html/inspire.granatlab.com/artisan queue:work database --stop-when-empty --tries=3 >> /dev/null 2>&1
+
+  РџСЂРѕРІРµСЂРёС‚СЊ С‡С‚Рѕ РѕС‡РµСЂРµРґСЊ СЂР°Р±РѕС‚Р°РµС‚:
+  php artisan tinker --execute="echo DB::table('jobs')->count() . ' jobs pending';"
 
 
 ------------------------------------------------------------
-12. ПЛАНИРОВЩИК (Cron)
+7. AI-Р­РњР‘Р•Р”Р”РРќР“Р (РїРµСЂРІС‹Р№ Р·Р°РїСѓСЃРє)
 ------------------------------------------------------------
 
-  crontab -e -u www-data
+  РџРѕСЃР»Рµ РїРµСЂРІРѕРіРѕ РґРµРїР»РѕСЏ РІС‹С‡РёСЃР»РёС‚СЊ СЌРјР±РµРґРґРёРЅРіРё РґР»СЏ РІСЃРµС… СѓС‡Р°СЃС‚РЅРёРєРѕРІ:
+  php artisan ai:recompute-embeddings
 
-Добавить строку:
-  * * * * * cd /var/www/inspair && php artisan schedule:run >> /dev/null 2>&1
+  РџСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё Рё РѕР±РЅРѕРІР»РµРЅРёРё РїСЂРѕС„РёР»СЏ вЂ” РїРµСЂРµСЃС‡С‘С‚ РїСЂРѕРёСЃС…РѕРґРёС‚
+  Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё С‡РµСЂРµР· РѕС‡РµСЂРµРґСЊ (Р·Р°РґР°РЅРёРµ ComputeUserEmbedding).
 
-
-------------------------------------------------------------
-13. ФИНАЛЬНАЯ ПРОВЕРКА
-------------------------------------------------------------
-
-  php artisan about                   # состояние приложения
-  php artisan nutgram:get-webhook     # webhook зарегистрирован
-  supervisorctl status                # воркеры запущены
-  curl -I https://inspair.community
-  curl -I https://inspair.community/admin
+  РќР°СЃС‚СЂРѕР№РєРё AI РІ config/ai.php:
+    - matches_count:    5       (СЃРєРѕР»СЊРєРѕ РјР°С‚С‡РµР№ РїРѕРєР°Р·С‹РІР°С‚СЊ)
+    - matches_cache_ttl: 86400  (РєСЌС€ РјР°С‚С‡РµР№, СЃРµРєСѓРЅРґС‹ = 24С‡)
+    - search_min_score:  0.65   (РјРёРЅРёРјР°Р»СЊРЅС‹Р№ РїРѕСЂРѕРі РґР»СЏ AI-РїРѕРёСЃРєР°)
 
 
 ------------------------------------------------------------
-14. ОБНОВЛЕНИЕ (каждый следующий деплой)
+8. РўР•РЎРўРћР’Р«Р• Р”РђРќРќР«Р• (С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р·СЂР°Р±РѕС‚РєРё)
+------------------------------------------------------------
+
+  # 10 СѓС‡Р°СЃС‚РЅРёРєРѕРІ вЂ” РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»Рё, РёРЅРІРµСЃС‚РѕСЂС‹, СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРё
+  php artisan db:seed --class=BotUserSeeder
+
+  # 15 СѓС‡Р°СЃС‚РЅРёРєРѕРІ вЂ” РІРѕР»РѕРЅС‚С‘СЂС‹, Р»СЋР±РёС‚РµР»Рё РЅР°СЃС‚РѕР»РѕРє, СЃРѕР±Р°Рє, РїРёРІР°
+  php artisan db:seed --class=CommunitySeeder
+
+  # РџРµСЂРµСЃС‡РёС‚Р°С‚СЊ СЌРјР±РµРґРґРёРЅРіРё РїРѕСЃР»Рµ СЃРёРґРµСЂР°
+  php artisan ai:recompute-embeddings
+
+
+------------------------------------------------------------
+9. РћР‘РќРћР’Р›Р•РќРР• (РєР°Р¶РґС‹Р№ СЃР»РµРґСѓСЋС‰РёР№ РґРµРїР»РѕР№)
 ------------------------------------------------------------
 
   git pull
   composer install --no-dev --optimize-autoloader
   php artisan migrate --force
-  php artisan config:cache
-  php artisan route:cache
-  php artisan view:cache
-  php artisan event:cache
-  supervisorctl restart inspair-worker:*
-  php artisan storage:link
+  php artisan optimize:clear
 
 
 ------------------------------------------------------------
-15. AI-МАТЧИ (первый запуск)
+10. РљРђР‘РРќР•Рў вЂ” РњРђР РЁР РЈРўР«
 ------------------------------------------------------------
 
-Прописать в .env:
-  GEMINI_API_KEY=<ключ из Google AI Studio>
+  /                           вЂ” Р»РµРЅРґРёРЅРі
+  /admin                      вЂ” РїР°РЅРµР»СЊ Filament (С‚РѕР»СЊРєРѕ РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРІ)
+  /app/account/login          вЂ” РІС…РѕРґ РїРѕ Telegram username
+  /go/{code}                  вЂ” РєРѕСЂРѕС‚РєР°СЏ СЃСЃС‹Р»РєР° РёР· magic-link
+  /app/account/               вЂ” РіР»Р°РІРЅР°СЏ РєР°Р±РёРЅРµС‚Р°
+  /app/account/profile        вЂ” РїСЂРѕС„РёР»СЊ (РїСЂРѕСЃРјРѕС‚СЂ)
+  /app/account/profile/edit   вЂ” СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ
+  /app/account/matches        вЂ” AI-РјР°С‚С‡Рё (Р°РІС‚РѕРїРѕРґР±РѕСЂ)
+  /app/account/search         вЂ” AI-РїРѕРёСЃРє РїРѕ Р·Р°РїСЂРѕСЃСѓ
+  /app/account/people         вЂ” РІСЃРµ СѓС‡Р°СЃС‚РЅРёРєРё
+  /app/account/people/{id}    вЂ” РїСЂРѕС„РёР»СЊ СѓС‡Р°СЃС‚РЅРёРєР°
+  /app/account/knowledge      вЂ” Р±Р°Р·Р° Р·РЅР°РЅРёР№
 
-После первого деплоя вычислить эмбеддинги для всех участников:
-  php artisan ai:recompute-embeddings
 
-При обновлении профиля эмбеддинги пересчитываются автоматически
-через очередь (queue:work должен быть запущен через Supervisor).
+------------------------------------------------------------
+11. Р‘РћРў вЂ” РљРќРћРџРљР РњР•РќР®
+------------------------------------------------------------
 
+  рџ¤ќ РњР°С‚С‡Рё   вЂ” AI-РїРѕРёСЃРє РїРѕ Р·Р°РїСЂРѕСЃСѓ РїСЂСЏРјРѕ РІ Р±РѕС‚Рµ (С‚РѕРї-3 + РєРЅРѕРїРєР° В«РќР°РїРёСЃР°С‚СЊВ»)
+  рџ’¬ Р§Р°С‚     вЂ” РІ СЂР°Р·СЂР°Р±РѕС‚РєРµ
+
+
+------------------------------------------------------------
+12. РџР РћР’Р•Р РљРђ РџРћРЎР›Р• Р”Р•РџР›РћРЇ
+------------------------------------------------------------
+
+  php artisan about
+  php artisan nutgram:get-webhook
+  php artisan tinker --execute="echo DB::table('jobs')->count() . ' pending';"
+  php artisan tinker --execute="echo \App\Models\BotUser::whereNotNull('embedding')->count() . ' with embeddings';"
 
 ============================================================

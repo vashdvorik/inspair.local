@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\OpportunityController;
 use App\Http\Controllers\Account\TmaAuthController;
 use App\Http\Middleware\RequireAccountAuth;
 use App\Models\LoginToken;
@@ -47,6 +48,7 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->name('people.show');
         Route::get('/search', [AccountController::class, 'search'])->name('search');
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->name('knowledge');
+        Route::resource('opportunities', OpportunityController::class)->only(['index', 'create', 'store', 'destroy']);
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 
