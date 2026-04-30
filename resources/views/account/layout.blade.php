@@ -95,7 +95,7 @@
                         </p>
                         @if($accountUser->telegram_username)
                         <p class="mt-0.5 truncate text-xs font-medium text-brand-600">
-                            @{{ $accountUser->telegram_username }}
+                            {{ '@' . $accountUser->telegram_username }}
                         </p>
                         @endif
                     </div>

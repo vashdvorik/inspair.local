@@ -45,7 +45,7 @@
                         @if($accountUser->telegram_username)
                         <a href="https://t.me/{{ $accountUser->telegram_username }}" target="_blank"
                            class="text-brand-600 hover:underline">
-                            @{{ $accountUser->telegram_username }}
+                            {{ '@' . $accountUser->telegram_username }}
                         </a>
                         @else
                         <span class="text-gray-400">Не указан</span>

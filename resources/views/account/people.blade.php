@@ -32,7 +32,7 @@
                     @if($person->telegram_username)
                     <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                        class="mt-0.5 block truncate text-xs font-medium text-brand-600 hover:underline">
-                        @{{ $person->telegram_username }}
+                        {{ '@' . $person->telegram_username }}
                     </a>
                     @endif
                 </div>
