@@ -40,6 +40,7 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/', [AccountController::class, 'index'])->name('index');
         Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
+        Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
         Route::get('/matches', [AccountController::class, 'matches'])->name('matches');
         Route::get('/people', [AccountController::class, 'people'])->name('people');
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->name('knowledge');

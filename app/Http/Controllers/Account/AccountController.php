@@ -161,6 +161,24 @@ class AccountController extends Controller
     }
 
     /**
+     * Delete account and clear session.
+     */
+    public function deleteProfile(Request $request): RedirectResponse
+    {
+        /** @var BotUser $user */
+        $user = view()->shared('accountUser');
+        $user->delete();
+
+        session()->forget('account_telegram_id');
+        session()->forget('_account_expires');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('account.login')
+            ->with('success', 'Ваш профиль удалён. Спасибо, что были с нами 🙏');
+    }
+
+    /**
      * Destroy session and log out.
      */
     public function logout(Request $request): RedirectResponse

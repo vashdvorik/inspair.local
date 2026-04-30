@@ -231,5 +231,6 @@
         // to close the app, the redirect will show the logged-out state.
     })();
 </script>
+@stack('scripts')
 </body>
 </html>
