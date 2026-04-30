@@ -97,6 +97,14 @@
             var tg = window.Telegram && window.Telegram.WebApp;
             if (!tg || !tg.initData) return;
 
+            // If the user explicitly logged out (?logout=1), do NOT auto-login —
+            // show the form so they can choose to log back in manually.
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('logout') === '1') {
+                document.getElementById('login-form-wrapper').style.display = 'block';
+                return;
+            }
+
             // We're inside Telegram — hide form, show spinner, attempt auto-auth
             document.getElementById('login-form-wrapper').style.display = 'none';
             document.getElementById('tma-loading').style.display = 'flex';

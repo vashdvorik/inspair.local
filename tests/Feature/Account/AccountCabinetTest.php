@@ -155,7 +155,7 @@ class AccountCabinetTest extends TestCase
 
         $this->withSession(['account_telegram_id' => $user->telegram_id])
             ->post(route('account.logout'))
-            ->assertRedirect('/');
+            ->assertRedirect(route('account.login', ['logout' => '1']));
 
         $this->assertNull(session('account_telegram_id'));
     }
@@ -192,7 +192,7 @@ class AccountCabinetTest extends TestCase
 
         $this->withSession(['account_telegram_id' => $user->telegram_id])
             ->post(route('account.logout'))
-            ->assertRedirect('/');
+            ->assertRedirect(route('account.login', ['logout' => '1']));
 
         // Both session keys must be removed
         $this->assertNull(session('account_telegram_id'));

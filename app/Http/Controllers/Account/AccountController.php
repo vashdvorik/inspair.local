@@ -170,6 +170,6 @@ class AccountController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('account.login', ['logout' => '1']);
     }
 }
