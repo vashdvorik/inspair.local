@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Telegram\Conversations;
 
 use App\Models\BotUser;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use SergiX44\Nutgram\Conversations\Conversation;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
@@ -108,7 +110,7 @@ class RegistrationConversation extends Conversation
     {
         $telegramUser = $bot->user();
 
-        BotUser::create([
+        $botUser = BotUser::create([
             'telegram_id'       => $telegramUser->id,
             'telegram_username' => $telegramUser->username,
             'first_name'        => $telegramUser->first_name,
@@ -118,6 +120,8 @@ class RegistrationConversation extends Conversation
             'status'            => BotUser::STATUS_PENDING,
         ]);
 
+        $this->downloadAvatar($bot, $botUser);
+
         $firstName = explode(' ', (string) $this->fullName)[0];
 
         $bot->sendMessage(
@@ -125,5 +129,42 @@ class RegistrationConversation extends Conversation
         );
 
         $this->end();
+    }
+
+    private function downloadAvatar(Nutgram $bot, BotUser $botUser): void
+    {
+        try {
+            $photos = $bot->getUserProfilePhotos(user_id: $botUser->telegram_id, limit: 1);
+
+            if (! $photos || $photos->total_count === 0) {
+                return;
+            }
+
+            // Largest size is the last in the first photo set
+            $photoSizes = $photos->photos[0];
+            $largest    = $photoSizes[count($photoSizes) - 1];
+
+            $fileInfo = $bot->getFile(file_id: $largest->file_id);
+
+            if (! $fileInfo?->file_path) {
+                return;
+            }
+
+            $token    = config('nutgram.token');
+            $response = Http::timeout(10)->get(
+                "https://api.telegram.org/file/bot{$token}/{$fileInfo->file_path}"
+            );
+
+            if (! $response->successful()) {
+                return;
+            }
+
+            $path = "avatars/{$botUser->telegram_id}.jpg";
+            Storage::disk('public')->put($path, $response->body());
+
+            $botUser->update(['avatar_path' => $path]);
+        } catch (\Throwable) {
+            // Не блокируем регистрацию из-за ошибки загрузки фото
+        }
     }
 }

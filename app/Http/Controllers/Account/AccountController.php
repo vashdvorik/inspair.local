@@ -108,11 +108,19 @@ class AccountController extends Controller
     }
 
     /**
-     * Show profile edit form.
+     * Show profile view (read-only).
      */
     public function profile(): View
     {
         return view('account.profile');
+    }
+
+    /**
+     * Show profile edit form.
+     */
+    public function profileEdit(): View
+    {
+        return view('account.profile-edit');
     }
 
     /**

@@ -39,6 +39,7 @@ Route::middleware(RequireAccountAuth::class)
     ->group(function (): void {
         Route::get('/', [AccountController::class, 'index'])->name('index');
         Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+        Route::get('/profile/edit', [AccountController::class, 'profileEdit'])->name('profile.edit');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
         Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
         Route::get('/matches', [AccountController::class, 'matches'])->name('matches');

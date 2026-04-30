@@ -85,10 +85,17 @@
             <div class="mx-3 mb-5 shrink-0 rounded-2xl p-4"
                  style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
                 <div class="flex items-center gap-3">
+                    @if($accountUser->avatar_path)
+                    <img src="{{ Storage::url($accountUser->avatar_path) }}"
+                         alt="{{ $accountUser->full_name }}"
+                         class="h-10 w-10 shrink-0 rounded-full object-cover"
+                         style="box-shadow:0 2px 8px rgba(124,58,237,.3)">
+                    @else
                     <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
                          style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 2px 8px rgba(124,58,237,.3)">
                         {{ mb_strtoupper(mb_substr($accountUser->full_name ?? '?', 0, 1)) }}
                     </div>
+                    @endif
                     <div class="min-w-0 flex-1">
                         <p class="truncate text-sm font-semibold text-[#0f172a]">
                             {{ explode(' ', (string) $accountUser->full_name)[0] }}
