@@ -204,13 +204,13 @@ class BotUserResource extends Resource
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
                 text: "🎉 {$firstName}, добро пожаловать в Инспайр!\n\nТы принят в сообщество активных молодых людей.\n\nЭто значит, что у тебя есть доступ:\n\n✅ Полный доступ в закрытый чат сообщества\n✅ Доступ к закрытым обучающим материалам академии\n✅ AI-нетворкинг — когда заполнишь профиль.",
-                reply_markup: $inlineKeyboard,
+                reply_markup: $mainMenu,
             );
 
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "👇 Кнопки меню уже доступны:",
-                reply_markup: $mainMenu,
+                text: "С чего начать?",
+                reply_markup: $inlineKeyboard,
             );
         } catch (\Throwable $e) {
             Log::error('Telegram: не удалось отправить сообщение об одобрении', [

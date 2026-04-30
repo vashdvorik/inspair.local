@@ -172,7 +172,12 @@ class AccountController extends Controller
         Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
             'chat_id'      => $user->telegram_id,
             'text'         => "✅ Ваш профиль удалён.\n\nСпасибо, что были с нами — будем рады видеть вас снова 🙏",
-            'reply_markup' => json_encode(['remove_keyboard' => true]),
+            'reply_markup' => json_encode([
+                'remove_keyboard' => true,
+                'inline_keyboard' => [[
+                    ['text' => '↩️ Вернуться', 'callback_data' => 'restart'],
+                ]],
+            ]),
         ]);
 
         $user->delete();

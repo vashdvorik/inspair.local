@@ -19,6 +19,12 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 |--------------------------------------------------------------------------
 */
 
+// Inline button: "Вернуться" после удаления профиля — запускает регистрацию заново
+$bot->onCallbackQueryData('restart', function (Nutgram $bot) {
+    $bot->answerCallbackQuery();
+    RegistrationConversation::begin($bot);
+});
+
 // Inline button: "С чего начать?" — инструкция для новых участников
 $bot->onCallbackQueryData('start_guide', function (Nutgram $bot) {
     $bot->answerCallbackQuery();
