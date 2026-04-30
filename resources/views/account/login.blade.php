@@ -64,12 +64,6 @@
                     <p class="text-sm text-gray-600">Откройте бота по кнопке ниже</p>
                 </div>
                 <div class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
-                    <p class="text-sm text-gray-600">
-                        Если бот не ответил — нажмите кнопку <strong class="text-gray-800">📋 Войти в кабинет</strong>
-                    </p>
-                </div>
-                <div class="flex items-start gap-3">
                     <span class="flex-shrink-0 w-6 h-6 rounded-full bg-violet-100 text-violet-700 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
                     <p class="text-sm text-gray-600">Перейдите по ссылке из сообщения бота</p>
                 </div>

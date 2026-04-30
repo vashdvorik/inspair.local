@@ -18,6 +18,24 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 |--------------------------------------------------------------------------
 */
 
+// Inline button: "С чего начать?" — инструкция для новых участников
+$bot->onCallbackQueryData('start_guide', function (Nutgram $bot) {
+    $bot->answerCallbackQuery();
+
+    $bot->sendMessage(
+        "🚀 Как начать работу в Инспайр?\n\n"
+        . "1️⃣ Зайди в личный кабинет\n"
+        . "Открой мини-приложение через кнопку меню бота — там твой личный кабинет участника.\n\n"
+        . "2️⃣ Заполни профиль\n"
+        . "Укажи своё имя, чем занимаешься и чем можешь быть полезен сообществу. "
+        . "Чем подробнее — тем точнее AI найдёт тебе нужных людей.\n\n"
+        . "3️⃣ Получай рекомендации\n"
+        . "AI анализирует профили всех участников и подбирает тех, с кем у тебя больше всего точек пересечения — "
+        . "партнёры, единомышленники, потенциальные клиенты.\n\n"
+        . "💡 Всё просто: зашёл → заполнил → нашёл нужных людей."
+    );
+});
+
 // /start login — deep link from login page (?start=login)
 $bot->onText('/start login', function (Nutgram $bot) {
     $telegramId = $bot->userId();
@@ -106,7 +124,6 @@ $bot->fallback(function (Nutgram $bot) {
             TelegramKeyboards::BTN_CARD    => $bot->sendMessage("Раздел в разработке 🚧"),
             TelegramKeyboards::BTN_MATCHES => $bot->sendMessage("Раздел в разработке 🚧"),
             TelegramKeyboards::BTN_CHAT    => $bot->sendMessage("Раздел в разработке 🚧"),
-            TelegramKeyboards::BTN_CABINET => sendLoginLink($bot, $user),
             default                        => null,
         };
         return;

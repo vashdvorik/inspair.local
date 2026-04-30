@@ -18,11 +18,10 @@ class TelegramKeyboards
     {
         return ReplyKeyboardMarkup::make(resize_keyboard: true)
             ->addRow(
-                KeyboardButton::make(self::BTN_CABINET),
                 KeyboardButton::make(self::BTN_MATCHES),
+                KeyboardButton::make(self::BTN_CHAT),
             )
             ->addRow(
-                KeyboardButton::make(self::BTN_CHAT),
                 KeyboardButton::make(self::BTN_CARD),
             );
     }

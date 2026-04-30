@@ -25,6 +25,8 @@ use Filament\Tables\Table;
 use App\Telegram\TelegramKeyboards;
 use Illuminate\Support\Facades\Log;
 use Nutgram\Laravel\Facades\Telegram;
+use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
+use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 
 class BotUserResource extends Resource
@@ -191,20 +193,23 @@ class BotUserResource extends Resource
     {
         $firstName = explode(' ', (string) $record->full_name)[0];
 
+        $inlineKeyboard = InlineKeyboardMarkup::make()
+            ->addRow(
+                InlineKeyboardButton::make('С чего начать? →', callback_data: 'start_guide')
+            );
+
         $mainMenu = TelegramKeyboards::mainMenu();
 
         try {
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "🎉 {$firstName}, добро пожаловать в Инспайр!
+                text: "🎉 {$firstName}, добро пожаловать в Инспайр!\n\nТы принят в сообщество активных молодых людей.\n\nЭто значит, что у тебя есть доступ:\n\n✅ Полный доступ в закрытый чат сообщества\n✅ Доступ к закрытым обучающим материалам академии\n✅ AI-нетворкинг — когда заполнишь профиль.",
+                reply_markup: $inlineKeyboard,
+            );
 
-Ты принят в сообщество активных молодых людей.
-
-Это значит, что у тебя есть доступ:
-
-✅ Полный доступ в закрытый чат сообщества
-✅ Доступ к закрытым обучающим материалам академии
-✅ AI-нетворкинг — когда заполнишь профиль.",
+            Telegram::sendMessage(
+                chat_id: $record->telegram_id,
+                text: "👇 Кнопки меню уже доступны:",
                 reply_markup: $mainMenu,
             );
         } catch (\Throwable $e) {
