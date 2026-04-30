@@ -97,6 +97,8 @@ class MatchingService
      */
     public function searchByQuery(array $queryVector, BotUser $exclude, int $n = 10): Collection
     {
+        $minScore = (float) config('ai.search_min_score', 0.65);
+
         $candidates = BotUser::approved()
             ->where('telegram_id', '!=', $exclude->telegram_id)
             ->whereNotNull('embedding')
@@ -108,6 +110,7 @@ class MatchingService
                 'user'  => $candidate,
                 'score' => $this->cosine($queryVector, $candidate->embedding),
             ])
+            ->filter(fn (array $item) => $item['score'] >= $minScore)
             ->sortByDesc('score')
             ->take($n)
             ->values();

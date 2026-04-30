@@ -20,4 +20,10 @@ return [
      */
     'matches_cache_ttl' => 86400,
 
+    /*
+     * Minimum cosine similarity score (0–1) to show in AI search results.
+     * Results below this threshold are hidden as "not relevant".
+     */
+    'search_min_score' => 0.65,
+
 ];
