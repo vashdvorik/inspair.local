@@ -181,4 +181,41 @@ class AccountCabinetTest extends TestCase
             ->get(route('account.knowledge'))
             ->assertOk();
     }
+
+    // ──────────────────────────────────────────────
+    // Logout: session cleared, redirect to /
+    // ──────────────────────────────────────────────
+
+    public function test_logout_clears_session_and_redirects_to_root(): void
+    {
+        $user = BotUser::factory()->approved()->create();
+
+        $this->withSession(['account_telegram_id' => $user->telegram_id])
+            ->post(route('account.logout'))
+            ->assertRedirect('/');
+
+        // Both session keys must be removed
+        $this->assertNull(session('account_telegram_id'));
+        $this->assertNull(session('_account_expires'));
+    }
+
+    public function test_logout_blocks_subsequent_protected_requests(): void
+    {
+        $user = BotUser::factory()->approved()->create();
+
+        // Log out
+        $this->withSession(['account_telegram_id' => $user->telegram_id])
+            ->post(route('account.logout'));
+
+        // Subsequent request without session must redirect to login
+        $this->get(route('account.index'))
+            ->assertRedirect(route('account.login'));
+    }
+
+    public function test_logout_without_session_returns_redirect(): void
+    {
+        // Calling logout when not authenticated: middleware intercepts → redirects to login
+        $this->post(route('account.logout'))
+            ->assertRedirect(route('account.login'));
+    }
 }

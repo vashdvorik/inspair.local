@@ -222,6 +222,16 @@
                 tg.close();
             });
         });
+
+        // After logout the server redirects to /, but inside Mini App the window
+        // stays open. Intercept the logout form and close the app after submit.
+        var logoutForm = document.querySelector('form[action*="logout"]');
+        if (logoutForm) {
+            logoutForm.addEventListener('submit', function () {
+                // Let the form POST complete, then close the Mini App
+                setTimeout(function () { tg.close(); }, 300);
+            });
+        }
     })();
 </script>
 </body>
