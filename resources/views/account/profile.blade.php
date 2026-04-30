@@ -5,7 +5,7 @@
 <div class="max-w-2xl">
 
     {{-- Header --}}
-    <div class="mb-8 flex items-start justify-between gap-4">
+    <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div class="flex items-center gap-4">
             @if($accountUser->avatar_path)
             <img src="{{ Storage::url($accountUser->avatar_path) }}"
@@ -23,8 +23,9 @@
             </div>
         </div>
         <a href="{{ route('account.profile.edit') }}"
-           class="inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border border-gray-200 bg-white px-5
-                  text-sm font-semibold text-[#0f172a] shadow-sm transition hover:border-brand-400 hover:text-brand-600">
+           class="inline-flex h-10 items-center gap-2 rounded-xl border border-gray-200 bg-white px-5
+                  text-sm font-semibold text-[#0f172a] shadow-sm transition hover:border-brand-400 hover:text-brand-600
+                  sm:shrink-0">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M15.232 5.232l3.536 3.536M9 13l6.586-6.586a2 2 0 112.828 2.828L11.828 15.828A2 2 0 0110 16H8v-2a2 2 0 01.586-1.414z"/>

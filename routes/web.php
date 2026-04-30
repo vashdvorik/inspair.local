@@ -44,6 +44,8 @@ Route::middleware(RequireAccountAuth::class)
         Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
         Route::get('/matches', [AccountController::class, 'matches'])->name('matches');
         Route::get('/people', [AccountController::class, 'people'])->name('people');
+        Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->name('people.show');
+        Route::get('/search', [AccountController::class, 'search'])->name('search');
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->name('knowledge');
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });

@@ -20,8 +20,12 @@
     @else
     <div class="grid gap-4 sm:grid-cols-2">
         @foreach($people as $person)
-        <div class="flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
+        <div class="relative flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
                     transition-all duration-200 hover:border-brand-200 hover:shadow-md">
+            {{-- Stretched link covering entire card --}}
+            <a href="{{ route('account.people.show', $person) }}"
+               class="absolute inset-0 rounded-2xl" aria-label="{{ $person->full_name }}"></a>
+
             <div class="mb-3 flex items-center gap-3">
                 @if($person->avatar_path)
                 <img src="{{ Storage::url($person->avatar_path) }}"
@@ -37,10 +41,9 @@
                 <div class="min-w-0">
                     <p class="truncate text-sm font-semibold text-[#0f172a]">{{ $person->full_name }}</p>
                     @if($person->telegram_username)
-                    <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
-                       class="mt-0.5 block truncate text-xs font-medium text-brand-600 hover:underline">
+                    <p class="mt-0.5 truncate text-xs font-medium text-brand-600">
                         {{ '@' . $person->telegram_username }}
-                    </a>
+                    </p>
                     @endif
                 </div>
             </div>
@@ -50,7 +53,7 @@
             <p class="text-xs italic text-gray-300">Профиль не заполнен</p>
             @endif
             @if($person->telegram_username)
-            <div class="mt-4 border-t border-gray-50 pt-3">
+            <div class="relative z-10 mt-4 border-t border-gray-50 pt-3">
                 <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                    class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 transition hover:text-brand-700">
                     <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">

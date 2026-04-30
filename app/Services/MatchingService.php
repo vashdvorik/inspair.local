@@ -89,4 +89,27 @@ class MatchingService
 
         return $dot / (sqrt($na) * sqrt($nb));
     }
+
+    /**
+     * Search all approved users by an arbitrary query vector.
+     *
+     * @return Collection<int, array{user: BotUser, score: float}>
+     */
+    public function searchByQuery(array $queryVector, BotUser $exclude, int $n = 10): Collection
+    {
+        $candidates = BotUser::approved()
+            ->where('telegram_id', '!=', $exclude->telegram_id)
+            ->whereNotNull('embedding')
+            ->get(['id', 'telegram_id', 'telegram_username', 'full_name',
+                   'description', 'expectation', 'avatar_path', 'embedding']);
+
+        return $candidates
+            ->map(fn (BotUser $candidate) => [
+                'user'  => $candidate,
+                'score' => $this->cosine($queryVector, $candidate->embedding),
+            ])
+            ->sortByDesc('score')
+            ->take($n)
+            ->values();
+    }
 }

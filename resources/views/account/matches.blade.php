@@ -58,8 +58,12 @@
             $score  = (float) $match['score'];
             $pct    = (int) round($score * 100);
         @endphp
-        <div class="flex gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
+        <div class="relative flex gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
                     transition-all duration-200 hover:border-brand-200 hover:shadow-md">
+
+            {{-- Stretched link covering entire card --}}
+            <a href="{{ route('account.people.show', $person) }}"
+               class="absolute inset-0 rounded-2xl" aria-label="{{ $person->full_name }}"></a>
 
             {{-- Avatar --}}
             <div class="shrink-0">
@@ -82,10 +86,9 @@
                     <div class="min-w-0">
                         <p class="truncate font-semibold text-[#0f172a]">{{ $person->full_name }}</p>
                         @if($person->telegram_username)
-                        <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
-                           class="mt-0.5 block text-xs font-medium text-brand-600 hover:underline">
+                        <p class="mt-0.5 block text-xs font-medium text-brand-600">
                             {{ '@' . $person->telegram_username }}
-                        </a>
+                        </p>
                         @endif
                     </div>
                     {{-- Match score badge --}}
@@ -111,7 +114,7 @@
                 @endif
 
                 @if($person->telegram_username)
-                <div class="mt-3">
+                <div class="relative z-10 mt-3">
                     <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                        class="inline-flex items-center gap-1.5 rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5
                               text-xs font-semibold text-brand-700 transition hover:bg-brand-100">
@@ -127,9 +130,15 @@
         @endforeach
     </div>
 
-    <p class="mt-5 text-center text-xs text-gray-400">
-        Матчи обновляются при изменении профиля · рассчитаны на основе семантического сходства
-    </p>
+    <div class="mt-6 rounded-2xl border border-gray-100 bg-white p-5 text-sm text-gray-500 shadow-sm">
+        <p class="mb-2 font-semibold text-[#0f172a]">Как работают матчи</p>
+        <ul class="space-y-1.5 text-xs leading-relaxed text-gray-500">
+            <li>· AI анализирует твоё описание и ожидания, сравнивает с профилями других участников</li>
+            <li>· Когда ты меняешь профиль — твои матчи пересчитываются автоматически в течение ~1 минуты</li>
+            <li>· Рекомендации для других участников обновляются в течение 24 часов</li>
+            <li>· Чем подробнее заполнен профиль — тем точнее подбор</li>
+        </ul>
+    </div>
 
     @endif
 

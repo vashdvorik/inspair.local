@@ -93,10 +93,6 @@ class BotUserResource extends Resource
                     ->label('Username')
                     ->formatStateUsing(fn (?string $state): string => $state ? "@{$state}" : '—')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->label('О себе')
-                    ->limit(60)
-                    ->tooltip(fn (BotUser $record): ?string => $record->description),
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Статус')
                     ->colors([

@@ -9,6 +9,7 @@ use App\Http\Requests\Account\ProfileUpdateRequest;
 use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
 use App\Models\LoginToken;
+use App\Services\EmbeddingService;
 use App\Services\MatchingService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -165,9 +166,45 @@ class AccountController extends Controller
         $people = BotUser::approved()
             ->where('telegram_id', '!=', $accountUser->telegram_id)
             ->orderBy('full_name')
-            ->get(['id', 'full_name', 'telegram_username', 'description']);
+            ->get(['id', 'full_name', 'telegram_username', 'description', 'expectation', 'avatar_path']);
 
         return view('account.people', compact('people'));
+    }
+
+    /**
+     * Show a single community member's public profile.
+     */
+    public function showPerson(BotUser $botUser): View
+    {
+        abort_if($botUser->status !== BotUser::STATUS_APPROVED, 404);
+
+        return view('account.person', ['person' => $botUser]);
+    }
+
+    /**
+     * AI search page — find people by arbitrary text query.
+     */
+    public function search(Request $request, EmbeddingService $embedder, MatchingService $matcher): View
+    {
+        /** @var BotUser $accountUser */
+        $accountUser = view()->shared('accountUser');
+
+        $query   = trim((string) $request->query('q', ''));
+        $results = null;
+
+        if ($query !== '') {
+            $request->validate(['q' => ['string', 'max:500']]);
+
+            try {
+                $vector  = $embedder->embed($query);
+                $results = $matcher->searchByQuery($vector, $accountUser);
+            } catch (\Throwable $e) {
+                logger()->warning('AI search failed', ['error' => $e->getMessage()]);
+                $results = collect();
+            }
+        }
+
+        return view('account.search', compact('query', 'results'));
     }
 
     /**
