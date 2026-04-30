@@ -110,11 +110,6 @@ $bot->onCommand('login', function (Nutgram $bot) {
     sendLoginLink($bot, $user);
 })->description('Войти в личный кабинет');
 
-// Fallback for expired search:more callbacks (conversation already ended)
-$bot->onCallbackQueryData('search:more', function (Nutgram $bot) {
-    $bot->answerCallbackQuery(text: 'Результаты уже были показаны');
-});
-
 // Fallback: обрабатывает все сообщения, не попавшие в другие обработчики
 $bot->fallback(function (Nutgram $bot) {
     $telegramId = $bot->userId();
@@ -136,7 +131,6 @@ $bot->fallback(function (Nutgram $bot) {
     if ($user->isApproved()) {
         $text = $bot->message()?->text;
         match ($text) {
-            TelegramKeyboards::BTN_CARD    => $bot->sendMessage("Раздел в разработке 🚧"),
             TelegramKeyboards::BTN_MATCHES => SearchConversation::begin($bot),
             TelegramKeyboards::BTN_CHAT    => $bot->sendMessage("Раздел в разработке 🚧"),
             default                        => null,
