@@ -17,20 +17,20 @@ Route::post('/telegram/webhook', function (Nutgram $bot) {
 })->name('telegram.webhook');
 
 // Account: magic-link auth (no middleware)
-Route::get('/app/account/auth', [AccountController::class, 'auth'])->name('account.auth');
+Route::get('/app/account/auth', [AccountController::class, 'auth'])->middleware('throttle:20,1')->name('account.auth');
 Route::get('/app/account/login', [AccountController::class, 'login'])->name('account.login');
-Route::post('/app/account/tma-auth', [TmaAuthController::class, 'auth'])->name('account.tma-auth');
+Route::post('/app/account/tma-auth', [TmaAuthController::class, 'auth'])->middleware('throttle:20,1')->name('account.tma-auth');
 
 // Short-link redirect: /go/{code} — hides the full token from Telegram dialog
 Route::get('/go/{code}', function (string $code) {
     $token = LoginToken::where('token', 'like', $code . '%')->first();
 
-    if (! $token) {
-        return redirect()->route('account.login')->with('error', 'Ссылка недействительна.');
+    if (! $token || ! $token->isValid()) {
+        return redirect()->route('account.login')->with('error', 'Ссылка недействительна или истекла.');
     }
 
     return redirect()->route('account.auth', ['token' => $token->token]);
-})->where('code', '[0-9a-f]{8}')->name('account.go');
+})->middleware('throttle:20,1')->where('code', '[0-9a-f]{8}')->name('account.go');
 
 // Account: protected cabinet
 Route::middleware(RequireAccountAuth::class)

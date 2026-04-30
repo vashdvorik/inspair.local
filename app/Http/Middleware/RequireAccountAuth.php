@@ -19,12 +19,23 @@ class RequireAccountAuth
             return redirect()->route('account.login');
         }
 
+        // Enforce server-side session expiry (independent of cookie lifetime)
+        $expires = session('_account_expires');
+        if (! $expires || time() > (int) $expires) {
+            session()->forget('account_telegram_id');
+            session()->forget('_account_expires');
+
+            return redirect()->route('account.login')
+                ->with('error', 'Сессия истекла. Войдите снова.');
+        }
+
         $user = BotUser::where('telegram_id', $telegramId)
             ->where('status', BotUser::STATUS_APPROVED)
             ->first();
 
         if (! $user) {
             session()->forget('account_telegram_id');
+            session()->forget('_account_expires');
 
             return redirect()->route('account.login')
                 ->with('error', 'Доступ закрыт. Убедитесь, что ваша заявка одобрена.');

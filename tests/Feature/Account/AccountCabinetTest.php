@@ -51,19 +51,29 @@ class AccountCabinetTest extends TestCase
     // Authenticated access
     // ──────────────────────────────────────────────
 
+    /** Build a valid session array for the given approved user. */
+    private function sessionFor(BotUser $user): array
+    {
+        return [
+            'account_telegram_id' => $user->telegram_id,
+            '_account_expires'    => now()->addDays(7)->timestamp,
+        ];
+    }
+
     private function actingAsApproved(): BotUser
     {
         $user = BotUser::factory()->approved()->create();
         session(['account_telegram_id' => $user->telegram_id]);
+        session(['_account_expires' => now()->addDays(7)->timestamp]);
 
         return $user;
     }
 
     public function test_dashboard_returns_200_when_authenticated(): void
     {
-        $this->actingAsApproved();
+        $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => BotUser::first()->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->get(route('account.index'))
             ->assertOk();
     }
@@ -72,7 +82,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->get(route('account.profile'))
             ->assertOk();
     }
@@ -81,7 +91,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), [
                 'full_name'   => 'Иван Иванов',
                 'description' => 'Предприниматель',
@@ -102,7 +112,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), ['full_name' => ''])
             ->assertSessionHasErrors('full_name');
     }
@@ -111,7 +121,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), [
                 'full_name'   => str_repeat('a', 121),
                 'description' => str_repeat('a', 1001),
@@ -131,7 +141,7 @@ class AccountCabinetTest extends TestCase
         $other2      = BotUser::factory()->approved()->create();
         $pending     = BotUser::factory()->pending()->create();
 
-        $response = $this->withSession(['account_telegram_id' => $currentUser->telegram_id])
+        $response = $this->withSession($this->sessionFor($currentUser))
             ->get(route('account.people'));
 
         $response->assertOk()
@@ -153,7 +163,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.logout'))
             ->assertRedirect(route('account.login', ['logout' => '1']));
 
@@ -168,7 +178,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->get(route('account.matches'))
             ->assertOk();
     }
@@ -177,7 +187,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->get(route('account.knowledge'))
             ->assertOk();
     }
@@ -190,7 +200,7 @@ class AccountCabinetTest extends TestCase
     {
         $user = BotUser::factory()->approved()->create();
 
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.logout'))
             ->assertRedirect(route('account.login', ['logout' => '1']));
 
@@ -204,7 +214,7 @@ class AccountCabinetTest extends TestCase
         $user = BotUser::factory()->approved()->create();
 
         // Log out
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        $this->withSession($this->sessionFor($user))
             ->post(route('account.logout'));
 
         // Subsequent request without session must redirect to login

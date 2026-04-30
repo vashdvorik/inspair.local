@@ -132,7 +132,7 @@ function sendLoginLink(Nutgram $bot, BotUser $user): void
         );
 
     $bot->sendMessage(
-        "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 1 час и работает один раз.",
+        "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 24 часа.",
         reply_markup: $keyboard
     );
 }
