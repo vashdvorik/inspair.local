@@ -29,3 +29,8 @@ php artisan config:cache
 php artisan optimize:clear
 
 Gemini API Key → прописан в .env как GEMINI_API_KEY
+
+Сидер
+php artisan db:seed --class=CommunitySeeder
+Пересчет
+php artisan ai:recompute-embeddings
