@@ -200,3 +200,4 @@ SSL-СЃРµСЂС‚РёС„РёРєР°С‚ (РѕР±СЏР·Р°С‚РµР
   php artisan tinker --execute="echo \App\Models\BotUser::whereNotNull('embedding')->count() . ' with embeddings';"
 
 ============================================================
+test add
