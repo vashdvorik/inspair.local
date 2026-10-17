@@ -3,102 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход — INSPIRE Community</title>
+    <title>Вход — INSPIRE EDU Network</title>
     <meta name="robots" content="noindex,nofollow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>body { font-family: "Inter", sans-serif; }</style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{{ asset('design/tailwind.js') }}"></script>
     <style>
-        /* ── Motion: drifting background blobs + flowing gradients ── */
-        .mo-host { position: relative; isolation: isolate; }
-        .mo-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
-        .mo-bg i { position: absolute; border-radius: 50%; filter: blur(70px); }
-        .mo-bg i:nth-child(1) { width: 440px; height: 440px; background: #6fb0e8; opacity: .42; top: -130px; left: -110px; animation: mo-d1 15s ease-in-out infinite; }
-        .mo-bg i:nth-child(2) { width: 360px; height: 360px; background: #e9a23b; opacity: .22; bottom: -150px; right: 8%; animation: mo-d2 18s ease-in-out infinite; }
-        .mo-bg i:nth-child(3) { width: 300px; height: 300px; background: #3a7fc1; opacity: .35; top: 30%; right: -90px; animation: mo-d1 21s ease-in-out infinite reverse; }
-        @keyframes mo-d1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(70px,40px) scale(1.18); } }
-        @keyframes mo-d2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-80px,-30px) scale(1.22); } }
-        @keyframes mo-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-        @keyframes mo-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
-        .grad-dark.mo-host { background: linear-gradient(160deg,#0f2a4a,#17406f,#0b1b33,#1f4f86); background-size: 300% 300%; animation: mo-flow 24s ease infinite; }
-        @media (prefers-reduced-motion: reduce) { .mo-bg i, .grad-dark.mo-host { animation: none !important; } }
+        .login-art { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+        .login-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--sh-lg); padding: 34px 30px; }
+        .step-dot { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: .78rem; font-weight: 800; color: #fff; background: var(--grad-primary); box-shadow: var(--sh-primary); }
     </style>
 </head>
-<body class="mo-host overflow-hidden min-h-screen flex items-center justify-center bg-gray-50 px-4">
-    <div class="mo-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+<body class="i-body i-airy min-h-screen flex items-center justify-center px-4 py-10">
+
+    {{-- decorative network (light) --}}
+    <div class="i-nodes" aria-hidden="true">
+        <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+            <line x1="80" y1="140" x2="230" y2="260"/><line x1="230" y1="260" x2="140" y2="440"/><line x1="1080" y1="520" x2="960" y2="400"/><line x1="960" y1="400" x2="1090" y2="250"/>
+            <circle cx="80" cy="140" r="9" fill="#006de0"/><circle cx="230" cy="260" r="11" fill="#fdba07"/><circle cx="140" cy="440" r="8" fill="#72299c"/>
+            <circle cx="1080" cy="520" r="9" fill="#3d932e"/><circle cx="960" cy="400" r="10" fill="#ff6c0b"/><circle cx="1090" cy="250" r="8" fill="#019eff"/>
+        </svg>
+    </div>
 
     {{-- TMA loading overlay (hidden by default, shown via JS when inside Telegram) --}}
-    <div id="tma-loading" style="display:none"
-         class="fixed inset-0 flex flex-col items-center justify-center bg-gray-50 z-50">
-        <div class="w-10 h-10 rounded-full border-4 border-brand-200 border-t-brand-600 animate-spin mb-4"
-             style="border-color:rgba(58,127,193,.2);border-top-color:#3a7fc1"></div>
-        <p class="text-sm text-gray-500">Выполняется вход…</p>
+    <div id="tma-loading" style="display:none" class="fixed inset-0 z-50 flex-col items-center justify-center bg-white">
+        <img src="{{ asset('brand/logo-mark.png') }}" alt="" class="i-float mb-4" style="width:96px;height:auto">
+        <div class="w-9 h-9 rounded-full animate-spin mb-4" style="border:4px solid var(--blue-100);border-top-color:var(--blue-600)"></div>
+        <p class="text-sm text-gray-500 font-medium">Выполняется вход…</p>
     </div>
 
     {{-- TMA: not a member message --}}
-    <div id="tma-not-member" style="display:none"
-         class="w-full max-w-sm text-center">
-        <span class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg mb-4 mx-auto"
-              style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
-            <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-        </span>
-        <h1 style="font-family:'Montserrat',serif" class="text-3xl font-semibold text-gray-900 mb-2">INSPIRE</h1>
-        <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-            <p class="text-sm text-gray-700 font-medium mb-1">Доступ пока закрыт</p>
+    <div id="tma-not-member" style="display:none" class="w-full max-w-sm text-center">
+        <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" class="mx-auto mb-6" style="height:84px;width:auto">
+        <div class="login-card">
+            <p class="font-bold text-ink mb-1">Доступ пока закрыт</p>
             <p class="text-sm text-gray-500">Ваша заявка ещё не одобрена или не подана. Напишите боту /start чтобы подать заявку.</p>
         </div>
     </div>
 
     {{-- Normal login form (hidden when inside Telegram) --}}
-    <div id="login-form-wrapper" class="w-full max-w-sm">
-        <div class="flex flex-col items-center mb-8">
-            <span class="w-12 h-12 rounded-2xl flex items-center justify-center shadow-lg mb-4" style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
-                <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </span>
-            <h1 style="font-family:'Montserrat',serif" class="text-3xl font-semibold text-gray-900">INSPIRE</h1>
-            <p class="text-sm text-gray-400 mt-1">Личный кабинет участника</p>
+    <div id="login-form-wrapper" class="w-full max-w-sm i-in">
+        <div class="flex flex-col items-center mb-7 text-center">
+            <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" width="190" height="97" style="height:96px;width:auto">
+            <p class="i-eyebrow mt-3" style="color:var(--muted)">Личный кабинет участника</p>
         </div>
 
         @if(session('error'))
-        <div class="mb-4 flex items-start gap-2.5 bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded-xl">
-            <svg class="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            {{ session('error') }}
-        </div>
+            <div class="i-alert i-alert--danger mb-4" role="alert">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                {{ session('error') }}
+            </div>
         @endif
 
-        <div class="bg-white border border-gray-100 rounded-2xl p-7 shadow-sm text-center">
-            <h2 class="font-semibold text-gray-900 mb-2">Войти через Telegram</h2>
+        <div class="login-card text-center">
+            <h1 class="i-h3 mb-5" style="font-size:1.35rem">Войти через Telegram</h1>
 
-            <div class="text-left space-y-3 mb-6">
-                <div class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
-                    <p class="text-sm text-gray-600">Откройте бота по кнопке ниже</p>
+            <div class="text-left grid gap-3.5 mb-7">
+                <div class="flex items-center gap-3">
+                    <span class="step-dot">1</span>
+                    <p class="text-sm text-gray-600 font-medium">Откройте бота по кнопке ниже</p>
                 </div>
-                <div class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 text-brand-700 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
-                    <p class="text-sm text-gray-600">Перейдите по ссылке из сообщения бота</p>
+                <div class="flex items-center gap-3">
+                    <span class="step-dot" style="background:linear-gradient(135deg,var(--orange),var(--yellow));box-shadow:0 8px 20px rgba(255,108,11,.25)">2</span>
+                    <p class="text-sm text-gray-600 font-medium">Перейдите по ссылке из сообщения бота</p>
                 </div>
             </div>
 
-            <a href="https://t.me/Inspiremoldova_bot?start=login" id="tg-login-btn" target="_blank"
-               class="inline-flex items-center justify-center gap-2.5 w-full px-5 py-3 text-sm font-semibold text-white rounded-xl transition hover:shadow-md hover:-translate-y-px"
-               style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <a href="https://t.me/Inspiremoldova_bot?start=login" id="tg-login-btn" target="_blank" rel="noopener" class="i-btn i-btn--block">
+                <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                 Открыть @Inspiremoldova_bot
             </a>
-            <p class="mt-3 text-xs text-gray-400">Доступ только для одобренных участников</p>
+            <p class="mt-4 text-xs text-gray-500">Доступ только для одобренных участников</p>
         </div>
 
-        <p class="text-center mt-6 text-xs text-gray-400">
-            <a href="/" class="hover:underline">← Вернуться на сайт</a>
+        <p class="text-center mt-6 text-sm">
+            <a href="/" class="font-semibold">← Вернуться на сайт</a>
         </p>
     </div>{{-- /login-form-wrapper --}}
 
+    <script src="{{ asset('design/inspire.js') }}"></script>
     <script>
         // ── Telegram Mini App: auto-auth ──────────────────────────────────────
         (function () {

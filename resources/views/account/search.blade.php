@@ -5,7 +5,7 @@
 <div class="max-w-2xl">
 
     <div class="mb-8">
-        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">AI-поиск</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">AI-поиск</h1>
         <p class="mt-1.5 text-sm text-gray-500">Опиши кого ищешь — AI найдёт подходящих участников</p>
     </div>
 
@@ -24,7 +24,7 @@
             <button type="submit"
                     class="inline-flex h-12 shrink-0 items-center gap-2 rounded-xl px-6 text-sm font-semibold
                            text-white transition hover:opacity-90 active:scale-95"
-                    style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 12px rgba(58,127,193,.3)">
+                    style="background:var(--grad-primary);box-shadow:0 4px 12px rgba(0,109,224,.3)">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
@@ -39,13 +39,13 @@
     {{-- Initial state --}}
     <div class="rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-sm">
         <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl"
-             style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
+             style="background:linear-gradient(135deg,#f0f7ff,#dcedfe)">
             <svg class="h-6 w-6 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                       d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
             </svg>
         </div>
-        <p class="text-sm font-medium text-[#0f172a]">Введи запрос</p>
+        <p class="text-sm font-medium text-[#0e2442]">Введи запрос</p>
         <p class="mt-1 text-xs text-gray-400">AI проанализирует профили всех участников и найдёт подходящих</p>
         <div class="mt-5 flex flex-wrap justify-center gap-2">
             @foreach(['Ищу CTO для стартапа', 'Нужен инвестор', 'Ищу партнёра по бизнесу', 'Нужен маркетолог'] as $example)
@@ -67,7 +67,7 @@
                       d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
         </div>
-        <p class="text-sm font-medium text-[#0f172a]">Никого не найдено</p>
+        <p class="text-sm font-medium text-[#0e2442]">Никого не найдено</p>
         <p class="mt-1 text-xs text-gray-400">В сообществе пока нет людей, достаточно близких к твоему запросу.<br>Попробуй переформулировать или задать более общий вопрос.</p>
     </div>
 
@@ -96,10 +96,10 @@
                 <img src="{{ Storage::url($person->avatar_path) }}"
                      alt="{{ $person->full_name }}"
                      class="h-14 w-14 rounded-2xl object-cover"
-                     style="box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="box-shadow:0 2px 8px rgba(0,109,224,.2)">
                 @else
                 <div class="flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold text-white"
-                     style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="background:var(--grad-primary);box-shadow:0 2px 8px rgba(0,109,224,.2)">
                     {{ mb_strtoupper(mb_substr($person->full_name ?? '?', 0, 1)) }}
                 </div>
                 @endif
@@ -109,7 +109,7 @@
             <div class="min-w-0 flex-1">
                 <div class="flex items-start justify-between gap-2">
                     <div class="min-w-0">
-                        <p class="truncate font-semibold text-[#0f172a]">{{ $person->full_name }}</p>
+                        <p class="truncate font-semibold text-[#0e2442]">{{ $person->full_name }}</p>
                         @if($person->telegram_username)
                         <p class="mt-0.5 text-xs font-medium text-brand-600">
                             {{ '@' . $person->telegram_username }}

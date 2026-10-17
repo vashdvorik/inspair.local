@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INSPIRE Design System</title>
+<meta name="description" content="Design system of INSPIRE EDU Network: logo, colour, type, components and motion.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="../brand/favicon.ico">
+<link rel="apple-touch-icon" href="../brand/apple-touch-icon.png">
+<link rel="stylesheet" href="inspire.css">
+<style>
+  .g-grid { display: grid; gap: var(--s-5); }
+  .g-2 { grid-template-columns: repeat(2, 1fr); } .g-3 { grid-template-columns: repeat(3, 1fr); } .g-4 { grid-template-columns: repeat(4, 1fr); } .g-6 { grid-template-columns: repeat(6, 1fr); }
+  .sw { border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--line); background: #fff; box-shadow: var(--sh-xs); }
+  .sw i { display: block; height: 84px; }
+  .sw div { padding: .7rem .9rem; font-size: var(--fs-xs); line-height: 1.45; } .sw b { display: block; color: var(--ink); font-size: var(--fs-sm); }
+  .sw code, code.i { font-family: ui-monospace, Menlo, Consolas, monospace; color: var(--muted); }
+  .anchor-nav { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .logo-stage { display: grid; place-items: center; min-height: 240px; border-radius: var(--r-xl); border: 1px solid var(--line); background: #fff; position: relative; overflow: hidden; }
+  .clear { position: relative; padding: 38px; outline: 1.5px dashed var(--blue-300); outline-offset: -1px; }
+  .clear::before { content: "x"; position: absolute; top: 6px; left: 50%; font: 700 11px var(--font); color: var(--blue-500); }
+  .type-row { display: grid; grid-template-columns: 150px 1fr; align-items: baseline; gap: var(--s-5); padding: var(--s-4) 0; border-bottom: 1px solid var(--line); }
+  .type-row small { color: var(--muted); font-size: var(--fs-xs); }
+  .bar { height: 14px; border-radius: 4px; background: var(--blue-300); }
+  .elev { height: 96px; border-radius: var(--r-lg); background: #fff; display: grid; place-items: center; font-size: var(--fs-xs); color: var(--muted); border: 1px solid var(--line); }
+  .dont { border-color: #f6b8bb !important; } .do { border-color: #bfe0b6 !important; }
+  @media (max-width: 860px) { .g-3, .g-4, .g-6 { grid-template-columns: repeat(2, 1fr); } .g-2 { grid-template-columns: 1fr; } .type-row { grid-template-columns: 1fr; gap: 4px; } }
+</style>
+</head>
+<body class="i-body">
+
+<nav class="i-nav"><div class="i-container i-nav__inner">
+  <a class="i-nav__logo" href="#top"><img src="../brand/logo.png" alt="INSPIRE EDU Network"></a>
+  <div class="i-nav__links"><a href="#logo">Logo</a><a href="#colour">Colour</a><a href="#type">Type</a><a href="#shape">Shape</a><a href="#components">Components</a><a href="#motion">Motion</a><a href="#rules">Rules</a></div>
+  <a class="i-btn i-btn--sm" href="../">Open the site</a>
+</div></nav>
+
+<header id="top" class="i-airy" style="padding: 150px 0 90px;">
+  <div class="i-nodes" aria-hidden="true">
+    <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
+      <line x1="90" y1="380" x2="250" y2="250"/><line x1="250" y1="250" x2="420" y2="330"/><line x1="420" y1="330" x2="560" y2="180"/><line x1="560" y1="180" x2="760" y2="260"/>
+      <line x1="760" y1="260" x2="940" y2="150"/><line x1="940" y1="150" x2="1100" y2="260"/><line x1="250" y1="250" x2="330" y2="110"/><line x1="760" y1="260" x2="840" y2="420"/>
+      <circle cx="90" cy="380" r="9" fill="#006de0"/><circle cx="250" cy="250" r="11" fill="#fdba07"/><circle cx="420" cy="330" r="8" fill="#72299c"/><circle cx="560" cy="180" r="10" fill="#019eff"/>
+      <circle cx="760" cy="260" r="9" fill="#3d932e"/><circle cx="940" cy="150" r="11" fill="#ff6c0b"/><circle cx="1100" cy="260" r="8" fill="#00387a"/><circle cx="330" cy="110" r="7" fill="#3aa0f2"/><circle cx="840" cy="420" r="8" fill="#e31e27"/>
+    </svg>
+  </div>
+  <div class="i-container" style="text-align:center;">
+    <img class="i-in i-float" src="../brand/logo.png" alt="INSPIRE EDU Network" style="height:150px;width:auto;margin:0 auto 28px;">
+    <p class="i-eyebrow i-in i-in-1">Design system · v1.0</p>
+    <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 18px;">Light. Connected. <span class="i-grad-text">Alive.</span></h1>
+    <p class="i-lead i-in i-in-3" style="margin:0 auto;">Everything on the INSPIRE site is built from this page: one logo, one palette taken from it, one typeface, one calm light theme and a little motion — nothing dark, nothing heavy.</p>
+    <div class="anchor-nav i-in i-in-4" style="justify-content:center;margin-top:30px;">
+      <a class="i-chip" href="#logo">Logo</a><a class="i-chip" href="#colour">Colour</a><a class="i-chip" href="#type">Typography</a><a class="i-chip" href="#shape">Space &amp; shape</a><a class="i-chip" href="#components">Components</a><a class="i-chip" href="#motion">Motion</a><a class="i-chip" href="#rules">Rules</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ───────── LOGO ───────── -->
+<section id="logo" class="i-section"><div class="i-container">
+  <p class="i-eyebrow">01</p><h2 class="i-h2" style="margin:6px 0 8px;">Logo</h2>
+  <p class="i-lead" style="margin-bottom:34px;">A navy wordmark, a globe drawn as a network of coloured nodes, and a dove in a spectrum wing: education, connection and peace. The coloured nodes are the source of the whole palette.</p>
+  <div class="g-grid g-2">
+    <div class="logo-stage i-reveal"><div class="clear"><img src="../brand/logo.png" alt="Primary logo" style="height:170px;width:auto;"></div></div>
+    <div class="logo-stage i-reveal" style="--d:.1s;background:var(--bg-soft);"><img src="../brand/logo-mark.png" alt="Logo mark" style="height:190px;width:auto;"></div>
+  </div>
+  <div class="g-grid g-3" style="margin-top:var(--s-5);">
+    <div class="i-card i-reveal"><h3 class="i-h4">Primary logo</h3><p class="i-muted" style="font-size:var(--fs-sm);">Use everywhere there is room: headers, login, documents, social cards. File: <code class="i">/brand/logo.png</code></p></div>
+    <div class="i-card i-reveal" style="--d:.08s"><h3 class="i-h4">Logo mark</h3><p class="i-muted" style="font-size:var(--fs-sm);">Globe + dove only. For app icons, avatars, favicons and tight places. Files: <code class="i">/brand/logo-mark.png</code>, <code class="i">favicon.ico</code>, <code class="i">icon-192/512.png</code></p></div>
+    <div class="i-card i-reveal" style="--d:.16s"><h3 class="i-h4">Clear space &amp; size</h3><p class="i-muted" style="font-size:var(--fs-sm);">Keep free space equal to the height of the “I” around the logo. Minimum height: 40&nbsp;px (primary) / 24&nbsp;px (mark).</p></div>
+  </div>
+  <div class="g-grid g-4" style="margin-top:var(--s-5);">
+    <div class="i-card i-card--flat do i-reveal" style="text-align:center"><img src="../brand/logo-small.png" alt="" style="height:70px;margin:0 auto 10px;"><b style="font-size:var(--fs-sm);color:#2a6b1f;">✓ On white or very light tints</b></div>
+    <div class="i-card i-card--flat do i-reveal" style="text-align:center;background:var(--bg-tint);--d:.06s"><img src="../brand/logo-small.png" alt="" style="height:70px;margin:0 auto 10px;"><b style="font-size:var(--fs-sm);color:#2a6b1f;">✓ On light blue (#eaf3fe)</b></div>
+    <div class="i-card i-card--flat dont i-reveal" style="text-align:center;background:var(--navy-800);--d:.12s"><img src="../brand/logo-small.png" alt="" style="height:70px;margin:0 auto 10px;opacity:.4;filter:grayscale(1);"><b style="font-size:var(--fs-sm);color:#fff;">✕ Never on dark or saturated colour</b></div>
+    <div class="i-card i-card--flat dont i-reveal" style="text-align:center;--d:.18s"><img src="../brand/logo-small.png" alt="" style="height:44px;width:150px;margin:13px auto 23px;object-fit:fill;"><b style="font-size:var(--fs-sm);color:#98121a;">✕ Never stretch, recolour or add effects</b></div>
+  </div>
+</div></section>
+
+<!-- ───────── COLOUR ───────── -->
+<section id="colour" class="i-section i-section--soft"><div class="i-container">
+  <p class="i-eyebrow">02</p><h2 class="i-h2" style="margin:6px 0 8px;">Colour</h2>
+  <p class="i-lead" style="margin-bottom:12px;">Sampled directly from the logo. Blue leads; the spectrum colours are small, bright accents — never large fills.</p>
+  <div class="i-spectrum-line" style="margin-bottom:34px;"></div>
+
+  <h3 class="i-h4" style="margin-bottom:var(--s-4);">Brand blues</h3>
+  <div class="g-grid g-6">
+    <div class="sw"><i style="background:#00387a"></i><div><b>Navy 800</b>Wordmark, strong headings<br><code>#00387A</code></div></div>
+    <div class="sw"><i style="background:#0a4a97"></i><div><b>Navy 700</b>Hover on navy<br><code>#0A4A97</code></div></div>
+    <div class="sw"><i style="background:#006de0"></i><div><b>Blue 600 · Primary</b>Buttons, links, focus<br><code>#006DE0</code></div></div>
+    <div class="sw"><i style="background:#0682e4"></i><div><b>Blue 500</b>Globe lines, gradients<br><code>#0682E4</code></div></div>
+    <div class="sw"><i style="background:#019eff"></i><div><b>Sky</b>Highlights, gradient end<br><code>#019EFF</code></div></div>
+    <div class="sw"><i style="background:#7cc0fa"></i><div><b>Blue 300</b>Dashed links, borders<br><code>#7CC0FA</code></div></div>
+    <div class="sw"><i style="background:#b9dcfd"></i><div><b>Blue 200</b>Soft borders<br><code>#B9DCFD</code></div></div>
+    <div class="sw"><i style="background:#dcedfe"></i><div><b>Blue 100</b>Icon tiles, chips<br><code>#DCEDFE</code></div></div>
+    <div class="sw"><i style="background:#f0f7ff"></i><div><b>Blue 50</b>Hover washes<br><code>#F0F7FF</code></div></div>
+    <div class="sw"><i style="background:#eaf3fe"></i><div><b>Tint</b>Section backgrounds<br><code>#EAF3FE</code></div></div>
+    <div class="sw"><i style="background:#f6faff"></i><div><b>Soft</b>Alternate sections<br><code>#F6FAFF</code></div></div>
+    <div class="sw"><i style="background:#fff;border-bottom:1px solid var(--line)"></i><div><b>White</b>Page, cards<br><code>#FFFFFF</code></div></div>
+  </div>
+
+  <h3 class="i-h4" style="margin:var(--s-8) 0 var(--s-4);">Spectrum accents &amp; their soft tints</h3>
+  <div class="g-grid g-6">
+    <div class="sw"><i style="background:#fdba07"></i><div><b>Yellow</b>Highlight, CTA accent<br><code>#FDBA07</code> · tint <code>#FFF3CC</code></div></div>
+    <div class="sw"><i style="background:#ff6c0b"></i><div><b>Orange</b>Warning, energy<br><code>#FF6C0B</code> · tint <code>#FFE4D3</code></div></div>
+    <div class="sw"><i style="background:#e31e27"></i><div><b>Red</b>Error, the dot on the “I”<br><code>#E31E27</code> · tint <code>#FDE1E2</code></div></div>
+    <div class="sw"><i style="background:#3d932e"></i><div><b>Green</b>Success, growth<br><code>#3D932E</code> · tint <code>#E0F1DB</code></div></div>
+    <div class="sw"><i style="background:#72299c"></i><div><b>Purple</b>Community, people<br><code>#72299C</code> · tint <code>#EDDFF6</code></div></div>
+    <div class="sw"><i style="background:linear-gradient(135deg,#006de0,#0682e4 55%,#019eff)"></i><div><b>Primary gradient</b>Buttons, hero details<br><code>135° blue-600 → sky</code></div></div>
+  </div>
+
+  <h3 class="i-h4" style="margin:var(--s-8) 0 var(--s-4);">Text &amp; lines</h3>
+  <div class="g-grid g-6">
+    <div class="sw"><i style="background:#0e2442"></i><div><b>Ink</b>Headings<br><code>#0E2442</code></div></div>
+    <div class="sw"><i style="background:#26405f"></i><div><b>Text</b>Body<br><code>#26405F</code></div></div>
+    <div class="sw"><i style="background:#5b6f8d"></i><div><b>Muted</b>Secondary<br><code>#5B6F8D</code></div></div>
+    <div class="sw"><i style="background:#8497b1"></i><div><b>Subtle</b>Hints (≥ 18 px only)<br><code>#8497B1</code></div></div>
+    <div class="sw"><i style="background:#dce8f5"></i><div><b>Line</b>Dividers<br><code>#DCE8F5</code></div></div>
+    <div class="sw"><i style="background:#c3d5ea"></i><div><b>Line strong</b>Inputs<br><code>#C3D5EA</code></div></div>
+  </div>
+</div></section>
+
+<!-- ───────── TYPE ───────── -->
+<section id="type" class="i-section"><div class="i-container">
+  <p class="i-eyebrow">03</p><h2 class="i-h2" style="margin:6px 0 8px;">Typography</h2>
+  <p class="i-lead" style="margin-bottom:26px;">One family — <b>Montserrat</b> — the same geometric sans as the wordmark. Heavy for headlines, regular for reading, spaced capitals for labels (like “EDU NETWORK”). Cyrillic and Latin are both supported.</p>
+  <div>
+    <div class="type-row"><small>Display · 800<br>--fs-6xl</small><div class="i-h1">Connect. Learn. Lead.</div></div>
+    <div class="type-row"><small>Heading 1 · 800<br>--fs-5xl</small><div style="font-size:var(--fs-5xl);font-weight:800;letter-spacing:var(--track-tight);color:var(--ink);line-height:1.1;">Platform of partnership</div></div>
+    <div class="type-row"><small>Heading 2 · 800<br>--fs-4xl</small><div class="i-h2">Платформа партнёрства</div></div>
+    <div class="type-row"><small>Heading 3 · 700<br>--fs-2xl</small><div class="i-h3">Young leaders of Moldova</div></div>
+    <div class="type-row"><small>Heading 4 · 700<br>--fs-lg</small><div class="i-h4">Match with mentors and partners</div></div>
+    <div class="type-row"><small>Body · 400<br>--fs-base / 1.65</small><p style="margin:0;max-width:62ch;">INSPIRE EDU Network brings universities, NGOs and young leaders together. Body text is set at 16&nbsp;px with generous line height and a calm blue-grey colour that stays readable on white.</p></div>
+    <div class="type-row"><small>Lead · 400<br>--fs-lg</small><p class="i-lead" style="margin:0;">Larger introductory text, in the muted tone.</p></div>
+    <div class="type-row"><small>Eyebrow · 600<br>uppercase +16%</small><div class="i-eyebrow">Edu network · Moldova</div></div>
+  </div>
+</div></section>
+
+<!-- ───────── SHAPE ───────── -->
+<section id="shape" class="i-section i-section--soft"><div class="i-container">
+  <p class="i-eyebrow">04</p><h2 class="i-h2" style="margin:6px 0 8px;">Space, shape &amp; elevation</h2>
+  <p class="i-lead" style="margin-bottom:30px;">A 4&nbsp;px grid. Everything is round — like the nodes of the globe. Shadows are always tinted blue, never grey.</p>
+  <h3 class="i-h4" style="margin-bottom:var(--s-3);">Spacing scale</h3>
+  <div style="display:grid;gap:8px;max-width:560px;margin-bottom:34px;">
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-1 · 4</code><div class="bar" style="width:4px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-2 · 8</code><div class="bar" style="width:8px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-4 · 16</code><div class="bar" style="width:16px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-6 · 24</code><div class="bar" style="width:24px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-8 · 32</code><div class="bar" style="width:32px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-12 · 48</code><div class="bar" style="width:48px"></div></div>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;"><code class="i" style="width:70px">s-20 · 80</code><div class="bar" style="width:80px"></div></div>
+  </div>
+  <h3 class="i-h4" style="margin-bottom:var(--s-3);">Radii</h3>
+  <div class="g-grid g-6" style="margin-bottom:34px;">
+    <div class="elev" style="border-radius:8px">sm · 8</div><div class="elev" style="border-radius:12px">md · 12</div><div class="elev" style="border-radius:18px">lg · 18</div>
+    <div class="elev" style="border-radius:26px">xl · 26 (cards)</div><div class="elev" style="border-radius:34px">2xl · 34</div><div class="elev" style="border-radius:999px">pill (buttons)</div>
+  </div>
+  <h3 class="i-h4" style="margin-bottom:var(--s-3);">Elevation</h3>
+  <div class="g-grid g-4">
+    <div class="elev" style="box-shadow:var(--sh-xs)">xs</div><div class="elev" style="box-shadow:var(--sh-sm)">sm</div><div class="elev" style="box-shadow:var(--sh-md)">md</div><div class="elev" style="box-shadow:var(--sh-lg)">lg</div>
+  </div>
+</div></section>
+
+<!-- ───────── COMPONENTS ───────── -->
+<section id="components" class="i-section"><div class="i-container">
+  <p class="i-eyebrow">05</p><h2 class="i-h2" style="margin:6px 0 8px;">Components</h2>
+  <p class="i-lead" style="margin-bottom:30px;">All classes start with <code class="i">i-</code>. Add <code class="i">/design/inspire.css</code> and <code class="i">/design/inspire.js</code> to any page.</p>
+
+  <h3 class="i-h4" style="margin-bottom:var(--s-4);">Buttons</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px;">
+    <a class="i-btn" href="#components">Primary</a><a class="i-btn i-btn--secondary" href="#components">Secondary</a><a class="i-btn i-btn--accent" href="#components">Accent</a>
+    <a class="i-btn i-btn--navy" href="#components">Navy</a><a class="i-btn i-btn--ghost" href="#components">Ghost</a><a class="i-btn i-btn--danger" href="#components">Danger</a>
+    <a class="i-btn i-btn--sm" href="#components">Small</a><a class="i-btn i-btn--lg" href="#components">Large</a><a class="i-btn is-disabled" href="#components">Disabled</a>
+  </div>
+
+  <h3 class="i-h4" style="margin-bottom:var(--s-4);">Cards</h3>
+  <div class="g-grid g-3" style="margin-bottom:34px;">
+    <div class="i-card i-card--hover">
+      <div class="i-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
+      <h4 class="i-h4">Interactive card</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">Lifts gently on hover. Icon tile uses a soft tint of the accent.</p>
+    </div>
+    <div class="i-card i-card--spectrum">
+      <div class="i-card__icon i-card__icon--yellow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.5 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg></div>
+      <h4 class="i-h4">Spectrum card</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">A thin spectrum line marks featured content.</p>
+    </div>
+    <div class="i-card i-card--tint">
+      <div class="i-card__icon i-card__icon--green"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4.5 4.5L19 7"/></svg></div>
+      <h4 class="i-h4">Tint card</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">Flat, for secondary information.</p>
+    </div>
+  </div>
+
+  <div class="g-grid g-2" style="margin-bottom:34px;">
+    <div>
+      <h3 class="i-h4" style="margin-bottom:var(--s-4);">Form</h3>
+      <div class="i-card" style="display:grid;gap:16px;">
+        <div><label class="i-label" for="d1">Full name</label><input id="d1" class="i-input" placeholder="Maria Ionescu"></div>
+        <div><label class="i-label" for="d2">Interest</label><select id="d2" class="i-select"><option>Leadership</option><option>Technology</option><option>Peacebuilding</option></select></div>
+        <div><label class="i-label" for="d3">About you</label><textarea id="d3" class="i-textarea" rows="3" placeholder="A few words…"></textarea><p class="i-hint">Focus ring is a soft blue glow.</p></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="i-h4" style="margin-bottom:var(--s-4);">Chips, badges &amp; alerts</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <span class="i-chip">Leadership</span><span class="i-chip">Peacebuilding</span><span class="i-chip">Technology</span>
+        <span class="i-badge">New</span><span class="i-badge i-badge--green">Active</span><span class="i-badge i-badge--yellow">Pending</span><span class="i-badge i-badge--orange">Review</span><span class="i-badge i-badge--red">Blocked</span><span class="i-badge i-badge--purple">Mentor</span>
+      </div>
+      <div style="display:grid;gap:10px;">
+        <div class="i-alert">Information — calm blue.</div>
+        <div class="i-alert i-alert--success">Saved successfully.</div>
+        <div class="i-alert i-alert--warning">Please check the dates.</div>
+        <div class="i-alert i-alert--danger">Something went wrong.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="i-h4" style="margin-bottom:var(--s-4);">Table</h3>
+  <div class="i-card i-card--flat" style="padding:0;overflow:hidden;">
+    <table class="i-table"><thead><tr><th>Participant</th><th>School</th><th>Status</th></tr></thead><tbody>
+      <tr><td><div style="display:flex;align-items:center;gap:10px;"><span class="i-avatar" style="width:34px;height:34px;font-size:13px;">AM</span>Anna Moldovan</div></td><td>Strategic Leadership</td><td><span class="i-badge i-badge--green">Accepted</span></td></tr>
+      <tr><td><div style="display:flex;align-items:center;gap:10px;"><span class="i-avatar" style="width:34px;height:34px;font-size:13px;background:linear-gradient(135deg,#72299c,#019eff)">DP</span>Dmitri Petrov</div></td><td>Tech Peacemakers</td><td><span class="i-badge i-badge--yellow">Pending</span></td></tr>
+      <tr><td><div style="display:flex;align-items:center;gap:10px;"><span class="i-avatar" style="width:34px;height:34px;font-size:13px;background:linear-gradient(135deg,#ff6c0b,#fdba07)">IC</span>Ion Ciobanu</div></td><td>Future Voices</td><td><span class="i-badge">New</span></td></tr>
+    </tbody></table>
+  </div>
+</div></section>
+
+<!-- ───────── MOTION ───────── -->
+<section id="motion" class="i-section i-section--tint"><div class="i-container">
+  <p class="i-eyebrow">06</p><h2 class="i-h2" style="margin:6px 0 8px;">Motion</h2>
+  <p class="i-lead" style="margin-bottom:30px;">Gentle and slow, like a dove gliding. Only <code class="i">transform</code> and <code class="i">opacity</code> are animated, so it stays smooth and light on the processor. Everything switches off for people who prefer reduced motion.</p>
+  <div class="g-grid g-4">
+    <div class="i-card i-reveal"><h4 class="i-h4">Rise</h4><p class="i-muted" style="font-size:var(--fs-sm);">Content fades up as it enters the screen. <code class="i">.i-reveal</code>, 0.8 s, ease-out.</p></div>
+    <div class="i-card i-reveal" style="--d:.1s"><h4 class="i-h4">Float</h4><p class="i-muted" style="font-size:var(--fs-sm);">Hero art drifts ±12 px over 7 s. <code class="i">.i-float</code></p><div class="i-float" style="margin-top:12px;width:34px;height:34px;border-radius:50%;background:var(--grad-primary);box-shadow:var(--sh-primary)"></div></div>
+    <div class="i-card i-reveal" style="--d:.2s"><h4 class="i-h4">Drift</h4><p class="i-muted" style="font-size:var(--fs-sm);">Pastel light blobs and network nodes move slowly in the background. <code class="i">.i-airy</code>, <code class="i">.i-nodes</code></p></div>
+    <div class="i-card i-reveal" style="--d:.3s"><h4 class="i-h4">Hover</h4><p class="i-muted" style="font-size:var(--fs-sm);">Buttons lift 2 px and catch a ray of light; cards lift 4 px. 0.28 s.</p><a class="i-btn i-btn--sm" style="margin-top:12px" href="#motion">Try me</a></div>
+  </div>
+</div></section>
+
+<!-- ───────── RULES ───────── -->
+<section id="rules" class="i-section"><div class="i-container i-container--narrow">
+  <p class="i-eyebrow">07</p><h2 class="i-h2" style="margin:6px 0 20px;">Rules</h2>
+  <div style="display:grid;gap:14px;">
+    <div class="i-card i-card--flat i-reveal"><h4 class="i-h4">Light only</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">One bright theme. No dark mode, no dark sections, no black. The darkest colour allowed is Navy 800 — and only for text and the logo.</p></div>
+    <div class="i-card i-card--flat i-reveal"><h4 class="i-h4">Blue leads, the spectrum sparkles</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">Roughly 80% white/tints, 15% blue, 5% spectrum accents. Use one accent per component.</p></div>
+    <div class="i-card i-card--flat i-reveal"><h4 class="i-h4">Round and airy</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">Large radii, generous spacing (sections ≥ 80 px), thin blue-tinted borders and soft shadows.</p></div>
+    <div class="i-card i-card--flat i-reveal"><h4 class="i-h4">Accessible by default</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);">Body text ≥ 16 px with contrast ≥ 4.5:1, visible focus rings, reduced-motion respected, motion never carries meaning.</p></div>
+    <div class="i-card i-card--flat i-reveal"><h4 class="i-h4">Files</h4><p class="i-muted" style="margin:6px 0 0;font-size:var(--fs-sm);"><code class="i">/design/inspire.css</code> tokens + components · <code class="i">/design/inspire.js</code> behaviour · <code class="i">/design/tailwind.js</code> Tailwind map · <code class="i">/brand/*</code> logo files.</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer style="padding:40px 0;text-align:center;border-top:1px solid var(--line);background:var(--bg-soft);">
+  <div class="i-container"><img src="../brand/logo-small.png" alt="" style="height:54px;margin:0 auto 10px;"><p class="i-muted" style="margin:0;font-size:var(--fs-sm);">INSPIRE EDU Network · Design system v1.0</p></div>
+</footer>
+<script src="inspire.js"></script>
+</body>
+</html>

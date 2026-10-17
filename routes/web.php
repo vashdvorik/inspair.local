@@ -5,12 +5,45 @@ use App\Http\Controllers\Account\OpportunityController;
 use App\Http\Controllers\Account\TmaAuthController;
 use App\Http\Middleware\RequireAccountAuth;
 use App\Models\LoginToken;
+use App\Support\PublicUi;
 use Illuminate\Support\Facades\Route;
 use SergiX44\Nutgram\Nutgram;
 
+// ── Public site ───────────────────────────────────────────────────────────
 Route::get('/', function () {
-    return view('landing');
-});
+    return view('public.about', [
+        'c25'      => PublicUi::content('academy2025'),
+        'c23'      => PublicUi::content('academy2023'),
+        'people'   => PublicUi::content('people'),
+        'partners' => PublicUi::content('partners'),
+        'videos'   => PublicUi::content('videos'),
+        'photos'   => PublicUi::content('photos'),
+    ]);
+})->name('home');
+Route::get('/experts', fn () => view('public.experts', ['people' => PublicUi::content('people')]))->name('experts');
+Route::get('/partners', fn () => view('public.partners', ['partners' => PublicUi::content('partners')]))->name('partners');
+Route::redirect('/participants', '/experts', 301);
+Route::get('/academy-2025', function () {
+    return view('public.academy2025.index', [
+        'c'        => PublicUi::content('academy2025'),
+        'people'   => PublicUi::content('people'),
+        'partners' => PublicUi::content('partners'),
+        'videos'   => PublicUi::content('videos'),
+    ]);
+})->name('academy2025');
+Route::get('/academy-2025/school-{n}', function (int $n) {
+    abort_unless(in_array($n, [1, 2, 3], true), 404);
+
+    return view('public.academy2025.school', ['c' => PublicUi::content('academy2025'), 'n' => $n]);
+})->whereNumber('n')->name('academy2025.school');
+Route::get('/academy-2023', function () {
+    return view('public.academy2023.index', [
+        'c'        => PublicUi::content('academy2023'),
+        'people'   => PublicUi::content('people'),
+        'partners' => PublicUi::content('partners'),
+        'photos'   => PublicUi::content('photos'),
+    ]);
+})->name('academy2023');
 
 // Telegram Webhook — POST запрос от серверов Telegram
 Route::post('/telegram/webhook', function (Nutgram $bot) {

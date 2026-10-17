@@ -5,7 +5,7 @@
 <div class="max-w-3xl">
 
     <div class="mb-8">
-        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">Люди</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Люди</h1>
         <p class="mt-1.5 text-sm text-gray-500">{{ $people->count() }} {{ trans_choice('участник|участника|участников', $people->count()) }} сообщества</p>
     </div>
 
@@ -31,15 +31,15 @@
                 <img src="{{ Storage::url($person->avatar_path) }}"
                      alt="{{ $person->full_name }}"
                      class="h-11 w-11 shrink-0 rounded-full object-cover"
-                     style="box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="box-shadow:0 2px 8px rgba(0,109,224,.2)">
                 @else
                 <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
-                     style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="background:var(--grad-primary);box-shadow:0 2px 8px rgba(0,109,224,.2)">
                     {{ mb_strtoupper(mb_substr($person->full_name ?? '?', 0, 1)) }}
                 </div>
                 @endif
                 <div class="min-w-0">
-                    <p class="truncate text-sm font-semibold text-[#0f172a]">{{ $person->full_name }}</p>
+                    <p class="truncate text-sm font-semibold text-[#0e2442]">{{ $person->full_name }}</p>
                     @if($person->telegram_username)
                     <p class="mt-0.5 truncate text-xs font-medium text-brand-600">
                         {{ '@' . $person->telegram_username }}

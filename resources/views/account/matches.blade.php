@@ -5,7 +5,7 @@
 <div class="max-w-2xl">
 
     <div class="mb-8">
-        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">AI-матчи</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">AI-матчи</h1>
         <p class="mt-1.5 text-sm text-gray-500">Участники с наибольшим потенциалом для партнёрства</p>
     </div>
 
@@ -15,26 +15,26 @@
         {{-- Embedding not yet computed --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-sm">
             <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl"
-                 style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
+                 style="background:linear-gradient(135deg,#f0f7ff,#dcedfe)">
                 <svg class="h-8 w-8 text-brand-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
             </div>
             @if(empty($accountUser->description))
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-500">Нужны данные</p>
-            <h2 class="mt-2 text-base font-semibold text-[#0f172a]">Заполни профиль для матчинга</h2>
+            <h2 class="mt-2 text-base font-semibold text-[#0e2442]">Заполни профиль для матчинга</h2>
             <p class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-gray-500">
                 Алгоритм подбирает партнёров на основе твоего описания и ожиданий. Чем подробнее — тем точнее результат.
             </p>
             <a href="{{ route('account.profile.edit') }}"
                class="mt-6 inline-flex h-10 items-center gap-2 rounded-xl px-5 text-sm font-semibold text-white
                       transition-all hover:-translate-y-px hover:shadow-md"
-               style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
+               style="background:var(--grad-primary)">
                 Заполнить профиль →
             </a>
             @else
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-500">Готовится</p>
-            <h2 class="mt-2 text-base font-semibold text-[#0f172a]">Матчи рассчитываются</h2>
+            <h2 class="mt-2 text-base font-semibold text-[#0e2442]">Матчи рассчитываются</h2>
             <p class="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-gray-500">
                 AI анализирует твой профиль. Обычно занимает меньше минуты — загляни чуть позже.
             </p>
@@ -71,10 +71,10 @@
                 <img src="{{ Storage::url($person->avatar_path) }}"
                      alt="{{ $person->full_name }}"
                      class="h-14 w-14 rounded-2xl object-cover"
-                     style="box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="box-shadow:0 2px 8px rgba(0,109,224,.2)">
                 @else
                 <div class="flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold text-white"
-                     style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.2)">
+                     style="background:var(--grad-primary);box-shadow:0 2px 8px rgba(0,109,224,.2)">
                     {{ mb_strtoupper(mb_substr($person->full_name ?? '?', 0, 1)) }}
                 </div>
                 @endif
@@ -84,7 +84,7 @@
             <div class="min-w-0 flex-1">
                 <div class="flex items-start justify-between gap-2">
                     <div class="min-w-0">
-                        <p class="truncate font-semibold text-[#0f172a]">{{ $person->full_name }}</p>
+                        <p class="truncate font-semibold text-[#0e2442]">{{ $person->full_name }}</p>
                         @if($person->telegram_username)
                         <p class="mt-0.5 block text-xs font-medium text-brand-600">
                             {{ '@' . $person->telegram_username }}
@@ -131,7 +131,7 @@
     </div>
 
     <div class="mt-6 rounded-2xl border border-gray-100 bg-white p-5 text-sm text-gray-500 shadow-sm">
-        <p class="mb-2 font-semibold text-[#0f172a]">Как работают матчи</p>
+        <p class="mb-2 font-semibold text-[#0e2442]">Как работают матчи</p>
         <ul class="space-y-1.5 text-xs leading-relaxed text-gray-500">
             <li>· AI анализирует твоё описание и ожидания, сравнивает с профилями других участников</li>
             <li>· Когда ты меняешь профиль — твои матчи пересчитываются автоматически в течение ~1 минуты</li>

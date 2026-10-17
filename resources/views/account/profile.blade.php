@@ -13,18 +13,18 @@
                  class="h-16 w-16 shrink-0 rounded-2xl object-cover shadow-md">
             @else
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-bold text-white shadow-md"
-                 style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
+                 style="background:var(--grad-primary)">
                 {{ mb_strtoupper(mb_substr($accountUser->full_name ?? '?', 0, 1)) }}
             </div>
             @endif
             <div>
-                <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">Мой профиль</h1>
+                <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Мой профиль</h1>
                 <p class="mt-1 text-sm text-gray-500">Информация о тебе, видимая участникам сообщества</p>
             </div>
         </div>
         <a href="{{ route('account.profile.edit') }}"
            class="inline-flex h-10 items-center gap-2 rounded-xl border border-gray-200 bg-white px-5
-                  text-sm font-semibold text-[#0f172a] shadow-sm transition hover:border-brand-400 hover:text-brand-600
+                  text-sm font-semibold text-[#0e2442] shadow-sm transition hover:border-brand-400 hover:text-brand-600
                   sm:shrink-0">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,7 +47,7 @@
 
             <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Имя и фамилия</p>
-                <p class="mt-1 text-sm font-medium text-[#0f172a]">
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">
                     {{ $accountUser->full_name ?: '—' }}
                 </p>
             </div>
@@ -76,14 +76,14 @@
 
             <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Кто ты и чем занимаешься?</p>
-                <p class="mt-1 whitespace-pre-line text-sm text-[#0f172a]">
+                <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">
                     {{ $accountUser->description ?: '—' }}
                 </p>
             </div>
 
             <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Что ждёшь от сообщества?</p>
-                <p class="mt-1 whitespace-pre-line text-sm text-[#0f172a]">
+                <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">
                     {{ $accountUser->expectation ?: '—' }}
                 </p>
             </div>

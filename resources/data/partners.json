@@ -1,0 +1,291 @@
+[
+ {
+  "img": "partners/embassy-nl.png",
+  "name": "Embassy of the Kingdom of the Netherlands",
+  "url": "https://www.netherlandsandyou.nl/your-country-and-the-netherlands/moldova/about-us/embassy-in-chisinau",
+  "group": "donor",
+  "years": [
+   2023,
+   2025
+  ]
+ },
+ {
+  "img": "partners/usem.png",
+  "name": "University of European Studies of Moldova (USEM)",
+  "url": "https://usem.md/md/",
+  "group": "coorg",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/usem-2023.jpg",
+  "name": "University of European Studies of Moldova (USEM)",
+  "url": "https://usem.md/",
+  "group": "coorg",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/usem-2023-b.jpg",
+  "name": "University of European Studies of Moldova (USEM)",
+  "url": "https://usem.md/",
+  "group": "coorg",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/comrat-state-university.png",
+  "name": "Comrat State University",
+  "url": "https://kdu.md/",
+  "group": "coorg",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/comrat-2023.jpg",
+  "name": "Comrat State University",
+  "url": "https://kdu.md/",
+  "group": "coorg",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/frispa.png",
+  "name": "FRISPA, Moldova State University",
+  "url": "https://frispa.usm.md/",
+  "group": "coorg",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/ulim.png",
+  "name": "Free International University of Moldova (ULIM)",
+  "url": "https://ulim.md",
+  "group": "coorg",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/innovation-agency.png",
+  "name": "Agency for Innovation and Development",
+  "url": "https://innovation.md/",
+  "group": "coorg",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/innovation-2023.jpg",
+  "name": "Agency for Innovation and Development",
+  "url": "https://innovation.md/",
+  "group": "coorg",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/un-moldova.png",
+  "name": "United Nations Moldova",
+  "url": "https://moldova.un.org/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/un-women.png",
+  "name": "UN Women Moldova",
+  "url": "https://moldova.unwomen.org/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/glia.png",
+  "name": "GLIA Impact Hub",
+  "url": "https://www.instagram.com/gliaimpacthub/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/education-academy.png",
+  "name": "Academy of Education",
+  "url": "https://education.md/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/education-md-2023.jpg",
+  "name": "education.md",
+  "url": "https://education.md/",
+  "group": "partner",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/international-law-association.png",
+  "name": "International Law Association of the Republic of Moldova",
+  "url": "https://usem.md/md/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/agency-for-peacebuilding.png",
+  "name": "Agency for Peacebuilding",
+  "url": "https://www.peaceagency.org/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/agency-for-peacebuilding-2023.jpg",
+  "name": "Agency for Peacebuilding",
+  "url": "https://www.peaceagency.org",
+  "group": "partner",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/cntm.png",
+  "name": "National Youth Council of Moldova",
+  "url": "https://cntm.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/millenium.png",
+  "name": "MilleniuM Training and Development Institute",
+  "url": "https://www.facebook.com/millenium.md/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/startup-moldova.png",
+  "name": "Startup Moldova",
+  "url": "https://www.startupmoldova.digital",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/atic.png",
+  "name": "ATIC — Association of ICT Companies",
+  "url": "https://ict.md/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/ion-creanga.png",
+  "name": "Ion Creangă State Pedagogical University",
+  "url": "https://upsc.md/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/usm.png",
+  "name": "Moldova State University",
+  "url": "https://usm.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/asem.png",
+  "name": "Academy of Economic Studies of Moldova",
+  "url": "https://ase.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/creative-industries.png",
+  "name": "Association of Creative Industries",
+  "url": "https://creativity.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/icrc.png",
+  "name": "ICRC",
+  "url": "https://www.icrc.org/ru/where-we-work/republic-moldova",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/kozy.png",
+  "name": "Kozy",
+  "url": "https://www.instagram.com/kozy.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/tekwill.png",
+  "name": "Tekwill",
+  "url": "https://tekwill.md",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/icea.png",
+  "name": "International Cultural Educational Association",
+  "url": "https://icea.us/",
+  "group": "partner",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "img": "partners/drc.jpg",
+  "name": "Danish Refugee Council",
+  "url": "https://pro.drc.ngo/where-we-work/europe/moldova/",
+  "group": "partner",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "img": "partners/ataieu.jpg",
+  "name": "Ataieu International",
+  "url": "https://ataieu.md/",
+  "group": "partner",
+  "years": [
+   2023
+  ]
+ }
+]

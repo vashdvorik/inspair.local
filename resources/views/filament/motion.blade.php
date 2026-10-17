@@ -1,45 +1,58 @@
-{{-- Admin panel look: INSPIRE academy style (blue, rounded cards) with subtle motion --}}
+{{-- Admin panel skin — INSPIRE design system: light, airy, one theme. Tokens come from /design/inspire.css --}}
+<link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
 <style>
-    :root { --mo-ink: #14243b; --mo-blue: #3a7fc1; --mo-deep: #17406f; --mo-gold: #e9a23b; }
+    :root { color-scheme: light; }
+    /* never dark, even if the OS asks for it */
+    html, html.dark { color-scheme: light; }
 
-    @keyframes mo-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-    @keyframes mo-d1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(70px,40px) scale(1.18); } }
-    @keyframes mo-d2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-80px,-30px) scale(1.22); } }
-    @keyframes mo-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    h1, h2, h3, .fi-header-heading, .fi-section-header-heading { letter-spacing: -.015em; }
+    .fi-header-heading { font-weight: 800; color: var(--ink); }
 
-    h1, h2, h3, .fi-header-heading, .fi-section-header-heading { letter-spacing: -.01em; }
-
-    /* ── Login: flowing gradient with drifting blobs ── */
+    /* ── Login: bright airy page with soft light blobs ── */
     .fi-simple-layout {
         position: relative; overflow: hidden; isolation: isolate;
-        background: linear-gradient(135deg, #0f2a4a, #17406f 55%, #3a7fc1);
+        background: linear-gradient(180deg, #ffffff 0%, var(--bg-soft) 55%, var(--bg-tint) 100%);
     }
-    .fi-simple-layout::before, .fi-simple-layout::after {
-        content: ""; position: absolute; border-radius: 50%; z-index: -1; pointer-events: none; will-change: transform;
-    }
-    .fi-simple-layout::before { width: 440px; height: 440px; background: radial-gradient(circle, rgba(111,176,232,.75), rgba(111,176,232,0) 68%); top: -140px; left: -120px; animation: mo-d1 15s ease-in-out infinite; }
-    .fi-simple-layout::after  { width: 380px; height: 380px; background: radial-gradient(circle, rgba(233,162,59,.4), rgba(233,162,59,0) 68%); bottom: -160px; right: 4%; animation: mo-d2 18s ease-in-out infinite; }
-    .fi-simple-main { border-radius: 20px; box-shadow: 0 24px 60px rgba(8, 30, 60, .35); animation: mo-in .6s cubic-bezier(.22,1,.36,1) both; }
+    .fi-simple-layout::before, .fi-simple-layout::after { content: ""; position: absolute; border-radius: 50%; z-index: -1; pointer-events: none; will-change: transform; }
+    .fi-simple-layout::before { width: 620px; height: 620px; top: -240px; right: -120px; background: radial-gradient(circle, rgba(1,158,255,.20), rgba(1,158,255,0) 68%); animation: i-drift-a 24s ease-in-out infinite; }
+    .fi-simple-layout::after  { width: 540px; height: 540px; bottom: -240px; left: -140px; background: radial-gradient(circle, rgba(253,186,7,.20), rgba(253,186,7,0) 68%); animation: i-drift-b 28s ease-in-out infinite; }
+    .fi-simple-main { border-radius: var(--r-2xl) !important; border: 1px solid var(--line); background: #fff; box-shadow: var(--sh-lg) !important; animation: i-rise .7s var(--ease) both; }
+    .fi-simple-main .fi-logo { margin-inline: auto; }
 
-    /* ── Panel: soft backdrop, animated cards ── */
+    /* ── Panel: calm light backdrop ── */
     .fi-body:not(.fi-simple-layout) {
-        background-image: radial-gradient(60rem 30rem at 100% -10%, rgba(58,127,193,.10), transparent 60%),
-                          radial-gradient(40rem 24rem at -10% 110%, rgba(233,162,59,.08), transparent 60%);
+        background-color: var(--bg-soft);
+        background-image: radial-gradient(60rem 30rem at 100% -10%, rgba(1,158,255,.09), transparent 60%),
+                          radial-gradient(40rem 24rem at -10% 110%, rgba(253,186,7,.08), transparent 60%);
         background-attachment: fixed;
     }
-    .fi-section, .fi-ta-ctn, .fi-wi-stats-overview-stat, .fi-wi-chart, .fi-fo-wizard, .fi-in-entry-wrp {
-        border-radius: 16px; animation: mo-in .5s cubic-bezier(.22,1,.36,1) both;
-        transition: box-shadow .25s ease, transform .25s ease;
-    }
-    .fi-wi-stats-overview-stat:hover, .fi-section:hover { box-shadow: 0 14px 34px rgba(31,79,134,.12); }
-    .fi-wi-stats-overview-stat:hover { transform: translateY(-3px); }
-    .fi-sidebar-item-btn, .fi-btn, .fi-icon-btn { transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease; }
-    .fi-btn:not(:disabled):hover { transform: translateY(-1px); }
+    .fi-topbar { background: rgba(255,255,255,.96) !important; border-bottom: 1px solid var(--line); box-shadow: none !important; }
+    .fi-sidebar { background: #fff !important; border-right: 1px solid var(--line); box-shadow: var(--sh-sm); }
+    .fi-sidebar-header { border-bottom: 0 !important; box-shadow: none !important; background: #fff !important; }
+    .fi-sidebar::before { content: ""; display: block; height: 3px; background: var(--spectrum); }
+    .fi-sidebar-item-btn { border-radius: 14px !important; transition: background-color .2s ease, transform .2s var(--ease); }
     .fi-sidebar-item-btn:hover { transform: translateX(2px); }
-    .fi-ta-row { transition: background-color .15s ease; }
+    .fi-sidebar-item.fi-active .fi-sidebar-item-btn { background: var(--blue-100) !important; }
+    .fi-sidebar-item.fi-active .fi-sidebar-item-label, .fi-sidebar-item.fi-active .fi-icon { color: var(--navy-800) !important; font-weight: 700; }
+
+    /* cards, tables, widgets: rounded, blue-tinted shadows, gentle entrance */
+    .fi-section, .fi-ta-ctn, .fi-wi-stats-overview-stat, .fi-wi-chart, .fi-fo-wizard, .fi-in-entry-wrp {
+        border-radius: var(--r-lg) !important; border: 1px solid var(--line) !important; box-shadow: var(--sh-sm) !important; background: #fff;
+        animation: i-rise .55s var(--ease) both; transition: box-shadow .25s ease, transform .25s var(--ease), border-color .25s;
+    }
+    .fi-wi-stats-overview-stat:hover { transform: translateY(-3px); box-shadow: var(--sh-md) !important; border-color: var(--blue-200) !important; }
+    .fi-ta-header-cell { background: var(--bg-soft) !important; }
+    .fi-ta-row:hover { background: var(--blue-50) !important; }
+
+    /* buttons */
+    .fi-btn { border-radius: var(--r-pill) !important; transition: background-color .2s ease, transform .2s var(--ease), box-shadow .2s ease; }
+    .fi-btn:not(:disabled):hover { transform: translateY(-1px); }
+    .fi-color-primary.fi-btn.fi-btn-color-primary:not(.fi-outlined) { background: var(--grad-primary) !important; box-shadow: var(--sh-primary); border: 0; }
+    .fi-input-wrp { border-radius: var(--r-md) !important; }
+    .fi-badge { font-weight: 700; }
 
     @media (prefers-reduced-motion: reduce) {
-        .fi-simple-layout, .fi-simple-layout::before, .fi-simple-layout::after, .fi-simple-main,
+        .fi-simple-layout::before, .fi-simple-layout::after, .fi-simple-main,
         .fi-section, .fi-ta-ctn, .fi-wi-stats-overview-stat, .fi-wi-chart, .fi-fo-wizard, .fi-in-entry-wrp { animation: none !important; }
         .fi-section, .fi-ta-ctn, .fi-wi-stats-overview-stat, .fi-sidebar-item-btn, .fi-btn { transition: none !important; transform: none !important; }
     }

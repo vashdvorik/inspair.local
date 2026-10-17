@@ -13,7 +13,7 @@
             </svg>
             Возможности
         </a>
-        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">Новая возможность</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Новая возможность</h1>
         <p class="mt-1.5 text-sm text-gray-500">
             Все участники сообщества получат уведомление в боте сразу после публикации
         </p>
@@ -55,7 +55,7 @@
             <input id="title" name="title" type="text" maxlength="200"
                    value="{{ old('title') }}"
                    placeholder="Например: Ищу дизайнера для стартапа"
-                   class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0f172a] placeholder-gray-300
+                   class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                           transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                           @error('title') border-red-300 @enderror">
             @error('title')
@@ -70,7 +70,7 @@
             </label>
             <textarea id="body" name="body" rows="5" maxlength="2000"
                       placeholder="Расскажи подробнее: что за проект, что ищешь, чем можно помочь..."
-                      class="w-full resize-none rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0f172a] placeholder-gray-300
+                      class="w-full resize-none rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                              transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                              @error('body') border-red-300 @enderror">{{ old('body') }}</textarea>
             @error('body')
@@ -87,7 +87,7 @@
                 <input id="event_date" name="event_date" type="date"
                        value="{{ old('event_date') }}"
                        min="{{ date('Y-m-d') }}"
-                       class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0f172a]
+                       class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442]
                               transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                               @error('event_date') border-red-300 @enderror">
                 @error('event_date')
@@ -101,7 +101,7 @@
                 <input id="location" name="location" type="text" maxlength="200"
                        value="{{ old('location') }}"
                        placeholder="Кишинёв, онлайн..."
-                       class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0f172a] placeholder-gray-300
+                       class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                               transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                               @error('location') border-red-300 @enderror">
                 @error('location')
@@ -118,7 +118,7 @@
             <input id="contact_url" name="contact_url" type="url"
                    value="{{ old('contact_url') }}"
                    placeholder="https://t.me/username или ссылка на форму..."
-                   class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0f172a] placeholder-gray-300
+                   class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                           transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                           @error('contact_url') border-red-300 @enderror">
             @error('contact_url')
@@ -131,7 +131,7 @@
             <button type="submit"
                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold
                            text-white transition-all hover:-translate-y-px hover:shadow-md sm:w-auto"
-                    style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
+                    style="background:var(--grad-primary)">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>

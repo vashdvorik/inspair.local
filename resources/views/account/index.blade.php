@@ -6,7 +6,7 @@
 
     {{-- Header --}}
     <div class="mb-8">
-        <h1 class="text-2xl font-bold tracking-tight text-[#0f172a]">
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">
             Привет, {{ explode(' ', (string) $accountUser->full_name)[0] }} 👋
         </h1>
         <p class="mt-1.5 text-sm text-gray-500">Добро пожаловать в личный кабинет INSPIRE Community</p>
@@ -41,14 +41,14 @@
            class="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
                   transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md">
             <div class="flex h-11 w-11 items-center justify-center rounded-xl"
-                 style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 12px rgba(58,127,193,.25)">
+                 style="background:var(--grad-primary);box-shadow:0 4px 12px rgba(0,109,224,.25)">
                 <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-semibold text-[#0f172a] transition group-hover:text-brand-700">Мой профиль</p>
+                <p class="text-sm font-semibold text-[#0e2442] transition group-hover:text-brand-700">Мой профиль</p>
                 <p class="mt-1 text-xs leading-relaxed text-gray-400">Обновить данные о себе</p>
             </div>
         </a>
@@ -62,7 +62,7 @@
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-semibold text-[#0f172a] transition group-hover:text-brand-700">AI-матчи</p>
+                <p class="text-sm font-semibold text-[#0e2442] transition group-hover:text-brand-700">AI-матчи</p>
                 <p class="mt-1 text-xs leading-relaxed text-gray-400">Рекомендованные партнёры</p>
             </div>
         </a>
@@ -77,7 +77,7 @@
                 </svg>
             </div>
             <div>
-                <p class="text-sm font-semibold text-[#0f172a] transition group-hover:text-brand-700">Люди</p>
+                <p class="text-sm font-semibold text-[#0e2442] transition group-hover:text-brand-700">Люди</p>
                 <p class="mt-1 text-xs leading-relaxed text-gray-400">Участники сообщества</p>
             </div>
         </a>

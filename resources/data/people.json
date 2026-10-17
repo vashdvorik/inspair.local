@@ -1,0 +1,977 @@
+[
+ {
+  "key": "duijn",
+  "name": {
+   "en": "Mr. Fred Duijn",
+   "ru": "Г-н Fred Duijn",
+   "ro": "Dl Fred Duijn"
+  },
+  "role": {
+   "en": "Ambassador of the Kingdom of the Netherlands to the Republic of Moldova",
+   "ru": "Посол Королевства Нидерландов в Республике Молдова",
+   "ro": "Ambasadorul Regatului Țărilor de Jos în Republica Moldova"
+  },
+  "img": "academy-2025/1.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "stojanoska",
+  "name": {
+   "en": "Ms. Dominika Stojanoska",
+   "ru": "Г-жа Dominika Stojanoska",
+   "ro": "Dna Dominika Stojanoska"
+  },
+  "role": {
+   "en": "UN Women Representative to Moldova",
+   "ru": "Представитель структуры «ООН-женщины» в Молдове",
+   "ro": "Reprezentanta ONU Femei în Moldova"
+  },
+  "img": "academy-2025/3.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "pichor",
+  "name": {
+   "en": "Mr. Slawomir Pichor",
+   "ru": "Г-н Slawomir Pichor",
+   "ro": "Dl Slawomir Pichor"
+  },
+  "role": {
+   "en": "Head of the European Union Border Assistance Mission to Moldova and Ukraine (EUBAM)",
+   "ru": "Глава Миссии ЕС по оказанию помощи на границе Молдовы и Украины (EUBAM)",
+   "ro": "Șeful Misiunii UE de Asistență la Frontieră în Moldova și Ucraina (EUBAM)"
+  },
+  "img": "academy-2025/2.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "salicov",
+  "name": {
+   "en": "Ms. Aurelia Salicov",
+   "ru": "Г-жа Aurelia Salicov",
+   "ro": "Dna Aurelia Salicov"
+  },
+  "role": {
+   "en": "Deputy General Director of Starnet",
+   "ru": "Заместитель генерального директора, Starnet",
+   "ro": "Director general adjunct, Starnet"
+  },
+  "img": "academy-2023/09-9.png",
+  "years": [
+   2025,
+   2023
+  ],
+  "roleByYear": {
+   "2023": {
+    "ru": "Генеральный директор Индустриального парка Tracom",
+    "en": "CEO of Tracom Industrial Park",
+    "ro": "Director general al Parcului Industrial Tracom"
+   }
+  }
+ },
+ {
+  "key": "melinte",
+  "name": {
+   "en": "Ms. Claudia Melinte",
+   "ru": "Г-жа Claudia Melinte",
+   "ro": "Dna Claudia Melinte"
+  },
+  "role": {
+   "en": "Coordinator National Erasmus+ Office in Moldova",
+   "ru": "Координатор Национального офиса Erasmus+ в Молдове",
+   "ro": "Coordonatoarea Oficiului Național Erasmus+ în Moldova"
+  },
+  "img": "academy-2025/8.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "sedlețchi",
+  "name": {
+   "en": "Prof. Dr. Iurie Sedlețchi",
+   "ru": "Проф., д-р Iurie Sedlețchi",
+   "ro": "Prof. dr. Iurie Sedlețchi"
+  },
+  "role": {
+   "en": "Rector of the University of European Studies of Moldova",
+   "ru": "Ректор Университета европейских исследований Молдовы",
+   "ro": "Rectorul Universității de Studii Europene din Moldova"
+  },
+  "img": "academy-2025/11.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "băieşu",
+  "name": {
+   "en": "Prof. Dr. Aurel Băieşu",
+   "ru": "Проф., д-р Aurel Băieşu",
+   "ro": "Prof. dr. Aurel Băieşu"
+  },
+  "role": {
+   "en": "Vice rector, Professor USEM",
+   "ru": "Проректор, профессор USEM",
+   "ro": "Prorector, profesor USEM"
+  },
+  "img": "academy-2025/22.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "catan",
+  "name": {
+   "en": "Prof. Dr. Petru Catan",
+   "ru": "Проф., д-р Petru Catan",
+   "ro": "Prof. dr. Petru Catan"
+  },
+  "role": {
+   "en": "Vice-Rector, Professor USEM",
+   "ru": "Проректор, профессор USEM",
+   "ro": "Prorector, profesor USEM"
+  },
+  "img": "academy-2025/12.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "burian",
+  "name": {
+   "en": "Prof. Dr. Alexandru Burian",
+   "ru": "Проф., д-р Alexandru Burian",
+   "ro": "Prof. dr. Alexandru Burian"
+  },
+  "role": {
+   "en": "International Law Association of the Republic of Moldova",
+   "ru": "Ассоциация международного права Республики Молдова",
+   "ro": "Asociația de Drept Internațional din Republica Moldova"
+  },
+  "img": "academy-2025/13.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "zaharie",
+  "name": {
+   "en": "Prof. Dr. Serghei Zaharie",
+   "ru": "Проф., д-р Serghei Zaharie",
+   "ro": "Prof. dr. Serghei Zaharie"
+  },
+  "role": {
+   "en": "Rector of the Comrat State University of Moldova",
+   "ru": "Ректор Комратского государственного университета, Молдова",
+   "ro": "Rectorul Universității de Stat din Comrat"
+  },
+  "img": "academy-2025/14.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "teosa",
+  "name": {
+   "en": "Prof. Dr. Valentina Teosa",
+   "ru": "Проф., д-р Valentina Teosa",
+   "ro": "Prof. dr. Valentina Teosa"
+  },
+  "role": {
+   "en": "Moldova State University",
+   "ru": "Молдавский государственный университет",
+   "ro": "Universitatea de Stat din Moldova"
+  },
+  "img": "academy-2025/15.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "lisenco",
+  "name": {
+   "en": "Prof. Dr. Vlada Lisenco",
+   "ru": "Проф., д-р Vlada Lisenco",
+   "ro": "Prof. dr. Vlada Lisenco"
+  },
+  "role": {
+   "en": "Professor, Tiraspol Shevchenko University",
+   "ru": "Профессор, Тираспольский университет им. Шевченко",
+   "ro": "Profesor, Universitatea „T. Șevcenko” din Tiraspol"
+  },
+  "img": "academy-2025/16.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "shchukina",
+  "name": {
+   "en": "Prof. Dr. Natalia Shchukina",
+   "ru": "Проф., д-р Natalia Shchukina",
+   "ro": "Prof. dr. Natalia Shchukina"
+  },
+  "role": {
+   "en": "Professor, Tiraspol Shevchenko University",
+   "ru": "Профессор, Тираспольский университет им. Шевченко",
+   "ro": "Profesor, Universitatea „T. Șevcenko” din Tiraspol"
+  },
+  "img": "academy-2025/17.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "cîrhană",
+  "name": {
+   "en": "Mr. Vitalie Cîrhană",
+   "ru": "Г-н Vitalie Cîrhană",
+   "ro": "Dl Vitalie Cîrhană"
+  },
+  "role": {
+   "en": "Director, MilleniuM Training and Development Institute",
+   "ru": "Директор, Институт обучения и развития MilleniuM",
+   "ro": "Director, Institutul de Instruire și Dezvoltare MilleniuM"
+  },
+  "img": "academy-2025/18.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "kovalchuk",
+  "name": {
+   "en": "Ms. Anna Kovalchuk",
+   "ru": "Г-жа Anna Kovalchuk",
+   "ro": "Dna Anna Kovalchuk"
+  },
+  "role": {
+   "en": "Project Assistant, National Youth Council of Moldova (CNTM)",
+   "ru": "Помощник проекта, Национальный совет молодёжи Молдовы (CNTM)",
+   "ro": "Asistentă de proiect, Consiliul Național al Tineretului din Moldova (CNTM)"
+  },
+  "img": "academy-2025/21-1.png",
+  "years": [
+   2025,
+   2023
+  ],
+  "roleByYear": {
+   "2023": {
+    "ru": "Помощник проекта, Национальный совет молодёжи Молдовы",
+    "en": "Project Assistant, National Youth Council of Moldova",
+    "ro": "Asistentă de proiect, Consiliul Național al Tineretului din Moldova"
+   }
+  }
+ },
+ {
+  "key": "alexei",
+  "name": {
+   "en": "Mr. Solovtsov Alexei",
+   "ru": "Г-н Solovtsov Alexei",
+   "ro": "Dl Solovtsov Alexei"
+  },
+  "role": {
+   "en": "Association of Digital Transformations, Tiraspol",
+   "ru": "Ассоциация цифровых трансформаций, Тирасполь",
+   "ro": "Asociația Transformărilor Digitale, Tiraspol"
+  },
+  "img": "academy-2025/23.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "emelianova",
+  "name": {
+   "en": "Ms. Zinaida Emelianova",
+   "ru": "Г-жа Zinaida Emelianova",
+   "ro": "Dna Zinaida Emelianova"
+  },
+  "role": {
+   "en": "Agency for Innovation and Development, Tiraspol",
+   "ru": "Агентство инноваций и развития, Тирасполь",
+   "ro": "Agenția pentru Inovare și Dezvoltare, Tiraspol"
+  },
+  "img": "academy-2025/27.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "benedetti",
+  "name": {
+   "en": "Mr. Paolo Benedetti",
+   "ru": "Г-н Paolo Benedetti",
+   "ro": "Dl Paolo Benedetti"
+  },
+  "role": {
+   "en": "Business Analytic, CEO Benedetti Consulting",
+   "ru": "Бизнес-аналитик, CEO Benedetti Consulting",
+   "ro": "Analist de business, CEO Benedetti Consulting"
+  },
+  "img": "academy-2025/7.png",
+  "years": [
+   2025,
+   2023
+  ],
+  "roleByYear": {
+   "2023": {
+    "ru": "Бизнес-аналитик, Ataieu International",
+    "en": "Business Analytic, Ataieu International",
+    "ro": "Analist de business, Ataieu International"
+   }
+  }
+ },
+ {
+  "key": "dymchiuk",
+  "name": {
+   "en": "Ms. Ecaterina Dymchiuk",
+   "ru": "Г-жа Ecaterina Dymchiuk",
+   "ro": "Dna Ecaterina Dymchiuk"
+  },
+  "role": {
+   "en": "Open Education Academy, Tiraspol",
+   "ru": "Open Education Academy, Тирасполь",
+   "ro": "Open Education Academy, Tiraspol"
+  },
+  "img": "academy-2025/28.png",
+  "years": [
+   2025,
+   2023
+  ]
+ },
+ {
+  "key": "oruc",
+  "name": {
+   "en": "Ms. Yesim Oruc",
+   "ru": "Г-жа Yesim Oruc",
+   "ro": "Dna Yesim Oruc"
+  },
+  "role": {
+   "en": "UN Resident Coordinator",
+   "ru": "Координатор-резидент ООН",
+   "ro": "Coordonatoare Rezidentă ONU"
+  },
+  "img": "academy-2025/17.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "andries",
+  "name": {
+   "en": "Ms. Svetlana Andries",
+   "ru": "Г-жа Svetlana Andries",
+   "ro": "Dna Svetlana Andries"
+  },
+  "role": {
+   "en": "Deputy Country Representative, UN Women, Moldova",
+   "ru": "Заместитель представителя в стране, ООН-женщины, Молдова",
+   "ro": "Reprezentantă adjunctă de țară, ONU Femei, Moldova"
+  },
+  "img": "academy-2025/31.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "heuvel",
+  "name": {
+   "en": "Commander Ella van den Heuvel",
+   "ru": "Командор Ella van den Heuvel",
+   "ro": "Comandor Ella van den Heuvel"
+  },
+  "role": {
+   "en": "Military gender expert, Dutch Armed Forces",
+   "ru": "Военный эксперт по гендерным вопросам, Вооружённые силы Нидерландов",
+   "ro": "Expertă militară în probleme de gen, Forțele Armate Olandeze"
+  },
+  "img": "academy-2025/18.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "jeanty",
+  "name": {
+   "en": "Mr. Walter Jeanty",
+   "ru": "Г-н Walter Jeanty",
+   "ro": "Dl Walter Jeanty"
+  },
+  "role": {
+   "en": "Head of ICRC Mission to Moldova",
+   "ru": "Глава миссии МККК в Молдове",
+   "ro": "Șeful Misiunii CICR în Moldova"
+  },
+  "img": "academy-2025/27.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "leuca",
+  "name": {
+   "en": "Mr. Gheorghe Leuca",
+   "ru": "Г-н Gheorghe Leuca",
+   "ro": "Dl Gheorghe Leuca"
+  },
+  "role": {
+   "en": "Ambassador, Permanent Representative of the Republic of Moldova to the UN, MFAEI",
+   "ru": "Посол, Постоянный представитель Республики Молдова при ООН, МИДЕИ",
+   "ro": "Ambasador, Reprezentant permanent al Republicii Moldova la ONU, MAEIE"
+  },
+  "img": "academy-2025/4.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "venturi",
+  "name": {
+   "en": "Mr. Bernardo Venturi",
+   "ru": "Г-н Bernardo Venturi",
+   "ro": "Dl Bernardo Venturi"
+  },
+  "role": {
+   "en": "PhD, Italy, Head of Research and Policy, Agency for Peacebuilding",
+   "ru": "PhD, Италия, руководитель отдела исследований и политики, Agency for Peacebuilding",
+   "ro": "PhD, Italia, șef cercetare și politici, Agency for Peacebuilding"
+  },
+  "img": "academy-2025/6-1.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "mclauchlan",
+  "name": {
+   "en": "Ms. Judithanne Scourfield McLauchlan",
+   "ru": "Г-жа Judithanne Scourfield McLauchlan",
+   "ro": "Dna Judithanne Scourfield McLauchlan"
+  },
+  "role": {
+   "en": "Director, Center for Civic Engagement, Associate Professor of Political Science, USF",
+   "ru": "Директор Центра гражданской вовлечённости, доцент политологии, USF",
+   "ro": "Directoare a Centrului pentru implicare civică, conferențiară de științe politice, USF"
+  },
+  "img": "academy-2025/20.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "seitz",
+  "name": {
+   "en": "Ms. Elena Seitz",
+   "ru": "Г-жа Elena Seitz",
+   "ro": "Dna Elena Seitz"
+  },
+  "role": {
+   "en": "USA, Program Director, International Cultural Educational Association",
+   "ru": "США, директор программ, International Cultural Educational Association",
+   "ro": "SUA, director de programe, International Cultural Educational Association"
+  },
+  "img": "academy-2025/10-1.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "genova",
+  "name": {
+   "en": "Prof. Dr. Svetlana Genova",
+   "ru": "Проф., д-р Svetlana Genova",
+   "ro": "Prof. dr. Svetlana Genova"
+  },
+  "role": {
+   "en": "Vice-Rector Comrat State University",
+   "ru": "Проректор Комратского государственного университета",
+   "ro": "Prorectoare a Universității de Stat din Comrat"
+  },
+  "img": "academy-2025/30.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "curaxina",
+  "name": {
+   "en": "Ms. Svetlana Curaxina",
+   "ru": "Г-жа Svetlana Curaxina",
+   "ro": "Dna Svetlana Curaxina"
+  },
+  "role": {
+   "en": "PhD, Associate professor Comrat University",
+   "ru": "PhD, доцент Комратского университета",
+   "ro": "PhD, conferențiar universitar, Universitatea din Comrat"
+  },
+  "img": "academy-2025/curaxina.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "ciumacenco",
+  "name": {
+   "en": "Ms. Valentina Ciumacenco",
+   "ru": "Г-жа Valentina Ciumacenco",
+   "ro": "Dna Valentina Ciumacenco"
+  },
+  "role": {
+   "en": "PhD, Vice Rector for International Relations at Free International University of Moldova",
+   "ru": "PhD, проректор по международным связям, Свободный международный университет Молдовы",
+   "ro": "PhD, prorector pentru relații internaționale, Universitatea Liberă Internațională din Moldova"
+  },
+  "img": "academy-2025/23-1.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "mirza",
+  "name": {
+   "en": "Mr. Serghei Mirza",
+   "ru": "Г-н Serghei Mirza",
+   "ro": "Dl Serghei Mirza"
+  },
+  "role": {
+   "en": "Architect and founder of the town of Kozy",
+   "ru": "Архитектор, основатель города Козы",
+   "ro": "Arhitect, fondatorul orașului Kozy"
+  },
+  "img": "academy-2025/28.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "tkachenko",
+  "name": {
+   "en": "Mr. Serghey Tkachenko",
+   "ru": "Г-н Serghey Tkachenko",
+   "ro": "Dl Serghey Tkachenko"
+  },
+  "role": {
+   "en": "Expert, CEO Datalinie SRL",
+   "ru": "Эксперт, генеральный директор Datalinie SRL",
+   "ro": "Expert, CEO Datalinie SRL"
+  },
+  "img": "academy-2025/19-1.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "bugaian",
+  "name": {
+   "en": "Ms. Carolina Bugaian",
+   "ru": "Г-жа Carolina Bugaian",
+   "ro": "Dna Carolina Bugaian"
+  },
+  "role": {
+   "en": "CG Corp Global",
+   "ru": "CG Corp Global",
+   "ro": "CG Corp Global"
+  },
+  "img": "academy-2025/20.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "ciobanu",
+  "name": {
+   "en": "Ms. Dorina Ciobanu",
+   "ru": "Г-жа Dorina Ciobanu",
+   "ro": "Dna Dorina Ciobanu"
+  },
+  "role": {
+   "en": "CEO, GLIA Impact Hub",
+   "ru": "CEO, GLIA Impact Hub",
+   "ro": "CEO, GLIA Impact Hub"
+  },
+  "img": "academy-2025/24.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "paladiciuc",
+  "name": {
+   "en": "Ms. Oxana Paladiciuc",
+   "ru": "Г-жа Oxana Paladiciuc",
+   "ro": "Dna Oxana Paladiciuc"
+  },
+  "role": {
+   "en": "Director, Fintech Hub",
+   "ru": "Директор Fintech Hub",
+   "ro": "Directoare Fintech Hub"
+  },
+  "img": "academy-2025/29.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "melniciuc",
+  "name": {
+   "en": "Ms. Olga Melniciuc",
+   "ru": "Г-жа Olga Melniciuc",
+   "ro": "Dna Olga Melniciuc"
+  },
+  "role": {
+   "en": "Executive Director, Startup Moldova",
+   "ru": "Исполнительный директор, Startup Moldova",
+   "ro": "Director executiv, Startup Moldova"
+  },
+  "img": "academy-2025/22-1.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "chirita",
+  "name": {
+   "en": "Ms. Ana Chirita",
+   "ru": "Г-жа Ana Chirita",
+   "ro": "Dna Ana Chirita"
+  },
+  "role": {
+   "en": "ATIC, Strategic Projects Director",
+   "ru": "ATIC, директор по стратегическим проектам",
+   "ro": "ATIC, director proiecte strategice"
+  },
+  "img": "academy-2025/21.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "nemciuc",
+  "name": {
+   "en": "Ms. Mary Nemciuc",
+   "ru": "Г-жа Mary Nemciuc",
+   "ro": "Dna Mary Nemciuc"
+  },
+  "role": {
+   "en": "Founder, CEO Technovator",
+   "ru": "Основатель, CEO Technovator",
+   "ro": "Fondator, CEO Technovator"
+  },
+  "img": "academy-2025/23.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "mitioglo",
+  "name": {
+   "en": "Ms. Liubov Mitioglo",
+   "ru": "Г-жа Liubov Mitioglo",
+   "ro": "Dna Liubov Mitioglo"
+  },
+  "role": {
+   "en": "Manager, Tekwill Comrat",
+   "ru": "Менеджер, Tekwill Комрат",
+   "ro": "Manager, Tekwill Comrat"
+  },
+  "img": "academy-2025/mitioglo.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "levitskaia",
+  "name": {
+   "en": "Ms. Olga Levitskaia",
+   "ru": "Г-жа Olga Levitskaia",
+   "ro": "Dna Olga Levitskaia"
+  },
+  "role": {
+   "en": "President, NGO Scenario",
+   "ru": "Президент НКО «Сценарий»",
+   "ro": "Președinte, ONG „Scenario”"
+  },
+  "img": "academy-2025/25.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "ermolenco",
+  "name": {
+   "en": "Ms. Alexandra Ermolenco",
+   "ru": "Г-жа Alexandra Ermolenco",
+   "ro": "Dna Alexandra Ermolenco"
+  },
+  "role": {
+   "en": "NGO Progen, Director of programs",
+   "ru": "НКО Progen, директор по программам",
+   "ro": "ONG Progen, director de programe"
+  },
+  "img": "academy-2025/25.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "olga",
+  "name": {
+   "en": "Ms. Kiseliova Olga",
+   "ru": "Г-жа Kiseliova Olga",
+   "ro": "Dna Kiseliova Olga"
+  },
+  "role": {
+   "en": "Director, Association of Creative Industries, Tiraspol",
+   "ru": "Директор Ассоциации креативных индустрий, Тирасполь",
+   "ro": "Director al Asociației Industriilor Creative, Tiraspol"
+  },
+  "img": "academy-2025/26.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "sirotenco",
+  "name": {
+   "en": "Mr. Artiom Sirotenco",
+   "ru": "Г-н Artiom Sirotenco",
+   "ro": "Dl Artiom Sirotenco"
+  },
+  "role": {
+   "en": "Founder of HYPE CGI. CGI AI Expert",
+   "ru": "Основатель HYPE CGI, эксперт по CGI и ИИ",
+   "ro": "Fondator HYPE CGI, expert CGI și AI"
+  },
+  "img": "academy-2025/sirotenco.png",
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "recevic",
+  "name": {
+   "en": "Ms. Verica Recevic",
+   "ru": "Г-жа Verica Recevic",
+   "ro": "Dna Verica Recevic"
+  },
+  "role": {
+   "en": "Response Manager, Danish Refugee Council (DRC), Moldova",
+   "ru": "Менеджер по реагированию, Датский совет по делам беженцев (DRC), Молдова",
+   "ro": "Manager de răspuns, Consiliul Danez pentru Refugiați (DRC), Moldova"
+  },
+  "img": "academy-2023/08-3.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "watanabe",
+  "name": {
+   "en": "Ms. Megumi Watanabe",
+   "ru": "Г-жа Megumi Watanabe",
+   "ro": "Dna Megumi Watanabe"
+  },
+  "role": {
+   "en": "Programme Specialist, UNESCO Regional Bureau for Science and Culture in Europe, Italy",
+   "ru": "Специалист по программам, Региональное бюро ЮНЕСКО по науке и культуре в Европе, Италия",
+   "ro": "Specialistă de program, Biroul Regional UNESCO pentru Știință și Cultură în Europa, Italia"
+  },
+  "img": "academy-2023/08-4.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "sustersic",
+  "name": {
+   "en": "Mr. Mikhail Silvestro Sustersic",
+   "ru": "Г-н Mikhail Silvestro Sustersic",
+   "ro": "Dl Mikhail Silvestro Sustersic"
+  },
+  "role": {
+   "en": "Peacebuilding expert, Director of the Agency for Peacebuilding",
+   "ru": "Эксперт по миростроительству, директор Agency for Peacebuilding",
+   "ro": "Expert în consolidarea păcii, director al Agency for Peacebuilding"
+  },
+  "img": "academy-2023/08-6.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "stratulat",
+  "name": {
+   "en": "Mr. Alexandru Stratulat",
+   "ru": "Г-н Alexandru Stratulat",
+   "ro": "Dl Alexandru Stratulat"
+  },
+  "role": {
+   "en": "Programme Manager, One UN Joint Action “Cross-river support for Human Rights”, UN Moldova",
+   "ru": "Менеджер программы One UN «Совместные действия: трансграничная поддержка прав человека», ООН Молдова",
+   "ro": "Manager de program One UN „Acțiune comună: sprijin transfrontalier pentru drepturile omului”, ONU Moldova"
+  },
+  "img": "academy-2023/08-7.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "villanova",
+  "name": {
+   "en": "Mr. Gino Villanova",
+   "ru": "Г-н Gino Villanova",
+   "ro": "Dl Gino Villanova"
+  },
+  "role": {
+   "en": "CEO Ataieu International",
+   "ru": "CEO, Ataieu International",
+   "ro": "CEO, Ataieu International"
+  },
+  "img": "academy-2023/09-15-1.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "chiciuc",
+  "name": {
+   "en": "Mr. Andrei Chiciuc",
+   "ru": "Г-н Andrei Chiciuc",
+   "ro": "Dl Andrei Chiciuc"
+  },
+  "role": {
+   "en": "President of ANACEC, Moldova",
+   "ru": "Президент ANACEC, Молдова",
+   "ro": "Președinte ANACEC, Moldova"
+  },
+  "img": "academy-2023/08-10.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "carolina",
+  "name": {
+   "en": "Prof. Dr. Catan Carolina",
+   "ru": "Проф., д-р Catan Carolina",
+   "ro": "Prof. dr. Catan Carolina"
+  },
+  "role": {
+   "en": "University Lecturer, USEM",
+   "ru": "Преподаватель университета, USEM",
+   "ro": "Lector universitar, USEM"
+  },
+  "img": "academy-2023/08-15.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "cerbusca",
+  "name": {
+   "en": "Ms. Viorica Cerbusca",
+   "ru": "Г-жа Viorica Cerbusca",
+   "ro": "Dna Viorica Cerbusca"
+  },
+  "role": {
+   "en": "ARTCOR Director",
+   "ru": "Директор ARTCOR",
+   "ro": "Director ARTCOR"
+  },
+  "img": "academy-2023/08-17.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "cortac",
+  "name": {
+   "en": "Ms. Olga Cortac",
+   "ru": "Г-жа Olga Cortac",
+   "ro": "Dna Olga Cortac"
+  },
+  "role": {
+   "en": "Board Member in The Moldova Project",
+   "ru": "Член правления The Moldova Project",
+   "ro": "Membră a consiliului, The Moldova Project"
+  },
+  "img": "academy-2023/08-19.png",
+  "years": [
+   2023
+  ]
+ },
+ {
+  "key": "hotineanu",
+  "name": {
+   "en": "Mr. Dorin Hotineanu",
+   "ru": "Г-н Dorin Hotineanu",
+   "ro": "Dl Dorin Hotineanu"
+  },
+  "role": {
+   "en": "Association of Young Diplomats of Moldova",
+   "ru": "Ассоциация молодых дипломатов Молдовы",
+   "ro": "Asociația Tinerilor Diplomați din Moldova"
+  },
+  "img": null,
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "cazacu",
+  "name": {
+   "ru": "Г-жа Adriana Cazacu",
+   "en": "Ms. Adriana Cazacu",
+   "ro": "Dna Adriana Cazacu"
+  },
+  "role": {
+   "ru": "Доктор филологии, государственный секретарь Министерства образования и исследований",
+   "en": "Doctor of Philology, Secretary of State, Ministry of Education and Research",
+   "ro": "Doctor în filologie, secretar de stat, Ministerul Educației și Cercetării"
+  },
+  "img": null,
+  "years": [
+   2025
+  ]
+ },
+ {
+  "key": "cepoi",
+  "name": {
+   "ru": "Г-жа Corina Cepoi",
+   "en": "Ms. Corina Cepoi",
+   "ro": "Dna Corina Cepoi"
+  },
+  "role": {
+   "ru": "Руководитель проекта, Internews Moldova",
+   "en": "Chief of Party, Internews Moldova",
+   "ro": "Șef de proiect, Internews Moldova"
+  },
+  "img": null,
+  "years": [
+   2025
+  ]
+ }
+]
