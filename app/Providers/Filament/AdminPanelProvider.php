@@ -10,6 +10,8 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\HtmlString;
 use Filament\Widgets\AccountWidget;
 use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -28,9 +30,13 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->brandName('INSPIRE')
+            ->favicon(asset('academy/img/cropped-group-703-192x192.png'))
+            ->font('Montserrat')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#3a7fc1'),
             ])
+            ->renderHook(PanelsRenderHook::HEAD_END, fn (): HtmlString => new HtmlString(view('filament.motion')->render()))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

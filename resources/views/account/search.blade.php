@@ -24,7 +24,7 @@
             <button type="submit"
                     class="inline-flex h-12 shrink-0 items-center gap-2 rounded-xl px-6 text-sm font-semibold
                            text-white transition hover:opacity-90 active:scale-95"
-                    style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 4px 12px rgba(124,58,237,.3)">
+                    style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 12px rgba(58,127,193,.3)">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
@@ -39,7 +39,7 @@
     {{-- Initial state --}}
     <div class="rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-sm">
         <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl"
-             style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+             style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
             <svg class="h-6 w-6 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                       d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
@@ -96,10 +96,10 @@
                 <img src="{{ Storage::url($person->avatar_path) }}"
                      alt="{{ $person->full_name }}"
                      class="h-14 w-14 rounded-2xl object-cover"
-                     style="box-shadow:0 2px 8px rgba(124,58,237,.2)">
+                     style="box-shadow:0 2px 8px rgba(58,127,193,.2)">
                 @else
                 <div class="flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold text-white"
-                     style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 2px 8px rgba(124,58,237,.2)">
+                     style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.2)">
                     {{ mb_strtoupper(mb_substr($person->full_name ?? '?', 0, 1)) }}
                 </div>
                 @endif

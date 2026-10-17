@@ -8,10 +8,10 @@
     <meta property="og:title" content="INSPIRE Community">
     <meta property="og:description" content="Платформа партнёрства и роста для лидеров Молдовы">
     <meta property="og:type" content="website">
-    <meta name="theme-color" content="#7c3aed">
+    <meta name="theme-color" content="#3a7fc1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -19,20 +19,20 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-                        sans:  ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Montserrat', 'Georgia', 'serif'],
+                        sans:  ['Montserrat', 'system-ui', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50:  '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
+                            50:  '#f3f8fd',
+                            100: '#e8f1fb',
+                            200: '#d6e6f8',
+                            400: '#6fb0e8',
+                            500: '#5a9ae0',
+                            600: '#3a7fc1',
+                            700: '#1f4f86',
                         },
-                        ink: { DEFAULT: '#1a1225' }
+                        ink: { DEFAULT: '#14243b' }
                     }
                 }
             }
@@ -45,25 +45,25 @@
 
         * { box-sizing: border-box; }
         html { overflow-x: hidden; }
-        body { font-family: 'Inter', sans-serif; background: #faf9fc; color: #1a1225; overflow-x: hidden; }
-        h1,h2,h3,.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+        body { font-family: 'Montserrat', sans-serif; background: #f5f8fc; color: #14243b; overflow-x: hidden; }
+        h1,h2,h3,.serif { font-family: 'Montserrat', system-ui, sans-serif; }
 
         .grad-text {
-            background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 60%, #818cf8 100%);
+            background: linear-gradient(135deg, #3a7fc1 0%, #17406f 60%, #6fb0e8 100%);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .grad-bg   { background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); }
-        .grad-dark { background: linear-gradient(160deg, #1a0533 0%, #0f0f2e 100%); }
+        .grad-bg   { background: linear-gradient(135deg, #3a7fc1 0%, #17406f 100%); }
+        .grad-dark { background: linear-gradient(160deg, #0f2a4a 0%, #0b1b33 100%); }
 
         .glass {
             background: rgba(255,255,255,0.72);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
-            border: 1px solid rgba(124,58,237,0.12);
-            box-shadow: 0 2px 32px rgba(124,58,237,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid rgba(58,127,193,0.12);
+            box-shadow: 0 2px 32px rgba(58,127,193,0.06), 0 1px 2px rgba(0,0,0,0.04);
         }
         .glass-dark {
-            background: rgba(26,18,37,0.55);
+            background: rgba(20,36,59,0.55);
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             border: 1px solid rgba(167,139,250,0.18);
@@ -71,11 +71,37 @@
         .glow-border { position: relative; }
         .glow-border::before {
             content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
-            background: linear-gradient(135deg, rgba(124,58,237,.4), rgba(79,70,229,.2), rgba(124,58,237,.4));
+            background: linear-gradient(135deg, rgba(58,127,193,.4), rgba(23,64,111,.2), rgba(58,127,193,.4));
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
         }
         .orb { border-radius: 50%; filter: blur(80px); opacity: 0.35; pointer-events: none; }
+
+        
+        /* ── Motion: drifting background blobs + flowing gradients ── */
+        .mo-host { position: relative; isolation: isolate; }
+        .mo-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: -1; }
+        .mo-bg i { position: absolute; border-radius: 50%; will-change: transform; }
+        .mo-bg i:nth-child(1) { width: 440px; height: 440px; background: radial-gradient(circle, rgba(111,176,232,.75) 0%, rgba(111,176,232,0) 68%); top: -130px; left: -110px; animation: mo-d1 15s ease-in-out infinite; }
+        .mo-bg i:nth-child(2) { width: 360px; height: 360px; background: radial-gradient(circle, rgba(233,162,59,.4) 0%, rgba(233,162,59,0) 68%); bottom: -150px; right: 8%; animation: mo-d2 18s ease-in-out infinite; }
+        .mo-bg i:nth-child(3) { width: 300px; height: 300px; background: radial-gradient(circle, rgba(58,127,193,.6) 0%, rgba(58,127,193,0) 68%); top: 30%; right: -90px; animation: mo-d1 21s ease-in-out infinite reverse; }
+        @keyframes mo-d1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(70px,40px) scale(1.18); } }
+        @keyframes mo-d2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-80px,-30px) scale(1.22); } }
+        @keyframes mo-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        @keyframes mo-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        .grad-dark.mo-host { background: linear-gradient(160deg,#0f2a4a 0%,#17406f 55%,#0b1b33 100%); }
+        .fx-paused .mo-bg i { animation-play-state: paused !important; }
+        .fx-lite .mo-canvas { display: none; }
+        .fx-lite .mo-bg i { animation: none; }
+        .fx-lite .glass, .fx-lite .glass-dark, .fx-lite #navbar, .fx-lite #navbar.scrolled { backdrop-filter: none; -webkit-backdrop-filter: none; }
+        @media (prefers-reduced-motion: reduce) { .mo-bg i, .grad-dark.mo-host { animation: none !important; } }
+        /* ── FX pack ── */
+        .fx-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: linear-gradient(90deg,#3a7fc1,#e9a23b); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none; }
+        .mo-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+        a[class*="rounded-full"], button[class*="rounded-full"], a[class*="rounded-xl"], button[class*="rounded-xl"] { position: relative; overflow: hidden; }
+        a[class*="rounded-full"]::after, button[class*="rounded-full"]::after { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%); transform: translateX(-130%); pointer-events: none; }
+        a[class*="rounded-full"]:hover::after, button[class*="rounded-full"]:hover::after { transform: translateX(130%); transition: transform .7s ease; }
+        @media (prefers-reduced-motion: reduce) { .fx-progress, .mo-canvas { display: none; } a[class*="rounded-full"]::after, button[class*="rounded-full"]::after { display: none; } }
 
         .reveal       { opacity: 0; transform: translateY(36px);  transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
         .reveal-left  { opacity: 0; transform: translateX(-40px); transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
@@ -84,17 +110,17 @@
         .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; }
         .delay-3 { transition-delay: .3s; } .delay-4 { transition-delay: .4s; }
 
-        #navbar { background: rgba(250,249,252,0.65); backdrop-filter: blur(10px); transition: background .3s, box-shadow .3s, backdrop-filter .3s; }
-        #navbar.scrolled { background: rgba(250,249,252,0.96); box-shadow: 0 1px 0 rgba(124,58,237,0.1); backdrop-filter: blur(24px); }
+        #navbar { background: rgba(245,248,252,0.65); backdrop-filter: blur(10px); transition: background .3s, box-shadow .3s, backdrop-filter .3s; }
+        #navbar.scrolled { background: rgba(245,248,252,0.96); box-shadow: 0 1px 0 rgba(58,127,193,0.1); backdrop-filter: blur(24px); }
 
         details summary::-webkit-details-marker { display: none; }
         details[open] .chevron { transform: rotate(180deg); }
         .chevron { transition: transform .3s ease; }
-        ::selection { background: rgba(124,58,237,.18); }
+        ::selection { background: rgba(58,127,193,.18); }
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #f5f3ff; }
-        ::-webkit-scrollbar-thumb { background: rgba(124,58,237,.3); border-radius: 3px; }
-        :focus-visible { outline: 2px solid #7c3aed; outline-offset: 3px; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #f3f8fd; }
+        ::-webkit-scrollbar-thumb { background: rgba(58,127,193,.3); border-radius: 3px; }
+        :focus-visible { outline: 2px solid #3a7fc1; outline-offset: 3px; border-radius: 4px; }
 
         /* Hero CSS animations — above-fold content, no JS dependency */
         @keyframes heroFadeUp {
@@ -123,8 +149,10 @@
             document.documentElement.lang = l;
         })();
     </script>
+<script>(function(){try{var d=document.documentElement,n=navigator,c=n.connection||{};var low=(n.hardwareConcurrency||8)<=4||(n.deviceMemory||8)<=4||c.saveData||matchMedia('(prefers-reduced-data:reduce)').matches;var small=matchMedia('(max-width:899px),(hover:none)').matches;if(low||small)d.classList.add('fx-lite')}catch(e){}})()</script>
 </head>
 <body class="antialiased">
+<div class="fx-progress" aria-hidden="true"></div>
 
 {{-- NAVBAR --}}
 <nav id="navbar" class="fixed top-0 inset-x-0 z-50 px-4">
@@ -148,6 +176,9 @@
                     <span data-lang="ro">Valori</span>
                 </a>
                 <a href="#faq" class="hover:text-brand-600 transition">FAQ</a>
+                <a href="{{ url('academy/ru') }}/" data-lang="ru" class="hover:text-brand-600 transition font-medium text-brand-600">Академия 2025</a>
+                <a href="{{ url('academy') }}/" data-lang="en" class="hover:text-brand-600 transition font-medium text-brand-600">Academy 2025</a>
+                <a href="{{ url('academy/ro') }}/" data-lang="ro" class="hover:text-brand-600 transition font-medium text-brand-600">Academia 2025</a>
             </div>
             <div class="flex items-center gap-0.5 bg-white/80 border border-gray-200 rounded-full p-0.5 shadow-sm">
                 @foreach(['ru','en','ro'] as $l)
@@ -180,6 +211,9 @@
             </a>
             <a href="#network" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">INSPIRE Network</a>
             <a href="#faq" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition">FAQ</a>
+            <a href="{{ url('academy/ru') }}/" data-lang="ru" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-semibold text-brand-600 hover:bg-brand-50 transition">Академия 2025</a>
+            <a href="{{ url('academy') }}/" data-lang="en" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-semibold text-brand-600 hover:bg-brand-50 transition">Academy 2025</a>
+            <a href="{{ url('academy/ro') }}/" data-lang="ro" class="mobile-nav-link flex items-center px-4 py-3 rounded-xl text-sm font-semibold text-brand-600 hover:bg-brand-50 transition">Academia 2025</a>
             <div class="border-t border-gray-100 mt-3 pt-4">
                 <a href="{{ route('account.login') }}" target="_blank"
                    class="flex items-center justify-center gap-2.5 grad-bg text-white font-semibold text-sm px-5 py-3.5 rounded-full shadow-md w-full">
@@ -192,10 +226,11 @@
 </nav>
 
 {{-- HERO --}}
-<section class="relative min-h-screen flex items-center overflow-hidden pt-16">
-    <div class="absolute inset-0 -z-10" style="background-image:radial-gradient(rgba(124,58,237,.06) 1.5px,transparent 1.5px);background-size:32px 32px;"></div>
-    <div class="orb absolute -top-32 -right-32 w-[600px] h-[600px]" style="background:radial-gradient(#a78bfa,#4f46e5);"></div>
-    <div class="orb absolute bottom-0 left-1/4 w-[400px] h-[400px]" style="background:radial-gradient(#7c3aed,transparent);opacity:.15;"></div>
+<section class="mo-host relative min-h-screen flex items-center overflow-hidden pt-16">
+    <div class="mo-bg" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="absolute inset-0 -z-10" style="background-image:radial-gradient(rgba(58,127,193,.06) 1.5px,transparent 1.5px);background-size:32px 32px;"></div>
+    <div class="orb absolute -top-32 -right-32 w-[600px] h-[600px]" style="background:radial-gradient(#6fb0e8,#17406f);"></div>
+    <div class="orb absolute bottom-0 left-1/4 w-[400px] h-[400px]" style="background:radial-gradient(#3a7fc1,transparent);opacity:.15;"></div>
 
     <div class="max-w-6xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-16 items-center">
         <div>
@@ -242,9 +277,9 @@
                     </div>
                     <span class="serif text-2xl font-semibold text-ink">INSPIRE</span>
                     <div class="flex gap-1.5">
-                        <span class="w-2 h-2 rounded-full" style="background:#7c3aed"></span>
-                        <span class="w-2 h-2 rounded-full" style="background:#4f46e5"></span>
-                        <span class="w-2 h-2 rounded-full" style="background:#818cf8"></span>
+                        <span class="w-2 h-2 rounded-full" style="background:#3a7fc1"></span>
+                        <span class="w-2 h-2 rounded-full" style="background:#17406f"></span>
+                        <span class="w-2 h-2 rounded-full" style="background:#6fb0e8"></span>
                     </div>
                 </div>
                 <div class="absolute top-6 left-1/2 -translate-x-1/2 w-11 h-11 rounded-xl glass glow-border flex items-center justify-center text-lg shadow-sm">🤝</div>
@@ -351,9 +386,10 @@
 </section>
 
 {{-- STEPS (dark) --}}
-<section class="grad-dark py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-20" id="join">
-    <div class="orb absolute -top-24 right-0 w-[500px] h-[500px]" style="background:radial-gradient(#7c3aed,transparent);opacity:.18;"></div>
-    <div class="orb absolute -bottom-32 left-0 w-[400px] h-[400px]" style="background:radial-gradient(#4f46e5,transparent);opacity:.15;"></div>
+<section class="mo-host grad-dark py-28 px-4 sm:px-6 relative overflow-hidden scroll-mt-20" id="join">
+    <div class="mo-bg" aria-hidden="true"><i></i><i></i><i></i><canvas class="mo-canvas"></canvas></div>
+    <div class="orb absolute -top-24 right-0 w-[500px] h-[500px]" style="background:radial-gradient(#3a7fc1,transparent);opacity:.18;"></div>
+    <div class="orb absolute -bottom-32 left-0 w-[400px] h-[400px]" style="background:radial-gradient(#17406f,transparent);opacity:.15;"></div>
     <div class="max-w-5xl mx-auto relative">
         <div class="text-center mb-16 reveal">
             <p class="text-xs font-semibold uppercase tracking-widest text-brand-400 mb-3">
@@ -653,8 +689,9 @@
 </section>
 
 {{-- CTA BAND --}}
-<section class="py-24 px-4 grad-dark relative overflow-hidden">
-    <div class="orb absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px]" style="background:radial-gradient(#7c3aed,transparent);opacity:.2;"></div>
+<section class="mo-host py-24 px-4 grad-dark relative overflow-hidden">
+    <div class="mo-bg" aria-hidden="true"><i></i><i></i><i></i><canvas class="mo-canvas"></canvas></div>
+    <div class="orb absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px]" style="background:radial-gradient(#3a7fc1,transparent);opacity:.2;"></div>
     <div class="max-w-3xl mx-auto text-center relative reveal">
         <h2 class="serif text-4xl sm:text-5xl font-semibold text-white mb-5 leading-tight">
             <span data-lang="ru">Готовы стать частью сообщества?</span>
@@ -784,6 +821,35 @@
             });
         });
     })();
+</script>
+<script>
+(function(){
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var bar=document.querySelector('.fx-progress'),de=document.documentElement;
+function prog(){bar.style.transform='scaleX('+(de.scrollTop/((de.scrollHeight-de.clientHeight)||1))+')'}
+addEventListener('scroll',prog,{passive:true});prog();
+var stop=de.classList.contains('fx-lite');
+function lite(){de.classList.add('fx-lite');stop=true}
+document.querySelectorAll('.mo-canvas').forEach(function(c){
+if(stop)return;
+var x=c.getContext('2d'),W=0,H=0,P=[],run=false,vis=false,last=0;
+function size(){var r=c.parentNode.getBoundingClientRect();W=r.width;H=r.height;c.width=W;c.height=H;
+var n=Math.round(Math.min(32,W*H/30000));P=[];for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5})}
+function tick(t){if(stop||!vis||document.hidden){run=false;return}requestAnimationFrame(tick);if(t-last<33)return;last=t;x.clearRect(0,0,W,H);
+for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+x.fillStyle='rgba(255,255,255,.75)';x.beginPath();x.arc(p.x,p.y,1.5,0,6.283);x.fill();
+for(var j=i+1;j<P.length;j++){var q=P[j],dx=p.x-q.x,dy=p.y-q.y,d2=dx*dx+dy*dy;
+if(d2<12100){x.strokeStyle='rgba(255,255,255,'+(.2*(1-d2/12100))+')';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}}}
+function go(){if(!run&&vis&&!stop&&!document.hidden){run=true;requestAnimationFrame(tick)}}
+size();
+new IntersectionObserver(function(es){vis=es[0].isIntersecting;go()}).observe(c);
+document.addEventListener('visibilitychange',go);
+var t;addEventListener('resize',function(){clearTimeout(t);t=setTimeout(size,200)});
+});
+var pio=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('fx-paused',!e.isIntersecting)})});
+document.querySelectorAll('.mo-host').forEach(function(el){pio.observe(el)});
+(function(){var n=0,last=performance.now(),slow=0;function w(t){n++;if(t-last>40)slow++;last=t;if(n<100)requestAnimationFrame(w);else if(slow>30)lite()}requestAnimationFrame(w)})();
+})();
 </script>
 </body>
 </html>

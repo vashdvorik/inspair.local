@@ -19,7 +19,7 @@
         ['label' => 'Ожидают',           'value' => $pendingCount,      'color' => 'bg-yellow-50 border-yellow-200','text' => 'text-yellow-700'],
         ['label' => 'Отклонено',         'value' => $rejectedCount,     'color' => 'bg-red-50    border-red-200',   'text' => 'text-red-700'],
         ['label' => 'С профилем',        'value' => $withProfile,       'color' => 'bg-blue-50   border-blue-200',  'text' => 'text-blue-700'],
-        ['label' => 'Возможности',       'value' => $opportunitiesTotal,'color' => 'bg-purple-50 border-purple-200','text' => 'text-purple-700'],
+        ['label' => 'Возможности',       'value' => $opportunitiesTotal,'color' => 'bg-brand-50 border-brand-200','text' => 'text-brand-700'],
     ];
     @endphp
 
@@ -62,7 +62,7 @@
                     <span class="font-semibold text-gray-700">{{ $withEmbedding }} / {{ $approvedCount }} ({{ $embeddingPct }}%)</span>
                 </div>
                 <div class="h-2.5 w-full rounded-full bg-gray-100">
-                    <div class="h-2.5 rounded-full bg-violet-500 transition-all"
+                    <div class="h-2.5 rounded-full bg-brand-500 transition-all"
                          style="width: {{ $embeddingPct }}%"></div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
         $typeConfig = [
             'project' => ['emoji' => '🚀', 'label' => 'Проекты',      'bar' => 'bg-blue-400'],
             'meeting' => ['emoji' => '🤝', 'label' => 'Встречи',       'bar' => 'bg-emerald-400'],
-            'event'   => ['emoji' => '🎉', 'label' => 'Мероприятия',   'bar' => 'bg-purple-400'],
+            'event'   => ['emoji' => '🎉', 'label' => 'Мероприятия',   'bar' => 'bg-brand-400'],
         ];
         $maxOpp = max(array_values($oppByType) ?: [1]);
         @endphp
@@ -171,7 +171,7 @@
             @endphp
             <div class="flex flex-1 flex-col items-center gap-1 group">
                 <span class="text-[10px] font-semibold text-gray-700 opacity-0 group-hover:opacity-100 transition">{{ $cnt }}</span>
-                <div class="w-full rounded-t-md bg-purple-400 transition-all hover:bg-purple-500"
+                <div class="w-full rounded-t-md bg-brand-400 transition-all hover:bg-brand-500"
                      style="height: {{ $hPx }}px"
                      title="{{ $lbl }}: {{ $cnt }}"></div>
                 <span class="text-[10px] text-gray-400 leading-none">{{ $lbl }}</span>

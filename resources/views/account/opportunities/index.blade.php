@@ -13,7 +13,7 @@
         <a href="{{ route('account.opportunities.create') }}"
            class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white
                   transition-all hover:-translate-y-px hover:shadow-md"
-           style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+           style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
@@ -25,7 +25,7 @@
     {{-- Empty state --}}
     <div class="rounded-2xl border border-gray-100 bg-white p-12 text-center shadow-sm">
         <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl"
-             style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+             style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
             <svg class="h-8 w-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -38,7 +38,7 @@
         <a href="{{ route('account.opportunities.create') }}"
            class="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white
                   transition-all hover:-translate-y-px hover:shadow-md"
-           style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+           style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
             Опубликовать первым →
         </a>
     </div>
@@ -52,7 +52,7 @@
             $typeBg  = match($opp->type) {
                 'project' => 'bg-blue-50 text-blue-700',
                 'meeting' => 'bg-emerald-50 text-emerald-700',
-                'event'   => 'bg-purple-50 text-purple-700',
+                'event'   => 'bg-brand-50 text-brand-700',
                 default   => 'bg-gray-50 text-gray-600',
             };
         @endphp
@@ -121,7 +121,7 @@
                          class="h-6 w-6 shrink-0 rounded-full object-cover">
                     @else
                     <div class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
-                         style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+                         style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
                         {{ mb_strtoupper(mb_substr($opp->author?->full_name ?? '?', 0, 1)) }}
                     </div>
                     @endif

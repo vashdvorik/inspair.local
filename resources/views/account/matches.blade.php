@@ -15,7 +15,7 @@
         {{-- Embedding not yet computed --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-10 text-center shadow-sm">
             <div class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl"
-                 style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+                 style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
                 <svg class="h-8 w-8 text-brand-500 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
@@ -29,7 +29,7 @@
             <a href="{{ route('account.profile.edit') }}"
                class="mt-6 inline-flex h-10 items-center gap-2 rounded-xl px-5 text-sm font-semibold text-white
                       transition-all hover:-translate-y-px hover:shadow-md"
-               style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+               style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
                 Заполнить профиль →
             </a>
             @else
@@ -71,10 +71,10 @@
                 <img src="{{ Storage::url($person->avatar_path) }}"
                      alt="{{ $person->full_name }}"
                      class="h-14 w-14 rounded-2xl object-cover"
-                     style="box-shadow:0 2px 8px rgba(124,58,237,.2)">
+                     style="box-shadow:0 2px 8px rgba(58,127,193,.2)">
                 @else
                 <div class="flex h-14 w-14 items-center justify-center rounded-2xl text-lg font-bold text-white"
-                     style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 2px 8px rgba(124,58,237,.2)">
+                     style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.2)">
                     {{ mb_strtoupper(mb_substr($person->full_name ?? '?', 0, 1)) }}
                 </div>
                 @endif

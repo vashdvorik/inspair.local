@@ -108,7 +108,7 @@
             <button type="submit"
                 class="inline-flex h-11 items-center gap-2 rounded-xl px-6 text-sm font-semibold text-white
                        transition-all duration-150 hover:-translate-y-px hover:shadow-lg active:translate-y-0"
-                style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 4px 14px rgba(124,58,237,.3)">
+                style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 14px rgba(58,127,193,.3)">
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>

@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex,nofollow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -16,19 +16,19 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans:  ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+                        sans:  ['Montserrat', 'system-ui', 'sans-serif'],
+                        serif: ['Montserrat', 'Georgia', 'serif'],
                     },
                     colors: {
                         brand: {
-                            50:  '#f5f3ff',
-                            100: '#ede9fe',
-                            200: '#ddd6fe',
-                            300: '#c4b5fd',
-                            400: '#a78bfa',
-                            500: '#8b5cf6',
-                            600: '#7c3aed',
-                            700: '#6d28d9',
+                            50:  '#f3f8fd',
+                            100: '#e8f1fb',
+                            200: '#d6e6f8',
+                            300: '#b6d3f2',
+                            400: '#6fb0e8',
+                            500: '#5a9ae0',
+                            600: '#3a7fc1',
+                            700: '#1f4f86',
                         },
                     },
                 }
@@ -36,12 +36,22 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        :focus-visible { outline: 2px solid #7c3aed; outline-offset: 2px; border-radius: 6px; }
+        body { font-family: 'Montserrat', sans-serif; }
+        :focus-visible { outline: 2px solid #3a7fc1; outline-offset: 2px; border-radius: 6px; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(124,58,237,.2); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(58,127,193,.2); border-radius: 4px; }
         @media (max-width: 1023px) { [x-cloak] { display: none !important; } }
+        /* ── Motion ── */
+        @keyframes mo-in { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+        @keyframes mo-flow { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        main > * > *, main .rounded-2xl { animation: mo-in .55s cubic-bezier(.22,1,.36,1) both; }
+        main > * > *:nth-child(2) { animation-delay: .06s; } main > * > *:nth-child(3) { animation-delay: .12s; } main > * > *:nth-child(4) { animation-delay: .18s; } main > * > *:nth-child(5) { animation-delay: .24s; }
+        main a.rounded-2xl, main a.rounded-xl, main button { transition: transform .2s ease, box-shadow .2s ease; }
+        main a.rounded-2xl:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(31,79,134,.14); }
+        aside a { transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+        aside a:hover { transform: translateX(3px); }
+        @media (prefers-reduced-motion: reduce) { main *, aside a { animation: none !important; transition: none !important; } }
     </style>
     @stack('head')
 </head>
@@ -70,7 +80,7 @@
             {{-- Logo --}}
             <div class="flex shrink-0 items-center gap-3 px-5 pb-5 pt-6">
                 <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
-                      style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 4px 12px rgba(124,58,237,.3)">
+                      style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 12px rgba(58,127,193,.3)">
                     <svg class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
@@ -83,16 +93,16 @@
 
             {{-- User card --}}
             <div class="mx-3 mb-5 shrink-0 rounded-2xl p-4"
-                 style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
+                 style="background:linear-gradient(135deg,#f3f8fd,#e8f1fb)">
                 <div class="flex items-center gap-3">
                     @if($accountUser->avatar_path)
                     <img src="{{ Storage::url($accountUser->avatar_path) }}"
                          alt="{{ $accountUser->full_name }}"
                          class="h-10 w-10 shrink-0 rounded-full object-cover"
-                         style="box-shadow:0 2px 8px rgba(124,58,237,.3)">
+                         style="box-shadow:0 2px 8px rgba(58,127,193,.3)">
                     @else
                     <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
-                         style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 2px 8px rgba(124,58,237,.3)">
+                         style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 8px rgba(58,127,193,.3)">
                         {{ mb_strtoupper(mb_substr($accountUser->full_name ?? '?', 0, 1)) }}
                     </div>
                     @endif
@@ -142,7 +152,7 @@
                              : 'font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900' }}">
                     <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg transition-all duration-150
                                  {{ $active ? 'text-white' : 'bg-gray-100 text-gray-400 group-hover:bg-gray-200 group-hover:text-gray-600' }}"
-                          @if($active) style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 2px 6px rgba(124,58,237,.25)" @endif>
+                          @if($active) style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 2px 6px rgba(58,127,193,.25)" @endif>
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $item['path'] }}"/>
                         </svg>

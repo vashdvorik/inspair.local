@@ -41,7 +41,7 @@
            class="group flex flex-col gap-4 rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
                   transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-md">
             <div class="flex h-11 w-11 items-center justify-center rounded-xl"
-                 style="background:linear-gradient(135deg,#7c3aed,#4f46e5);box-shadow:0 4px 12px rgba(124,58,237,.25)">
+                 style="background:linear-gradient(135deg,#3a7fc1,#17406f);box-shadow:0 4px 12px rgba(58,127,193,.25)">
                 <svg class="h-5 w-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>

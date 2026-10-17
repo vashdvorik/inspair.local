@@ -13,7 +13,7 @@
                  class="h-16 w-16 shrink-0 rounded-2xl object-cover shadow-md">
             @else
             <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl text-xl font-bold text-white shadow-md"
-                 style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">
+                 style="background:linear-gradient(135deg,#3a7fc1,#17406f)">
                 {{ mb_strtoupper(mb_substr($accountUser->full_name ?? '?', 0, 1)) }}
             </div>
             @endif
