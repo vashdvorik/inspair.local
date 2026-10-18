@@ -11,6 +11,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // За прокси/CDN сервера: берём схему и хост из X-Forwarded-* (иначе ссылки получаются http / со старым хостом)
+        $middleware->trustProxies(at: '*');
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',
         ]);

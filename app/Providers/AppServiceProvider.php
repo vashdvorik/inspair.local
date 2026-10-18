@@ -27,6 +27,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        // Домен берётся только из APP_URL: на https-домене все сгенерированные ссылки тоже https
+        if (str_starts_with((string) config('app.url'), 'https://')) {
+            \Illuminate\Support\Facades\URL::forceScheme('https');
+        }
+
         // Public site: helpers available in every view under resources/views/public
         View::composer('public.*', function ($view): void {
             $view->with([

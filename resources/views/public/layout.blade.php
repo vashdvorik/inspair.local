@@ -9,6 +9,9 @@
     <meta property="og:title" content="@yield('title', 'INSPIRE EDU Network')">
     <meta property="og:description" content="@yield('description', 'Платформа партнёрства и роста для лидеров Молдовы')">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="INSPIRE EDU Network">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <link rel="canonical" href="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('brand/og-image.png') }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">

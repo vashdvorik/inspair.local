@@ -5,7 +5,7 @@ return [
     'token' => env('TELEGRAM_TOKEN'),
 
     // URL сайта сообщества (используется в сообщении после регистрации)
-    'community_url' => env('TELEGRAM_COMMUNITY_URL', 'https://inspair.community'),
+    'community_url' => env('TELEGRAM_COMMUNITY_URL') ?: env('APP_URL', 'http://localhost'),
 
     // if the webhook mode must validate the incoming IP range is from a telegram server
     'safe_mode' => env('APP_ENV', 'local') === 'production',
