@@ -14,7 +14,7 @@ class RecomputeEmbeddings extends Command
     protected $signature = 'ai:recompute-embeddings
                             {--force : Recompute even if embedding already exists}';
 
-    protected $description = 'Compute Gemini embeddings for all approved BotUsers without one';
+    protected $description = 'Compute embeddings (OpenRouter) for all approved BotUsers without one';
 
     public function handle(EmbeddingService $embedder, MatchingService $matcher): int
     {
@@ -54,6 +54,7 @@ class RecomputeEmbeddings extends Command
                 $user->update([
                     'embedding'            => $vector,
                     'embedding_updated_at' => now(),
+                    'embedding_model'      => $embedder->model(),
                 ]);
                 $matcher->invalidate($user);
                 $done++;
@@ -65,7 +66,7 @@ class RecomputeEmbeddings extends Command
 
             $bar->advance();
 
-            // Небольшая пауза чтобы не превысить лимит Gemini API
+            // Небольшая пауза чтобы не превысить лимит API
             usleep(200_000); // 200ms
         }
 

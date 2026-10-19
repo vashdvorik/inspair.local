@@ -40,19 +40,19 @@
                 @endif
                 <div class="min-w-0">
                     <p class="truncate text-sm font-semibold text-[#0e2442]">{{ $person->full_name }}</p>
-                    @if($person->telegram_username)
+                    @if($person->canBeContacted())
                     <p class="mt-0.5 truncate text-xs font-medium text-brand-600">
                         {{ '@' . $person->telegram_username }}
                     </p>
                     @endif
                 </div>
             </div>
-            @if($person->description)
+            @if($person->description && $see($person, 'description'))
             <p class="flex-1 text-xs leading-relaxed text-gray-500 line-clamp-3">{{ $person->description }}</p>
             @else
             <p class="text-xs italic text-gray-300">Профиль не заполнен</p>
             @endif
-            @if($person->telegram_username)
+            @if($person->canBeContacted())
             <div class="relative z-10 mt-4 border-t border-gray-50 pt-3">
                 <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                    class="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 transition hover:text-brand-700">

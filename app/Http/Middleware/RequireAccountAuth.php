@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Middleware;
 
 use App\Models\BotUser;
+use App\Services\GameService;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,6 +44,12 @@ class RequireAccountAuth
 
         // Share the authenticated user with all views in this middleware group
         view()->share('accountUser', $user);
+
+        // Игра: помощники для шаблонов (что виден в чужом профиле) и отметка активности
+        $game = app(GameService::class);
+        view()->share('game', $game);
+        view()->share('see', fn (BotUser $target, string $field): bool => $game->canSee($user, $target, $field));
+
 
         return $next($request);
     }

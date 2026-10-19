@@ -28,6 +28,10 @@ class ComputeUserEmbedding implements ShouldQueue
 
     public function handle(EmbeddingService $embedder, MatchingService $matcher): void
     {
+        if (! config('ai.openrouter.key')) {
+            return; // ИИ ещё не настроен: профиль сохраняется, векторы посчитает ai:recompute-embeddings
+        }
+
         $text = $embedder->textForUser(
             (string) ($this->user->description ?? ''),
             (string) ($this->user->expectation ?? ''),
@@ -42,6 +46,7 @@ class ComputeUserEmbedding implements ShouldQueue
         $this->user->update([
             'embedding'            => $vector,
             'embedding_updated_at' => now(),
+            'embedding_model'      => $embedder->model(),
         ]);
 
         // Invalidate own match cache so fresh results are built next visit

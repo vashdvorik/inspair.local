@@ -28,7 +28,7 @@
             @endif
             <div>
                 <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">{{ $person->full_name }}</h1>
-                @if($person->telegram_username)
+                @if($person->canBeContacted())
                 <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                    class="mt-1 block text-sm font-medium text-brand-600 hover:underline">
                     {{ '@' . $person->telegram_username }}
@@ -36,7 +36,7 @@
                 @endif
             </div>
         </div>
-        @if($person->telegram_username)
+        @if($person->canBeContacted())
         <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
            class="inline-flex h-10 items-center gap-2 rounded-xl px-5 text-sm font-semibold text-white
                   transition hover:opacity-90 sm:shrink-0"
@@ -54,18 +54,45 @@
         <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">О себе</h2>
         <div class="space-y-5">
 
+            @php
+                $needLevel = fn (string $field) => (int) config("game.visibility.$field", 1);
+                $lvlName = fn (string $field) => $game->levelInfo($needLevel($field))['name'];
+            @endphp
+
             <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Кто и чем занимается</p>
-                <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">
-                    {{ $person->description ?: '—' }}
-                </p>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Регион</p>
+                @if($see($person, 'region'))
+                    <p class="mt-1 text-sm text-[#0e2442]">{{ $person->region ?: '—' }}</p>
+                @else
+                    <p class="mt-1 text-sm text-gray-400">🔒 Откроется на уровне «{{ $lvlName('region') }}»</p>
+                @endif
             </div>
 
             <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Кто и чем занимается</p>
+                @if($see($person, 'description'))
+                    <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">{{ $person->description ?: '—' }}</p>
+                @else
+                    <p class="mt-1 text-sm text-gray-400">🔒 Откроется на уровне «{{ $lvlName('description') }}»</p>
+                @endif
+            </div>
+
+            @if($game->isEnabled() && $see($person, 'facts') && $person->facts->isNotEmpty())
+            <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Факты</p>
+                <ul class="mt-1 list-disc space-y-1 pl-5 text-sm text-[#0e2442]">
+                    @foreach($person->facts as $fact)<li>{{ $fact->body }}</li>@endforeach
+                </ul>
+            </div>
+            @endif
+
+            <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Что ищет в сообществе</p>
-                <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">
-                    {{ $person->expectation ?: '—' }}
-                </p>
+                @if($see($person, 'expectation'))
+                    <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">{{ $person->expectation ?: '—' }}</p>
+                @else
+                    <p class="mt-1 text-sm text-gray-400">🔒 Откроется на уровне «{{ $lvlName('expectation') }}»</p>
+                @endif
             </div>
 
         </div>

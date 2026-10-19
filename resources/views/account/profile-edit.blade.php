@@ -103,6 +103,51 @@
             </div>
         </div>
 
+        {{-- Facts (feed the quests) --}}
+        @if($game->isEnabled())
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h2 class="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400">Факты о себе</h2>
+            <p class="mb-5 text-xs text-gray-500">Короткие и живые: чем занимаешься в свободное время, о чём мечтаешь, что умеешь. За каждый факт <b>+{{ config('game.xp.fact') }} очков</b>, а из них получаются загадки для других участников.</p>
+            @php
+                $facts = $accountUser->facts;
+                $slots = max(0, min(config('game.max_facts') - $facts->count(), 3));
+            @endphp
+            <div class="space-y-3">
+                @foreach($facts as $f)
+                    <input type="text" name="facts[{{ $f->id }}]" value="{{ old('facts.'.$f->id, $f->body) }}" maxlength="300"
+                           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
+                @endforeach
+                @for($i = 0; $i < $slots; $i++)
+                    <input type="text" name="new_facts[]" maxlength="300" placeholder="Например: перевожу субтитры к старым фильмам"
+                           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
+                @endfor
+            </div>
+            <p class="mt-2 text-xs text-gray-400">Очистите поле, чтобы удалить факт. Всего до {{ config('game.max_facts') }}.</p>
+        </div>
+
+        @endif
+
+        {{-- Privacy --}}
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">Приватность</h2>
+            <div class="space-y-4">
+                <label class="flex items-start gap-3 text-sm text-[#0e2442]">
+                    <input type="checkbox" name="contacts_closed" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('contacts_closed', $accountUser->contacts_closed) ? 'checked' : '' }}>
+                    <span><b>Закрыть мои контакты</b><br><span class="text-xs text-gray-500">Мой Telegram и кнопка «Написать» не показываются другим участникам. Я по-прежнему могу писать им сам.</span></span>
+                </label>
+                @if($game->isEnabled())
+                <label class="flex items-start gap-3 text-sm text-[#0e2442]">
+                    <input type="checkbox" name="quests_opt_out" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('quests_opt_out', $accountUser->quests_opt_out) ? 'checked' : '' }}>
+                    <span><b>Не использовать меня в квестах</b><br><span class="text-xs text-gray-500">Мои факты не попадут в загадки, и другие не смогут угадывать меня.</span></span>
+                </label>
+                <label class="flex items-start gap-3 text-sm text-[#0e2442]">
+                    <input type="checkbox" name="notifications_muted" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('notifications_muted', $accountUser->notifications_muted) ? 'checked' : '' }}>
+                    <span><b>Тише: без напоминаний в Telegram</b><br><span class="text-xs text-gray-500">Бот перестанет присылать напоминания об игре.</span></span>
+                </label>
+                @endif
+            </div>
+        </div>
+
         {{-- Actions --}}
         <div class="flex items-center justify-between">
             <button type="submit"

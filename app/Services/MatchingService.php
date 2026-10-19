@@ -54,7 +54,7 @@ class MatchingService
             ->where('telegram_id', '!=', $user->telegram_id)
             ->whereNotNull('embedding')
             ->get(['id', 'telegram_id', 'telegram_username', 'full_name',
-                   'description', 'expectation', 'avatar_path', 'embedding']);
+                   'description', 'expectation', 'avatar_path', 'contacts_closed', 'embedding']);
 
         return $candidates
             ->map(fn (BotUser $candidate) => [
@@ -75,6 +75,10 @@ class MatchingService
         $dot = 0.0;
         $na  = 0.0;
         $nb  = 0.0;
+
+        if (count($a) !== count($b)) {
+            return 0.0; // векторы разных моделей несравнимы
+        }
 
         $len = count($a);
         for ($i = 0; $i < $len; $i++) {
@@ -103,7 +107,7 @@ class MatchingService
             ->where('telegram_id', '!=', $exclude->telegram_id)
             ->whereNotNull('embedding')
             ->get(['id', 'telegram_id', 'telegram_username', 'full_name',
-                   'description', 'expectation', 'avatar_path', 'embedding']);
+                   'description', 'expectation', 'avatar_path', 'contacts_closed', 'embedding']);
 
         return $candidates
             ->map(fn (BotUser $candidate) => [

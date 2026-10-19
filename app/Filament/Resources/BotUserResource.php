@@ -78,6 +78,19 @@ class BotUserResource extends Resource
                     ->label('Дата одобрения')
                     ->disabled(),
             ])->columns(2),
+
+            Section::make('Игра')->schema([
+                \Filament\Forms\Components\Toggle::make('is_moderator')
+                    ->label('Модератор / организатор')
+                    ->helperText('Видит все разделы кабинета без уровней.'),
+                TextInput::make('xp')
+                    ->label('Очки')
+                    ->numeric()
+                    ->disabled(),
+                TextInput::make('level')
+                    ->label('Уровень')
+                    ->disabled(),
+            ])->columns(3),
         ]);
     }
 

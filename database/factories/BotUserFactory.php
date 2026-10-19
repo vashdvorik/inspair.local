@@ -36,6 +36,11 @@ class BotUserFactory extends Factory
         ]);
     }
 
+    public function moderator(): static
+    {
+        return $this->state(fn () => ['is_moderator' => true]);
+    }
+
     public function pending(): static
     {
         return $this->state(fn () => [

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Account\AccountController;
+use App\Http\Controllers\Account\GameController;
 use App\Http\Controllers\Account\OpportunityController;
 use App\Http\Controllers\Account\TmaAuthController;
 use App\Http\Middleware\RequireAccountAuth;
@@ -63,7 +64,7 @@ Route::get('/go/{code}', function (string $code) {
         return redirect()->route('account.login')->with('error', 'Ссылка недействительна или истекла.');
     }
 
-    return redirect()->route('account.auth', ['token' => $token->token]);
+    return redirect()->route('account.auth', ['token' => $token->token] + (request('to') === 'game' ? ['to' => 'game'] : []));
 })->middleware('throttle:20,1')->where('code', '[0-9a-f]{8}')->name('account.go');
 
 // Account: protected cabinet
@@ -76,12 +77,25 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/profile/edit', [AccountController::class, 'profileEdit'])->name('profile.edit');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
         Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
-        Route::get('/matches', [AccountController::class, 'matches'])->name('matches');
-        Route::get('/people', [AccountController::class, 'people'])->name('people');
+        Route::get('/matches', [AccountController::class, 'matches'])->middleware('game.access:matches')->name('matches');
+        Route::get('/people', [AccountController::class, 'people'])->middleware('game.access:people')->name('people');
         Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->name('people.show');
-        Route::get('/search', [AccountController::class, 'search'])->name('search');
+        Route::get('/search', [AccountController::class, 'search'])->middleware('game.access:search')->name('search');
+
+        // Игра: страница (Vue) и JSON-API
+        Route::get('/game', [GameController::class, 'index'])->middleware('game.on')->name('game');
+        Route::prefix('game/api')->middleware('game.on')->name('game.api.')->group(function (): void {
+            Route::get('/state', [GameController::class, 'state'])->name('state');
+            Route::get('/quest', [GameController::class, 'quest'])->name('quest');
+            Route::post('/quest/{quest}/answer', [GameController::class, 'answer'])->middleware('throttle:60,1')->name('answer');
+            Route::post('/quest/{quest}/report', [GameController::class, 'report'])->middleware('throttle:20,1')->name('report');
+            Route::get('/network', [GameController::class, 'network'])->name('network');
+            Route::post('/connections/{botUser}/reciprocate', [GameController::class, 'reciprocate'])->name('reciprocate');
+        });
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->name('knowledge');
-        Route::resource('opportunities', OpportunityController::class)->only(['index', 'create', 'store', 'destroy']);
+        Route::get('opportunities/create', [OpportunityController::class, 'create'])->middleware('game.access:opportunities')->name('opportunities.create');
+        Route::post('opportunities', [OpportunityController::class, 'store'])->middleware('game.access:opportunities')->name('opportunities.store');
+        Route::resource('opportunities', OpportunityController::class)->only(['index', 'destroy']);
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 

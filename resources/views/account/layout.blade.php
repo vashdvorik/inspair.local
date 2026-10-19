@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Кабинет') — INSPIRE EDU Network</title>
     <meta name="robots" content="noindex,nofollow">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
@@ -98,6 +99,8 @@
                     $navItems = [
                         ['route' => 'account.index',     'label' => 'Главная',      'tone' => '',
                          'path'  => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
+                        ['route' => 'account.game',      'label' => 'Игра',         'tone' => 'orange',
+                         'path'  => 'M13 10V3L4 14h7v7l9-11h-7z'],
                         ['route' => 'account.matches',   'label' => 'AI-матчи',     'tone' => 'yellow',
                          'path'  => 'M13 10V3L4 14h7v7l9-11h-7z'],
                         ['route' => 'account.search',    'label' => 'AI-поиск',     'tone' => 'purple',
@@ -113,6 +116,7 @@
                     ];
                 @endphp
                 @foreach($navItems as $item)
+                    @continue($item['route'] === 'account.game' && ! $game->isEnabled())
                     @php $active = request()->routeIs($item['route']) || request()->routeIs($item['route'] . '.*'); @endphp
                     <a href="{{ route($item['route']) }}" @click="sidebarOpen = false" class="side-link {{ $active ? 'is-active' : '' }}">
                         <span class="side-ico {{ !$active && $item['tone'] ? 'side-ico--' . $item['tone'] : '' }}">

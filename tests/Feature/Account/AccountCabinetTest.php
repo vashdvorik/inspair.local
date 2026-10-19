@@ -64,7 +64,7 @@ class AccountCabinetTest extends TestCase
 
     private function actingAsApproved(): BotUser
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
         session(['account_telegram_id' => $user->telegram_id]);
         session(['_account_expires' => now()->addDays(7)->timestamp]);
 
@@ -73,7 +73,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_dashboard_returns_200_when_authenticated(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->get(route('account.index'))
@@ -82,7 +82,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_profile_page_returns_200_when_authenticated(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->get(route('account.profile'))
@@ -93,7 +93,7 @@ class AccountCabinetTest extends TestCase
     {
         Bus::fake([ComputeUserEmbedding::class]);
 
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), [
@@ -116,7 +116,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_profile_update_validates_required_full_name(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), ['full_name' => ''])
@@ -125,7 +125,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_profile_update_validates_max_lengths(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->post(route('account.profile.update'), [
@@ -142,9 +142,9 @@ class AccountCabinetTest extends TestCase
 
     public function test_people_page_shows_approved_members(): void
     {
-        $currentUser = BotUser::factory()->approved()->create();
-        $other1      = BotUser::factory()->approved()->create();
-        $other2      = BotUser::factory()->approved()->create();
+        $currentUser = BotUser::factory()->approved()->moderator()->create();
+        $other1      = BotUser::factory()->approved()->moderator()->create();
+        $other2      = BotUser::factory()->approved()->moderator()->create();
         $pending     = BotUser::factory()->pending()->create();
 
         $response = $this->withSession($this->sessionFor($currentUser))
@@ -167,7 +167,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_logout_destroys_session_and_redirects_to_home(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->post(route('account.logout'))
@@ -182,7 +182,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_matches_page_returns_200(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->get(route('account.matches'))
@@ -191,7 +191,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_knowledge_page_returns_200(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->get(route('account.knowledge'))
@@ -204,7 +204,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_logout_clears_session_and_redirects_to_root(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         $this->withSession($this->sessionFor($user))
             ->post(route('account.logout'))
@@ -217,7 +217,7 @@ class AccountCabinetTest extends TestCase
 
     public function test_logout_blocks_subsequent_protected_requests(): void
     {
-        $user = BotUser::factory()->approved()->create();
+        $user = BotUser::factory()->approved()->moderator()->create();
 
         // Log out
         $this->withSession($this->sessionFor($user))

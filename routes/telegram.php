@@ -157,3 +157,9 @@ function sendLoginLink(Nutgram $bot, BotUser $user): void
         reply_markup: TelegramKeyboards::mainMenu()
     );
 }
+
+// Кнопка «Тише» под напоминанием об игре
+$bot->onCallbackQueryData('game_mute', function (Nutgram $bot) {
+    BotUser::where('telegram_id', $bot->userId())->update(['notifications_muted' => true]);
+    $bot->answerCallbackQuery(text: 'Хорошо, напоминаний больше не будет. Вернуть их можно в настройках профиля.', show_alert: true);
+});

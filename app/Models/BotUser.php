@@ -28,6 +28,17 @@ class BotUser extends Model
         'approved_at',
         'embedding',
         'embedding_updated_at',
+        'embedding_model',
+        'is_moderator',
+        'contacts_closed',
+        'quests_opt_out',
+        'notifications_muted',
+        'xp',
+        'level',
+        'quest_locked_until',
+        'last_active_at',
+        'last_reminded_at',
+        'region',
     ];
 
     protected $casts = [
@@ -35,6 +46,15 @@ class BotUser extends Model
         'approved_at'          => 'datetime',
         'embedding'            => 'array',
         'embedding_updated_at' => 'datetime',
+        'is_moderator'         => 'boolean',
+        'contacts_closed'      => 'boolean',
+        'quests_opt_out'       => 'boolean',
+        'notifications_muted'  => 'boolean',
+        'xp'                   => 'integer',
+        'level'                => 'integer',
+        'quest_locked_until'   => 'datetime',
+        'last_active_at'       => 'datetime',
+        'last_reminded_at'     => 'datetime',
     ];
 
     public function scopePending(Builder $query): Builder
@@ -65,6 +85,17 @@ class BotUser extends Model
     public function isRejected(): bool
     {
         return $this->status === self::STATUS_REJECTED;
+    }
+
+    /** Можно ли писать этому участнику (есть username и контакты не закрыты). */
+    public function canBeContacted(): bool
+    {
+        return ! $this->contacts_closed && filled($this->telegram_username);
+    }
+
+    public function facts(): HasMany
+    {
+        return $this->hasMany(ProfileFact::class)->orderBy('id');
     }
 
     public function loginTokens(): HasMany

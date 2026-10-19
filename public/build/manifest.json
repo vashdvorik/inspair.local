@@ -1,0 +1,26 @@
+{
+  "resources/css/app.css": {
+    "file": "assets/app-BVcuejDH.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-DMsN-rLE.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/game/main.js": {
+    "file": "assets/main-DxKr1PvD.js",
+    "name": "main",
+    "src": "resources/js/game/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-v5LIAz-I.css"
+    ]
+  }
+}

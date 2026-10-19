@@ -13,6 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         // За прокси/CDN сервера: берём схему и хост из X-Forwarded-* (иначе ссылки получаются http / со старым хостом)
         $middleware->trustProxies(at: '*');
+        $middleware->alias([
+            'game.access' => \App\Http\Middleware\GameAccess::class,
+            'game.on'     => \App\Http\Middleware\GameEnabled::class,
+        ]);
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',
         ]);

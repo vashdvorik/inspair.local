@@ -9,7 +9,9 @@ use App\Http\Requests\Account\ProfileUpdateRequest;
 use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
 use App\Models\LoginToken;
+use App\Models\ProfileFact;
 use App\Services\EmbeddingService;
+use App\Services\GameService;
 use App\Services\MatchingService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -99,7 +101,7 @@ class AccountController extends Controller
         session(['account_telegram_id' => $user->telegram_id]);
         session()->put('_account_expires', now()->addDays(7)->timestamp);
 
-        return redirect()->route('account.index');
+        return redirect()->route($request->query('to') === 'game' && app(GameService::class)->isEnabled() ? 'account.game' : 'account.index');
     }
 
     /**
@@ -133,7 +135,23 @@ class AccountController extends Controller
     {
         /** @var BotUser $user */
         $user = view()->shared('accountUser');
-        $user->update($request->validated());
+        $gameOn = app(GameService::class)->isEnabled();
+
+        $user->update([
+            'full_name'       => $request->validated('full_name'),
+            'description'     => $request->validated('description'),
+            'expectation'     => $request->validated('expectation'),
+            'contacts_closed' => $request->boolean('contacts_closed'),
+        ] + ($gameOn ? [
+            // эти поля есть в форме только при включённой игре: иначе не трогаем сохранённые значения
+            'quests_opt_out'      => $request->boolean('quests_opt_out'),
+            'notifications_muted' => $request->boolean('notifications_muted'),
+        ] : []));
+
+        if ($gameOn) {
+            $this->syncFacts($user, (array) $request->input('facts', []), (array) $request->input('new_facts', []));
+            app(GameService::class)->syncProfileRewards($user->fresh());
+        }
 
         // Recompute embedding since profile text changed
         ComputeUserEmbedding::dispatch($user);
@@ -166,7 +184,7 @@ class AccountController extends Controller
         $people = BotUser::approved()
             ->where('telegram_id', '!=', $accountUser->telegram_id)
             ->orderBy('full_name')
-            ->get(['id', 'full_name', 'telegram_username', 'description', 'expectation', 'avatar_path']);
+            ->get(['id', 'full_name', 'telegram_username', 'description', 'expectation', 'avatar_path', 'contacts_closed', 'region']);
 
         return view('account.people', compact('people'));
     }
@@ -174,9 +192,25 @@ class AccountController extends Controller
     /**
      * Show a single community member's public profile.
      */
-    public function showPerson(BotUser $botUser): View
+    public function showPerson(BotUser $botUser): View|RedirectResponse
     {
         abort_if($botUser->status !== BotUser::STATUS_APPROVED, 404);
+
+        /** @var BotUser $viewer */
+        $viewer = view()->shared('accountUser');
+        $game   = app(GameService::class);
+
+        // Раздел «Люди» закрыт уровнем, но люди из своей сети всегда доступны
+        if ($viewer->id !== $botUser->id && ! $game->canAccess($viewer, 'people')) {
+            $inNetwork = \App\Models\Connection::where(fn ($q) => $q->where('user_id', $viewer->id)->where('target_id', $botUser->id))
+                ->orWhere(fn ($q) => $q->where('user_id', $botUser->id)->where('target_id', $viewer->id)->where('mutual', true))
+                ->exists();
+            if (! $inNetwork) {
+                return redirect()->route('account.game', ['locked' => 'people']);
+            }
+        }
+
+        $botUser->load('facts');
 
         return view('account.person', ['person' => $botUser]);
     }
@@ -257,5 +291,38 @@ class AccountController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('account.login', ['logout' => '1']);
+    }
+
+    /**
+     * Existing facts are edited by id (cleared = deleted); new ones are appended up to the limit.
+     *
+     * @param array<int|string, mixed> $existing
+     * @param array<int, mixed>        $added
+     */
+    private function syncFacts(BotUser $user, array $existing, array $added): void
+    {
+        $max = (int) config('game.max_facts');
+
+        foreach ($user->facts as $fact) {
+            if (! array_key_exists($fact->id, $existing)) {
+                continue;
+            }
+            $body = trim((string) $existing[$fact->id]);
+            if ($body === '') {
+                $fact->delete();
+            } elseif ($body !== $fact->body) {
+                $fact->update(['body' => $body]);
+            }
+        }
+
+        $count = $user->facts()->count();
+        foreach ($added as $body) {
+            $body = trim((string) $body);
+            if ($body === '' || $count >= $max) {
+                continue;
+            }
+            ProfileFact::create(['bot_user_id' => $user->id, 'body' => $body]);
+            $count++;
+        }
     }
 }

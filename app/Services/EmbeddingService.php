@@ -4,33 +4,22 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
-use RuntimeException;
+use App\Services\Ai\OpenRouter;
 
 class EmbeddingService
 {
+    public function __construct(private readonly OpenRouter $ai) {}
+
+    /** @return array<int, float> */
     public function embed(string $text): array
     {
-        $key   = config('ai.gemini.key');
-        $model = config('ai.gemini.embedding_model');
-        $url   = config('ai.gemini.base_url') . "/models/{$model}:embedContent?key={$key}";
+        return $this->ai->embed($text);
+    }
 
-        $response = Http::timeout(15)->post($url, [
-            'model'   => "models/{$model}",
-            'content' => [
-                'parts' => [['text' => $text]],
-            ],
-        ]);
-
-        if (! $response->successful()) {
-            throw new RuntimeException(
-                'Gemini embedding failed: ' . $response->status() . ' ' . $response->body()
-            );
-        }
-
-        return $response->json('embedding.values') ?? throw new RuntimeException(
-            'Unexpected Gemini response: ' . $response->body()
-        );
+    /** Модель, которой считаются новые векторы (пишется в bot_users.embedding_model). */
+    public function model(): string
+    {
+        return $this->ai->embeddingModel();
     }
 
     /**

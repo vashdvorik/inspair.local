@@ -85,7 +85,7 @@
                 <div class="flex items-start justify-between gap-2">
                     <div class="min-w-0">
                         <p class="truncate font-semibold text-[#0e2442]">{{ $person->full_name }}</p>
-                        @if($person->telegram_username)
+                        @if($person->canBeContacted())
                         <p class="mt-0.5 block text-xs font-medium text-brand-600">
                             {{ '@' . $person->telegram_username }}
                         </p>
@@ -103,17 +103,17 @@
                     </div>
                 </div>
 
-                @if($person->description)
+                @if($person->description && $see($person, 'description'))
                 <p class="mt-2 text-xs leading-relaxed text-gray-500 line-clamp-2">{{ $person->description }}</p>
                 @endif
 
-                @if($person->expectation)
+                @if($person->expectation && $see($person, 'expectation'))
                 <p class="mt-1 text-xs leading-relaxed text-gray-400 line-clamp-1">
                     <span class="font-medium text-gray-500">Ищет:</span> {{ $person->expectation }}
                 </p>
                 @endif
 
-                @if($person->telegram_username)
+                @if($person->canBeContacted())
                 <div class="relative z-10 mt-3">
                     <a href="https://t.me/{{ $person->telegram_username }}" target="_blank"
                        class="inline-flex items-center gap-1.5 rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5
