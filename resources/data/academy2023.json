@@ -1,221 +1,220 @@
 {
- "dates": {
-  "ru": "14–18 сентября 2023",
-  "en": "14–18 September 2023",
-  "ro": "14–18 septembrie 2023"
- },
- "title": "YOUTH LEADERS PEACE SUMMER SCHOOL",
- "subtitle": {
-  "ru": "Летняя школа «Молодёжные лидеры за мир»",
-  "en": "Summer School “Youth Leaders for Peace”",
-  "ro": "Școala de vară „Tineri lideri pentru pace”"
- },
- "ticker": {
-  "ru": "Мир начинается с тебя · Youth · Peace · Solidarity · Diversity · Innovation",
-  "en": "Peace starts with you · Youth · Peace · Solidarity · Diversity · Innovation",
-  "ro": "Pacea începe cu tine · Youth · Peace · Solidarity · Diversity · Innovation"
- },
- "aboutH": {
-  "ru": "Летняя Школа Молодёжных лидеров за Мир 2023",
-  "en": "Youth Leaders Peace Summer School 2023",
-  "ro": "Școala de vară a Tinerilor Lideri pentru Pace 2023"
- },
- "about": [
-  {
-   "ru": "Это международная диалоговая площадка, объединяющая амбициозную студенческую молодёжь, преподавателей, молодых лидеров, способных на опыте лучших мировых традиций генерировать и внедрять новые подходы в экономике, политике, образовании, способствовать развитию диалога культур, укреплению международных отношений в условиях глобализации, интеграции и интернационализации.",
-   "en": "An international dialogue platform that brings together ambitious students, lecturers and young leaders who can draw on the best world traditions to generate and apply new approaches in economics, politics and education, and who foster dialogue between cultures and stronger international relations in an age of globalisation, integration and internationalisation.",
-   "ro": "O platformă internațională de dialog care reunește tineri studenți ambițioși, cadre didactice și tineri lideri capabili, pe baza celor mai bune tradiții mondiale, să genereze și să implementeze abordări noi în economie, politică și educație, să contribuie la dialogul dintre culturi și la consolidarea relațiilor internaționale în condițiile globalizării, integrării și internaționalizării."
-  },
-  {
-   "ru": "Инициатива проведения ежегодной Летней Школы Молодёжных лидеров за Мир — результат взаимодействия сети экспертов из университетов и НПО Молдовы. Школа может служить инструментом «мягкой силы» для поощрения обмена накопленными знаниями, опытом и диалога между молодёжью и экспертами в рамках институциональных механизмов.",
-   "en": "The idea of an annual Youth Leaders Peace Summer School grew out of cooperation within a network of experts from Moldovan universities and NGOs. The School can serve as a “soft power” tool that encourages the exchange of knowledge and experience and a dialogue between young people and experts within institutional mechanisms.",
-   "ro": "Ideea unei Școli de vară anuale a Tinerilor Lideri pentru Pace este rezultatul colaborării unei rețele de experți din universitățile și ONG-urile din Moldova. Școala poate servi drept instrument de „soft power” pentru încurajarea schimbului de cunoștințe și experiență și a dialogului dintre tineri și experți în cadrul mecanismelor instituționale."
-  }
- ],
- "valuesH": {
-  "ru": "Наши ценности",
-  "en": "Our values",
-  "ro": "Valorile noastre"
- },
- "values": {
-  "ru": "Наша команда поддерживает и разделяет идею культуры мира и расширения возможностей молодых людей, продвигая права человека, достоинство, равенство и уважение разнообразия посредством образования, защиты интересов и других ненасильственных действий — через проекты на местном и международном уровне.",
-  "en": "Our team supports and shares the idea of a culture of peace and the empowerment of young people, promoting human rights, dignity, equality and respect for diversity through education, advocacy and other non-violent action, with projects at local and international level.",
-  "ro": "Echipa noastră susține și împărtășește ideea culturii păcii și a împuternicirii tinerilor, promovând drepturile omului, demnitatea, egalitatea și respectul pentru diversitate prin educație, advocacy și alte acțiuni nonviolente, prin proiecte la nivel local și internațional."
- },
- "programmeH": {
-  "ru": "Программа",
-  "en": "Programme",
-  "ro": "Program"
- },
- "programmeNote": {
-  "ru": "Темы сессий школы в порядке проведения.",
-  "en": "Session topics of the school, in the order they were held.",
-  "ro": "Temele sesiunilor școlii, în ordinea desfășurării."
- },
- "programme": [
-  {
-   "ru": "Знакомство участников",
-   "en": "Getting to know the participants",
-   "ro": "Cunoașterea participanților"
-  },
-  {
-   "ru": "Официальное открытие",
-   "en": "Official opening",
-   "ro": "Deschiderea oficială"
-  },
-  {
-   "ru": "ООН и Цели устойчивого развития",
-   "en": "The UN and the Sustainable Development Goals",
-   "ro": "ONU și Obiectivele de Dezvoltare Durabilă"
-  },
-  {
-   "ru": "Мир и безопасность",
-   "en": "Peace and security",
-   "ro": "Pace și securitate"
-  },
-  {
-   "ru": "Лидерство и геополитика",
-   "en": "Leadership and geopolitics",
-   "ro": "Leadership și geopolitică"
-  },
-  {
-   "ru": "Права человека и миростроительство",
-   "en": "Human rights and peacebuilding",
-   "ro": "Drepturile omului și consolidarea păcii"
-  },
-  {
-   "ru": "«Зелёные» навыки для молодёжи",
-   "en": "“Green” skills for young people",
-   "ro": "Competențe „verzi” pentru tineri"
-  },
-  {
-   "ru": "Международные организации",
-   "en": "International organisations",
-   "ro": "Organizații internaționale"
-  },
-  {
-   "ru": "Европейский союз, интеграция",
-   "en": "The European Union and integration",
-   "ro": "Uniunea Europeană și integrarea"
-  },
-  {
-   "ru": "Групповые дискуссии и обсуждения",
-   "en": "Group discussions",
-   "ro": "Discuții în grup"
-  },
-  {
-   "ru": "Программы CBM",
-   "en": "CBM programmes",
-   "ro": "Programe CBM"
-  },
-  {
-   "ru": "НПО и гражданское общество",
-   "en": "NGOs and civil society",
-   "ro": "ONG-uri și societatea civilă"
-  },
-  {
-   "ru": "Превентивная дипломатия",
-   "en": "Preventive diplomacy",
-   "ro": "Diplomație preventivă"
-  },
-  {
-   "ru": "Молодёжное лидерство",
-   "en": "Youth leadership",
-   "ro": "Leadershipul tinerilor"
-  },
-  {
-   "ru": "Групповые дискуссии и обсуждения",
-   "en": "Group discussions",
-   "ro": "Discuții în grup"
-  },
-  {
-   "ru": "Система образования",
-   "en": "The education system",
-   "ro": "Sistemul de educație"
-  },
-  {
-   "ru": "Программы обменов ERASMUS+",
-   "en": "ERASMUS+ exchange programmes",
-   "ro": "Programe de schimb ERASMUS+"
-  },
-  {
-   "ru": "Проектные навыки для молодёжи",
-   "en": "Project skills for young people",
-   "ro": "Abilități de proiect pentru tineri"
-  },
-  {
-   "ru": "Молодёжное лидерство",
-   "en": "Youth leadership",
-   "ro": "Leadershipul tinerilor"
-  },
-  {
-   "ru": "Brainstorming и работа в группах",
-   "en": "Brainstorming and group work",
-   "ro": "Brainstorming și lucru în grup"
-  },
-  {
-   "ru": "Работа с экспертами",
-   "en": "Working with experts",
-   "ro": "Lucrul cu experții"
-  },
-  {
-   "ru": "Разработка мини-проектов",
-   "en": "Developing mini-projects",
-   "ro": "Elaborarea de mini-proiecte"
-  },
-  {
-   "ru": "Brainstorming и работа в группах",
-   "en": "Brainstorming and group work",
-   "ro": "Brainstorming și lucru în grup"
-  },
-  {
-   "ru": "Подведение итогов",
-   "en": "Wrap-up",
-   "ro": "Rezumat și concluzii"
-  }
- ],
- "archiveNote": {
-  "ru": "Школа прошла в 2023 году. Это архив: программа, эксперты и партнёры.",
-  "en": "The school took place in 2023. This is the archive: programme, experts and partners.",
-  "ro": "Școala a avut loc în 2023. Aceasta este arhiva: programul, experții și partenerii."
- },
- "contact": "globalstudy.xxi@gmail.com",
- "forYouH": {
-  "ru": "Летняя школа для тебя, если ты:",
-  "en": "The Summer School is for you if you:",
-  "ro": "Școala de vară este pentru tine dacă:"
- },
- "forYou": [
-  {
-   "ru": "Хочешь познакомиться с местными и международными экспертами",
-   "en": "want to meet local and international experts",
-   "ro": "vrei să cunoști experți locali și internaționali"
-  },
-  {
-   "ru": "Желаешь узнать много полезной актуальной экспертной информации",
-   "en": "wish to learn a lot of useful, up-to-date expert information",
-   "ro": "dorești să afli multe informații utile și actuale de la experți"
-  },
-  {
-   "ru": "Мечтаешь пообщаться со сверстниками из разных университетов",
-   "en": "dream of meeting peers from different universities",
-   "ro": "visezi să comunici cu colegi din diferite universități"
-  },
-  {
-   "ru": "Планируешь обрести много практических коммуникационных и проектных навыков",
-   "en": "plan to gain many practical communication and project skills",
-   "ro": "plănuiești să dobândești multe abilități practice de comunicare și de proiect"
-  },
-  {
-   "ru": "Изучаешь практики по развитию лидерских черт и компетенций",
-   "en": "are exploring practices for developing leadership qualities and competences",
-   "ro": "explorezi practici pentru dezvoltarea calităților și competențelor de lider"
-  },
-  {
-   "ru": "Хочешь круто провести время!",
-   "en": "want to have a great time!",
-   "ro": "vrei să te distrezi pe cinste!"
-  }
- ],
- "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLSejbIXBaZkS5UZ26HthCOlOHqGuwZD26LH7VGCQmVnquyeGXw/viewform"
+    "dates": {
+        "ru": "14–18 сентября 2023",
+        "en": "14–18 September 2023",
+        "ro": "14–18 septembrie 2023"
+    },
+    "title": "YOUTH LEADERS PEACE SUMMER SCHOOL",
+    "subtitle": {
+        "ru": "Летняя школа «Молодёжные лидеры за мир»",
+        "en": "Summer School “Youth Leaders for Peace”",
+        "ro": "Școala de vară „Tineri lideri pentru pace”"
+    },
+    "ticker": {
+        "ru": "Мир начинается с тебя · Youth · Peace · Solidarity · Diversity · Innovation",
+        "en": "Peace starts with you · Youth · Peace · Solidarity · Diversity · Innovation",
+        "ro": "Pacea începe cu tine · Youth · Peace · Solidarity · Diversity · Innovation"
+    },
+    "aboutH": {
+        "ru": "Летняя Школа Молодёжных лидеров за Мир 2023",
+        "en": "Youth Leaders Peace Summer School 2023",
+        "ro": "Școala de vară a Tinerilor Lideri pentru Pace 2023"
+    },
+    "about": [
+        {
+            "ru": "Это международная диалоговая площадка, объединяющая амбициозную студенческую молодёжь, преподавателей, молодых лидеров, способных на опыте лучших мировых традиций генерировать и внедрять новые подходы в экономике, политике, образовании, способствовать развитию диалога культур, укреплению международных отношений в условиях глобализации, интеграции и интернационализации.",
+            "en": "An international dialogue platform that brings together ambitious students, lecturers and young leaders who can draw on the best world traditions to generate and apply new approaches in economics, politics and education, and who foster dialogue between cultures and stronger international relations in an age of globalisation, integration and internationalisation.",
+            "ro": "O platformă internațională de dialog care reunește tineri studenți ambițioși, cadre didactice și tineri lideri capabili, pe baza celor mai bune tradiții mondiale, să genereze și să implementeze abordări noi în economie, politică și educație, să contribuie la dialogul dintre culturi și la consolidarea relațiilor internaționale în condițiile globalizării, integrării și internaționalizării."
+        },
+        {
+            "ru": "Инициатива проведения ежегодной Летней Школы Молодёжных лидеров за Мир — результат взаимодействия сети экспертов из университетов и НПО Молдовы. Школа может служить инструментом «мягкой силы» для поощрения обмена накопленными знаниями, опытом и диалога между молодёжью и экспертами в рамках институциональных механизмов.",
+            "en": "The idea of an annual Youth Leaders Peace Summer School grew out of cooperation within a network of experts from Moldovan universities and NGOs. The School can serve as a “soft power” tool that encourages the exchange of knowledge and experience and a dialogue between young people and experts within institutional mechanisms.",
+            "ro": "Ideea unei Școli de vară anuale a Tinerilor Lideri pentru Pace este rezultatul colaborării unei rețele de experți din universitățile și ONG-urile din Moldova. Școala poate servi drept instrument de „soft power” pentru încurajarea schimbului de cunoștințe și experiență și a dialogului dintre tineri și experți în cadrul mecanismelor instituționale."
+        }
+    ],
+    "valuesH": {
+        "ru": "Наши ценности",
+        "en": "Our values",
+        "ro": "Valorile noastre"
+    },
+    "values": {
+        "ru": "Наша команда поддерживает и разделяет идею культуры мира и расширения возможностей молодых людей, продвигая права человека, достоинство, равенство и уважение разнообразия посредством образования, защиты интересов и других ненасильственных действий — через проекты на местном и международном уровне.",
+        "en": "Our team supports and shares the idea of a culture of peace and the empowerment of young people, promoting human rights, dignity, equality and respect for diversity through education, advocacy and other non-violent action, with projects at local and international level.",
+        "ro": "Echipa noastră susține și împărtășește ideea culturii păcii și a împuternicirii tinerilor, promovând drepturile omului, demnitatea, egalitatea și respectul pentru diversitate prin educație, advocacy și alte acțiuni nonviolente, prin proiecte la nivel local și internațional."
+    },
+    "programmeH": {
+        "ru": "Программа",
+        "en": "Programme",
+        "ro": "Program"
+    },
+    "programmeNote": {
+        "ru": "Темы сессий школы в порядке проведения.",
+        "en": "Session topics of the school, in the order they were held.",
+        "ro": "Temele sesiunilor școlii, în ordinea desfășurării."
+    },
+    "programme": [
+        {
+            "ru": "Знакомство участников",
+            "en": "Getting to know the participants",
+            "ro": "Cunoașterea participanților"
+        },
+        {
+            "ru": "Официальное открытие",
+            "en": "Official opening",
+            "ro": "Deschiderea oficială"
+        },
+        {
+            "ru": "ООН и Цели устойчивого развития",
+            "en": "The UN and the Sustainable Development Goals",
+            "ro": "ONU și Obiectivele de Dezvoltare Durabilă"
+        },
+        {
+            "ru": "Мир и безопасность",
+            "en": "Peace and security",
+            "ro": "Pace și securitate"
+        },
+        {
+            "ru": "Лидерство и геополитика",
+            "en": "Leadership and geopolitics",
+            "ro": "Leadership și geopolitică"
+        },
+        {
+            "ru": "Права человека и миростроительство",
+            "en": "Human rights and peacebuilding",
+            "ro": "Drepturile omului și consolidarea păcii"
+        },
+        {
+            "ru": "«Зелёные» навыки для молодёжи",
+            "en": "“Green” skills for young people",
+            "ro": "Competențe „verzi” pentru tineri"
+        },
+        {
+            "ru": "Международные организации",
+            "en": "International organisations",
+            "ro": "Organizații internaționale"
+        },
+        {
+            "ru": "Европейский союз, интеграция",
+            "en": "The European Union and integration",
+            "ro": "Uniunea Europeană și integrarea"
+        },
+        {
+            "ru": "Групповые дискуссии и обсуждения",
+            "en": "Group discussions",
+            "ro": "Discuții în grup"
+        },
+        {
+            "ru": "Программы CBM",
+            "en": "CBM programmes",
+            "ro": "Programe CBM"
+        },
+        {
+            "ru": "НПО и гражданское общество",
+            "en": "NGOs and civil society",
+            "ro": "ONG-uri și societatea civilă"
+        },
+        {
+            "ru": "Превентивная дипломатия",
+            "en": "Preventive diplomacy",
+            "ro": "Diplomație preventivă"
+        },
+        {
+            "ru": "Молодёжное лидерство",
+            "en": "Youth leadership",
+            "ro": "Leadershipul tinerilor"
+        },
+        {
+            "ru": "Групповые дискуссии и обсуждения",
+            "en": "Group discussions",
+            "ro": "Discuții în grup"
+        },
+        {
+            "ru": "Система образования",
+            "en": "The education system",
+            "ro": "Sistemul de educație"
+        },
+        {
+            "ru": "Программы обменов ERASMUS+",
+            "en": "ERASMUS+ exchange programmes",
+            "ro": "Programe de schimb ERASMUS+"
+        },
+        {
+            "ru": "Проектные навыки для молодёжи",
+            "en": "Project skills for young people",
+            "ro": "Abilități de proiect pentru tineri"
+        },
+        {
+            "ru": "Молодёжное лидерство",
+            "en": "Youth leadership",
+            "ro": "Leadershipul tinerilor"
+        },
+        {
+            "ru": "Brainstorming и работа в группах",
+            "en": "Brainstorming and group work",
+            "ro": "Brainstorming și lucru în grup"
+        },
+        {
+            "ru": "Работа с экспертами",
+            "en": "Working with experts",
+            "ro": "Lucrul cu experții"
+        },
+        {
+            "ru": "Разработка мини-проектов",
+            "en": "Developing mini-projects",
+            "ro": "Elaborarea de mini-proiecte"
+        },
+        {
+            "ru": "Brainstorming и работа в группах",
+            "en": "Brainstorming and group work",
+            "ro": "Brainstorming și lucru în grup"
+        },
+        {
+            "ru": "Подведение итогов",
+            "en": "Wrap-up",
+            "ro": "Rezumat și concluzii"
+        }
+    ],
+    "archiveNote": {
+        "ru": "Школа прошла в 2023 году. Это архив: программа, эксперты и партнёры.",
+        "en": "The school took place in 2023. This is the archive: programme, experts and partners.",
+        "ro": "Școala a avut loc în 2023. Aceasta este arhiva: programul, experții și partenerii."
+    },
+    "contact": "globalstudy.xxi@gmail.com",
+    "forYouH": {
+        "ru": "Летняя школа для тебя, если ты:",
+        "en": "The Summer School is for you if you:",
+        "ro": "Școala de vară este pentru tine dacă:"
+    },
+    "forYou": [
+        {
+            "ru": "Хочешь познакомиться с местными и международными экспертами",
+            "en": "want to meet local and international experts",
+            "ro": "vrei să cunoști experți locali și internaționali"
+        },
+        {
+            "ru": "Желаешь узнать много полезной актуальной экспертной информации",
+            "en": "wish to learn a lot of useful, up-to-date expert information",
+            "ro": "dorești să afli multe informații utile și actuale de la experți"
+        },
+        {
+            "ru": "Мечтаешь пообщаться со сверстниками из разных университетов",
+            "en": "dream of meeting peers from different universities",
+            "ro": "visezi să comunici cu colegi din diferite universități"
+        },
+        {
+            "ru": "Планируешь обрести много практических коммуникационных и проектных навыков",
+            "en": "plan to gain many practical communication and project skills",
+            "ro": "plănuiești să dobândești multe abilități practice de comunicare și de proiect"
+        },
+        {
+            "ru": "Изучаешь практики по развитию лидерских черт и компетенций",
+            "en": "are exploring practices for developing leadership qualities and competences",
+            "ro": "explorezi practici pentru dezvoltarea calităților și competențelor de lider"
+        },
+        {
+            "ru": "Хочешь круто провести время!",
+            "en": "want to have a great time!",
+            "ro": "vrei să te distrezi pe cinste!"
+        }
+    ]
 }

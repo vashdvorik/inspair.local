@@ -2,7 +2,7 @@
  {
   "img": "partners/embassy-nl.png",
   "name": "Embassy of the Kingdom of the Netherlands",
-  "url": "https://www.netherlandsandyou.nl/your-country-and-the-netherlands/moldova/about-us/embassy-in-chisinau",
+  "url": "https://www.netherlandsandyou.nl/",
   "group": "donor",
   "years": [
    2023,
@@ -15,25 +15,8 @@
   "url": "https://usem.md/md/",
   "group": "coorg",
   "years": [
+   2023,
    2025
-  ]
- },
- {
-  "img": "partners/usem-2023.jpg",
-  "name": "University of European Studies of Moldova (USEM)",
-  "url": "https://usem.md/",
-  "group": "coorg",
-  "years": [
-   2023
-  ]
- },
- {
-  "img": "partners/usem-2023-b.jpg",
-  "name": "University of European Studies of Moldova (USEM)",
-  "url": "https://usem.md/",
-  "group": "coorg",
-  "years": [
-   2023
   ]
  },
  {
@@ -42,16 +25,8 @@
   "url": "https://kdu.md/",
   "group": "coorg",
   "years": [
+   2023,
    2025
-  ]
- },
- {
-  "img": "partners/comrat-2023.jpg",
-  "name": "Comrat State University",
-  "url": "https://kdu.md/",
-  "group": "coorg",
-  "years": [
-   2023
   ]
  },
  {
@@ -78,16 +53,8 @@
   "url": "https://innovation.md/",
   "group": "coorg",
   "years": [
+   2023,
    2025
-  ]
- },
- {
-  "img": "partners/innovation-2023.jpg",
-  "name": "Agency for Innovation and Development",
-  "url": "https://innovation.md/",
-  "group": "coorg",
-  "years": [
-   2023
   ]
  },
  {
@@ -123,16 +90,8 @@
   "url": "https://education.md/",
   "group": "partner",
   "years": [
+   2023,
    2025
-  ]
- },
- {
-  "img": "partners/education-md-2023.jpg",
-  "name": "education.md",
-  "url": "https://education.md/",
-  "group": "partner",
-  "years": [
-   2023
   ]
  },
  {
@@ -150,16 +109,8 @@
   "url": "https://www.peaceagency.org/",
   "group": "partner",
   "years": [
+   2023,
    2025
-  ]
- },
- {
-  "img": "partners/agency-for-peacebuilding-2023.jpg",
-  "name": "Agency for Peacebuilding",
-  "url": "https://www.peaceagency.org",
-  "group": "partner",
-  "years": [
-   2023
   ]
  },
  {

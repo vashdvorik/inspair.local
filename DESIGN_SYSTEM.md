@@ -11,7 +11,7 @@ coloured nodes, and a dove with a spectrum wing. Mood: **light, fresh, connected
 |---|---|
 | `public/design/inspire.css` | Tokens (CSS variables), Montserrat `@font-face`, all `i-*` components, motion |
 | `public/design/inspire.js` | Scroll reveal, nav shadow, pausing off-screen animation, low-power mode (no dependencies) |
-| `public/design/tailwind.js` | Tailwind-CDN config that maps the tokens to utilities (`bg-brand-600`, `text-navy-800`, `rounded-i-xl` …) |
+| `public/design/tailwind.css` (built from `tailwind.config.cjs`) | Compiled Tailwind utilities that map the tokens (`bg-brand-600`, `text-navy-800`, `rounded-i-xl` …) |
 | `public/design/pages.css` | Layout pieces of the public pages (hero art, people cards, logo tiles, programme text, timeline) |
 | `public/design/fonts.css`, `public/design/fonts/` | Self-hosted Montserrat (Latin + Cyrillic), used by the Filament admin |
 | `public/brand/*` | Logo files (see below) |
@@ -75,11 +75,28 @@ The academy pages are generated from the scratch generator and use the same toke
 
 ## Public site structure
 
+Original language is English (default); RU and RO are translations. Menu follows the customer brief (`user/` folder, not published):
+
 | Menu | Route | View |
 |---|---|---|
-| О платформе / About | `/` | `resources/views/public/about.blade.php` |
-| Участники / Participants | `/participants` | `public/participants.blade.php` |
-| Академия 2025 | `/academy-2025`, `/academy-2025/school-{1..3}` | `public/academy2025/*` |
-| Академия 2023 | `/academy-2023` | `public/academy2023/index.blade.php` |
+| Home | `/` | `public/home.blade.php` (hero on a photo, ticker, INSPIRE cards, story, values, core areas, events, experts, who can join, key features, alumni, photo, video, partners) |
+| Events → Hackathon 2026 | `/events/hackathon-2026` | `public/hackathon.blade.php` (stub: information coming soon) |
+| Events → Schools 2025 | `/events/schools-2025`, `/events/schools-2025/school-{1..3}` | `public/academy2025/*` (Final Conference + three schools) |
+| Events → School 2023 | `/events/school-2023` | `public/academy2023/index.blade.php` |
+| Experts | `/experts` | `public/experts.blade.php` |
+| Photo | `/photo` | `public/photo.blade.php` (six albums, lightbox `design/gallery.js`) |
+| Video | `/video` | `public/video.blade.php` (existing YouTube videos) |
+| Partners | `/partners` | `public/partners.blade.php` |
+| Publications | `/publications` | `public/publications.blade.php` (stub) |
 
-Shared layout: `public/layout.blade.php` (menu, language switch ru/en/ro, footer). Text is written in three languages inline (`data-lang`) via helpers in `AppSupportPublicUi`; recovered content lives in `resources/data/*.json` (people, partners, academy2025, academy2023); images in `public/img/{academy-2023,academy-2025,partners}`.
+Old addresses `/academy-2025…` and `/academy-2023` redirect with 301. Registration buttons and deadlines of finished events are not shown.
+
+Shared layout: `public/layout.blade.php` (menu with Events dropdown, language switch en/ru/ro, footer). Text is written in three languages inline (`data-lang`) via helpers in `App\Support\PublicUi`. Content lives in `resources/data/*.json`: `site.json` (all texts from the brief: hero, acronym cards, story, values, who/features/alumni, events, albums), `gallery.json` (photo manifest), `people`, `partners`, `academy2025`, `academy2023`, `videos`.
+
+Photos: customer originals in `user/` (git-ignored) are compressed to WebP (full 1400px + 520px thumbnail) in `public/img/gallery/<album>/NNN.webp` and `NNN-t.webp`; hero photo in `public/img/hero/`.
+
+## Performance notes
+
+- Tailwind is compiled, not run in the browser: after adding utility classes in Blade run `npm run build:css` (config `tailwind.config.cjs` → `public/design/tailwind.css`, committed; the server needs no Node).
+- Decorative motion: off on phones/touch, paused after 20 s idle or in a hidden tab (`public/design/inspire.js`, `.i-idle`); no `filter: blur`/`backdrop-filter`; long pages use `content-visibility: auto`.
+- The hero photo has its soft edges baked into WebP with alpha (`public/img/hero/group-soft*.webp`), no CSS mask. Telegram's script is loaded only inside Telegram.

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <meta property="og:site_name" content="INSPIRE EDU Network">
     <meta property="og:url" content="{{ url()->current() }}">
     <link rel="canonical" href="{{ url()->current() }}">
-    <meta property="og:image" content="{{ asset('brand/og-image.png') }}">
+    <meta property="og:image" content="{{ asset('img/hero/og.jpg') }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
@@ -20,14 +20,19 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
     <link rel="stylesheet" href="{{ asset('design/pages.css') }}">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="{{ asset('design/tailwind.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
+    <script>
+        // the Telegram WebApp script is only needed when the page is opened inside Telegram
+        (function () {
+            if ((location.hash || '').indexOf('tgWebApp') > -1 || window.TelegramWebviewProxy || /Telegram/i.test(navigator.userAgent)) {
+                var s = document.createElement('script'); s.src = 'https://telegram.org/js/telegram-web-app.js'; document.head.appendChild(s);
+            }
+        })();
+    </script>
     <script>
         (function () {
-            var s = localStorage.getItem('inspair_lang');
-            var b = (navigator.language || '').slice(0, 2);
-            var l = ['ru', 'en', 'ro'].indexOf(s) >= 0 ? s : ['ru', 'en', 'ro'].indexOf(b) >= 0 ? b : 'ru';
+            var s = null; try { s = localStorage.getItem('inspair_lang'); } catch (e) {}
+            var l = ['en', 'ru', 'ro'].indexOf(s) >= 0 ? s : 'en';
             document.documentElement.lang = l;
         })();
     </script>
@@ -37,12 +42,19 @@
 
 @php
     $menu = [
-        ['home',         ['О платформе', 'About', 'Despre platformă'],  'home'],
-        ['experts',      ['Эксперты', 'Experts', 'Experți'],           'experts'],
-        ['partners',     ['Партнёры', 'Partners', 'Parteneri'],        'partners'],
-        ['academy2025',  ['Академия 2025', 'Academy 2025', 'Academia 2025'], 'academy2025*'],
-        ['academy2023',  ['Академия 2023', 'Academy 2023', 'Academia 2023'], 'academy2023'],
+        ['route' => 'home', 'label' => ['Главная', 'Home', 'Acasă'], 'active' => ['home']],
+        ['label' => ['Мероприятия', 'Events', 'Evenimente'], 'active' => ['hackathon', 'academy2025*', 'academy2023'], 'children' => [
+            ['route' => 'hackathon',   'label' => ['Хакатон 2026', 'Hackathon 2026', 'Hackathon 2026']],
+            ['route' => 'academy2025', 'label' => ['Школы 2025', 'Schools 2025', 'Școli 2025']],
+            ['route' => 'academy2023', 'label' => ['Школа 2023', 'School 2023', 'Școala 2023']],
+        ]],
+        ['route' => 'experts',      'label' => ['Эксперты', 'Experts', 'Experți'],        'active' => ['experts']],
+        ['route' => 'photo',        'label' => ['Фото', 'Photo', 'Foto'],                 'active' => ['photo']],
+        ['route' => 'video',        'label' => ['Видео', 'Video', 'Video'],               'active' => ['video']],
+        ['route' => 'partners',     'label' => ['Партнёры', 'Partners', 'Parteneri'],     'active' => ['partners']],
+        ['route' => 'publications', 'label' => ['Публикации', 'Publications', 'Publicații'], 'active' => ['publications']],
     ];
+    $isActive = fn (array $m) => request()->routeIs(...$m['active']);
 @endphp
 
 {{-- ───────────── NAVBAR ───────────── --}}
@@ -53,12 +65,23 @@
         </a>
         <div class="i-nav__links" style="margin-left:auto;">
             @foreach($menu as $m)
-                <a href="{{ route($m[0]) }}" @class(['is-active' => request()->routeIs($m[2])])>{!! $t(...$m[1]) !!}</a>
+                @if(isset($m['children']))
+                    <div class="nav-dd {{ $isActive($m) ? 'is-active' : '' }}">
+                        <button type="button" class="nav-dd__btn {{ $isActive($m) ? 'is-active' : '' }}" aria-haspopup="true" aria-expanded="false">{!! $t(...$m['label']) !!}<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg></button>
+                        <div class="nav-dd__menu" role="menu">
+                            @foreach($m['children'] as $ch)
+                                <a role="menuitem" href="{{ route($ch['route']) }}" @class(['is-active' => request()->routeIs($ch['route'] . '*')])>{!! $t(...$ch['label']) !!}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                @else
+                    <a href="{{ route($m['route']) }}" @class(['is-active' => $isActive($m)])>{!! $t(...$m['label']) !!}</a>
+                @endif
             @endforeach
         </div>
         <div class="flex items-center gap-3">
             <div class="i-lang" role="group" aria-label="Language">
-                @foreach(['ru','en','ro'] as $l)
+                @foreach(['en','ru','ro'] as $l)
                     <button type="button" onclick="setLang('{{ $l }}')" id="btn-{{ $l }}" class="lang-btn">{{ strtoupper($l) }}</button>
                 @endforeach
             </div>
@@ -69,16 +92,22 @@
             </button>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 shadow-i-md" style="background:#fff">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 shadow-i-md" style="background:#fff;max-height:calc(100vh - 72px);overflow-y:auto">
         <div class="i-container py-4 flex flex-col gap-1">
             @foreach($menu as $m)
-                <a href="{{ route($m[0]) }}" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold transition {{ request()->routeIs($m[2]) ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$m[1]) !!}</a>
+                @if(isset($m['children']))
+                    <p class="px-4 pt-3 pb-1 i-eyebrow" style="color:var(--muted)">{!! $t(...$m['label']) !!}</p>
+                    @foreach($m['children'] as $ch)
+                        <a href="{{ route($ch['route']) }}" class="mobile-nav-link px-4 py-3 pl-8 rounded-xl text-sm font-bold transition {{ request()->routeIs($ch['route'] . '*') ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$ch['label']) !!}</a>
+                    @endforeach
+                @else
+                    <a href="{{ route($m['route']) }}" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold transition {{ $isActive($m) ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$m['label']) !!}</a>
+                @endif
             @endforeach
             <a href="{{ route('account.login') }}" class="i-btn i-btn--block mt-3">{!! $tg !!}<span>{!! $t('Войти в кабинет', 'Sign in', 'Intră în cont') !!}</span></a>
         </div>
     </div>
 </nav>
-
 <main id="top" class="pub-main">
     @yield('content')
 </main>
@@ -95,7 +124,13 @@
                 <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Разделы', 'Sections', 'Secțiuni') !!}</p>
                 <div class="flex flex-col gap-2.5 text-sm font-semibold">
                     @foreach($menu as $m)
-                        <a href="{{ route($m[0]) }}" style="text-decoration:none">{!! $t(...$m[1]) !!}</a>
+                        @if(isset($m['children']))
+                            @foreach($m['children'] as $ch)
+                                <a href="{{ route($ch['route']) }}" style="text-decoration:none">{!! $t(...$ch['label']) !!}</a>
+                            @endforeach
+                        @else
+                            <a href="{{ route($m['route']) }}" style="text-decoration:none">{!! $t(...$m['label']) !!}</a>
+                        @endif
                     @endforeach
                 </div>
             </div>
@@ -126,6 +161,14 @@
     }
     setLang(document.documentElement.lang);
 
+    // Desktop dropdown (Events): opens on hover via CSS, on click/Enter for touch and keyboard
+    document.querySelectorAll('.nav-dd').forEach(function (dd) {
+        var btn = dd.querySelector('.nav-dd__btn');
+        btn.addEventListener('click', function (e) { e.stopPropagation(); var o = dd.classList.toggle('is-open'); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
+        document.addEventListener('click', function () { dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { dd.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); } });
+    });
+
     // Mobile menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu    = document.getElementById('mobile-menu');
@@ -146,7 +189,7 @@
 </script>
 <script>
     // Telegram In-App Browser fix: links to the bot must be opened through Telegram.WebApp
-    (function () {
+    window.addEventListener('load', function () {
         if (!window.Telegram || !window.Telegram.WebApp) return;
         var tgApp = window.Telegram.WebApp;
         document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
@@ -156,7 +199,7 @@
                 tgApp.close();
             });
         });
-    })();
+    });
 </script>
 <script>
     // YouTube facade: the player is created only after a click

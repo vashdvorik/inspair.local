@@ -165,7 +165,7 @@
   /* ── Space (4 px grid) ───────────────────────────────────────────────── */
   --s-1: .25rem; --s-2: .5rem;  --s-3: .75rem; --s-4: 1rem;   --s-5: 1.25rem; --s-6: 1.5rem;
   --s-8: 2rem;   --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem;  --s-20: 5rem;   --s-24: 6rem;
-  --container: 1160px;  --container-narrow: 760px;
+  --container: 1440px;  --container-narrow: 760px;
 
   /* ── Shape ───────────────────────────────────────────────────────────── */
   --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-xl: 26px; --r-2xl: 34px; --r-pill: 999px;
@@ -200,7 +200,7 @@ body.i-body, .i-body {
 .i-eyebrow { font-size: var(--fs-xs); font-weight: 600; letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--blue-600); }
 .i-muted { color: var(--muted); }
 .i-grad-text { background: linear-gradient(100deg, var(--navy-800) 0%, var(--blue-600) 55%, var(--sky) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.i-container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--s-5); }
+.i-container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 clamp(1.25rem, 3vw, 3rem); }
 .i-container--narrow { max-width: var(--container-narrow); }
 .i-section { padding: var(--s-20) 0; position: relative; }
 .i-section--soft { background: var(--bg-soft); }

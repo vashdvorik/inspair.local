@@ -1,10 +1,13 @@
 @extends('public.layout')
 
-@section('title', 'Академия 2025 — INSPIRE Leadership Academy')
-@section('description', 'INSPIRE Leadership Academy 2025: три школы в Кишинёве, Комрате и Тирасполе для молодых лидеров, которые меняют регион и мир.')
+@section('title', 'Schools 2025 — INSPIRE Leadership Academy')
+@section('description', 'INSPIRE Leadership Academies 2025: three schools in Chișinău, Comrat and Tiraspol and the Final Conference at Digital Park.')
 
 @php
     $T = $c['t'];
+    $E = $site['events'];
+    $albumOf = [1 => 'school-1-chisinau', 2 => 'school-2-comrat', 3 => 'school-3-tiraspol'];
+    $shots = [1 => [0, 8, 20], 2 => [0, 6, 18], 3 => [-1, 10, 30]];
     $schoolTone = ['', 'yellow', 'green'];
     $experts25 = array_values(array_filter($people, fn ($x) => in_array(2025, $x['years']) && $x['img']));
     $partners25 = array_values(array_filter($partners, fn ($x) => in_array(2025, $x['years']) && in_array($x['group'], ['donor', 'coorg', 'partner'])));
@@ -27,12 +30,12 @@
             <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 16px;">INSPIRE <span class="i-grad-text">Leadership Academy</span> 2025</h1>
             {!! $p('Помогаем молодым лидерам менять регион и мир к лучшему.', 'Empowering young leaders to drive regional and global change.', 'Împuternicim tinerii lideri să schimbe în bine regiunea și lumea.', 'i-lead i-in i-in-3') !!}
             <div class="meta i-in i-in-4">
-                <span>{!! $icon('cal', 'w-5 h-5') !!}{!! $t('Май — ноябрь 2025', 'May — November 2025', 'Mai — noiembrie 2025') !!}</span>
+                <span>{!! $icon('cal', 'w-5 h-5') !!}{!! $t('Май — декабрь 2025', 'May — December 2025', 'Mai — decembrie 2025') !!}</span>
                 <span>{!! $icon('pin', 'w-5 h-5') !!}{!! $t('Кишинёв · Комрат · Тирасполь', 'Chisinau · Comrat · Tiraspol', 'Chișinău · Comrat · Tiraspol') !!}</span>
             </div>
             <div class="flex flex-wrap gap-4 mt-8 i-in i-in-5">
-                <a href="#deadlines" class="i-btn i-btn--lg">{!! $t('Регистрация', 'Register', 'Înregistrare') !!}</a>
-                <a href="#schools" class="i-btn i-btn--secondary i-btn--lg"><span>{!! $t('Смотреть школы', 'Explore the schools', 'Descoperă școlile') !!}</span>{!! $arrow !!}</a>
+                <a href="#schools" class="i-btn i-btn--lg">{!! $t('Смотреть школы', 'Explore the schools', 'Descoperă școlile') !!}</a>
+                <a href="#final" class="i-btn i-btn--secondary i-btn--lg"><span>{!! $t('Итоговая конференция', 'Final Conference', 'Conferința finală') !!}</span>{!! $arrow !!}</a>
             </div>
         </div>
         <div class="i-in i-in-3 hidden lg:block"><img class="i-float" src="{{ $img('academy-2025/leadership.png') }}" alt="INSPIRE Leadership Academy 2025" width="380" height="356" style="width:min(360px,100%);height:auto;margin:0 auto;"></div>
@@ -57,115 +60,71 @@
     </div>
 </section>
 
-{{-- ───────────── SCHOOLS ───────────── --}}
-<section class="i-section i-section--tint" id="schools">
+{{-- ───────────── FINAL CONFERENCE ───────────── --}}
+<section class="i-section i-section--tint" id="final">
     <div class="i-container">
-        <h2 class="i-h2 i-reveal">{!! $tk($T, 'schoolsH') !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 18px;"></div>
-        {!! $pk($T, 'schoolsLead', 'i-lead i-reveal') !!}
-        <div class="grid lg:grid-cols-3 gap-6 mt-10">
-            @foreach($T['en']['schools'] as $i => $s)
-                <article class="i-card i-card--hover i-reveal" style="--d:{{ $i * .1 }}s;display:flex;flex-direction:column;">
-                    <span class="i-eyebrow">{!! $tk($T, 'school') !!} {{ $i + 1 }}</span>
-                    <h3 class="i-h3" style="font-size:1.25rem;margin:8px 0 12px;">{!! $tk($T, "schools.$i.title") !!}</h3>
-                    <div class="flex flex-wrap gap-x-5 gap-y-1 text-sm font-semibold text-ink mb-3">
-                        <span class="inline-flex items-center gap-1.5">{!! $icon('cal', 'w-4 h-4 text-orange') !!}{!! $tk($T, "schools.$i.dates") !!}</span>
-                        <span class="inline-flex items-center gap-1.5">{!! $icon('pin', 'w-4 h-4 text-orange') !!}{!! $tk($T, "schools.$i.place") !!}</span>
-                    </div>
-                    {!! $pk($T, "schools.$i.text", 'text-sm text-gray-500 leading-relaxed mb-3') !!}
-                    <ul class="text-sm text-gray-500 mb-5" style="padding-left:1.1rem;list-style:disc;display:grid;gap:3px;">
-                        @foreach($s['areas'] as $j => $a)
-                            <li>{!! $tk($T, "schools.$i.areas.$j") !!}</li>
-                        @endforeach
-                    </ul>
-                    <div style="margin-top:auto;padding-top:16px;border-top:1px solid var(--line);">
-                        <p class="text-xs text-gray-500 mb-3">{!! $tk($T, 'deadline') !!} <strong class="text-ink">{!! $tk($T, "schools.$i.dl") !!}</strong></p>
-                        <a href="{{ route('academy2025.school', $i + 1) }}" class="i-btn i-btn--secondary i-btn--sm"><span>{!! $t('Программа', 'Programme', 'Program') !!}</span>{!! $arrow !!}</a>
+        @php $F = $E['final']; $fc = $gallery['final-conference']; @endphp
+        <div class="grid lg:grid-cols-[1.15fr_.85fr] gap-10 items-start">
+            <div>
+                <span class="i-badge i-badge--purple i-reveal">{!! $t('Итоговая конференция', 'Final Conference', 'Conferința finală') !!}</span>
+                <h2 class="i-h2 i-reveal" style="margin-top:14px">{!! $tm($F['title']) !!}</h2>
+                <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 18px;"></div>
+                <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold text-ink mb-4 i-reveal">
+                    <span class="inline-flex items-center gap-1.5">{!! $icon('cal', 'w-4 h-4 text-orange') !!}{!! $tm($F['date']) !!}</span>
+                    <span class="inline-flex items-center gap-1.5">{!! $icon('pin', 'w-4 h-4 text-orange') !!}{!! $tm($F['place']) !!}</span>
+                </div>
+                <div class="i-reveal">{!! $pm($F['format'], 'font-semibold text-ink leading-relaxed mb-3') !!}</div>
+                @foreach($F['paras'] as $par)<div class="i-reveal">{!! $pm($par, 'text-gray-600 leading-relaxed mb-3') !!}</div>@endforeach
+                <p class="i-eyebrow mt-6 mb-3 i-reveal">{!! $t('Ключевые темы', 'Key Focus Areas', 'Domenii-cheie') !!}</p>
+                <div class="areas i-reveal">@foreach($F['areas'] as $ar)<span class="i-chip">{!! $tm($ar) !!}</span>@endforeach</div>
+            </div>
+            <div class="grid grid-cols-2 gap-3" data-gallery>
+                @foreach($fc as $k => $ph)
+                    <a class="cover-card i-reveal" style="--d:{{ $k * .06 }}s;aspect-ratio:1/1" href="{{ $gal('final-conference', $ph['f']) }}"><img src="{{ $gal('final-conference', $ph['f'], true) }}" alt="Final Conference {{ $k + 1 }}" loading="lazy" width="{{ $ph['w'] }}" height="{{ $ph['h'] }}"></a>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
+
+{{-- ───────────── THREE SCHOOLS ───────────── --}}
+<section class="i-section" id="schools">
+    <div class="i-container">
+        <h2 class="i-h2 i-reveal">{!! $tm($E['schools2025']['title']) !!}</h2>
+        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 40px;"></div>
+        <div class="grid gap-10">
+            @foreach($E['schools2025']['items'] as $sc)
+                @php $n = $sc['n']; $alb = $albumOf[$n]; $items = $gallery[$alb]; $tone = ['', 'yellow', 'green'][$n - 1]; @endphp
+                <article class="i-card i-reveal" id="school-{{ $n }}" style="padding:34px">
+                    <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-start">
+                        <div>
+                            <span class="i-badge {{ $tone ? 'i-badge--' . $tone : '' }}">{!! $t('Школа ' . $n, 'School ' . $n, 'Școala ' . $n) !!}</span>
+                            <h3 class="i-h3" style="margin:14px 0 12px">{!! $tm($sc['title']) !!}</h3>
+                            <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold text-ink mb-4">
+                                <span class="inline-flex items-center gap-1.5">{!! $icon('cal', 'w-4 h-4 text-orange') !!}{!! $t('Даты:', 'Dates:', 'Date:') !!} {!! $tm($sc['dates']) !!}</span>
+                                <span class="inline-flex items-center gap-1.5">{!! $icon('pin', 'w-4 h-4 text-orange') !!}{!! $tm($sc['place']) !!}</span>
+                            </div>
+                            {!! $pm($sc['format'], 'font-semibold text-ink leading-relaxed mb-3') !!}
+                            @foreach($sc['paras'] as $par){!! $pm($par, 'text-gray-600 leading-relaxed mb-3') !!}@endforeach
+                            <p class="i-eyebrow mt-5 mb-3">{!! $t('Ключевые темы', 'Key Focus Areas', 'Domenii-cheie') !!}</p>
+                            <div class="areas">@foreach($sc['areas'] as $ar)<span class="i-chip">{!! $tm($ar) !!}</span>@endforeach</div>
+                            <div class="flex flex-wrap gap-3 mt-7">
+                                <a href="{{ route('academy2025.school', $n) }}" class="i-btn i-btn--secondary i-btn--sm"><span>{!! $t('Программа', 'Programme', 'Program') !!}</span>{!! $arrow !!}</a>
+                                <a href="{{ route('photo') }}#{{ $alb }}" class="i-btn i-btn--ghost i-btn--sm"><span>{!! $t('Все фото', 'All photos', 'Toate fotografiile') !!} ({{ count($items) }})</span></a>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3" data-gallery>
+                            @foreach($shots[$n] as $k => $ix)
+                                @php $ph = $ix < 0 ? $items[count($items) + $ix] : $items[$ix]; @endphp
+                                <a class="cover-card" href="{{ $gal($alb, $ph['f']) }}" style="{{ $k === 0 ? 'grid-column:1/-1;aspect-ratio:16/10' : 'aspect-ratio:1/1' }}"><img src="{{ $gal($alb, $ph['f'], true) }}" alt="{{ $sc['title']['en'] }}" loading="lazy" width="{{ $ph['w'] }}" height="{{ $ph['h'] }}"></a>
+                            @endforeach
+                        </div>
                     </div>
                 </article>
             @endforeach
         </div>
     </div>
 </section>
-
-{{-- ───────────── AUDIENCE + FEATURES ───────────── --}}
-<section class="i-section">
-    <div class="i-container">
-        <h2 class="i-h2 i-reveal">{!! $tk($T, 'audH') !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 30px;"></div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            @foreach($T['en']['audience'] as $i => $a)
-                <div class="i-card i-card--hover i-reveal" style="--d:{{ $i * .07 }}s">
-                    <h3 class="i-h4" style="margin-bottom:6px;">{!! $tk($T, "audience.$i.0") !!}</h3>
-                    <p class="text-sm text-gray-500">{!! $tk($T, "audience.$i.1") !!}</p>
-                </div>
-            @endforeach
-        </div>
-        <div class="grid md:grid-cols-2 gap-5 mt-5">
-            <div class="i-card i-card--tint i-reveal"><h3 class="i-h4" style="margin-bottom:6px;">{!! $tk($T, 'langH') !!}</h3><p class="text-sm text-gray-500">{!! $tk($T, 'langT') !!}</p></div>
-            <div class="i-card i-card--tint i-reveal" style="--d:.08s"><h3 class="i-h4" style="margin-bottom:6px;">{!! $tk($T, 'selH') !!}</h3><p class="text-sm text-gray-500">{!! $tk($T, 'selT') !!}</p></div>
-        </div>
-        <p class="mt-6 font-bold text-ink i-reveal">{!! $tk($T, 'audClose') !!}</p>
-
-        <h2 class="i-h2 i-reveal" style="margin-top:64px;">{!! $tk($T, 'featH') !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 30px;"></div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            @php $ftone = ['', 'yellow', 'green', 'purple', 'orange', 'red']; @endphp
-            @foreach($T['en']['features'] as $i => $f)
-                <div class="i-card i-card--hover i-reveal" style="--d:{{ ($i % 3) * .07 }}s">
-                    <div class="i-card__icon {{ $ftone[$i % 6] ? 'i-card__icon--'.$ftone[$i % 6] : '' }}" style="width:44px;height:44px;margin-bottom:12px;">{!! $icon(['users','book','bolt','group','bulb','award','globe','heart','badge'][$i % 9], 'w-5 h-5') !!}</div>
-                    <h3 class="i-h4" style="margin-bottom:6px;">{!! $tk($T, "features.$i.0") !!}</h3>
-                    <p class="text-sm text-gray-500">{!! $tk($T, "features.$i.1") !!}</p>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ───────────── DEADLINES ───────────── --}}
-<section class="i-section i-section--soft" id="deadlines">
-    <div class="i-container">
-        <h2 class="i-h2 i-reveal">{!! $tk($T, 'regH') !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 30px;"></div>
-        <div class="grid md:grid-cols-3 gap-6">
-            @foreach($T['en']['schools'] as $i => $s)
-                <div class="i-card i-reveal" style="--d:{{ $i * .08 }}s;display:flex;flex-direction:column;">
-                    <span class="i-eyebrow">{!! $tk($T, 'school') !!} {{ $i + 1 }}</span>
-                    <h3 class="i-h4" style="margin:6px 0 8px;">{!! $tk($T, "schools.$i.title") !!}</h3>
-                    <p class="text-sm text-gray-500 mb-5">{!! $tk($T, 'deadline') !!} <strong class="text-ink">{!! $tk($T, "schools.$i.dl") !!}</strong></p>
-                    @if(!empty($c['forms'][$i]))
-                        <a class="i-btn" style="margin-top:auto;align-self:flex-start" href="{{ $c['forms'][$i] }}" target="_blank" rel="noopener">{!! $t('Регистрация', 'Register', 'Înregistrare') !!}</a>
-                    @endif
-                </div>
-            @endforeach
-        </div>
-        <h3 class="i-h4 i-reveal" style="margin:40px 0 16px;">{!! $tk($T, 'tlH') !!}</h3>
-        <ol class="steps6">
-            @foreach($T['en']['steps'] as $i => $st)
-                <li class="i-reveal" style="--d:{{ $i * .06 }}s">{!! $tk($T, "steps.$i") !!}</li>
-            @endforeach
-        </ol>
-        @if(!empty($c['history']))
-        <details class="i-card i-reveal" style="margin-top:34px;padding:20px 24px;">
-            <summary style="cursor:pointer;font-weight:700">{!! $tm($c['history']['title']) !!}</summary>
-            <p class="text-sm text-gray-500" style="margin:10px 0 18px">{!! $tm($c['history']['note']) !!}</p>
-            <div class="grid md:grid-cols-3 gap-6">
-                @foreach($c['history']['rows'] as $row)
-                    <div>
-                        <h4 class="i-h4" style="margin-bottom:10px">{!! $tk($T, 'school') !!} {{ $row['school'] }}</h4>
-                        <ol class="text-sm text-gray-600" style="display:grid;gap:12px;">
-                            @foreach($row['steps'] as $st)
-                                <li><span class="i-badge">{{ $st['when'] }}</span><br><strong>{!! $tm($st['dates']) !!}</strong> · {!! $tm($st['place']) !!}<br>{!! $tk($T, 'deadline') !!} {!! $tm($st['deadline']) !!}</li>
-                            @endforeach
-                        </ol>
-                    </div>
-                @endforeach
-            </div>
-        </details>
-        @endif
-    </div>
-</section>
-
 {{-- ───────────── GRANT ───────────── --}}
 <section class="i-section">
     <div class="i-container">
@@ -182,23 +141,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-{{-- ───────────── ALUMNI ───────────── --}}
-<section class="i-section i-section--soft">
-    <div class="i-container">
-        <h2 class="i-h2 i-reveal">{!! $tk($T, 'alH') !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 18px;"></div>
-        {!! $pk($T, 'alLead', 'i-lead i-reveal') !!}
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-9">
-            @foreach($T['en']['alumni'] as $i => $a)
-                <div class="i-card i-card--hover i-reveal" style="--d:{{ ($i % 4) * .06 }}s">
-                    <h3 class="i-h4" style="margin-bottom:6px;">{!! $tk($T, "alumni.$i.0") !!}</h3>
-                    <p class="text-sm text-gray-500">{!! $tk($T, "alumni.$i.1") !!}</p>
-                </div>
-            @endforeach
         </div>
     </div>
 </section>
@@ -227,13 +169,6 @@
     <div class="i-container">
         <div class="mb-9 i-reveal"><h2 class="i-h2">{!! $t('Видео', 'Video', 'Video') !!}</h2><div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div></div>
         @include('public._videos', ['videos' => $videos])
-        @if(!empty($c['albums']))
-        <h3 class="i-h4 i-reveal" style="margin:40px 0 12px;">{!! $t('Фотоальбомы на прежнем сайте', 'Photo albums on the former site', 'Albume foto de pe fostul site') !!}</h3>
-        <div class="flex flex-wrap gap-2 i-reveal">
-            @foreach($c['albums'] as $al)<span class="i-chip">{!! $tm($al) !!}</span>@endforeach
-        </div>
-        {!! $p('Сами фотографии 2025 года не сохранились в веб-архиве.', 'The 2025 photos themselves were not preserved in the web archive.', 'Fotografiile din 2025 nu s-au păstrat în arhiva web.', 'text-sm text-gray-500 mt-3 i-reveal') !!}
-        @endif
     </div>
 </section>
 
@@ -259,9 +194,13 @@
     <div class="i-container">
         <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:60px 28px;text-align:center;box-shadow:var(--sh-md);">
             <h2 class="i-h2" style="max-width:640px;margin:0 auto 14px;">{!! $t('Готовы вести за собой?', 'Ready to lead?', 'Ești gata să conduci?') !!}</h2>
-            {!! $p('Выберите школу и подайте заявку до окончания срока.', 'Choose your school and apply before the deadline.', 'Alege școala și depune cererea înainte de termen.', 'i-lead mx-auto mb-8') !!}
-            <a href="#deadlines" class="i-btn i-btn--lg">{!! $t('Регистрация', 'Register', 'Înregistrare') !!}</a>
+            {!! $p('Присоединяйтесь к сети INSPIRE в Telegram, чтобы узнавать о новых мероприятиях первыми.', 'Join the INSPIRE network in Telegram to hear about new events first.', 'Alătură-te rețelei INSPIRE în Telegram ca să afli primul despre noile evenimente.', 'i-lead mx-auto mb-8') !!}
+            <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn i-btn--lg">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
         </div>
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('design/gallery.js') }}" defer></script>
+@endpush

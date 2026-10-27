@@ -12,8 +12,7 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="{{ asset('design/tailwind.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
     <style>
         .login-art { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
         .login-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--sh-lg); padding: 34px 30px; }

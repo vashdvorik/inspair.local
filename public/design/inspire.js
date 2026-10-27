@@ -33,10 +33,18 @@
       addEventListener('scroll', on, { passive: true }); on();
     }
 
+    // idle: after 20 s without interaction (or when the tab is hidden) decorative loops are paused
+    var idleTimer, setIdle = function (on) { d.classList.toggle('i-idle', on); };
+    var wake = function () { setIdle(false); clearTimeout(idleTimer); idleTimer = setTimeout(function () { setIdle(true); }, 20000); };
+    ['pointermove', 'pointerdown', 'keydown', 'touchstart', 'wheel'].forEach(function (ev) { addEventListener(ev, wake, { passive: true }); });
+    addEventListener('scroll', wake, { passive: true });
+    document.addEventListener('visibilitychange', function () { document.hidden ? setIdle(true) : wake(); });
+    wake();
+
     // pause decorative animation when its block is off-screen
     if ('IntersectionObserver' in window) {
       var po = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle('i-paused', !e.isIntersecting); }); });
-      [].slice.call(document.querySelectorAll('.i-airy, .i-nodes')).forEach(function (el) { po.observe(el); });
+      [].slice.call(document.querySelectorAll('.i-airy, .i-nodes, .ticker')).forEach(function (el) { po.observe(el); });
     }
   });
 })();

@@ -43,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 'pk'    => fn (array $T, string $path, string $class = '') => PublicUi::path($T, $path, true, $class),
                 'icon'  => fn (string $k, string $cls = 'w-6 h-6') => PublicUi::icon($k, $cls),
                 'img'   => fn (string $rel) => asset('img/'.$rel),
+                'gal'   => fn (string $album, string $file, bool $thumb = false) => asset('img/gallery/'.$album.'/'.$file.($thumb ? '-t' : '').'.webp'),
                 'initials' => fn (string $n) => PublicUi::initials($n),
                 'tg'    => PublicUi::telegramIcon(),
                 'arrow' => PublicUi::arrow(),

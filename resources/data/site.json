@@ -1,0 +1,1243 @@
+{
+  "hero": {
+    "title": {
+      "en": "Inter-University Network for Sustainable Peace, Innovation, Research, and Education",
+      "ru": "Межуниверситетская сеть за устойчивый мир, инновации, исследования и образование",
+      "ro": "Rețeaua interuniversitară pentru pace durabilă, inovare, cercetare și educație"
+    },
+    "tagline": {
+      "en": "Connecting Minds. Building Trust. Creating Change.",
+      "ru": "Объединяем умы. Строим доверие. Создаём перемены.",
+      "ro": "Conectăm minți. Construim încredere. Creăm schimbare."
+    },
+    "title_main": {
+      "en": "Inter-University Network",
+      "ru": "Сеть университетов",
+      "ro": "Rețea de universități"
+    },
+    "title_sub": {
+      "en": "for Sustainable Peace, Innovation, Research, and Education",
+      "ru": "за устойчивый мир, инновации, исследования и образование",
+      "ro": "pentru pace durabilă, inovare, cercetare și educație"
+    }
+  },
+  "ticker": [
+    {
+      "en": "Social Cohesion",
+      "ru": "Социальное сплочение",
+      "ro": "Coeziune socială"
+    },
+    {
+      "en": "Sustainable Development",
+      "ru": "Устойчивое развитие",
+      "ro": "Dezvoltare durabilă"
+    },
+    {
+      "en": "Leadership",
+      "ru": "Лидерство",
+      "ro": "Leadership"
+    },
+    {
+      "en": "Peacebuilding",
+      "ru": "Миростроительство",
+      "ro": "Construirea păcii"
+    },
+    {
+      "en": "Global Citizenship",
+      "ru": "Глобальное гражданство",
+      "ro": "Cetățenie globală"
+    },
+    {
+      "en": "Digital Transformation",
+      "ru": "Цифровая трансформация",
+      "ro": "Transformare digitală"
+    }
+  ],
+  "acronym": {
+    "title": {
+      "en": "INSPIRE – Turning Ideas into Impact",
+      "ru": "INSPIRE: превращаем идеи в результат",
+      "ro": "INSPIRE – de la idei la impact"
+    },
+    "items": [
+      {
+        "letter": "I",
+        "name": {
+          "en": "Inter-University",
+          "ru": "Межуниверситетское",
+          "ro": "Interuniversitar"
+        },
+        "text": {
+          "en": "Bringing together universities, educators, students, and experts to foster academic cooperation and knowledge exchange across regions.",
+          "ru": "Объединяем университеты, преподавателей, студентов и экспертов для академического сотрудничества и обмена знаниями между регионами.",
+          "ro": "Reunim universități, cadre didactice, studenți și experți pentru cooperare academică și schimb de cunoștințe între regiuni."
+        }
+      },
+      {
+        "letter": "N",
+        "name": {
+          "en": "Network",
+          "ru": "Сеть",
+          "ro": "Rețea"
+        },
+        "text": {
+          "en": "Building a dynamic community of educational institutions, civil society organizations, and international partners for lasting collaboration.",
+          "ru": "Создаём динамичное сообщество образовательных учреждений, организаций гражданского общества и международных партнёров для долгосрочного сотрудничества.",
+          "ro": "Construim o comunitate dinamică de instituții de învățământ, organizații ale societății civile și parteneri internaționali pentru o colaborare de durată."
+        }
+      },
+      {
+        "letter": "S",
+        "name": {
+          "en": "Sustainability",
+          "ru": "Устойчивость",
+          "ro": "Sustenabilitate"
+        },
+        "text": {
+          "en": "Creating long-term partnerships, strengthening institutional capacities, and promoting sustainable solutions to shared challenges.",
+          "ru": "Создаём долгосрочные партнёрства, укрепляем институциональный потенциал и продвигаем устойчивые решения общих задач.",
+          "ro": "Creăm parteneriate pe termen lung, consolidăm capacitățile instituționale și promovăm soluții durabile pentru provocările comune."
+        }
+      },
+      {
+        "letter": "P",
+        "name": {
+          "en": "Peace",
+          "ru": "Мир",
+          "ro": "Pace"
+        },
+        "text": {
+          "en": "Advancing dialogue, mutual understanding, and social cohesion through education, cooperation, and cross-regional engagement.",
+          "ru": "Развиваем диалог, взаимопонимание и социальное сплочение через образование, сотрудничество и взаимодействие между регионами.",
+          "ro": "Promovăm dialogul, înțelegerea reciprocă și coeziunea socială prin educație, cooperare și implicare între regiuni."
+        }
+      },
+      {
+        "letter": "I",
+        "name": {
+          "en": "Innovation",
+          "ru": "Инновации",
+          "ro": "Inovare"
+        },
+        "text": {
+          "en": "Transforming knowledge, creativity, and new technologies into practical solutions that drive positive social change.",
+          "ru": "Превращаем знания, креативность и новые технологии в практические решения, ведущие к позитивным социальным изменениям.",
+          "ro": "Transformăm cunoașterea, creativitatea și noile tehnologii în soluții practice care stimulează schimbarea socială pozitivă."
+        }
+      },
+      {
+        "letter": "R",
+        "name": {
+          "en": "Research",
+          "ru": "Исследования",
+          "ro": "Cercetare"
+        },
+        "text": {
+          "en": "Encouraging collaborative research, critical thinking, and evidence-based approaches to education, peacebuilding, and development.",
+          "ru": "Поощряем совместные исследования, критическое мышление и подходы, основанные на фактах, в образовании, миростроительстве и развитии.",
+          "ro": "Încurajăm cercetarea colaborativă, gândirea critică și abordările bazate pe dovezi în educație, construirea păcii și dezvoltare."
+        }
+      },
+      {
+        "letter": "E",
+        "name": {
+          "en": "Education",
+          "ru": "Образование",
+          "ro": "Educație"
+        },
+        "text": {
+          "en": "Empowering individuals and institutions through lifelong learning, leadership development, international exchange, and new opportunities.",
+          "ru": "Расширяем возможности людей и учреждений через непрерывное обучение, развитие лидерства, международный обмен и новые возможности.",
+          "ro": "Oferim oamenilor și instituțiilor puterea de a acționa prin învățare continuă, dezvoltarea leadershipului, schimburi internaționale și noi oportunități."
+        }
+      }
+    ]
+  },
+  "story": {
+    "title": {
+      "en": "Our Story: From Education to Impact",
+      "ru": "Наша история: от образования к результату",
+      "ro": "Povestea noastră: de la educație la impact"
+    },
+    "paras": [
+      {
+        "en": "INSPIRE began in 2023 with a simple but powerful idea: education can build bridges, connect people, and inspire positive change.",
+        "ru": "INSPIRE начался в 2023 году с простой, но сильной идеи: образование может строить мосты, объединять людей и вдохновлять на позитивные перемены.",
+        "ro": "INSPIRE a început în 2023 cu o idee simplă, dar puternică: educația poate construi punți, poate conecta oamenii și poate inspira schimbări pozitive."
+      },
+      {
+        "en": "With the support of the Embassy of the Kingdom of the Netherlands in Moldova, the initiative was launched through the Education for Peace and Development: The Future Leaders Project. Its first Youth Peace Summer School brought together students, professors, and experts from Chișinău, Comrat, and Tiraspol, creating a unique space for dialogue, leadership development, and mutual understanding. The program also supported joint research, academic publications, and the development of peace education initiatives.",
+        "ru": "При поддержке Посольства Королевства Нидерландов в Молдове инициатива стартовала в рамках проекта «Образование для мира и развития: будущие лидеры». Первая Летняя школа мира для молодёжи собрала студентов, преподавателей и экспертов из Кишинёва, Комрата и Тирасполя и создала уникальное пространство для диалога, развития лидерства и взаимопонимания. Программа также поддержала совместные исследования, научные публикации и развитие инициатив в сфере образования для мира.",
+        "ro": "Cu sprijinul Ambasadei Regatului Țărilor de Jos în Moldova, inițiativa a fost lansată prin proiectul «Educație pentru pace și dezvoltare: viitorii lideri». Prima Școală de vară pentru pace a tinerilor a reunit studenți, profesori și experți din Chișinău, Comrat și Tiraspol, creând un spațiu unic pentru dialog, dezvoltarea leadershipului și înțelegere reciprocă. Programul a sprijinit și cercetări comune, publicații academice și dezvoltarea inițiativelor de educație pentru pace."
+      },
+      {
+        "en": "In 2024, this vision grew into INSPIRE — the Inter-University Network for Sustainable Peace, Innovation, Research, and Education. What started as an educational initiative evolved into a collaborative network connecting six universities, civil society organizations, young leaders, researchers, and international experts across Moldova.",
+        "ru": "В 2024 году это видение выросло в INSPIRE — Межуниверситетскую сеть за устойчивый мир, инновации, исследования и образование. То, что начиналось как образовательная инициатива, превратилось в сеть сотрудничества, объединяющую шесть университетов, организации гражданского общества, молодых лидеров, исследователей и международных экспертов по всей Молдове.",
+        "ro": "În 2024, această viziune a devenit INSPIRE — Rețeaua interuniversitară pentru pace durabilă, inovare, cercetare și educație. Ceea ce a început ca o inițiativă educațională a evoluat într-o rețea de colaborare care conectează șase universități, organizații ale societății civile, tineri lideri, cercetători și experți internaționali din toată Moldova."
+      },
+      {
+        "en": "2025 marked a major milestone with the INSPIRE Leadership Academy. Three transformative schools in Chișinău, Comrat, and Tiraspol engaged 315 student participations from eight cities, supported by 39 national and international experts. The program combined leadership education, digital innovation, peacebuilding, and communication skills with hands-on learning, student research, and youth-led initiatives.",
+        "ru": "2025 год стал важной вехой: Академия лидерства INSPIRE. Три преобразующие школы в Кишинёве, Комрате и Тирасполе объединили 315 студенческих участий из восьми городов при поддержке 39 национальных и международных экспертов. Программа сочетала обучение лидерству, цифровые инновации, миростроительство и коммуникативные навыки с практическим обучением, студенческими исследованиями и молодёжными инициативами.",
+        "ro": "Anul 2025 a marcat un moment important: Academia de Leadership INSPIRE. Trei școli transformatoare la Chișinău, Comrat și Tiraspol au inclus 315 participări de studenți din opt orașe, cu sprijinul a 39 de experți naționali și internaționali. Programul a îmbinat educația în leadership, inovarea digitală, construirea păcii și abilitățile de comunicare cu învățarea practică, cercetarea studențească și inițiative conduse de tineri."
+      },
+      {
+        "en": "Today, INSPIRE EDU NETWORK is entering a new chapter — moving from learning to action, from connections to partnerships, and from ideas to real impact. Through digital networking, innovation, research, mentorship, and joint initiatives, INSPIRE continues to connect young leaders, academics, universities, and international partners.",
+        "ru": "Сегодня INSPIRE EDU NETWORK начинает новую главу: от обучения к действию, от связей к партнёрствам, от идей к реальным результатам. Через цифровой нетворкинг, инновации, исследования, наставничество и совместные инициативы INSPIRE продолжает объединять молодых лидеров, учёных, университеты и международных партнёров.",
+        "ro": "Astăzi, INSPIRE EDU NETWORK începe un nou capitol: de la învățare la acțiune, de la conexiuni la parteneriate și de la idei la impact real. Prin networking digital, inovare, cercetare, mentorat și inițiative comune, INSPIRE continuă să conecteze tineri lideri, cadre universitare, universități și parteneri internaționali."
+      }
+    ],
+    "closing": {
+      "en": "More than a project, INSPIRE is a growing community where education connects, innovation empowers, and collaboration builds a more peaceful and sustainable future.",
+      "ru": "Больше чем проект: INSPIRE — растущее сообщество, где образование объединяет, инновации дают силы, а сотрудничество строит более мирное и устойчивое будущее.",
+      "ro": "Mai mult decât un proiect, INSPIRE este o comunitate în creștere, în care educația conectează, inovarea oferă putere, iar colaborarea construiește un viitor mai pașnic și mai durabil."
+    },
+    "funding": {
+      "en": "INSPIRE project funding by the Embassy of the Kingdom of the Netherlands in Moldova",
+      "ru": "Проект INSPIRE финансируется Посольством Королевства Нидерландов в Молдове",
+      "ro": "Proiectul INSPIRE este finanțat de Ambasada Regatului Țărilor de Jos în Moldova"
+    },
+    "funding_url": "https://www.netherlandsandyou.nl/web/moldova/about-us",
+    "stats": [
+      {
+        "n": 6,
+        "label": {
+          "en": "universities in the network",
+          "ru": "университетов в сети",
+          "ro": "universități în rețea"
+        }
+      },
+      {
+        "n": 315,
+        "label": {
+          "en": "student participations in 2025",
+          "ru": "студенческих участий в 2025",
+          "ro": "participări de studenți în 2025"
+        }
+      },
+      {
+        "n": 8,
+        "label": {
+          "en": "cities",
+          "ru": "городов",
+          "ro": "orașe"
+        }
+      },
+      {
+        "n": 39,
+        "label": {
+          "en": "national and international experts",
+          "ru": "национальных и международных экспертов",
+          "ro": "experți naționali și internaționali"
+        }
+      }
+    ]
+  },
+  "values": {
+    "title": {
+      "en": "Our Values",
+      "ru": "Наши ценности",
+      "ro": "Valorile noastre"
+    },
+    "intro": {
+      "en": "At INSPIRE EDU NETWORK, we believe that education, dialogue, and collaboration are powerful drivers of positive social change. Our network is built on six core values:",
+      "ru": "В INSPIRE EDU NETWORK мы верим, что образование, диалог и сотрудничество — мощные двигатели позитивных социальных изменений. Наша сеть строится на шести базовых ценностях:",
+      "ro": "La INSPIRE EDU NETWORK credem că educația, dialogul și colaborarea sunt forțe puternice ale schimbării sociale pozitive. Rețeaua noastră se bazează pe șase valori fundamentale:"
+    },
+    "items": [
+      {
+        "emoji": "🌍",
+        "name": {
+          "en": "Peace & Social Cohesion",
+          "ru": "Мир и социальное сплочение",
+          "ro": "Pace și coeziune socială"
+        },
+        "text": {
+          "en": "Building trust, mutual understanding, and lasting connections between people and communities across regions.",
+          "ru": "Выстраиваем доверие, взаимопонимание и прочные связи между людьми и сообществами разных регионов.",
+          "ro": "Construim încredere, înțelegere reciprocă și legături durabile între oameni și comunități din diferite regiuni."
+        }
+      },
+      {
+        "emoji": "🎓",
+        "name": {
+          "en": "Education & Lifelong Learning",
+          "ru": "Образование и обучение на протяжении жизни",
+          "ro": "Educație și învățare pe tot parcursul vieții"
+        },
+        "text": {
+          "en": "Empowering students, young leaders, and academics through knowledge, skills, and continuous learning opportunities.",
+          "ru": "Расширяем возможности студентов, молодых лидеров и учёных через знания, навыки и постоянное обучение.",
+          "ro": "Oferim studenților, tinerilor lideri și cadrelor universitare cunoștințe, abilități și oportunități continue de învățare."
+        }
+      },
+      {
+        "emoji": "🤝",
+        "name": {
+          "en": "Collaboration & Partnership",
+          "ru": "Сотрудничество и партнёрство",
+          "ro": "Colaborare și parteneriat"
+        },
+        "text": {
+          "en": "Connecting universities, civil society, and international organizations to create meaningful partnerships and shared opportunities.",
+          "ru": "Соединяем университеты, гражданское общество и международные организации для значимых партнёрств и общих возможностей.",
+          "ro": "Conectăm universități, societatea civilă și organizații internaționale pentru parteneriate valoroase și oportunități comune."
+        }
+      },
+      {
+        "emoji": "💡",
+        "name": {
+          "en": "Innovation & Creativity",
+          "ru": "Инновации и креативность",
+          "ro": "Inovare și creativitate"
+        },
+        "text": {
+          "en": "Encouraging fresh ideas, digital solutions, and innovative approaches to global and local challenges.",
+          "ru": "Поддерживаем свежие идеи, цифровые решения и новаторские подходы к глобальным и локальным вызовам.",
+          "ro": "Încurajăm idei noi, soluții digitale și abordări inovatoare ale provocărilor globale și locale."
+        }
+      },
+      {
+        "emoji": "🌱",
+        "name": {
+          "en": "Sustainability & Social Impact",
+          "ru": "Устойчивость и социальный эффект",
+          "ro": "Sustenabilitate și impact social"
+        },
+        "text": {
+          "en": "Transforming knowledge into practical initiatives that contribute to sustainable development and positive community change.",
+          "ru": "Превращаем знания в практические инициативы, которые способствуют устойчивому развитию и позитивным переменам в сообществах.",
+          "ro": "Transformăm cunoașterea în inițiative practice care contribuie la dezvoltarea durabilă și la schimbări pozitive în comunități."
+        }
+      },
+      {
+        "emoji": "⭐",
+        "name": {
+          "en": "Leadership & Empowerment",
+          "ru": "Лидерство и расширение возможностей",
+          "ro": "Leadership și împuternicire"
+        },
+        "text": {
+          "en": "Inspiring a new generation of responsible, inclusive, and forward-thinking leaders capable of shaping a better future.",
+          "ru": "Вдохновляем новое поколение ответственных, инклюзивных и дальновидных лидеров, способных создавать лучшее будущее.",
+          "ro": "Inspirăm o nouă generație de lideri responsabili, incluzivi și vizionari, capabili să modeleze un viitor mai bun."
+        }
+      }
+    ],
+    "vision_label": {
+      "en": "Our Vision",
+      "ru": "Наше видение",
+      "ro": "Viziunea noastră"
+    },
+    "vision": {
+      "en": "To build a connected and inclusive inter-university community where education inspires leadership, innovation drives change, and cooperation strengthens sustainable peace.",
+      "ru": "Создать связанное и инклюзивное межуниверситетское сообщество, в котором образование вдохновляет на лидерство, инновации ведут к переменам, а сотрудничество укрепляет устойчивый мир.",
+      "ro": "Să construim o comunitate interuniversitară conectată și incluzivă, în care educația inspiră leadershipul, inovarea generează schimbare, iar cooperarea consolidează pacea durabilă."
+    }
+  },
+  "core": {
+    "title": {
+      "en": "Values & Core Areas",
+      "ru": "Ценности и ключевые направления",
+      "ro": "Valori și domenii-cheie"
+    },
+    "text": {
+      "en": "INSPIRE EDU NETWORK is built on the values of peace, education, innovation, inclusion, and international cooperation. We believe in empowering young leaders, connecting academic communities, fostering mutual trust, and transforming knowledge into meaningful action for sustainable development and positive social change.",
+      "ru": "INSPIRE EDU NETWORK строится на ценностях мира, образования, инноваций, инклюзии и международного сотрудничества. Мы верим в расширение возможностей молодых лидеров, объединение академических сообществ, укрепление взаимного доверия и превращение знаний в осмысленные действия ради устойчивого развития и позитивных социальных перемен.",
+      "ro": "INSPIRE EDU NETWORK se bazează pe valorile păcii, educației, inovării, incluziunii și cooperării internaționale. Credem în împuternicirea tinerilor lideri, conectarea comunităților academice, consolidarea încrederii reciproce și transformarea cunoașterii în acțiuni semnificative pentru dezvoltare durabilă și schimbare socială pozitivă."
+    },
+    "phrases": [
+      {
+        "en": "Social Cohesion",
+        "ru": "Социальное сплочение",
+        "ro": "Coeziune socială"
+      },
+      {
+        "en": "Sustainable Development",
+        "ru": "Устойчивое развитие",
+        "ro": "Dezvoltare durabilă"
+      },
+      {
+        "en": "Leadership",
+        "ru": "Лидерство",
+        "ro": "Leadership"
+      },
+      {
+        "en": "Peacebuilding",
+        "ru": "Миростроительство",
+        "ro": "Construirea păcii"
+      },
+      {
+        "en": "Global Citizenship and Governance",
+        "ru": "Глобальное гражданство и управление",
+        "ro": "Cetățenie globală și guvernanță"
+      },
+      {
+        "en": "European Integration",
+        "ru": "Европейская интеграция",
+        "ro": "Integrare europeană"
+      },
+      {
+        "en": "Digital Transformation",
+        "ru": "Цифровая трансформация",
+        "ro": "Transformare digitală"
+      },
+      {
+        "en": "Technology in Education",
+        "ru": "Технологии в образовании",
+        "ro": "Tehnologii în educație"
+      }
+    ]
+  },
+  "who": {
+    "title": {
+      "en": "Who Can Join INSPIRE?",
+      "ru": "Кто может присоединиться к INSPIRE?",
+      "ro": "Cine se poate alătura INSPIRE?"
+    },
+    "intro": {
+      "en": "INSPIRE EDU NETWORK brings together students, young professionals, academics, researchers, and emerging leaders who are passionate about learning, innovation, and making a positive impact.",
+      "ru": "INSPIRE EDU NETWORK объединяет студентов, молодых специалистов, преподавателей, исследователей и начинающих лидеров, увлечённых обучением, инновациями и позитивными изменениями.",
+      "ro": "INSPIRE EDU NETWORK reunește studenți, tineri profesioniști, cadre universitare, cercetători și lideri în devenire, pasionați de învățare, inovare și impact pozitiv."
+    },
+    "lead": {
+      "en": "Our programs are designed for:",
+      "ru": "Наши программы рассчитаны на:",
+      "ro": "Programele noastre sunt destinate:"
+    },
+    "items": [
+      {
+        "emoji": "🌍",
+        "name": {
+          "en": "Young Leaders & Changemakers",
+          "ru": "Молодежные лидеры",
+          "ro": "Tineri lideri și agenți ai schimbării"
+        },
+        "text": {
+          "en": "motivated individuals aged 18–40 who want to make a difference in their communities and beyond.",
+          "ru": "мотивированные люди в возрасте 18–40 лет, которые хотят изменить к лучшему свои сообщества и не только.",
+          "ro": "persoane motivate cu vârste între 18 și 40 de ani, care vor să schimbe lucrurile în comunitățile lor și dincolo de ele."
+        }
+      },
+      {
+        "emoji": "🎓",
+        "name": {
+          "en": "Students & Young Professionals",
+          "ru": "Студенты и молодые специалисты",
+          "ro": "Studenți și tineri profesioniști"
+        },
+        "text": {
+          "en": "individuals interested in leadership, international relations, diplomacy, human rights, and global challenges.",
+          "ru": "те, кого интересуют лидерство, международные отношения, дипломатия, права человека и глобальные вызовы.",
+          "ro": "persoane interesate de leadership, relații internaționale, diplomație, drepturile omului și provocări globale."
+        }
+      },
+      {
+        "emoji": "🤝",
+        "name": {
+          "en": "Innovators & Future Problem-Solvers",
+          "ru": "Инноваторы и создатели решений",
+          "ro": "Inovatori și viitori rezolvatori de probleme"
+        },
+        "text": {
+          "en": "creative minds eager to develop practical solutions through technology, innovation, and cross-regional cooperation.",
+          "ru": "творческие умы, стремящиеся создавать практические решения с помощью технологий, инноваций и сотрудничества между регионами.",
+          "ro": "minți creative care vor să dezvolte soluții practice prin tehnologie, inovare și cooperare între regiuni."
+        }
+      },
+      {
+        "emoji": "💡",
+        "name": {
+          "en": "Academics, Researchers & Educators",
+          "ru": "Учёные, исследователи и преподаватели",
+          "ro": "Cadre universitare, cercetători și educatori"
+        },
+        "text": {
+          "en": "university professors, researchers, and educators interested in interdisciplinary collaboration, knowledge exchange, and international partnerships.",
+          "ru": "профессора университетов, исследователи и педагоги, заинтересованные в междисциплинарном сотрудничестве, обмене знаниями и международных партнёрствах.",
+          "ro": "profesori universitari, cercetători și educatori interesați de colaborare interdisciplinară, schimb de cunoștințe și parteneriate internaționale."
+        }
+      },
+      {
+        "emoji": "🌱",
+        "name": {
+          "en": "Civil Society Representatives & Activists",
+          "ru": "Представители гражданского общества и активисты",
+          "ro": "Reprezentanți ai societății civile și activiști"
+        },
+        "text": {
+          "en": "individuals committed to social cohesion, sustainable development, peacebuilding, and community engagement.",
+          "ru": "люди, преданные идеям социального сплочения, устойчивого развития, миростроительства и вовлечения сообществ.",
+          "ro": "persoane dedicate coeziunii sociale, dezvoltării durabile, construirii păcii și implicării comunității."
+        }
+      }
+    ],
+    "lang_title": {
+      "en": "Language Requirements",
+      "ru": "Требования к языку",
+      "ro": "Cerințe lingvistice"
+    },
+    "lang_text": {
+      "en": "INSPIRE programs are conducted in English, Romanian, and Russian, depending on the activity. Translation support may be provided when necessary. Participants should have a working knowledge of at least one of these languages. If you are ready to lead, learn, and make a difference — this program is for you! 🚀",
+      "ru": "Программы INSPIRE проводятся на английском, румынском и русском языках — в зависимости от мероприятия. При необходимости обеспечивается перевод. Участникам достаточно рабочего знания хотя бы одного из этих языков. Если вы готовы вести за собой, учиться и менять мир к лучшему — эта программа для вас! 🚀",
+      "ro": "Programele INSPIRE se desfășoară în engleză, română și rusă, în funcție de activitate. La nevoie, este asigurată traducere. Participanții trebuie să cunoască la nivel de lucru cel puțin una dintre aceste limbi. Dacă ești gata să conduci, să înveți și să schimbi lucrurile — acest program este pentru tine! 🚀"
+    }
+  },
+  "features": {
+    "title": {
+      "en": "Key Features of the INSPIRE Events",
+      "ru": "Ключевые особенности мероприятий INSPIRE",
+      "ro": "Caracteristicile-cheie ale evenimentelor INSPIRE"
+    },
+    "items": [
+      {
+        "emoji": "📌",
+        "icon": "chat",
+        "name": {
+          "en": "Interactive Sessions",
+          "ru": "Интерактивные сессии",
+          "ro": "Sesiuni interactive"
+        },
+        "text": {
+          "en": "Join interactive sessions with mentors, guest speakers, and peers for networking and insights.",
+          "ru": "Участвуйте в интерактивных сессиях с наставниками, приглашёнными спикерами и коллегами: нетворкинг и новые идеи.",
+          "ro": "Participă la sesiuni interactive cu mentori, invitați speciali și colegi: networking și perspective noi."
+        }
+      },
+      {
+        "icon": "book",
+        "name": {
+          "en": "Comprehensive Curriculum",
+          "ru": "Комплексная программа",
+          "ro": "Curriculum complet"
+        },
+        "text": {
+          "en": "Explore global challenges, leadership, and innovation through intensive learning sessions.",
+          "ru": "Изучайте глобальные вызовы, лидерство и инновации на интенсивных учебных сессиях.",
+          "ro": "Explorează provocările globale, leadershipul și inovarea prin sesiuni intensive de învățare."
+        }
+      },
+      {
+        "icon": "sliders",
+        "name": {
+          "en": "Choice of Electives",
+          "ru": "Выбор элективов",
+          "ro": "Cursuri la alegere"
+        },
+        "text": {
+          "en": "Customize your learning by selecting specialized topics that match your goals.",
+          "ru": "Настройте обучение под себя, выбирая специализированные темы, которые отвечают вашим целям.",
+          "ro": "Personalizează-ți învățarea alegând teme specializate care se potrivesc obiectivelor tale."
+        }
+      },
+      {
+        "icon": "users",
+        "name": {
+          "en": "Peer Interaction",
+          "ru": "Общение со сверстниками",
+          "ro": "Interacțiune între colegi"
+        },
+        "text": {
+          "en": "Connect with top students in Moldova and worldwide, fostering discussions and networks.",
+          "ru": "Знакомьтесь с лучшими студентами Молдовы и мира, ведите дискуссии и стройте сети контактов.",
+          "ro": "Intră în legătură cu cei mai buni studenți din Moldova și din lume, încurajând discuțiile și rețelele."
+        }
+      },
+      {
+        "icon": "case",
+        "name": {
+          "en": "Real-World Applications",
+          "ru": "Практическое применение",
+          "ro": "Aplicații practice"
+        },
+        "text": {
+          "en": "Apply knowledge to case studies and projects in international relations, social cohesion and sustainability.",
+          "ru": "Применяйте знания в кейсах и проектах по международным отношениям, социальному сплочению и устойчивости.",
+          "ro": "Aplică cunoștințele în studii de caz și proiecte de relații internaționale, coeziune socială și sustenabilitate."
+        }
+      },
+      {
+        "icon": "bulb",
+        "name": {
+          "en": "Executive Reflection",
+          "ru": "Экспертная рефлексия",
+          "ro": "Reflecție cu experții"
+        },
+        "text": {
+          "en": "Engage with experts and present innovative solutions to real-world issues.",
+          "ru": "Работайте с экспертами и представляйте инновационные решения реальных проблем.",
+          "ro": "Colaborează cu experții și prezintă soluții inovatoare pentru probleme reale."
+        }
+      },
+      {
+        "icon": "globe",
+        "name": {
+          "en": "Hybrid Learning Experience",
+          "ru": "Гибридный формат обучения",
+          "ro": "Învățare hibridă"
+        },
+        "text": {
+          "en": "Experience a mix of workshops, expert lectures, and in-person networking.",
+          "ru": "Сочетание воркшопов, лекций экспертов и живого общения.",
+          "ro": "O îmbinare de ateliere, prelegeri ale experților și networking față în față."
+        }
+      },
+      {
+        "icon": "shield",
+        "name": {
+          "en": "Success Coach & Mentorship",
+          "ru": "Коуч успеха и наставничество",
+          "ro": "Coach de succes și mentorat"
+        },
+        "text": {
+          "en": "Get guidance from mentors to support your academic and career growth.",
+          "ru": "Получайте поддержку наставников в академическом и карьерном росте.",
+          "ro": "Primește îndrumare de la mentori pentru dezvoltarea ta academică și profesională."
+        }
+      },
+      {
+        "icon": "bolt",
+        "name": {
+          "en": "Pathway to Future Opportunities",
+          "ru": "Путь к новым возможностям",
+          "ro": "Calea spre oportunități viitoare"
+        },
+        "text": {
+          "en": "Access exclusive networking, internships, and global collaborations.",
+          "ru": "Доступ к закрытому нетворкингу, стажировкам и международному сотрудничеству.",
+          "ro": "Acces la networking exclusiv, stagii și colaborări internaționale."
+        }
+      }
+    ]
+  },
+  "alumni": {
+    "title": {
+      "en": "INSPIRE Academy Alumni: Your Path to Success",
+      "ru": "Выпускники Академии INSPIRE: ваш путь к успеху",
+      "ro": "Absolvenții Academiei INSPIRE: drumul tău spre succes"
+    },
+    "intro": {
+      "en": "Graduating from INSPIRE Academy means joining a prestigious network of future leaders and changemakers. As an INSPIRE Alumni, you gain exclusive benefits:",
+      "ru": "Окончание Академии INSPIRE — это вступление в престижную сеть будущих лидеров и агентов перемен. Выпускники INSPIRE получают эксклюзивные преимущества:",
+      "ro": "Absolvirea Academiei INSPIRE înseamnă intrarea într-o rețea prestigioasă de viitori lideri și agenți ai schimbării. Ca absolvent INSPIRE, beneficiezi de avantaje exclusive:"
+    },
+    "items": [
+      {
+        "emoji": "🎓",
+        "name": {
+          "en": "Certificate of Completion",
+          "ru": "Сертификат об окончании",
+          "ro": "Certificat de absolvire"
+        },
+        "text": {
+          "en": "Official recognition of your achievements.",
+          "ru": "Официальное признание ваших достижений.",
+          "ro": "Recunoaștere oficială a realizărilor tale."
+        }
+      },
+      {
+        "emoji": "🤝",
+        "name": {
+          "en": "Networking",
+          "ru": "Нетворкинг",
+          "ro": "Networking"
+        },
+        "text": {
+          "en": "Connect with top experts and fellow alumni.",
+          "ru": "Общение с ведущими экспертами и другими выпускниками.",
+          "ro": "Conectare cu experți de top și cu alți absolvenți."
+        }
+      },
+      {
+        "emoji": "📚",
+        "name": {
+          "en": "Publication Opportunities",
+          "ru": "Возможности публикации",
+          "ro": "Oportunități de publicare"
+        },
+        "text": {
+          "en": "Get your research published.",
+          "ru": "Опубликуйте свои исследования.",
+          "ro": "Publică-ți cercetările."
+        }
+      },
+      {
+        "emoji": "🚀",
+        "name": {
+          "en": "Priority Access",
+          "ru": "Приоритетный доступ",
+          "ro": "Acces prioritar"
+        },
+        "text": {
+          "en": "Invitations to advanced training and mentorship.",
+          "ru": "Приглашения на углублённое обучение и менторские программы.",
+          "ro": "Invitații la formare avansată și programe de mentorat."
+        }
+      },
+      {
+        "emoji": "🌍",
+        "name": {
+          "en": "International Collaboration",
+          "ru": "Международное сотрудничество",
+          "ro": "Colaborare internațională"
+        },
+        "text": {
+          "en": "Engage in global projects and exchanges.",
+          "ru": "Участие в глобальных проектах и обменах.",
+          "ro": "Implicare în proiecte și schimburi globale."
+        }
+      },
+      {
+        "emoji": "💼",
+        "name": {
+          "en": "Career Support",
+          "ru": "Карьерная поддержка",
+          "ro": "Sprijin în carieră"
+        },
+        "text": {
+          "en": "Access internships, career guidance, and recommendations.",
+          "ru": "Стажировки, карьерные консультации и рекомендации.",
+          "ro": "Stagii, consiliere în carieră și recomandări."
+        }
+      },
+      {
+        "emoji": "🎤",
+        "name": {
+          "en": "Leadership Opportunities",
+          "ru": "Возможности лидерства",
+          "ro": "Oportunități de leadership"
+        },
+        "text": {
+          "en": "Become a speaker or mentor in future programs.",
+          "ru": "Станьте спикером или наставником в будущих программах.",
+          "ro": "Devino vorbitor sau mentor în programele viitoare."
+        }
+      }
+    ],
+    "closing": {
+      "en": "INSPIRE Alumni Network opens doors to new opportunities and lifelong connections! 🚀",
+      "ru": "Сеть выпускников INSPIRE открывает двери к новым возможностям и связям на всю жизнь! 🚀",
+      "ro": "Rețeaua absolvenților INSPIRE deschide uși către noi oportunități și legături pentru toată viața! 🚀"
+    }
+  },
+  "events": {
+    "final": {
+      "title": {
+        "en": "INSPIRE Leadership Academy 2025: Final Conference",
+        "ru": "Академия лидерства INSPIRE 2025: итоговая конференция",
+        "ro": "Academia de Leadership INSPIRE 2025: conferința finală"
+      },
+      "date": {
+        "en": "December 2025",
+        "ru": "Декабрь 2025",
+        "ro": "Decembrie 2025"
+      },
+      "place": {
+        "en": "Digital Park, Chișinău, Moldova",
+        "ru": "Digital Park, Кишинёв, Молдова",
+        "ro": "Digital Park, Chișinău, Moldova"
+      },
+      "format": {
+        "en": "Final conference bringing together students, university representatives, academics, international experts, and project partners.",
+        "ru": "Итоговая конференция, объединившая студентов, представителей университетов, учёных, международных экспертов и партнёров проекта.",
+        "ro": "Conferință finală care a reunit studenți, reprezentanți ai universităților, cadre universitare, experți internaționali și parteneri ai proiectului."
+      },
+      "paras": [
+        {
+          "en": "The INSPIRE Leadership Academy 2025 concluded with a final conference dedicated to presenting the achievements of the educational program and strengthening interregional academic cooperation.",
+          "ru": "Академия лидерства INSPIRE 2025 завершилась итоговой конференцией, посвящённой презентации достижений образовательной программы и укреплению межрегионального академического сотрудничества.",
+          "ro": "Academia de Leadership INSPIRE 2025 s-a încheiat cu o conferință finală dedicată prezentării realizărilor programului educațional și consolidării cooperării academice interregionale."
+        },
+        {
+          "en": "The event brought together participants and partners from Chișinău, Comrat, and Tiraspol to share experiences, present student research and youth-led initiatives, and discuss opportunities for future collaboration.",
+          "ru": "Мероприятие собрало участников и партнёров из Кишинёва, Комрата и Тирасполя, чтобы поделиться опытом, представить студенческие исследования и молодёжные инициативы и обсудить возможности будущего сотрудничества.",
+          "ro": "Evenimentul a reunit participanți și parteneri din Chișinău, Comrat și Tiraspol pentru a face schimb de experiență, a prezenta cercetări studențești și inițiative conduse de tineri și a discuta oportunități de colaborare viitoare."
+        },
+        {
+          "en": "The conference highlighted the role of education, innovation, and youth leadership in promoting social cohesion, sustainable development, and peacebuilding. It also marked an important step toward expanding the INSPIRE Network as a sustainable platform connecting universities, young leaders, researchers, and civil society organizations.",
+          "ru": "Конференция подчеркнула роль образования, инноваций и молодёжного лидерства в укреплении социального сплочения, устойчивого развития и миростроительства. Она также стала важным шагом к расширению сети INSPIRE как устойчивой платформы, объединяющей университеты, молодых лидеров, исследователей и организации гражданского общества.",
+          "ro": "Conferința a evidențiat rolul educației, inovării și leadershipului tinerilor în promovarea coeziunii sociale, dezvoltării durabile și construirii păcii. A marcat, de asemenea, un pas important spre extinderea Rețelei INSPIRE ca platformă durabilă care conectează universități, tineri lideri, cercetători și organizații ale societății civile."
+        }
+      ],
+      "areas": [
+        {
+          "en": "Youth Leadership and Social Cohesion",
+          "ru": "Молодёжное лидерство и социальное сплочение",
+          "ro": "Leadership tineresc și coeziune socială"
+        },
+        {
+          "en": "Interregional Academic Cooperation",
+          "ru": "Межрегиональное академическое сотрудничество",
+          "ro": "Cooperare academică interregională"
+        },
+        {
+          "en": "Student Research and Innovation",
+          "ru": "Студенческие исследования и инновации",
+          "ro": "Cercetare și inovare studențească"
+        },
+        {
+          "en": "Youth-Led Initiatives",
+          "ru": "Молодёжные инициативы",
+          "ro": "Inițiative conduse de tineri"
+        },
+        {
+          "en": "Sustainable Development and Peacebuilding",
+          "ru": "Устойчивое развитие и миростроительство",
+          "ro": "Dezvoltare durabilă și construirea păcii"
+        },
+        {
+          "en": "Networking and Future Partnerships",
+          "ru": "Нетворкинг и будущие партнёрства",
+          "ro": "Networking și parteneriate viitoare"
+        }
+      ]
+    },
+    "schools2025": {
+      "title": {
+        "en": "INSPIRE Leadership Academies 2025: Three Transformative Schools",
+        "ru": "Академии лидерства INSPIRE 2025: три преобразующие школы",
+        "ro": "Academiile de Leadership INSPIRE 2025: trei școli transformatoare"
+      },
+      "items": [
+        {
+          "n": 1,
+          "title": {
+            "en": "Strategic Leadership and Sustainable Peace Development",
+            "ru": "Стратегическое лидерство и развитие устойчивого мира",
+            "ro": "Leadership strategic și dezvoltarea păcii durabile"
+          },
+          "dates": {
+            "en": "15–17 May 2025",
+            "ru": "15–17 мая 2025",
+            "ro": "15–17 mai 2025"
+          },
+          "place": {
+            "en": "Chișinău, Moldova",
+            "ru": "Кишинёв, Молдова",
+            "ro": "Chișinău, Moldova"
+          },
+          "format": {
+            "en": "Intensive educational program combining interactive workshops, case studies, group discussions, practical exercises, and networking opportunities.",
+            "ru": "Интенсивная образовательная программа: интерактивные воркшопы, кейсы, групповые обсуждения, практические упражнения и нетворкинг.",
+            "ro": "Program educațional intensiv care îmbină ateliere interactive, studii de caz, discuții de grup, exerciții practice și oportunități de networking."
+          },
+          "paras": [
+            {
+              "en": "The program empowered current and aspiring young leaders with the knowledge, skills, and strategic thinking tools needed to promote sustainable change within their organizations and communities.",
+              "ru": "Программа дала нынешним и будущим молодым лидерам знания, навыки и инструменты стратегического мышления, необходимые для устойчивых изменений в их организациях и сообществах.",
+              "ro": "Programul a oferit tinerilor lideri actuali și în devenire cunoștințele, abilitățile și instrumentele de gândire strategică necesare pentru a promova schimbări durabile în organizațiile și comunitățile lor."
+            },
+            {
+              "en": "Participants explored key principles of strategic leadership and sustainable development, including environmental responsibility, social equity, and economic sustainability. Through interactive learning, expert discussions, and practical activities, they strengthened their leadership competencies, expanded their understanding of global challenges, and developed approaches to promoting social cohesion and sustainable peace.",
+              "ru": "Участники изучили ключевые принципы стратегического лидерства и устойчивого развития, включая экологическую ответственность, социальную справедливость и экономическую устойчивость. Через интерактивное обучение, обсуждения с экспертами и практические задания они укрепили лидерские компетенции, расширили понимание глобальных вызовов и выработали подходы к укреплению социального сплочения и устойчивого мира.",
+              "ro": "Participanții au explorat principiile-cheie ale leadershipului strategic și ale dezvoltării durabile, inclusiv responsabilitatea față de mediu, echitatea socială și sustenabilitatea economică. Prin învățare interactivă, discuții cu experții și activități practice, ei și-au consolidat competențele de leadership, și-au extins înțelegerea provocărilor globale și au dezvoltat abordări pentru promovarea coeziunii sociale și a păcii durabile."
+            }
+          ],
+          "areas": [
+            {
+              "en": "International Institutions and Development Strategies",
+              "ru": "Международные институты и стратегии развития",
+              "ro": "Instituții internaționale și strategii de dezvoltare"
+            },
+            {
+              "en": "Sustainable Development Goals (SDGs) and Sustainability Policies",
+              "ru": "Цели устойчивого развития (ЦУР) и политики устойчивости",
+              "ro": "Obiectivele de dezvoltare durabilă (ODD) și politici de sustenabilitate"
+            },
+            {
+              "en": "Social Cohesion and Community Development",
+              "ru": "Социальное сплочение и развитие сообществ",
+              "ro": "Coeziune socială și dezvoltare comunitară"
+            },
+            {
+              "en": "Community Engagement Strategies",
+              "ru": "Стратегии вовлечения сообществ",
+              "ro": "Strategii de implicare comunitară"
+            },
+            {
+              "en": "Leadership and Public Diplomacy",
+              "ru": "Лидерство и публичная дипломатия",
+              "ro": "Leadership și diplomație publică"
+            },
+            {
+              "en": "Development and Gender Equality",
+              "ru": "Развитие и гендерное равенство",
+              "ro": "Dezvoltare și egalitate de gen"
+            },
+            {
+              "en": "Food Sustainability and Security",
+              "ru": "Продовольственная устойчивость и безопасность",
+              "ro": "Sustenabilitate și securitate alimentară"
+            },
+            {
+              "en": "Sustainable Energy and the Green Agenda",
+              "ru": "Устойчивая энергетика и зелёная повестка",
+              "ro": "Energie durabilă și agenda verde"
+            }
+          ]
+        },
+        {
+          "n": 2,
+          "title": {
+            "en": "Tech Peacemakers: Digital Solutions for Social Cohesion",
+            "ru": "Tech Peacemakers: цифровые решения для социального сплочения",
+            "ro": "Tech Peacemakers: soluții digitale pentru coeziune socială"
+          },
+          "dates": {
+            "en": "31 October – 2 November 2025",
+            "ru": "31 октября – 2 ноября 2025",
+            "ro": "31 octombrie – 2 noiembrie 2025"
+          },
+          "place": {
+            "en": "Comrat State University / Tekwill Comrat, Moldova",
+            "ru": "Комратский государственный университет / Tekwill Комрат, Молдова",
+            "ro": "Universitatea de Stat din Comrat / Tekwill Comrat, Moldova"
+          },
+          "format": {
+            "en": "Intensive educational program featuring expert-led workshops, practical exercises, interactive discussions, teamwork, and experiential learning.",
+            "ru": "Интенсивная образовательная программа: воркшопы под руководством экспертов, практические упражнения, интерактивные дискуссии, командная работа и обучение на практике.",
+            "ro": "Program educațional intensiv cu ateliere conduse de experți, exerciții practice, discuții interactive, muncă în echipă și învățare experiențială."
+          },
+          "paras": [
+            {
+              "en": "The program equipped emerging young leaders with the knowledge and practical skills needed to use digital technologies for positive social impact.",
+              "ru": "Программа дала начинающим молодым лидерам знания и практические навыки, необходимые, чтобы использовать цифровые технологии для позитивного социального эффекта.",
+              "ro": "Programul a oferit tinerilor lideri în devenire cunoștințele și abilitățile practice necesare pentru a folosi tehnologiile digitale în scopul unui impact social pozitiv."
+            },
+            {
+              "en": "Participants explored emerging technologies, including artificial intelligence (AI), blockchain, and data analytics, while examining their ethical, social, and human rights implications.",
+              "ru": "Участники изучили новые технологии, включая искусственный интеллект (ИИ), блокчейн и анализ данных, и рассмотрели их этические, социальные и правозащитные последствия.",
+              "ro": "Participanții au explorat tehnologii emergente, inclusiv inteligența artificială (IA), blockchain și analiza datelor, examinând implicațiile lor etice, sociale și asupra drepturilor omului."
+            },
+            {
+              "en": "Special attention was given to the role of digital innovation in strengthening social cohesion, promoting inclusion, building trust, and encouraging cooperation among communities.",
+              "ru": "Особое внимание уделялось роли цифровых инноваций в укреплении социального сплочения, продвижении инклюзии, формировании доверия и развитии сотрудничества между сообществами.",
+              "ro": "O atenție deosebită a fost acordată rolului inovării digitale în consolidarea coeziunii sociale, promovarea incluziunii, construirea încrederii și stimularea cooperării între comunități."
+            },
+            {
+              "en": "Through practical workshops, interactive discussions, simulations, and teamwork, participants developed a deeper understanding of how technology could address societal challenges and support sustainable development.",
+              "ru": "Через практические воркшопы, интерактивные дискуссии, симуляции и командную работу участники глубже поняли, как технологии могут решать общественные проблемы и поддерживать устойчивое развитие.",
+              "ro": "Prin ateliere practice, discuții interactive, simulări și muncă în echipă, participanții au înțeles mai bine cum pot tehnologiile să răspundă provocărilor societății și să sprijine dezvoltarea durabilă."
+            }
+          ],
+          "areas": [
+            {
+              "en": "Emerging Technologies and Leadership in Tech",
+              "ru": "Новые технологии и лидерство в технологиях",
+              "ro": "Tehnologii emergente și leadership în tehnologie"
+            },
+            {
+              "en": "Digital Transformation and Innovation Management",
+              "ru": "Цифровая трансформация и управление инновациями",
+              "ro": "Transformare digitală și managementul inovării"
+            },
+            {
+              "en": "Cybersecurity Awareness and Sustainability in Technology",
+              "ru": "Кибербезопасность и устойчивость в технологиях",
+              "ro": "Conștientizare în securitate cibernetică și sustenabilitate în tehnologie"
+            },
+            {
+              "en": "Diversity and Inclusion in Tech",
+              "ru": "Разнообразие и инклюзия в технологиях",
+              "ro": "Diversitate și incluziune în tehnologie"
+            },
+            {
+              "en": "Future Skills and Workforce Development",
+              "ru": "Навыки будущего и развитие кадров",
+              "ro": "Abilitățile viitorului și dezvoltarea forței de muncă"
+            },
+            {
+              "en": "Mentorship and Coaching",
+              "ru": "Наставничество и коучинг",
+              "ro": "Mentorat și coaching"
+            }
+          ]
+        },
+        {
+          "n": 3,
+          "title": {
+            "en": "Future Voices: Media and Communication for Young Innovators",
+            "ru": "Future Voices: медиа и коммуникация для молодых новаторов",
+            "ro": "Future Voices: media și comunicare pentru tineri inovatori"
+          },
+          "dates": {
+            "en": "19–22 November 2025",
+            "ru": "19–22 ноября 2025",
+            "ro": "19–22 noiembrie 2025"
+          },
+          "place": {
+            "en": "Tiraspol, Business Hub",
+            "ru": "Тирасполь, Business Hub",
+            "ro": "Tiraspol, Business Hub"
+          },
+          "format": {
+            "en": "Intensive educational program combining interactive workshops, practical simulations, teamwork, case studies, communication exercises, and cultural activities.",
+            "ru": "Интенсивная образовательная программа: интерактивные воркшопы, практические симуляции, командная работа, кейсы, коммуникативные упражнения и культурная программа.",
+            "ro": "Program educațional intensiv care îmbină ateliere interactive, simulări practice, muncă în echipă, studii de caz, exerciții de comunicare și activități culturale."
+          },
+          "paras": [
+            {
+              "en": "The program strengthened the communication, media, and leadership competencies of young innovators, helping them effectively communicate ideas, present initiatives, and engage diverse audiences in a rapidly evolving information environment.",
+              "ru": "Программа укрепила коммуникативные, медийные и лидерские компетенции молодых новаторов, помогая им эффективно доносить идеи, представлять инициативы и работать с разной аудиторией в быстро меняющейся информационной среде.",
+              "ro": "Programul a consolidat competențele de comunicare, media și leadership ale tinerilor inovatori, ajutându-i să-și transmită eficient ideile, să-și prezinte inițiativele și să interacționeze cu audiențe diverse într-un mediu informațional în schimbare rapidă."
+            },
+            {
+              "en": "Participants explored communication strategies, storytelling techniques, public speaking, digital literacy, and responsible media practices. Particular attention was given to ethical communication, visual storytelling, personal branding, and the role of digital media in promoting innovation and positive social change.",
+              "ru": "Участники изучили коммуникационные стратегии, сторителлинг, публичные выступления, цифровую грамотность и ответственную работу с медиа. Особое внимание уделялось этичной коммуникации, визуальному сторителлингу, личному бренду и роли цифровых медиа в продвижении инноваций и позитивных социальных перемен.",
+              "ro": "Participanții au explorat strategii de comunicare, tehnici de storytelling, vorbit în public, alfabetizare digitală și practici media responsabile. O atenție deosebită a fost acordată comunicării etice, storytellingului vizual, brandului personal și rolului mediilor digitale în promovarea inovării și a schimbărilor sociale pozitive."
+            },
+            {
+              "en": "The program also addressed conflict resolution, intercultural dialogue, trust-building, and inclusive leadership. Through practical exercises, simulations, and group activities, participants improved their ability to communicate across cultural and regional boundaries and contribute to social cohesion.",
+              "ru": "Программа также затрагивала разрешение конфликтов, межкультурный диалог, формирование доверия и инклюзивное лидерство. Через практические упражнения, симуляции и групповую работу участники улучшили умение общаться поверх культурных и региональных границ и вносить вклад в социальное сплочение.",
+              "ro": "Programul a abordat și rezolvarea conflictelor, dialogul intercultural, construirea încrederii și leadershipul incluziv. Prin exerciții practice, simulări și activități de grup, participanții și-au îmbunătățit capacitatea de a comunica dincolo de granițele culturale și regionale și de a contribui la coeziunea socială."
+            }
+          ],
+          "areas": [
+            {
+              "en": "Understanding Communication Models",
+              "ru": "Модели коммуникации",
+              "ro": "Înțelegerea modelelor de comunicare"
+            },
+            {
+              "en": "Public Speaking and Presentation Skills",
+              "ru": "Публичные выступления и презентации",
+              "ro": "Vorbit în public și abilități de prezentare"
+            },
+            {
+              "en": "Media Ethics and Responsibility",
+              "ru": "Медиаэтика и ответственность",
+              "ro": "Etică și responsabilitate media"
+            },
+            {
+              "en": "Leveraging Social Media for Innovation",
+              "ru": "Социальные сети на службе инноваций",
+              "ro": "Rețelele sociale în slujba inovării"
+            },
+            {
+              "en": "Visual Communication and Personal Branding",
+              "ru": "Визуальная коммуникация и личный бренд",
+              "ro": "Comunicare vizuală și brand personal"
+            },
+            {
+              "en": "Conflict Resolution and Mediation",
+              "ru": "Разрешение конфликтов и медиация",
+              "ro": "Rezolvarea conflictelor și mediere"
+            },
+            {
+              "en": "Building Trust and Relationships",
+              "ru": "Построение доверия и отношений",
+              "ro": "Construirea încrederii și a relațiilor"
+            },
+            {
+              "en": "Cultural Awareness and Inclusivity",
+              "ru": "Культурная осведомлённость и инклюзивность",
+              "ro": "Conștientizare culturală și incluziune"
+            }
+          ]
+        }
+      ]
+    },
+    "school2023": {
+      "title": {
+        "en": "Youth Leaders Peace Summer School 2023",
+        "ru": "Летняя школа мира для молодых лидеров 2023",
+        "ro": "Școala de vară pentru pace a tinerilor lideri 2023"
+      },
+      "dates": {
+        "en": "14–18 September 2023",
+        "ru": "14–18 сентября 2023",
+        "ro": "14–18 septembrie 2023"
+      },
+      "place": {
+        "en": "IT Relax Complex, Vadul lui Vodă, Moldova",
+        "ru": "Комплекс IT Relax, Вадул-луй-Водэ, Молдова",
+        "ro": "Complexul IT Relax, Vadul lui Vodă, Moldova"
+      },
+      "format": {
+        "en": "Intensive five-day educational program bringing together students and professors from universities in Chișinău, Comrat, and Tiraspol through expert-led sessions, interactive workshops, group discussions, and practical activities.",
+        "ru": "Интенсивная пятидневная образовательная программа, объединившая студентов и преподавателей университетов Кишинёва, Комрата и Тирасполя: сессии экспертов, интерактивные воркшопы, групповые обсуждения и практические занятия.",
+        "ro": "Program educațional intensiv de cinci zile, care a reunit studenți și profesori din universitățile din Chișinău, Comrat și Tiraspol prin sesiuni conduse de experți, ateliere interactive, discuții de grup și activități practice."
+      },
+      "paras": [
+        {
+          "en": "The Summer School aimed to strengthen peacebuilding, social cohesion, and interregional cooperation by bringing together young leaders, academics, and international experts from different regions of Moldova.",
+          "ru": "Летняя школа стремилась укрепить миростроительство, социальное сплочение и межрегиональное сотрудничество, объединив молодых лидеров, учёных и международных экспертов из разных регионов Молдовы.",
+          "ro": "Școala de vară și-a propus să consolideze construirea păcii, coeziunea socială și cooperarea interregională, reunind tineri lideri, cadre universitare și experți internaționali din diferite regiuni ale Moldovei."
+        },
+        {
+          "en": "Participants explored human rights, international relations, sustainable development, youth leadership, and conflict prevention. Through educational sessions, practical workshops, and joint activities, they developed leadership and research skills, built trust, and established connections across universities.",
+          "ru": "Участники изучали права человека, международные отношения, устойчивое развитие, молодёжное лидерство и предотвращение конфликтов. Через образовательные сессии, практические воркшопы и совместную работу они развивали лидерские и исследовательские навыки, выстраивали доверие и налаживали связи между университетами.",
+          "ro": "Participanții au explorat drepturile omului, relațiile internaționale, dezvoltarea durabilă, leadershipul tineresc și prevenirea conflictelor. Prin sesiuni educaționale, ateliere practice și activități comune, ei și-au dezvoltat abilitățile de leadership și cercetare, au construit încredere și au stabilit legături între universități."
+        },
+        {
+          "en": "The School laid the foundation for continued academic cooperation and the development of the INSPIRE Network.",
+          "ru": "Школа заложила основу для продолжения академического сотрудничества и развития сети INSPIRE.",
+          "ro": "Școala a pus bazele cooperării academice continue și dezvoltării Rețelei INSPIRE."
+        }
+      ],
+      "areas": [
+        {
+          "en": "Peacebuilding and Conflict Prevention",
+          "ru": "Миростроительство и предотвращение конфликтов",
+          "ro": "Construirea păcii și prevenirea conflictelor"
+        },
+        {
+          "en": "Human Rights and International Cooperation",
+          "ru": "Права человека и международное сотрудничество",
+          "ro": "Drepturile omului și cooperare internațională"
+        },
+        {
+          "en": "Youth Leadership and Civic Engagement",
+          "ru": "Молодёжное лидерство и гражданская активность",
+          "ro": "Leadership tineresc și implicare civică"
+        },
+        {
+          "en": "Sustainable Development and Green Economy",
+          "ru": "Устойчивое развитие и зелёная экономика",
+          "ro": "Dezvoltare durabilă și economie verde"
+        },
+        {
+          "en": "Digital Innovation and Social Cohesion",
+          "ru": "Цифровые инновации и социальное сплочение",
+          "ro": "Inovare digitală și coeziune socială"
+        },
+        {
+          "en": "Academic Research and Project Management",
+          "ru": "Академические исследования и управление проектами",
+          "ro": "Cercetare academică și managementul proiectelor"
+        },
+        {
+          "en": "Interregional Dialogue and Trust-Building",
+          "ru": "Межрегиональный диалог и построение доверия",
+          "ro": "Dialog interregional și construirea încrederii"
+        }
+      ]
+    }
+  },
+  "hackathon": {
+    "title": {
+      "en": "Hackathon 2026",
+      "ru": "Хакатон 2026",
+      "ro": "Hackathon 2026"
+    },
+    "lead": {
+      "en": "We are working on the INSPIRE Hackathon 2026. Information will appear here very soon.",
+      "ru": "Мы работаем над хакатоном INSPIRE 2026. Информация скоро появится на этой странице.",
+      "ro": "Lucrăm la Hackathonul INSPIRE 2026. Informațiile vor apărea aici în curând."
+    },
+    "note": {
+      "en": "Join the network in Telegram to be the first to know about dates, format, and registration.",
+      "ru": "Присоединяйтесь к сети в Telegram, чтобы первыми узнать о датах, формате и регистрации.",
+      "ro": "Alătură-te rețelei în Telegram ca să afli primul despre date, format și înscriere."
+    }
+  },
+  "publications": {
+    "title": {
+      "en": "Publications",
+      "ru": "Публикации",
+      "ro": "Publicații"
+    },
+    "lead": {
+      "en": "We are preparing the Publications section. Research papers, reports, and materials of the INSPIRE network will appear here soon.",
+      "ru": "Мы готовим раздел «Публикации». Научные статьи, отчёты и материалы сети INSPIRE скоро появятся здесь.",
+      "ro": "Pregătim secțiunea Publicații. Lucrările de cercetare, rapoartele și materialele rețelei INSPIRE vor apărea aici în curând."
+    }
+  },
+  "albums": [
+    {
+      "key": "final-conference",
+      "cover": 0,
+      "title": {
+        "en": "Final Conference",
+        "ru": "Итоговая конференция",
+        "ro": "Conferința finală"
+      },
+      "sub": {
+        "en": "December 2025 · Digital Park, Chișinău",
+        "ru": "Декабрь 2025 · Digital Park, Кишинёв",
+        "ro": "Decembrie 2025 · Digital Park, Chișinău"
+      }
+    },
+    {
+      "key": "school-3-tiraspol",
+      "cover": -1,
+      "title": {
+        "en": "School 3 · Tiraspol",
+        "ru": "Школа 3 · Тирасполь",
+        "ro": "Școala 3 · Tiraspol"
+      },
+      "sub": {
+        "en": "19–22 November 2025",
+        "ru": "19–22 ноября 2025",
+        "ro": "19–22 noiembrie 2025"
+      }
+    },
+    {
+      "key": "school-2-comrat",
+      "cover": 0,
+      "title": {
+        "en": "School 2 · Comrat",
+        "ru": "Школа 2 · Комрат",
+        "ro": "Școala 2 · Comrat"
+      },
+      "sub": {
+        "en": "31 October – 2 November 2025",
+        "ru": "31 октября – 2 ноября 2025",
+        "ro": "31 octombrie – 2 noiembrie 2025"
+      }
+    },
+    {
+      "key": "school-1-chisinau",
+      "cover": 0,
+      "title": {
+        "en": "School 1 · Chișinău",
+        "ru": "Школа 1 · Кишинёв",
+        "ro": "Școala 1 · Chișinău"
+      },
+      "sub": {
+        "en": "15–17 May 2025",
+        "ru": "15–17 мая 2025",
+        "ro": "15–17 mai 2025"
+      }
+    },
+    {
+      "key": "organizations",
+      "cover": 0,
+      "title": {
+        "en": "International Organizations 2025",
+        "ru": "Международные организации 2025",
+        "ro": "Organizații internaționale 2025"
+      },
+      "sub": {
+        "en": "INSPIRE 2025",
+        "ru": "INSPIRE 2025",
+        "ro": "INSPIRE 2025"
+      }
+    },
+    {
+      "key": "school-2023",
+      "cover": 0,
+      "title": {
+        "en": "Peace Summer School 2023",
+        "ru": "Летняя школа мира 2023",
+        "ro": "Școala de vară pentru pace 2023"
+      },
+      "sub": {
+        "en": "14–18 September 2023 · Vadul lui Vodă",
+        "ru": "14–18 сентября 2023 · Вадул-луй-Водэ",
+        "ro": "14–18 septembrie 2023 · Vadul lui Vodă"
+      }
+    }
+  ],
+  "photo_page": {
+    "title": {
+      "en": "Photo",
+      "ru": "Фото",
+      "ro": "Foto"
+    },
+    "lead": {
+      "en": "Moments from the INSPIRE schools, conferences and meetings of the network.",
+      "ru": "Моменты школ INSPIRE, конференций и встреч сети.",
+      "ro": "Momente de la școlile INSPIRE, conferințe și întâlniri ale rețelei."
+    }
+  }
+}

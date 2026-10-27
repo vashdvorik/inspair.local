@@ -1,832 +1,578 @@
 {
- "t": {
-  "en": {
-   "title": "INSPIRE Leadership Academy 2025",
-   "desc": "INSPIRE Leadership Academy 2025: three schools in Chisinau, Comrat and Tiraspol empowering young leaders to drive regional and global change.",
-   "aboutH": "About us",
-   "about": [
-    "<p><strong>The INSPIRE Network</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education) is a collaborative initiative launched in the Republic of Moldova, bringing together universities and NGOs.</p><p>In 2025 the INSPIRE Academy of Future Leaders hosts three specialised schools, each designed to equip young leaders with the knowledge and skills to address global challenges and drive change in their communities. Earlier experience: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
-    "<p>The network established <strong>Centers for Civic and Global Engagement</strong> within participating universities. They serve as local hubs for collaboration, offering resources and support for students and young researchers.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) is a project funded by the Embassy of the Kingdom of the Netherlands in Moldova.</p>"
-   ],
-   "valuesH": "Values & core areas",
-   "values": [
-    "Social Cohesion",
-    "Leadership",
-    "Peacebuilding",
-    "European Integration",
-    "Sustainable Development",
-    "Global Citizenship and Governance",
-    "Technology in Education",
-    "Digital Transformation"
-   ],
-   "schoolsH": "Three transformative schools",
-   "schoolsLead": "Each school runs 9:00 AM – 9:00 PM: interactive workshops, case studies, group discussions and excursions with hands-on learning.",
-   "school": "School",
-   "deadline": "Registration deadline:",
-   "schools": [
-    {
-     "title": "Strategic Leadership and Sustainable Peace Development",
-     "dates": "15–17 May 2025",
-     "place": "Chisinau",
-     "dl": "May 5, 2025",
-     "text": "An intensive programme for current and aspiring young leaders: strategic leadership, sustainable development, environmental stewardship, social equity and economic viability.",
-     "areas": [
-      "International Institutions and Development Strategies",
-      "SDGs and Sustainability Policy",
-      "Social Cohesion for Community Growth",
-      "Community Engagement Strategies",
-      "Leadership and Public Diplomacy",
-      "Development and Gender",
-      "Food Sustainability and Security",
-      "Sustainable Energy and the Green Agenda"
-     ]
+    "t": {
+        "en": {
+            "title": "INSPIRE Leadership Academy 2025",
+            "desc": "INSPIRE Leadership Academy 2025: three schools in Chisinau, Comrat and Tiraspol empowering young leaders to drive regional and global change.",
+            "aboutH": "About us",
+            "about": [
+                "<p><strong>The INSPIRE Network</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education) is a collaborative initiative launched in the Republic of Moldova, bringing together universities and NGOs.</p><p>In 2025 the INSPIRE Academy of Future Leaders hosts three specialised schools, each designed to equip young leaders with the knowledge and skills to address global challenges and drive change in their communities. Earlier experience: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
+                "<p>The network established <strong>Centers for Civic and Global Engagement</strong> within participating universities. They serve as local hubs for collaboration, offering resources and support for students and young researchers.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) is a project funded by the Embassy of the Kingdom of the Netherlands in Moldova.</p>"
+            ],
+            "valuesH": "Values & core areas",
+            "values": [
+                "Social Cohesion",
+                "Leadership",
+                "Peacebuilding",
+                "European Integration",
+                "Sustainable Development",
+                "Global Citizenship and Governance",
+                "Technology in Education",
+                "Digital Transformation"
+            ],
+            "schoolsH": "Three transformative schools",
+            "schoolsLead": "Each school runs 9:00 AM – 9:00 PM: interactive workshops, case studies, group discussions and excursions with hands-on learning.",
+            "school": "School",
+            "deadline": "Registration deadline:",
+            "schools": [
+                {
+                    "title": "Strategic Leadership and Sustainable Peace Development",
+                    "dates": "15–17 May 2025",
+                    "place": "Chisinau",
+                    "dl": "May 5, 2025",
+                    "text": "An intensive programme for current and aspiring young leaders: strategic leadership, sustainable development, environmental stewardship, social equity and economic viability.",
+                    "areas": [
+                        "International Institutions and Development Strategies",
+                        "SDGs and Sustainability Policy",
+                        "Social Cohesion for Community Growth",
+                        "Community Engagement Strategies",
+                        "Leadership and Public Diplomacy",
+                        "Development and Gender",
+                        "Food Sustainability and Security",
+                        "Sustainable Energy and the Green Agenda"
+                    ]
+                },
+                {
+                    "title": "Tech Peacemakers: Digital Solutions for Social Cohesion",
+                    "dates": "31 Oct – 2 Nov 2025",
+                    "place": "Comrat, University / Tekwill",
+                    "dl": "October 20, 2025",
+                    "text": "Skills to harness technology for positive societal impact: AI, blockchain and data analytics, with attention to ethics, cybersecurity, responsible tech use and combating misinformation.",
+                    "areas": [
+                        "Emerging Technologies and Leadership in Tech",
+                        "Digital Transformation and Innovation Management",
+                        "Cybersecurity Awareness and Sustainability in Tech",
+                        "Diversity and Inclusion in Tech",
+                        "Future Skills and Workforce Development",
+                        "Mentorship and Coaching"
+                    ]
+                },
+                {
+                    "title": "Future Voices: Media and Communication for Young Innovators",
+                    "dates": "21–23 Nov 2025",
+                    "place": "Tiraspol, Business Hub",
+                    "dl": "November 10, 2025",
+                    "text": "Communication skills to convey ideas in a changing media landscape: storytelling, public speaking, digital literacy, ethical media practice and personal branding.",
+                    "areas": [
+                        "Understanding Communication Models",
+                        "Public Speaking and Presentation Skills",
+                        "Media Ethics and Responsibility",
+                        "Leveraging Social Media for Innovation",
+                        "Visual Communication",
+                        "Building a Personal Brand",
+                        "Conflict Resolution and Mediation",
+                        "Building Trust and Relationships",
+                        "Cultural Awareness and Inclusivity"
+                    ]
+                }
+            ],
+            "audH": "Who should attend?",
+            "audience": [
+                [
+                    "Aspiring changemakers",
+                    "18–40 years old, eager to drive impact in their communities and beyond"
+                ],
+                [
+                    "Students & young professionals",
+                    "passionate about leadership, diplomacy and global challenges"
+                ],
+                [
+                    "Future innovators & problem-solvers",
+                    "committed to sustainable development and international cooperation"
+                ],
+                [
+                    "Researchers & activists",
+                    "looking to deepen their expertise and network with like-minded peers"
+                ]
+            ],
+            "langH": "Language requirements",
+            "langT": "The schools are conducted in Russian, Romanian and English with translation provided. Proficiency in at least one of these languages is required.",
+            "selH": "School selection",
+            "selT": "Applicants can apply for all three schools. Only the 10 most active participants will attend all three programmes in 2025.",
+            "audClose": "If you are ready to lead, learn and make a difference — this programme is for you.",
+            "featH": "Key features",
+            "features": [
+                [
+                    "Interactive Sessions",
+                    "Sessions with mentors, guest speakers and peers for networking and insights"
+                ],
+                [
+                    "Comprehensive Curriculum",
+                    "Global challenges, leadership and innovation through intensive learning"
+                ],
+                [
+                    "Choice of Electives",
+                    "Select specialised topics that match your goals"
+                ],
+                [
+                    "Peer Interaction",
+                    "Connect with top students in Moldova and worldwide"
+                ],
+                [
+                    "Real-World Applications",
+                    "Case studies and projects in international relations, social cohesion and sustainability"
+                ],
+                [
+                    "Executive Reflection",
+                    "Present innovative solutions to real-world issues to experts"
+                ],
+                [
+                    "Hybrid Learning Experience",
+                    "Workshops, expert lectures and in-person networking"
+                ],
+                [
+                    "Success Coach & Mentorship",
+                    "Guidance to support your academic and career growth"
+                ],
+                [
+                    "Pathway to Future Opportunities",
+                    "Exclusive networking, internships and global collaborations"
+                ]
+            ],
+            "regH": "Registration & deadlines",
+            "tlH": "Programme timeline",
+            "steps": [
+                "Registration & Application Submission",
+                "Implementation of 3 Summer Schools",
+                "Analytical Paper Writing",
+                "Mentorship & Feedback",
+                "Publication of Scientific Papers Collection",
+                "Final Conference — November 2025"
+            ],
+            "grantH": "Grant competition",
+            "grant": "As part of INSPIRE Academy 2025, implemented with the support of the Embassy of the Kingdom of the Netherlands in the Republic of Moldova, a mini-grant competition is planned for students of the three schools. It promotes youth leadership, civic engagement and the values of social cohesion, enabling students from Comrat, Tiraspol and Chișinău to implement their own ideas — from educational and technological projects to cultural and media initiatives.",
+            "grantPdf": "Mini-grants regulation (RU, PDF)",
+            "alH": "INSPIRE Academy alumni",
+            "alLead": "Graduating means joining a network of future leaders and changemakers, with exclusive benefits:",
+            "alumni": [
+                [
+                    "Certificate of Completion",
+                    "Official recognition of your achievements"
+                ],
+                [
+                    "Networking",
+                    "Connect with top experts and fellow alumni"
+                ],
+                [
+                    "Publication Opportunities",
+                    "Get your research published"
+                ],
+                [
+                    "Priority Access",
+                    "Invitations to advanced training and mentorship"
+                ],
+                [
+                    "International Collaboration",
+                    "Engage in global projects and exchanges"
+                ],
+                [
+                    "Career Support",
+                    "Internships, career guidance and recommendations"
+                ],
+                [
+                    "Leadership Opportunities",
+                    "Become a speaker or mentor in future programmes"
+                ],
+                [
+                    "Lifelong Community",
+                    "A global network of professionals, researchers and changemakers"
+                ]
+            ]
+        },
+        "ru": {
+            "title": "INSPIRE Leadership Academy 2025",
+            "desc": "INSPIRE Leadership Academy 2025: три школы в Кишинёве, Комрате и Тирасполе для молодых лидеров, которые меняют регион и мир.",
+            "aboutH": "О нас",
+            "about": [
+                "<p><strong>Сеть INSPIRE</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education — Межуниверситетская сеть за устойчивый мир, инновации, исследования и образование) — совместная инициатива, запущенная в Республике Молдова и объединяющая университеты и НКО.</p><p>В 2025 году Академия будущих лидеров INSPIRE проведёт три специализированные школы. Каждая даёт молодым лидерам знания и навыки, чтобы отвечать на глобальные вызовы и менять свои сообщества. Предыдущий опыт: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
+                "<p>Сеть создала <strong>Центры гражданской и глобальной вовлечённости</strong> при университетах-участниках. Они служат локальными центрами сотрудничества и предлагают ресурсы и поддержку студентам и молодым исследователям.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) — проект, финансируемый Посольством Королевства Нидерландов в Молдове.</p>"
+            ],
+            "valuesH": "Ценности и ключевые направления",
+            "values": [
+                "Социальная сплочённость",
+                "Лидерство",
+                "Миротворчество",
+                "Европейская интеграция",
+                "Устойчивое развитие",
+                "Глобальное гражданство и управление",
+                "Технологии в образовании",
+                "Цифровая трансформация"
+            ],
+            "schoolsH": "Три трансформационные школы",
+            "schoolsLead": "Каждая школа работает с 9:00 до 21:00: интерактивные воркшопы, разбор кейсов, групповые дискуссии и экскурсии с практическим обучением.",
+            "school": "Школа",
+            "deadline": "Срок регистрации:",
+            "schools": [
+                {
+                    "title": "Стратегическое лидерство и развитие устойчивого мира",
+                    "dates": "15–17 мая 2025",
+                    "place": "Кишинёв",
+                    "dl": "5 мая 2025",
+                    "text": "Интенсивная программа для действующих и будущих молодых лидеров: стратегическое лидерство, устойчивое развитие, бережное отношение к окружающей среде, социальное равенство и экономическая жизнеспособность.",
+                    "areas": [
+                        "Международные институты и стратегии развития",
+                        "ЦУР и политика устойчивости",
+                        "Социальная сплочённость для роста сообществ",
+                        "Стратегии вовлечения сообществ",
+                        "Лидерство и публичная дипломатия",
+                        "Развитие и гендер",
+                        "Продовольственная устойчивость и безопасность",
+                        "Устойчивая энергетика и «зелёная» повестка"
+                    ]
+                },
+                {
+                    "title": "Tech Peacemakers: цифровые решения для социальной сплочённости",
+                    "dates": "31 октября – 2 ноября 2025",
+                    "place": "Комрат, университет / Tekwill",
+                    "dl": "20 октября 2025",
+                    "text": "Навыки применения технологий на общественную пользу: ИИ, блокчейн и аналитика данных, с вниманием к этике, кибербезопасности, ответственному использованию технологий и борьбе с дезинформацией.",
+                    "areas": [
+                        "Новые технологии и лидерство в IT",
+                        "Цифровая трансформация и управление инновациями",
+                        "Кибербезопасность и устойчивость в IT",
+                        "Разнообразие и инклюзия в IT",
+                        "Навыки будущего и развитие кадров",
+                        "Наставничество и коучинг"
+                    ]
+                },
+                {
+                    "title": "Future Voices: медиа и коммуникации для молодых новаторов",
+                    "dates": "21–23 ноября 2025",
+                    "place": "Тирасполь, Business Hub",
+                    "dl": "10 ноября 2025",
+                    "text": "Навыки коммуникации, чтобы доносить идеи в меняющемся медиапространстве: сторителлинг, публичные выступления, цифровая грамотность, этичная работа с медиа и личный бренд.",
+                    "areas": [
+                        "Модели коммуникации",
+                        "Публичные выступления и презентации",
+                        "Медиаэтика и ответственность",
+                        "Социальные сети как инструмент инноваций",
+                        "Визуальная коммуникация",
+                        "Личный бренд",
+                        "Разрешение конфликтов и медиация",
+                        "Построение доверия и отношений",
+                        "Культурная осведомлённость и инклюзивность"
+                    ]
+                }
+            ],
+            "audH": "Кому подойдёт программа?",
+            "audience": [
+                [
+                    "Начинающие агенты перемен",
+                    "18–40 лет, готовы менять свои сообщества и не только"
+                ],
+                [
+                    "Студенты и молодые специалисты",
+                    "увлечены лидерством, дипломатией и глобальными вызовами"
+                ],
+                [
+                    "Будущие новаторы и решатели проблем",
+                    "привержены устойчивому развитию и международному сотрудничеству"
+                ],
+                [
+                    "Исследователи и активисты",
+                    "хотят углубить экспертизу и наладить связи с единомышленниками"
+                ]
+            ],
+            "langH": "Языки программы",
+            "langT": "Школы проходят на русском, румынском и английском языках с переводом. Нужно владеть хотя бы одним из них.",
+            "selH": "Выбор школы",
+            "selT": "Можно подать заявки на все три школы, но во всех трёх программах в 2025 году примут участие только 10 самых активных участников.",
+            "audClose": "Если вы готовы вести за собой, учиться и менять мир — эта программа для вас.",
+            "featH": "Ключевые особенности",
+            "features": [
+                [
+                    "Интерактивные сессии",
+                    "Сессии с наставниками, приглашёнными спикерами и коллегами: нетворкинг и новые идеи"
+                ],
+                [
+                    "Комплексная программа",
+                    "Глобальные вызовы, лидерство и инновации в интенсивном формате"
+                ],
+                [
+                    "Выбор факультативов",
+                    "Выбирайте узкие темы под свои цели"
+                ],
+                [
+                    "Общение со сверстниками",
+                    "Знакомьтесь с лучшими студентами Молдовы и мира"
+                ],
+                [
+                    "Практическое применение",
+                    "Кейсы и проекты по международным отношениям, социальной сплочённости и устойчивости"
+                ],
+                [
+                    "Итоговая презентация",
+                    "Представьте экспертам свои решения реальных проблем"
+                ],
+                [
+                    "Гибридный формат",
+                    "Воркшопы, лекции экспертов и живое общение"
+                ],
+                [
+                    "Наставник и коуч успеха",
+                    "Поддержка в учёбе и карьере"
+                ],
+                [
+                    "Путь к новым возможностям",
+                    "Эксклюзивный нетворкинг, стажировки и международное сотрудничество"
+                ]
+            ],
+            "regH": "Регистрация и сроки",
+            "tlH": "Этапы программы",
+            "steps": [
+                "Регистрация и подача заявок",
+                "Проведение трёх летних школ",
+                "Написание аналитических работ",
+                "Наставничество и обратная связь",
+                "Публикация сборника научных работ",
+                "Итоговая конференция — ноябрь 2025"
+            ],
+            "grantH": "Конкурс грантов",
+            "grant": "В рамках Академии INSPIRE 2025, реализуемой при поддержке Посольства Королевства Нидерландов в Республике Молдова, планируется конкурс мини-грантов для студентов трёх школ. Он поддерживает молодёжное лидерство, гражданскую активность и ценности социальной сплочённости и позволяет студентам из Комрата, Тирасполя и Кишинёва реализовать собственные идеи — от образовательных и технологических проектов до культурных и медийных инициатив.",
+            "grantPdf": "Положение о конкурсе мини-грантов (PDF)",
+            "alH": "Выпускники Академии INSPIRE",
+            "alLead": "Окончить Академию — значит войти в сеть будущих лидеров и агентов перемен с эксклюзивными преимуществами:",
+            "alumni": [
+                [
+                    "Сертификат об окончании",
+                    "Официальное признание ваших достижений"
+                ],
+                [
+                    "Нетворкинг",
+                    "Знакомство с ведущими экспертами и другими выпускниками"
+                ],
+                [
+                    "Возможности публикации",
+                    "Публикация ваших исследований"
+                ],
+                [
+                    "Приоритетный доступ",
+                    "Приглашения на продвинутые тренинги и программы наставничества"
+                ],
+                [
+                    "Международное сотрудничество",
+                    "Участие в глобальных проектах и обменах"
+                ],
+                [
+                    "Поддержка карьеры",
+                    "Стажировки, карьерные консультации и рекомендации"
+                ],
+                [
+                    "Лидерские возможности",
+                    "Роль спикера или наставника в будущих программах"
+                ],
+                [
+                    "Сообщество на всю жизнь",
+                    "Глобальная сеть профессионалов, исследователей и агентов перемен"
+                ]
+            ]
+        },
+        "ro": {
+            "title": "INSPIRE Leadership Academy 2025",
+            "desc": "INSPIRE Leadership Academy 2025: trei școli la Chișinău, Comrat și Tiraspol pentru tineri lideri care schimbă regiunea și lumea.",
+            "aboutH": "Despre noi",
+            "about": [
+                "<p><strong>Rețeaua INSPIRE</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education — Rețeaua interuniversitară pentru pace durabilă, inovare, cercetare și educație) este o inițiativă de colaborare lansată în Republica Moldova, care reunește universități și ONG-uri.</p><p>În 2025, Academia viitorilor lideri INSPIRE găzduiește trei școli specializate. Fiecare oferă tinerilor lideri cunoștințele și abilitățile necesare pentru a răspunde provocărilor globale și a aduce schimbare în comunitățile lor. Experiență anterioară: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
+                "<p>Rețeaua a înființat <strong>Centre pentru implicare civică și globală</strong> în universitățile participante. Acestea sunt hub-uri locale de colaborare, care oferă resurse și sprijin studenților și tinerilor cercetători.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) este un proiect finanțat de Ambasada Regatului Țărilor de Jos în Moldova.</p>"
+            ],
+            "valuesH": "Valori și domenii-cheie",
+            "values": [
+                "Coeziune socială",
+                "Leadership",
+                "Consolidarea păcii",
+                "Integrare europeană",
+                "Dezvoltare durabilă",
+                "Cetățenie globală și guvernanță",
+                "Tehnologii în educație",
+                "Transformare digitală"
+            ],
+            "schoolsH": "Trei școli transformatoare",
+            "schoolsLead": "Fiecare școală se desfășoară între 9:00 și 21:00: ateliere interactive, studii de caz, discuții de grup și excursii cu învățare practică.",
+            "school": "Școala",
+            "deadline": "Termen de înregistrare:",
+            "schools": [
+                {
+                    "title": "Leadership strategic și dezvoltarea păcii durabile",
+                    "dates": "15–17 mai 2025",
+                    "place": "Chișinău",
+                    "dl": "5 mai 2025",
+                    "text": "Un program intensiv pentru tineri lideri actuali și în devenire: leadership strategic, dezvoltare durabilă, protecția mediului, echitate socială și viabilitate economică.",
+                    "areas": [
+                        "Instituții internaționale și strategii de dezvoltare",
+                        "ODD și politici de durabilitate",
+                        "Coeziune socială pentru dezvoltarea comunităților",
+                        "Strategii de implicare a comunității",
+                        "Leadership și diplomație publică",
+                        "Dezvoltare și gen",
+                        "Durabilitate și securitate alimentară",
+                        "Energie durabilă și agenda verde"
+                    ]
+                },
+                {
+                    "title": "Tech Peacemakers: soluții digitale pentru coeziune socială",
+                    "dates": "31 octombrie – 2 noiembrie 2025",
+                    "place": "Comrat, Universitatea / Tekwill",
+                    "dl": "20 octombrie 2025",
+                    "text": "Abilități pentru a folosi tehnologia în beneficiul societății: AI, blockchain și analiza datelor, cu atenție la etică, securitate cibernetică, utilizarea responsabilă a tehnologiei și combaterea dezinformării.",
+                    "areas": [
+                        "Tehnologii emergente și leadership în tech",
+                        "Transformare digitală și managementul inovării",
+                        "Securitate cibernetică și durabilitate în tech",
+                        "Diversitate și incluziune în tech",
+                        "Competențe viitoare și dezvoltarea forței de muncă",
+                        "Mentorat și coaching"
+                    ]
+                },
+                {
+                    "title": "Future Voices: media și comunicare pentru tineri inovatori",
+                    "dates": "21–23 noiembrie 2025",
+                    "place": "Tiraspol, Business Hub",
+                    "dl": "10 noiembrie 2025",
+                    "text": "Abilități de comunicare pentru a transmite idei într-un peisaj media în schimbare: storytelling, vorbit în public, alfabetizare digitală, practici media etice și brand personal.",
+                    "areas": [
+                        "Modele de comunicare",
+                        "Vorbit în public și prezentări",
+                        "Etica și responsabilitatea media",
+                        "Rețele sociale pentru inovare",
+                        "Comunicare vizuală",
+                        "Construirea brandului personal",
+                        "Soluționarea conflictelor și mediere",
+                        "Construirea încrederii și a relațiilor",
+                        "Conștientizare culturală și incluziune"
+                    ]
+                }
+            ],
+            "audH": "Cui se adresează programul?",
+            "audience": [
+                [
+                    "Viitori agenți ai schimbării",
+                    "18–40 de ani, dornici să aibă impact în comunitățile lor și dincolo de ele"
+                ],
+                [
+                    "Studenți și tineri profesioniști",
+                    "pasionați de leadership, diplomație și provocări globale"
+                ],
+                [
+                    "Viitori inovatori și rezolvatori de probleme",
+                    "dedicați dezvoltării durabile și cooperării internaționale"
+                ],
+                [
+                    "Cercetători și activiști",
+                    "care vor să-și aprofundeze expertiza și să se conecteze cu persoane cu viziuni similare"
+                ]
+            ],
+            "langH": "Limbile programului",
+            "langT": "Școlile se desfășoară în rusă, română și engleză, cu traducere. Este necesară cunoașterea a cel puțin uneia dintre aceste limbi.",
+            "selH": "Alegerea școlii",
+            "selT": "Se poate aplica la toate cele trei școli, însă la toate cele trei programe din 2025 vor participa doar cei mai activi 10 participanți.",
+            "audClose": "Dacă ești gata să conduci, să înveți și să faci o diferență — acest program este pentru tine.",
+            "featH": "Caracteristici-cheie",
+            "features": [
+                [
+                    "Sesiuni interactive",
+                    "Sesiuni cu mentori, vorbitori invitați și colegi pentru networking și idei noi"
+                ],
+                [
+                    "Curriculum cuprinzător",
+                    "Provocări globale, leadership și inovare prin învățare intensivă"
+                ],
+                [
+                    "Cursuri opționale",
+                    "Alege subiecte specializate care se potrivesc obiectivelor tale"
+                ],
+                [
+                    "Interacțiune între colegi",
+                    "Conectează-te cu cei mai buni studenți din Moldova și din lume"
+                ],
+                [
+                    "Aplicații practice",
+                    "Studii de caz și proiecte în relații internaționale, coeziune socială și durabilitate"
+                ],
+                [
+                    "Reflecție executivă",
+                    "Prezintă experților soluții inovatoare la probleme reale"
+                ],
+                [
+                    "Experiență de învățare hibridă",
+                    "Ateliere, prelegeri ale experților și networking față în față"
+                ],
+                [
+                    "Coach de succes și mentorat",
+                    "Îndrumare pentru dezvoltarea academică și profesională"
+                ],
+                [
+                    "Drum spre noi oportunități",
+                    "Networking exclusiv, stagii și colaborări globale"
+                ]
+            ],
+            "regH": "Înregistrare și termene",
+            "tlH": "Etapele programului",
+            "steps": [
+                "Înregistrare și depunerea cererilor",
+                "Desfășurarea celor 3 școli de vară",
+                "Redactarea lucrărilor analitice",
+                "Mentorat și feedback",
+                "Publicarea culegerii de lucrări științifice",
+                "Conferința finală — noiembrie 2025"
+            ],
+            "grantH": "Concurs de granturi",
+            "grant": "În cadrul Academiei INSPIRE 2025, implementată cu sprijinul Ambasadei Regatului Țărilor de Jos în Republica Moldova, este planificat un concurs de minigranturi pentru studenții celor trei școli. Acesta promovează leadershipul tinerilor, implicarea civică și valorile coeziunii sociale, permițând studenților din Comrat, Tiraspol și Chișinău să-și implementeze propriile idei — de la proiecte educaționale și tehnologice la inițiative culturale și media.",
+            "grantPdf": "Regulament minigranturi (RU, PDF)",
+            "alH": "Absolvenții Academiei INSPIRE",
+            "alLead": "Absolvirea înseamnă apartenența la o rețea de viitori lideri și agenți ai schimbării, cu beneficii exclusive:",
+            "alumni": [
+                [
+                    "Certificat de absolvire",
+                    "Recunoaștere oficială a realizărilor tale"
+                ],
+                [
+                    "Networking",
+                    "Conectează-te cu experți de top și cu alți absolvenți"
+                ],
+                [
+                    "Oportunități de publicare",
+                    "Publică-ți cercetările"
+                ],
+                [
+                    "Acces prioritar",
+                    "Invitații la instruiri avansate și programe de mentorat"
+                ],
+                [
+                    "Colaborare internațională",
+                    "Participă la proiecte și schimburi globale"
+                ],
+                [
+                    "Sprijin în carieră",
+                    "Stagii, consiliere în carieră și recomandări"
+                ],
+                [
+                    "Oportunități de leadership",
+                    "Devino vorbitor sau mentor în programele viitoare"
+                ],
+                [
+                    "Comunitate pe viață",
+                    "O rețea globală de profesioniști, cercetători și agenți ai schimbării"
+                ]
+            ]
+        }
     },
-    {
-     "title": "Tech Peacemakers: Digital Solutions for Social Cohesion",
-     "dates": "31 Oct – 2 Nov 2025",
-     "place": "Comrat, University / Tekwill",
-     "dl": "October 20, 2025",
-     "text": "Skills to harness technology for positive societal impact: AI, blockchain and data analytics, with attention to ethics, cybersecurity, responsible tech use and combating misinformation.",
-     "areas": [
-      "Emerging Technologies and Leadership in Tech",
-      "Digital Transformation and Innovation Management",
-      "Cybersecurity Awareness and Sustainability in Tech",
-      "Diversity and Inclusion in Tech",
-      "Future Skills and Workforce Development",
-      "Mentorship and Coaching"
-     ]
-    },
-    {
-     "title": "Future Voices: Media and Communication for Young Innovators",
-     "dates": "21–23 Nov 2025",
-     "place": "Tiraspol, Business Hub",
-     "dl": "November 10, 2025",
-     "text": "Communication skills to convey ideas in a changing media landscape: storytelling, public speaking, digital literacy, ethical media practice and personal branding.",
-     "areas": [
-      "Understanding Communication Models",
-      "Public Speaking and Presentation Skills",
-      "Media Ethics and Responsibility",
-      "Leveraging Social Media for Innovation",
-      "Visual Communication",
-      "Building a Personal Brand",
-      "Conflict Resolution and Mediation",
-      "Building Trust and Relationships",
-      "Cultural Awareness and Inclusivity"
-     ]
-    }
-   ],
-   "audH": "Who should attend?",
-   "audience": [
-    [
-     "Aspiring changemakers",
-     "18–40 years old, eager to drive impact in their communities and beyond"
+    "forms": [
+        "https://docs.google.com/forms/d/e/1FAIpQLSeqtJCWl3uKG8UVhFZP01-GLGEXcb_0rVyKwhzQzPiE0DAn3A/viewform",
+        "https://docs.google.com/forms/d/e/1FAIpQLSdp7B0hGQqVXx3mUt2-aqPmrtZ1URqGZkp6uMOUSUDdhzT0gw/viewform",
+        "https://docs.google.com/forms/d/e/1FAIpQLSdZbVXI_hz2jbTo6cLLTFKP8CVRti118LK8nP8dCXOqR0fSXw/viewform?usp=dialog"
     ],
-    [
-     "Students & young professionals",
-     "passionate about leadership, diplomacy and global challenges"
-    ],
-    [
-     "Future innovators & problem-solvers",
-     "committed to sustainable development and international cooperation"
-    ],
-    [
-     "Researchers & activists",
-     "looking to deepen their expertise and network with like-minded peers"
+    "programmes": [
+        "<p>This intensive program is designed to empower current and aspiring young leaders with the tools and knowledge necessary to drive sustainable change within their organizations and communities. Participants will explore key concepts of strategic leadership while focusing on sustainable development principles, including environmental stewardship, social equity, and economic viability.</p><p><strong>Key Focus Areas:</strong> <em>International Institutions and Development Strategies; SDGs and Sustainability Policy; Social Cohesion for Community Growth; Community Engagement Strategies; Leadership and Public Diplomacy; Development and Gender; Food Sustainability and Security; Sustainable Energy and the Green Agenda.</em></p> <p class=\"day\"><strong>May 15,2025<br></strong><strong>Place: Chisinau, GLIA Hub </strong><a href=\"https://www.instagram.com/gliaimpacthub\" target=\"_blank\" rel=\"noopener\">instagram.com</a><br>Address: Strada Mitropolit Gavriil Bănulescu-Bodoni 61, MD-2005</p> <p class=\"slot\"><strong>10.00</strong> — <strong>10.30 Registration, Coffee break<br>10.30</strong> — <strong>11.30 Opening</strong></p> <ol> <li><strong>Ms. Zinaida EMELIANOVA</strong>, Director NGO Agency for Innovation and Development<a href=\"https://innovation.md/\" target=\"_blank\" rel=\"noopener\">innovation.md</a></li> <li><strong>Mr. Fred DUIJN, </strong>Ambassador of the Kingdom of the Netherlands to the Republic of Moldova <a href=\"https://www.netherlandsandyou.nl/web/moldova\" target=\"_blank\" rel=\"noopener\">netherlandsandyou.nl</a></li> <li><strong>Ms. Yesim ORUC, </strong>UN Resident Coordinator <a href=\"https://moldova.un.org/\" target=\"_blank\" rel=\"noopener\">moldova.un.org</a></li> <li><b>Ms. Svetlana ANDRIES, </b>Deputy Country Representative, UN Women, Moldova <a href=\"https://moldova.unwomen.org/\" target=\"_blank\" rel=\"noopener\">moldova.unwomen.org</a></li> <li><strong>Mr. Walter JEANTY</strong>, Head of ICRC Mission to Moldova <a href=\"http://www.icrc.org/\" target=\"_blank\" rel=\"noopener\">icrc.org</a></li> <li><strong>Ms. Claudia MELINTE</strong>, Coordinator National Erasmus+ Office in Moldova <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></li> <li><strong>Prof. Dr. Iurie SEDLEȚCHI</strong>, Rector of the University of European Studies of Moldova <a href=\"https://usem.md/\" target=\"_blank\" rel=\"noopener\">usem.md</a></li> <li><strong>Prof. Dr. Serghei ZAHARIE, </strong>Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Prof. Dr. Alexandru STRATAN,</strong> Rector of the Academy of Economic Studies of Moldova <a href=\"https://ase.md/\" target=\"_blank\" rel=\"noopener\">ase.md</a></li> </ol> <p class=\"slot\"><strong>11.30</strong> — <strong>12.00</strong> <strong>Mr. Slawomir PICHOR, </strong>Head of the European Union Border Assistance Mission to Moldova and Ukraine (EUBAM) <a href=\"https://eubam.org/\" target=\"_blank\" rel=\"noopener\">eubam.org</a></p> <p class=\"slot\"><strong>12.00</strong> — <strong>13.30</strong> <strong>Commander Ella van den HEUVEL, </strong>military gender expert in the Dutch Armed Forces <a href=\"https://icct.nl/people/ella-van-den-heuvel\" target=\"_blank\" rel=\"noopener\">icct.nl</a></p> <p class=\"slot\"><strong>13.30</strong> — <strong>13.40</strong> <strong>Group photo</strong></p> <p class=\"slot\"><strong>13.40</strong> — <strong>14.30 Lunch</strong></p> <p class=\"slot\"><strong>14.30 </strong> — <strong>14.40 Ms. Dorina CIOBANU, </strong> CEO, GLIA Impact Hub <a href=\"https://www.instagram.com/gliaimpacthub\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p> <p class=\"slot\"><strong>14.40</strong> — <strong>15.30</strong> <strong>Mr. Serghei MIRZA,</strong> the architect and founder, the town of Kozy <a href=\"https://www.instagram.com/kozy.md\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p> <p class=\"slot\"><strong>15.30</strong> — <strong>16.00</strong> <strong>Ms. Claudia MELINTE, </strong>Coordinator National Erasmus+ Office <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></p> <p class=\"slot\"><strong>16.00</strong> — <strong>16.30</strong> <strong>Ms. Anna KOVALCHUK</strong>, coordinator at The National Youth Council of Moldova <a href=\"https://cntm.md/\" target=\"_blank\" rel=\"noopener\">cntm.md</a></p> <p class=\"slot\"><strong>16.30</strong> — <strong>17.30</strong> <strong>Ms. Oxana PALADICIUC,</strong> Director Fintech Hub <a href=\"https://www.facebook.com/FintechHUB.md\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p> <p class=\"slot\"><strong>17.30</strong> — <strong>18.00 Coffee Break</strong></p> <p class=\"day\"><strong>May 16,2025<br></strong><strong>Place: USEM Moldova</strong>, Chisinau, Strada Ghenadie Iablocikin 2/1, MD-2069 <a href=\"https://usem.md/\" target=\"_blank\" rel=\"noopener\">usem.md</a></p><p class=\"slot\"><strong>9.30</strong> — <strong>9.40 Opening Prof. Dr. Petru CATAN, </strong>Deputy Rector for scientific activity and quality of studies, USEM</p><p class=\"slot\"><strong>9.40</strong> — <strong>10.30</strong> <strong>Prof. Dr. Alexandru BURIAN, </strong>“The Republic of Moldova Amid Regional and Global Geopolitical Transformations” <a href=\"https://rmdiri.md/\" target=\"_blank\" rel=\"noopener\">rmdiri.md</a></p><p class=\"slot\"><strong>10.30</strong> — <strong>12.30</strong> <strong>Mr. Vitalie </strong><b>Cîrhană</b> , Director “MilleniuM” Training and Development Institute, Coordinator Info Centre for Erasmus+ Youth and European Solidarity Corps <a href=\"https://www.facebook.com/millenium.md\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p><p class=\"slot\"><strong>12.30</strong> — <strong>14.00</strong> <strong>Lunch</strong></p><p><strong>Place: UN Women</strong> – Moldova Country Office 18 Maria Cebotari St. 3rd floor, MD-2012</p><p class=\"slot\"><strong>14.30</strong> — <strong>17.00</strong>   <strong>UN OFFICE ROUNDTABLE</strong> “The Role of the United Nations in Supporting Sustainable Development in Moldova”  <a href=\"https://moldova.un.org/\" target=\"_blank\" rel=\"noopener\">moldova.un.org</a>    <a href=\"https://moldova.unwomen.org/\" target=\"_blank\" rel=\"noopener\">moldova.unwomen.org</a></p><p class=\"slot\"><strong>17.30</strong> — <strong>18.30</strong> <strong>Orange kITchen</strong> <strong>Place: </strong>Strada Calea Ieşilor 8 municipiul Chișinău, Moldova           <a href=\"https://www.instagram.com/explore/locations/251054055572194/orange-kitchen\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p><p class=\"day\"><strong>May 17,2025<br></strong>Departure to home regions</p> &lt;h2 class=\"elementor-heading-title elementor-size-default\"",
+        "<p class=\"day\"><strong>October 31, 2025 <br></strong><strong>Venue: Comrat State University </strong><br>Address: Galatsana 17 str., Comrat, Republic of Moldova, MD-3800</p> <p><strong>Assembly hall<br></strong><strong>10.30 – 11.00 Registration<br>11.00 – 12.30 Opening<br></strong></p> <ol> <li><strong>Prof. Dr. Serghei ZAHARIE</strong>, Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Mr. Fred DUIJN, </strong>Ambassador of the Kingdom of the Netherlands to the Republic of Moldova <a href=\"https://www.netherlandsandyou.nl/web/moldova\" target=\"_blank\" rel=\"noopener\">netherlandsandyou.nl</a></li> <li><strong>Mr. Walter JEANTY, </strong>Head of ICRC Mission to Moldova <a href=\"http://www.icrc.org/\" target=\"_blank\" rel=\"noopener\">icrc.org</a></li> <li><b><strong>Ms. Claudia MELINTE</strong>, </b>coordinator of the National Erasmus+ Office in Moldova <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></li> <li><strong>Ms. Anna KOVALCHUK</strong>, сoordinator of the National Youth Council of Moldova <a href=\"https://cntm.md/\" target=\"_blank\" rel=\"noopener\">cntm.md</a></li> <li><strong>Prof. Dr. Svetlana GHENOVA</strong>, Vice-Rector for Research and International Affairs Relationships <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Ms. Lyubov MITIOGLO,</strong> Regional Manager of Tekwill Comrat <a href=\"https://www.facebook.com/tekwillcomrat\" target=\"_blank\" rel=\"noopener\">facebook.com</a></li> <li><strong>Prof. Dr. Serghei ZAHARIE, </strong>Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Mr. Serghei TKACHENKO,</strong> Expert, CEO of Datalinie SRL</li> </ol> <p class=\"slot\"><strong>12.30 – 12.45 Group photo</strong><br><strong>12.45 – 14.00 Lunch</strong></p> <p><strong>Assembly hall<br></strong><strong><strong>14.00 – 14.30 </strong><strong>Ms. Olga KISELIOVA</strong>, </strong>Director of the Association of Creative Industries. Topic: “<em>Digital Marketing for Youth: New Tools and Practices</em>”<a href=\"https://creativity.md/\" target=\"_blank\" rel=\"noopener\">creativity.md</a></p> <p class=\"slot\"><strong>14.30 – 15.30 Ms. Svetlana KURAKSINA,</strong> associate professor at KSU. Topic: “<em>Digital Reputation and Online Branding</em>” <a href=\"https://www.facebook.com/svetlana.kuraksina.22206\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p> <p class=\"slot\"><strong>15.30 – 17.30 Mr. Serghei TKACHENKO, Expert, </strong>CEO of Datalinie SRL. Topic: “<em>Effective online communication and promotion strategies</em>” <a href=\"https://www.linkedin.com/in/serghey-tkachenko\" target=\"_blank\" rel=\"noopener\">linkedin.com</a></p> <p class=\"slot\"><strong>17.30 – 18.00,</strong> Trip to Congaz, Ethno-tourism complex “Gagauz Sofrası”</p> <p class=\"slot\"><strong>18.00 – 18.40,</strong> Excursion to the Ethno-tourism complex “Gagauz Sofrası” <a href=\"https://www.gagauzia.md/ru/turizm/dostoprimechatelnosti/agro-turizm/gagauz-sofrasi.html\" target=\"_blank\" rel=\"noopener\">gagauzia.md</a></p> <p class=\"slot\"><strong>18.40 – 21.00 Dinner</strong></p> <p class=\"day\"><strong><strong>November 1, 2025<br></strong></strong><strong>Venue: Tekwill, Comrat State University<br></strong>Address: Galatsana 17 str., Comrat, Republic of Moldova, MD-3800</p><p class=\"slot\"><strong>10.00 – 10.30 Ms. Lyubov MITIOGLO,</strong>Regional Manager, Tekwill Comrat Topic: “<em>Innovative ecosystems and hubs: a space of opportunities for young people</em>” <a href=\"https://www.facebook.com/tekwillcomrat\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p><p class=\"slot\"><strong>10.30 – 13.00 Mr. Dorin HOTINEANU, </strong>Association of Young Diplomats of Moldova. Interactive simulation “<em>Island and Continent” with team-building elements and a digital/peacekeeping agenda.</em> <a href=\"https://www.instagram.com/youngdiplomats.md\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p><p class=\"slot\"><strong>13.00 – 14.00 Lunch</strong></p><p class=\"slot\"> <strong>14.00 – 16.00 Mr. Artiom SIROTENCO,</strong> Founder of HYPE CGI. CGI AI Expert. Topic: “<em>Youth and Leadership in the AI Era: Next-Generation Services as a Tool for Success”</em> <a href=\"https://www.youtube.com/@creeborg\" target=\"_blank\" rel=\"noopener\">youtube.com</a> </p><p class=\"slot\"><strong>16.00 – 17.00 Ms. Olga SALCUTAN, </strong>Open Education Academy expert. Topic<em>: “Global Educational Opportunities</em>”  <a href=\"https://education.md/\" target=\"_blank\" rel=\"noopener\">education.md</a> </p><p class=\"slot\"><strong>17.00 – 18.00 Dinner</strong></p><p class=\"slot\"><strong>18.00 – Departure of participants to their places of residence</strong></p> &lt;h2 class=\"elementor-heading-title elementor-size-default\"",
+        "<p class=\"day\"><strong>November 19-21, 2025<br></strong><strong>BUSINESS GAME PRACTICAL MARKETING<br></strong> <strong>Expert Sergey Tkachenko</strong>,  <a href=\"https://www.linkedin.com/in/serghey-tkachenko\" target=\"_blank\" rel=\"noopener\">linkedin.com</a></p><p>This business game is designed specifically for young people and students who want to try their hand at marketing and management, gain real-world decision-making skills, and experience the dynamics of a real market. Participants become the heads of virtual companies: they analyze customer needs, study competitors, create their own products, set prices, develop advertising, and devise a promotion strategy. Every decision impacts sales, profits, and the company’s position in the simulation.</p><p>The game is based on a computerized marketing simulator that simulates real-world market processes and demonstrates how consumer behavior changes in response to your actions. This allows students to see how marketing tools work in practice and understand which decisions truly yield results. The format combines brief expert explanations with active teamwork: participants discuss ideas, test strategic approaches, respond to market changes, and analyze their results. The game helps develop critical thinking, creativity, teamwork skills, the ability to make quick decisions, and adapt to change. It’s a safe and engaging opportunity to try your hand at business and marketing, gaining experience that will be useful in real-world professional work.</p> <p class=\"day\"><strong><strong>November 21, 2025<br></strong></strong><strong>FUTURE VOICES: MEDIA AND COMMUNICATIONS FOR YOUNG INNOVATORS<br>Participants arrive from Comrat and Chisinau. Hotel accommodation.<br></strong></p><p class=\"slot\"><strong>13.45 – 14.00 Welcome </strong>to the INSPIRE Leadership Academy 2025 participants</p><p class=\"slot\"><strong>14.00 – 14.40 Ms.Valeria Zelinskaya, </strong>Image and Communications Expert, CEO of LEMON. Topic: «Leadership Image: How Young People Can Become Visible, Confident, and Influential»</p><p class=\"slot\"> <strong>14.40 – 16.00 Mr. Sergey Tkachenko,</strong> International Consultant, CEO of Datalinie SRL Topic: “Media and Technology: Startup Thinking as a Key Skill of the 21st Century” </p><p class=\"slot\"><strong>16.00 – 17.00 Ms. Olga Kisileva, </strong>Association of Creative Industries. Topic: «How Social Media Shapes the Future of Professions and Why Digital Skills Are Becoming the New Literacy»</p><p class=\"slot\"><strong>17.00 – 18.00 Ms. Ekaterina Dymchuk,</strong>expert at the Open Education Academy. Topic: «Global Mobility: The Best International Opportunities for Young People»</p><p class=\"slot\"><strong>18.00 – 20.00 Dinner</strong></p> <p class=\"day\"><strong><strong>November 22, 2025<br></strong></strong><strong>9.30 – 13.00 KEEP COOL </strong>is a strategic team game for participants in groups, where each participant represents a group of countries (Europe, OPEC, developing countries, etc.). Over the course of 1-2 hours, players choose between «black» and «green» growth, confront climate risks (droughts, floods), and consider lobbying pressures from everything from the oil industry to environmental movements. The winner is the one who most effectively balances economic interests and climate responsibility. But if someone acts too aggressively and selfishly, everyone loses.</p><p class=\"slot\"><strong>13.00 – 14.00 </strong><b>Lunch</b></p><p class=\"slot\"> <strong>14.00 – 14.30 </strong> <b>Excursion to Tiraspol</b></p><p class=\"slot\"><strong>14.45 – Tour of the Bottle Museum </strong><em><a href=\"https://bottlemuseum.tilda.ws/\" target=\"_blank\" rel=\"noopener\">bottlemuseum.tilda.ws</a></em></p><p class=\"slot\"><strong>16.00 – 17.00Excursion to the BenderFortress </strong><em><a href=\"https://bendery-fortress.com/\" target=\"_blank\" rel=\"noopener\">bendery-fortress.com</a></em></p><p class=\"slot\"><strong>17:00 – 18:00 Coffee break</strong></p><p class=\"slot\"><strong>18:00 Participants depart to their places of residence</strong></p> &lt;h2 class=\"elementor-heading-title elementor-size-default\""
     ]
-   ],
-   "langH": "Language requirements",
-   "langT": "The schools are conducted in Russian, Romanian and English with translation provided. Proficiency in at least one of these languages is required.",
-   "selH": "School selection",
-   "selT": "Applicants can apply for all three schools. Only the 10 most active participants will attend all three programmes in 2025.",
-   "audClose": "If you are ready to lead, learn and make a difference — this programme is for you.",
-   "featH": "Key features",
-   "features": [
-    [
-     "Interactive Sessions",
-     "Sessions with mentors, guest speakers and peers for networking and insights"
-    ],
-    [
-     "Comprehensive Curriculum",
-     "Global challenges, leadership and innovation through intensive learning"
-    ],
-    [
-     "Choice of Electives",
-     "Select specialised topics that match your goals"
-    ],
-    [
-     "Peer Interaction",
-     "Connect with top students in Moldova and worldwide"
-    ],
-    [
-     "Real-World Applications",
-     "Case studies and projects in international relations, social cohesion and sustainability"
-    ],
-    [
-     "Executive Reflection",
-     "Present innovative solutions to real-world issues to experts"
-    ],
-    [
-     "Hybrid Learning Experience",
-     "Workshops, expert lectures and in-person networking"
-    ],
-    [
-     "Success Coach & Mentorship",
-     "Guidance to support your academic and career growth"
-    ],
-    [
-     "Pathway to Future Opportunities",
-     "Exclusive networking, internships and global collaborations"
-    ]
-   ],
-   "regH": "Registration & deadlines",
-   "tlH": "Programme timeline",
-   "steps": [
-    "Registration & Application Submission",
-    "Implementation of 3 Summer Schools",
-    "Analytical Paper Writing",
-    "Mentorship & Feedback",
-    "Publication of Scientific Papers Collection",
-    "Final Conference — November 2025"
-   ],
-   "grantH": "Grant competition",
-   "grant": "As part of INSPIRE Academy 2025, implemented with the support of the Embassy of the Kingdom of the Netherlands in the Republic of Moldova, a mini-grant competition is planned for students of the three schools. It promotes youth leadership, civic engagement and the values of social cohesion, enabling students from Comrat, Tiraspol and Chișinău to implement their own ideas — from educational and technological projects to cultural and media initiatives.",
-   "grantPdf": "Mini-grants regulation (RU, PDF)",
-   "alH": "INSPIRE Academy alumni",
-   "alLead": "Graduating means joining a network of future leaders and changemakers, with exclusive benefits:",
-   "alumni": [
-    [
-     "Certificate of Completion",
-     "Official recognition of your achievements"
-    ],
-    [
-     "Networking",
-     "Connect with top experts and fellow alumni"
-    ],
-    [
-     "Publication Opportunities",
-     "Get your research published"
-    ],
-    [
-     "Priority Access",
-     "Invitations to advanced training and mentorship"
-    ],
-    [
-     "International Collaboration",
-     "Engage in global projects and exchanges"
-    ],
-    [
-     "Career Support",
-     "Internships, career guidance and recommendations"
-    ],
-    [
-     "Leadership Opportunities",
-     "Become a speaker or mentor in future programmes"
-    ],
-    [
-     "Lifelong Community",
-     "A global network of professionals, researchers and changemakers"
-    ]
-   ]
-  },
-  "ru": {
-   "title": "INSPIRE Leadership Academy 2025",
-   "desc": "INSPIRE Leadership Academy 2025: три школы в Кишинёве, Комрате и Тирасполе для молодых лидеров, которые меняют регион и мир.",
-   "aboutH": "О нас",
-   "about": [
-    "<p><strong>Сеть INSPIRE</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education — Межуниверситетская сеть за устойчивый мир, инновации, исследования и образование) — совместная инициатива, запущенная в Республике Молдова и объединяющая университеты и НКО.</p><p>В 2025 году Академия будущих лидеров INSPIRE проведёт три специализированные школы. Каждая даёт молодым лидерам знания и навыки, чтобы отвечать на глобальные вызовы и менять свои сообщества. Предыдущий опыт: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
-    "<p>Сеть создала <strong>Центры гражданской и глобальной вовлечённости</strong> при университетах-участниках. Они служат локальными центрами сотрудничества и предлагают ресурсы и поддержку студентам и молодым исследователям.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) — проект, финансируемый Посольством Королевства Нидерландов в Молдове.</p>"
-   ],
-   "valuesH": "Ценности и ключевые направления",
-   "values": [
-    "Социальная сплочённость",
-    "Лидерство",
-    "Миротворчество",
-    "Европейская интеграция",
-    "Устойчивое развитие",
-    "Глобальное гражданство и управление",
-    "Технологии в образовании",
-    "Цифровая трансформация"
-   ],
-   "schoolsH": "Три трансформационные школы",
-   "schoolsLead": "Каждая школа работает с 9:00 до 21:00: интерактивные воркшопы, разбор кейсов, групповые дискуссии и экскурсии с практическим обучением.",
-   "school": "Школа",
-   "deadline": "Срок регистрации:",
-   "schools": [
-    {
-     "title": "Стратегическое лидерство и развитие устойчивого мира",
-     "dates": "15–17 мая 2025",
-     "place": "Кишинёв",
-     "dl": "5 мая 2025",
-     "text": "Интенсивная программа для действующих и будущих молодых лидеров: стратегическое лидерство, устойчивое развитие, бережное отношение к окружающей среде, социальное равенство и экономическая жизнеспособность.",
-     "areas": [
-      "Международные институты и стратегии развития",
-      "ЦУР и политика устойчивости",
-      "Социальная сплочённость для роста сообществ",
-      "Стратегии вовлечения сообществ",
-      "Лидерство и публичная дипломатия",
-      "Развитие и гендер",
-      "Продовольственная устойчивость и безопасность",
-      "Устойчивая энергетика и «зелёная» повестка"
-     ]
-    },
-    {
-     "title": "Tech Peacemakers: цифровые решения для социальной сплочённости",
-     "dates": "31 октября – 2 ноября 2025",
-     "place": "Комрат, университет / Tekwill",
-     "dl": "20 октября 2025",
-     "text": "Навыки применения технологий на общественную пользу: ИИ, блокчейн и аналитика данных, с вниманием к этике, кибербезопасности, ответственному использованию технологий и борьбе с дезинформацией.",
-     "areas": [
-      "Новые технологии и лидерство в IT",
-      "Цифровая трансформация и управление инновациями",
-      "Кибербезопасность и устойчивость в IT",
-      "Разнообразие и инклюзия в IT",
-      "Навыки будущего и развитие кадров",
-      "Наставничество и коучинг"
-     ]
-    },
-    {
-     "title": "Future Voices: медиа и коммуникации для молодых новаторов",
-     "dates": "21–23 ноября 2025",
-     "place": "Тирасполь, Business Hub",
-     "dl": "10 ноября 2025",
-     "text": "Навыки коммуникации, чтобы доносить идеи в меняющемся медиапространстве: сторителлинг, публичные выступления, цифровая грамотность, этичная работа с медиа и личный бренд.",
-     "areas": [
-      "Модели коммуникации",
-      "Публичные выступления и презентации",
-      "Медиаэтика и ответственность",
-      "Социальные сети как инструмент инноваций",
-      "Визуальная коммуникация",
-      "Личный бренд",
-      "Разрешение конфликтов и медиация",
-      "Построение доверия и отношений",
-      "Культурная осведомлённость и инклюзивность"
-     ]
-    }
-   ],
-   "audH": "Кому подойдёт программа?",
-   "audience": [
-    [
-     "Начинающие агенты перемен",
-     "18–40 лет, готовы менять свои сообщества и не только"
-    ],
-    [
-     "Студенты и молодые специалисты",
-     "увлечены лидерством, дипломатией и глобальными вызовами"
-    ],
-    [
-     "Будущие новаторы и решатели проблем",
-     "привержены устойчивому развитию и международному сотрудничеству"
-    ],
-    [
-     "Исследователи и активисты",
-     "хотят углубить экспертизу и наладить связи с единомышленниками"
-    ]
-   ],
-   "langH": "Языки программы",
-   "langT": "Школы проходят на русском, румынском и английском языках с переводом. Нужно владеть хотя бы одним из них.",
-   "selH": "Выбор школы",
-   "selT": "Можно подать заявки на все три школы, но во всех трёх программах в 2025 году примут участие только 10 самых активных участников.",
-   "audClose": "Если вы готовы вести за собой, учиться и менять мир — эта программа для вас.",
-   "featH": "Ключевые особенности",
-   "features": [
-    [
-     "Интерактивные сессии",
-     "Сессии с наставниками, приглашёнными спикерами и коллегами: нетворкинг и новые идеи"
-    ],
-    [
-     "Комплексная программа",
-     "Глобальные вызовы, лидерство и инновации в интенсивном формате"
-    ],
-    [
-     "Выбор факультативов",
-     "Выбирайте узкие темы под свои цели"
-    ],
-    [
-     "Общение со сверстниками",
-     "Знакомьтесь с лучшими студентами Молдовы и мира"
-    ],
-    [
-     "Практическое применение",
-     "Кейсы и проекты по международным отношениям, социальной сплочённости и устойчивости"
-    ],
-    [
-     "Итоговая презентация",
-     "Представьте экспертам свои решения реальных проблем"
-    ],
-    [
-     "Гибридный формат",
-     "Воркшопы, лекции экспертов и живое общение"
-    ],
-    [
-     "Наставник и коуч успеха",
-     "Поддержка в учёбе и карьере"
-    ],
-    [
-     "Путь к новым возможностям",
-     "Эксклюзивный нетворкинг, стажировки и международное сотрудничество"
-    ]
-   ],
-   "regH": "Регистрация и сроки",
-   "tlH": "Этапы программы",
-   "steps": [
-    "Регистрация и подача заявок",
-    "Проведение трёх летних школ",
-    "Написание аналитических работ",
-    "Наставничество и обратная связь",
-    "Публикация сборника научных работ",
-    "Итоговая конференция — ноябрь 2025"
-   ],
-   "grantH": "Конкурс грантов",
-   "grant": "В рамках Академии INSPIRE 2025, реализуемой при поддержке Посольства Королевства Нидерландов в Республике Молдова, планируется конкурс мини-грантов для студентов трёх школ. Он поддерживает молодёжное лидерство, гражданскую активность и ценности социальной сплочённости и позволяет студентам из Комрата, Тирасполя и Кишинёва реализовать собственные идеи — от образовательных и технологических проектов до культурных и медийных инициатив.",
-   "grantPdf": "Положение о конкурсе мини-грантов (PDF)",
-   "alH": "Выпускники Академии INSPIRE",
-   "alLead": "Окончить Академию — значит войти в сеть будущих лидеров и агентов перемен с эксклюзивными преимуществами:",
-   "alumni": [
-    [
-     "Сертификат об окончании",
-     "Официальное признание ваших достижений"
-    ],
-    [
-     "Нетворкинг",
-     "Знакомство с ведущими экспертами и другими выпускниками"
-    ],
-    [
-     "Возможности публикации",
-     "Публикация ваших исследований"
-    ],
-    [
-     "Приоритетный доступ",
-     "Приглашения на продвинутые тренинги и программы наставничества"
-    ],
-    [
-     "Международное сотрудничество",
-     "Участие в глобальных проектах и обменах"
-    ],
-    [
-     "Поддержка карьеры",
-     "Стажировки, карьерные консультации и рекомендации"
-    ],
-    [
-     "Лидерские возможности",
-     "Роль спикера или наставника в будущих программах"
-    ],
-    [
-     "Сообщество на всю жизнь",
-     "Глобальная сеть профессионалов, исследователей и агентов перемен"
-    ]
-   ]
-  },
-  "ro": {
-   "title": "INSPIRE Leadership Academy 2025",
-   "desc": "INSPIRE Leadership Academy 2025: trei școli la Chișinău, Comrat și Tiraspol pentru tineri lideri care schimbă regiunea și lumea.",
-   "aboutH": "Despre noi",
-   "about": [
-    "<p><strong>Rețeaua INSPIRE</strong> (Inter-University Network for Sustainable Peace, Innovation, Research, and Education — Rețeaua interuniversitară pentru pace durabilă, inovare, cercetare și educație) este o inițiativă de colaborare lansată în Republica Moldova, care reunește universități și ONG-uri.</p><p>În 2025, Academia viitorilor lideri INSPIRE găzduiește trei școli specializate. Fiecare oferă tinerilor lideri cunoștințele și abilitățile necesare pentru a răspunde provocărilor globale și a aduce schimbare în comunitățile lor. Experiență anterioară: <a href=\"https://peace.education.md\">peace.education.md</a>.</p>",
-    "<p>Rețeaua a înființat <strong>Centre pentru implicare civică și globală</strong> în universitățile participante. Acestea sunt hub-uri locale de colaborare, care oferă resurse și sprijin studenților și tinerilor cercetători.</p><p><strong>InspireEdu</strong> (Inspiring Education for Future Leaders) este un proiect finanțat de Ambasada Regatului Țărilor de Jos în Moldova.</p>"
-   ],
-   "valuesH": "Valori și domenii-cheie",
-   "values": [
-    "Coeziune socială",
-    "Leadership",
-    "Consolidarea păcii",
-    "Integrare europeană",
-    "Dezvoltare durabilă",
-    "Cetățenie globală și guvernanță",
-    "Tehnologii în educație",
-    "Transformare digitală"
-   ],
-   "schoolsH": "Trei școli transformatoare",
-   "schoolsLead": "Fiecare școală se desfășoară între 9:00 și 21:00: ateliere interactive, studii de caz, discuții de grup și excursii cu învățare practică.",
-   "school": "Școala",
-   "deadline": "Termen de înregistrare:",
-   "schools": [
-    {
-     "title": "Leadership strategic și dezvoltarea păcii durabile",
-     "dates": "15–17 mai 2025",
-     "place": "Chișinău",
-     "dl": "5 mai 2025",
-     "text": "Un program intensiv pentru tineri lideri actuali și în devenire: leadership strategic, dezvoltare durabilă, protecția mediului, echitate socială și viabilitate economică.",
-     "areas": [
-      "Instituții internaționale și strategii de dezvoltare",
-      "ODD și politici de durabilitate",
-      "Coeziune socială pentru dezvoltarea comunităților",
-      "Strategii de implicare a comunității",
-      "Leadership și diplomație publică",
-      "Dezvoltare și gen",
-      "Durabilitate și securitate alimentară",
-      "Energie durabilă și agenda verde"
-     ]
-    },
-    {
-     "title": "Tech Peacemakers: soluții digitale pentru coeziune socială",
-     "dates": "31 octombrie – 2 noiembrie 2025",
-     "place": "Comrat, Universitatea / Tekwill",
-     "dl": "20 octombrie 2025",
-     "text": "Abilități pentru a folosi tehnologia în beneficiul societății: AI, blockchain și analiza datelor, cu atenție la etică, securitate cibernetică, utilizarea responsabilă a tehnologiei și combaterea dezinformării.",
-     "areas": [
-      "Tehnologii emergente și leadership în tech",
-      "Transformare digitală și managementul inovării",
-      "Securitate cibernetică și durabilitate în tech",
-      "Diversitate și incluziune în tech",
-      "Competențe viitoare și dezvoltarea forței de muncă",
-      "Mentorat și coaching"
-     ]
-    },
-    {
-     "title": "Future Voices: media și comunicare pentru tineri inovatori",
-     "dates": "21–23 noiembrie 2025",
-     "place": "Tiraspol, Business Hub",
-     "dl": "10 noiembrie 2025",
-     "text": "Abilități de comunicare pentru a transmite idei într-un peisaj media în schimbare: storytelling, vorbit în public, alfabetizare digitală, practici media etice și brand personal.",
-     "areas": [
-      "Modele de comunicare",
-      "Vorbit în public și prezentări",
-      "Etica și responsabilitatea media",
-      "Rețele sociale pentru inovare",
-      "Comunicare vizuală",
-      "Construirea brandului personal",
-      "Soluționarea conflictelor și mediere",
-      "Construirea încrederii și a relațiilor",
-      "Conștientizare culturală și incluziune"
-     ]
-    }
-   ],
-   "audH": "Cui se adresează programul?",
-   "audience": [
-    [
-     "Viitori agenți ai schimbării",
-     "18–40 de ani, dornici să aibă impact în comunitățile lor și dincolo de ele"
-    ],
-    [
-     "Studenți și tineri profesioniști",
-     "pasionați de leadership, diplomație și provocări globale"
-    ],
-    [
-     "Viitori inovatori și rezolvatori de probleme",
-     "dedicați dezvoltării durabile și cooperării internaționale"
-    ],
-    [
-     "Cercetători și activiști",
-     "care vor să-și aprofundeze expertiza și să se conecteze cu persoane cu viziuni similare"
-    ]
-   ],
-   "langH": "Limbile programului",
-   "langT": "Școlile se desfășoară în rusă, română și engleză, cu traducere. Este necesară cunoașterea a cel puțin uneia dintre aceste limbi.",
-   "selH": "Alegerea școlii",
-   "selT": "Se poate aplica la toate cele trei școli, însă la toate cele trei programe din 2025 vor participa doar cei mai activi 10 participanți.",
-   "audClose": "Dacă ești gata să conduci, să înveți și să faci o diferență — acest program este pentru tine.",
-   "featH": "Caracteristici-cheie",
-   "features": [
-    [
-     "Sesiuni interactive",
-     "Sesiuni cu mentori, vorbitori invitați și colegi pentru networking și idei noi"
-    ],
-    [
-     "Curriculum cuprinzător",
-     "Provocări globale, leadership și inovare prin învățare intensivă"
-    ],
-    [
-     "Cursuri opționale",
-     "Alege subiecte specializate care se potrivesc obiectivelor tale"
-    ],
-    [
-     "Interacțiune între colegi",
-     "Conectează-te cu cei mai buni studenți din Moldova și din lume"
-    ],
-    [
-     "Aplicații practice",
-     "Studii de caz și proiecte în relații internaționale, coeziune socială și durabilitate"
-    ],
-    [
-     "Reflecție executivă",
-     "Prezintă experților soluții inovatoare la probleme reale"
-    ],
-    [
-     "Experiență de învățare hibridă",
-     "Ateliere, prelegeri ale experților și networking față în față"
-    ],
-    [
-     "Coach de succes și mentorat",
-     "Îndrumare pentru dezvoltarea academică și profesională"
-    ],
-    [
-     "Drum spre noi oportunități",
-     "Networking exclusiv, stagii și colaborări globale"
-    ]
-   ],
-   "regH": "Înregistrare și termene",
-   "tlH": "Etapele programului",
-   "steps": [
-    "Înregistrare și depunerea cererilor",
-    "Desfășurarea celor 3 școli de vară",
-    "Redactarea lucrărilor analitice",
-    "Mentorat și feedback",
-    "Publicarea culegerii de lucrări științifice",
-    "Conferința finală — noiembrie 2025"
-   ],
-   "grantH": "Concurs de granturi",
-   "grant": "În cadrul Academiei INSPIRE 2025, implementată cu sprijinul Ambasadei Regatului Țărilor de Jos în Republica Moldova, este planificat un concurs de minigranturi pentru studenții celor trei școli. Acesta promovează leadershipul tinerilor, implicarea civică și valorile coeziunii sociale, permițând studenților din Comrat, Tiraspol și Chișinău să-și implementeze propriile idei — de la proiecte educaționale și tehnologice la inițiative culturale și media.",
-   "grantPdf": "Regulament minigranturi (RU, PDF)",
-   "alH": "Absolvenții Academiei INSPIRE",
-   "alLead": "Absolvirea înseamnă apartenența la o rețea de viitori lideri și agenți ai schimbării, cu beneficii exclusive:",
-   "alumni": [
-    [
-     "Certificat de absolvire",
-     "Recunoaștere oficială a realizărilor tale"
-    ],
-    [
-     "Networking",
-     "Conectează-te cu experți de top și cu alți absolvenți"
-    ],
-    [
-     "Oportunități de publicare",
-     "Publică-ți cercetările"
-    ],
-    [
-     "Acces prioritar",
-     "Invitații la instruiri avansate și programe de mentorat"
-    ],
-    [
-     "Colaborare internațională",
-     "Participă la proiecte și schimburi globale"
-    ],
-    [
-     "Sprijin în carieră",
-     "Stagii, consiliere în carieră și recomandări"
-    ],
-    [
-     "Oportunități de leadership",
-     "Devino vorbitor sau mentor în programele viitoare"
-    ],
-    [
-     "Comunitate pe viață",
-     "O rețea globală de profesioniști, cercetători și agenți ai schimbării"
-    ]
-   ]
-  }
- },
- "forms": [
-  "https://docs.google.com/forms/d/e/1FAIpQLSeqtJCWl3uKG8UVhFZP01-GLGEXcb_0rVyKwhzQzPiE0DAn3A/viewform",
-  "https://docs.google.com/forms/d/e/1FAIpQLSdp7B0hGQqVXx3mUt2-aqPmrtZ1URqGZkp6uMOUSUDdhzT0gw/viewform",
-  "https://docs.google.com/forms/d/e/1FAIpQLSdZbVXI_hz2jbTo6cLLTFKP8CVRti118LK8nP8dCXOqR0fSXw/viewform?usp=dialog"
- ],
- "programmes": [
-  "<p>This intensive program is designed to empower current and aspiring young leaders with the tools and knowledge necessary to drive sustainable change within their organizations and communities. Participants will explore key concepts of strategic leadership while focusing on sustainable development principles, including environmental stewardship, social equity, and economic viability.</p><p><strong>Key Focus Areas:</strong> <em>International Institutions and Development Strategies; SDGs and Sustainability Policy; Social Cohesion for Community Growth; Community Engagement Strategies; Leadership and Public Diplomacy; Development and Gender; Food Sustainability and Security; Sustainable Energy and the Green Agenda.</em></p> <p class=\"day\"><strong>May 15,2025<br></strong><strong>Place: Chisinau, GLIA Hub </strong><a href=\"https://www.instagram.com/gliaimpacthub\" target=\"_blank\" rel=\"noopener\">instagram.com</a><br>Address: Strada Mitropolit Gavriil Bănulescu-Bodoni 61, MD-2005</p> <p class=\"slot\"><strong>10.00</strong> — <strong>10.30 Registration, Coffee break<br>10.30</strong> — <strong>11.30 Opening</strong></p> <ol> <li><strong>Ms. Zinaida EMELIANOVA</strong>, Director NGO Agency for Innovation and Development<a href=\"https://innovation.md/\" target=\"_blank\" rel=\"noopener\">innovation.md</a></li> <li><strong>Mr. Fred DUIJN, </strong>Ambassador of the Kingdom of the Netherlands to the Republic of Moldova <a href=\"https://www.netherlandsandyou.nl/web/moldova\" target=\"_blank\" rel=\"noopener\">netherlandsandyou.nl</a></li> <li><strong>Ms. Yesim ORUC, </strong>UN Resident Coordinator <a href=\"https://moldova.un.org/\" target=\"_blank\" rel=\"noopener\">moldova.un.org</a></li> <li><b>Ms. Svetlana ANDRIES, </b>Deputy Country Representative, UN Women, Moldova <a href=\"https://moldova.unwomen.org/\" target=\"_blank\" rel=\"noopener\">moldova.unwomen.org</a></li> <li><strong>Mr. Walter JEANTY</strong>, Head of ICRC Mission to Moldova <a href=\"http://www.icrc.org/\" target=\"_blank\" rel=\"noopener\">icrc.org</a></li> <li><strong>Ms. Claudia MELINTE</strong>, Coordinator National Erasmus+ Office in Moldova <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></li> <li><strong>Prof. Dr. Iurie SEDLEȚCHI</strong>, Rector of the University of European Studies of Moldova <a href=\"https://usem.md/\" target=\"_blank\" rel=\"noopener\">usem.md</a></li> <li><strong>Prof. Dr. Serghei ZAHARIE, </strong>Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Prof. Dr. Alexandru STRATAN,</strong> Rector of the Academy of Economic Studies of Moldova <a href=\"https://ase.md/\" target=\"_blank\" rel=\"noopener\">ase.md</a></li> </ol> <p class=\"slot\"><strong>11.30</strong> — <strong>12.00</strong> <strong>Mr. Slawomir PICHOR, </strong>Head of the European Union Border Assistance Mission to Moldova and Ukraine (EUBAM) <a href=\"https://eubam.org/\" target=\"_blank\" rel=\"noopener\">eubam.org</a></p> <p class=\"slot\"><strong>12.00</strong> — <strong>13.30</strong> <strong>Commander Ella van den HEUVEL, </strong>military gender expert in the Dutch Armed Forces <a href=\"https://icct.nl/people/ella-van-den-heuvel\" target=\"_blank\" rel=\"noopener\">icct.nl</a></p> <p class=\"slot\"><strong>13.30</strong> — <strong>13.40</strong> <strong>Group photo</strong></p> <p class=\"slot\"><strong>13.40</strong> — <strong>14.30 Lunch</strong></p> <p class=\"slot\"><strong>14.30 </strong> — <strong>14.40 Ms. Dorina CIOBANU, </strong> CEO, GLIA Impact Hub <a href=\"https://www.instagram.com/gliaimpacthub\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p> <p class=\"slot\"><strong>14.40</strong> — <strong>15.30</strong> <strong>Mr. Serghei MIRZA,</strong> the architect and founder, the town of Kozy <a href=\"https://www.instagram.com/kozy.md\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p> <p class=\"slot\"><strong>15.30</strong> — <strong>16.00</strong> <strong>Ms. Claudia MELINTE, </strong>Coordinator National Erasmus+ Office <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></p> <p class=\"slot\"><strong>16.00</strong> — <strong>16.30</strong> <strong>Ms. Anna KOVALCHUK</strong>, coordinator at The National Youth Council of Moldova <a href=\"https://cntm.md/\" target=\"_blank\" rel=\"noopener\">cntm.md</a></p> <p class=\"slot\"><strong>16.30</strong> — <strong>17.30</strong> <strong>Ms. Oxana PALADICIUC,</strong> Director Fintech Hub <a href=\"https://www.facebook.com/FintechHUB.md\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p> <p class=\"slot\"><strong>17.30</strong> — <strong>18.00 Coffee Break</strong></p> <p class=\"day\"><strong>May 16,2025<br></strong><strong>Place: USEM Moldova</strong>, Chisinau, Strada Ghenadie Iablocikin 2/1, MD-2069 <a href=\"https://usem.md/\" target=\"_blank\" rel=\"noopener\">usem.md</a></p><p class=\"slot\"><strong>9.30</strong> — <strong>9.40 Opening Prof. Dr. Petru CATAN, </strong>Deputy Rector for scientific activity and quality of studies, USEM</p><p class=\"slot\"><strong>9.40</strong> — <strong>10.30</strong> <strong>Prof. Dr. Alexandru BURIAN, </strong>“The Republic of Moldova Amid Regional and Global Geopolitical Transformations” <a href=\"https://rmdiri.md/\" target=\"_blank\" rel=\"noopener\">rmdiri.md</a></p><p class=\"slot\"><strong>10.30</strong> — <strong>12.30</strong> <strong>Mr. Vitalie </strong><b>Cîrhană</b> , Director “MilleniuM” Training and Development Institute, Coordinator Info Centre for Erasmus+ Youth and European Solidarity Corps <a href=\"https://www.facebook.com/millenium.md\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p><p class=\"slot\"><strong>12.30</strong> — <strong>14.00</strong> <strong>Lunch</strong></p><p><strong>Place: UN Women</strong> – Moldova Country Office 18 Maria Cebotari St. 3rd floor, MD-2012</p><p class=\"slot\"><strong>14.30</strong> — <strong>17.00</strong>   <strong>UN OFFICE ROUNDTABLE</strong> “The Role of the United Nations in Supporting Sustainable Development in Moldova”  <a href=\"https://moldova.un.org/\" target=\"_blank\" rel=\"noopener\">moldova.un.org</a>    <a href=\"https://moldova.unwomen.org/\" target=\"_blank\" rel=\"noopener\">moldova.unwomen.org</a></p><p class=\"slot\"><strong>17.30</strong> — <strong>18.30</strong> <strong>Orange kITchen</strong> <strong>Place: </strong>Strada Calea Ieşilor 8 municipiul Chișinău, Moldova           <a href=\"https://www.instagram.com/explore/locations/251054055572194/orange-kitchen\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p><p class=\"day\"><strong>May 17,2025<br></strong>Departure to home regions</p> &lt;h2 class=\"elementor-heading-title elementor-size-default\"",
-  "<p class=\"day\"><strong>October 31, 2025 <br></strong><strong>Venue: Comrat State University </strong><br>Address: Galatsana 17 str., Comrat, Republic of Moldova, MD-3800</p> <p><strong>Assembly hall<br></strong><strong>10.30 – 11.00 Registration<br>11.00 – 12.30 Opening<br></strong></p> <ol> <li><strong>Prof. Dr. Serghei ZAHARIE</strong>, Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Mr. Fred DUIJN, </strong>Ambassador of the Kingdom of the Netherlands to the Republic of Moldova <a href=\"https://www.netherlandsandyou.nl/web/moldova\" target=\"_blank\" rel=\"noopener\">netherlandsandyou.nl</a></li> <li><strong>Mr. Walter JEANTY, </strong>Head of ICRC Mission to Moldova <a href=\"http://www.icrc.org/\" target=\"_blank\" rel=\"noopener\">icrc.org</a></li> <li><b><strong>Ms. Claudia MELINTE</strong>, </b>coordinator of the National Erasmus+ Office in Moldova <a href=\"https://www.erasmusplus.md/\" target=\"_blank\" rel=\"noopener\">erasmusplus.md</a></li> <li><strong>Ms. Anna KOVALCHUK</strong>, сoordinator of the National Youth Council of Moldova <a href=\"https://cntm.md/\" target=\"_blank\" rel=\"noopener\">cntm.md</a></li> <li><strong>Prof. Dr. Svetlana GHENOVA</strong>, Vice-Rector for Research and International Affairs Relationships <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Ms. Lyubov MITIOGLO,</strong> Regional Manager of Tekwill Comrat <a href=\"https://www.facebook.com/tekwillcomrat\" target=\"_blank\" rel=\"noopener\">facebook.com</a></li> <li><strong>Prof. Dr. Serghei ZAHARIE, </strong>Rector of the Comrat State University of Moldova <a href=\"https://kdu.md/\" target=\"_blank\" rel=\"noopener\">kdu.md</a></li> <li><strong>Mr. Serghei TKACHENKO,</strong> Expert, CEO of Datalinie SRL</li> </ol> <p class=\"slot\"><strong>12.30 – 12.45 Group photo</strong><br><strong>12.45 – 14.00 Lunch</strong></p> <p><strong>Assembly hall<br></strong><strong><strong>14.00 – 14.30 </strong><strong>Ms. Olga KISELIOVA</strong>, </strong>Director of the Association of Creative Industries. Topic: “<em>Digital Marketing for Youth: New Tools and Practices</em>”<a href=\"https://creativity.md/\" target=\"_blank\" rel=\"noopener\">creativity.md</a></p> <p class=\"slot\"><strong>14.30 – 15.30 Ms. Svetlana KURAKSINA,</strong> associate professor at KSU. Topic: “<em>Digital Reputation and Online Branding</em>” <a href=\"https://www.facebook.com/svetlana.kuraksina.22206\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p> <p class=\"slot\"><strong>15.30 – 17.30 Mr. Serghei TKACHENKO, Expert, </strong>CEO of Datalinie SRL. Topic: “<em>Effective online communication and promotion strategies</em>” <a href=\"https://www.linkedin.com/in/serghey-tkachenko\" target=\"_blank\" rel=\"noopener\">linkedin.com</a></p> <p class=\"slot\"><strong>17.30 – 18.00,</strong> Trip to Congaz, Ethno-tourism complex “Gagauz Sofrası”</p> <p class=\"slot\"><strong>18.00 – 18.40,</strong> Excursion to the Ethno-tourism complex “Gagauz Sofrası” <a href=\"https://www.gagauzia.md/ru/turizm/dostoprimechatelnosti/agro-turizm/gagauz-sofrasi.html\" target=\"_blank\" rel=\"noopener\">gagauzia.md</a></p> <p class=\"slot\"><strong>18.40 – 21.00 Dinner</strong></p> <p class=\"day\"><strong><strong>November 1, 2025<br></strong></strong><strong>Venue: Tekwill, Comrat State University<br></strong>Address: Galatsana 17 str., Comrat, Republic of Moldova, MD-3800</p><p class=\"slot\"><strong>10.00 – 10.30 Ms. Lyubov MITIOGLO,</strong>Regional Manager, Tekwill Comrat Topic: “<em>Innovative ecosystems and hubs: a space of opportunities for young people</em>” <a href=\"https://www.facebook.com/tekwillcomrat\" target=\"_blank\" rel=\"noopener\">facebook.com</a></p><p class=\"slot\"><strong>10.30 – 13.00 Mr. Dorin HOTINEANU, </strong>Association of Young Diplomats of Moldova. Interactive simulation “<em>Island and Continent” with team-building elements and a digital/peacekeeping agenda.</em> <a href=\"https://www.instagram.com/youngdiplomats.md\" target=\"_blank\" rel=\"noopener\">instagram.com</a></p><p class=\"slot\"><strong>13.00 – 14.00 Lunch</strong></p><p class=\"slot\"> <strong>14.00 – 16.00 Mr. Artiom SIROTENCO,</strong> Founder of HYPE CGI. CGI AI Expert. Topic: “<em>Youth and Leadership in the AI Era: Next-Generation Services as a Tool for Success”</em> <a href=\"https://www.youtube.com/@creeborg\" target=\"_blank\" rel=\"noopener\">youtube.com</a> </p><p class=\"slot\"><strong>16.00 – 17.00 Ms. Olga SALCUTAN, </strong>Open Education Academy expert. Topic<em>: “Global Educational Opportunities</em>”  <a href=\"https://education.md/\" target=\"_blank\" rel=\"noopener\">education.md</a> </p><p class=\"slot\"><strong>17.00 – 18.00 Dinner</strong></p><p class=\"slot\"><strong>18.00 – Departure of participants to their places of residence</strong></p> &lt;h2 class=\"elementor-heading-title elementor-size-default\"",
-  "<p class=\"day\"><strong>November 19-21, 2025<br></strong><strong>BUSINESS GAME PRACTICAL MARKETING<br></strong> <strong>Expert Sergey Tkachenko</strong>,  <a href=\"https://www.linkedin.com/in/serghey-tkachenko\" target=\"_blank\" rel=\"noopener\">linkedin.com</a></p><p>This business game is designed specifically for young people and students who want to try their hand at marketing and management, gain real-world decision-making skills, and experience the dynamics of a real market. Participants become the heads of virtual companies: they analyze customer needs, study competitors, create their own products, set prices, develop advertising, and devise a promotion strategy. Every decision impacts sales, profits, and the company’s position in the simulation.</p><p>The game is based on a computerized marketing simulator that simulates real-world market processes and demonstrates how consumer behavior changes in response to your actions. This allows students to see how marketing tools work in practice and understand which decisions truly yield results. The format combines brief expert explanations with active teamwork: participants discuss ideas, test strategic approaches, respond to market changes, and analyze their results. The game helps develop critical thinking, creativity, teamwork skills, the ability to make quick decisions, and adapt to change. It’s a safe and engaging opportunity to try your hand at business and marketing, gaining experience that will be useful in real-world professional work.</p> <p class=\"day\"><strong><strong>November 21, 2025<br></strong></strong><strong>FUTURE VOICES: MEDIA AND COMMUNICATIONS FOR YOUNG INNOVATORS<br>Participants arrive from Comrat and Chisinau. Hotel accommodation.<br></strong></p><p class=\"slot\"><strong>13.45 – 14.00 Welcome </strong>to the INSPIRE Leadership Academy 2025 participants</p><p class=\"slot\"><strong>14.00 – 14.40 Ms.Valeria Zelinskaya, </strong>Image and Communications Expert, CEO of LEMON. Topic: «Leadership Image: How Young People Can Become Visible, Confident, and Influential»</p><p class=\"slot\"> <strong>14.40 – 16.00 Mr. Sergey Tkachenko,</strong> International Consultant, CEO of Datalinie SRL Topic: “Media and Technology: Startup Thinking as a Key Skill of the 21st Century” </p><p class=\"slot\"><strong>16.00 – 17.00 Ms. Olga Kisileva, </strong>Association of Creative Industries. Topic: «How Social Media Shapes the Future of Professions and Why Digital Skills Are Becoming the New Literacy»</p><p class=\"slot\"><strong>17.00 – 18.00 Ms. Ekaterina Dymchuk,</strong>expert at the Open Education Academy. Topic: «Global Mobility: The Best International Opportunities for Young People»</p><p class=\"slot\"><strong>18.00 – 20.00 Dinner</strong></p> <p class=\"day\"><strong><strong>November 22, 2025<br></strong></strong><strong>9.30 – 13.00 KEEP COOL </strong>is a strategic team game for participants in groups, where each participant represents a group of countries (Europe, OPEC, developing countries, etc.). Over the course of 1-2 hours, players choose between «black» and «green» growth, confront climate risks (droughts, floods), and consider lobbying pressures from everything from the oil industry to environmental movements. The winner is the one who most effectively balances economic interests and climate responsibility. But if someone acts too aggressively and selfishly, everyone loses.</p><p class=\"slot\"><strong>13.00 – 14.00 </strong><b>Lunch</b></p><p class=\"slot\"> <strong>14.00 – 14.30 </strong> <b>Excursion to Tiraspol</b></p><p class=\"slot\"><strong>14.45 – Tour of the Bottle Museum </strong><em><a href=\"https://bottlemuseum.tilda.ws/\" target=\"_blank\" rel=\"noopener\">bottlemuseum.tilda.ws</a></em></p><p class=\"slot\"><strong>16.00 – 17.00Excursion to the BenderFortress </strong><em><a href=\"https://bendery-fortress.com/\" target=\"_blank\" rel=\"noopener\">bendery-fortress.com</a></em></p><p class=\"slot\"><strong>17:00 – 18:00 Coffee break</strong></p><p class=\"slot\"><strong>18:00 Participants depart to their places of residence</strong></p> &lt;h2 class=\"elementor-heading-title elementor-size-default\""
- ],
- "history": {
-  "title": {
-   "ru": "История изменений расписания",
-   "en": "History of schedule changes",
-   "ro": "Istoricul modificărilor de program"
-  },
-  "note": {
-   "ru": "По сохранённым версиям страницы академии. Действует последняя версия.",
-   "en": "From the archived versions of the academy page. The latest version applies.",
-   "ro": "După versiunile arhivate ale paginii academiei. Se aplică ultima versiune."
-  },
-  "rows": [
-   {
-    "school": 1,
-    "steps": [
-     {
-      "when": "10.03.2025",
-      "dates": {
-       "ru": "15–17 мая",
-       "en": "15–17 May",
-       "ro": "15–17 mai"
-      },
-      "place": {
-       "ru": "Комрат, Государственный университет / Tekwill",
-       "en": "Comrat, State University / Tekwill",
-       "ro": "Comrat, Universitatea de Stat / Tekwill"
-      },
-      "deadline": {
-       "ru": "25 апреля",
-       "en": "April 25",
-       "ro": "25 aprilie"
-      }
-     },
-     {
-      "when": "23.03.2025",
-      "dates": {
-       "ru": "15–17 мая",
-       "en": "15–17 May",
-       "ro": "15–17 mai"
-      },
-      "place": {
-       "ru": "Кишинёв",
-       "en": "Chisinau",
-       "ro": "Chișinău"
-      },
-      "deadline": {
-       "ru": "25 апреля",
-       "en": "April 25",
-       "ro": "25 aprilie"
-      }
-     },
-     {
-      "when": "15.06.2025",
-      "dates": {
-       "ru": "15–17 мая",
-       "en": "15–17 May",
-       "ro": "15–17 mai"
-      },
-      "place": {
-       "ru": "Кишинёв",
-       "en": "Chisinau",
-       "ro": "Chișinău"
-      },
-      "deadline": {
-       "ru": "5 мая",
-       "en": "May 5",
-       "ro": "5 mai"
-      }
-     }
-    ]
-   },
-   {
-    "school": 2,
-    "steps": [
-     {
-      "when": "10.03.2025",
-      "dates": {
-       "ru": "19–21 июня",
-       "en": "19–21 June",
-       "ro": "19–21 iunie"
-      },
-      "place": {
-       "ru": "Кишинёв, USEM / Tekwill",
-       "en": "Chisinau, USEM / Tekwill",
-       "ro": "Chișinău, USEM / Tekwill"
-      },
-      "deadline": {
-       "ru": "30 мая",
-       "en": "May 30",
-       "ro": "30 mai"
-      }
-     },
-     {
-      "when": "23.03.2025",
-      "dates": {
-       "ru": "25–27 сентября",
-       "en": "25–27 September",
-       "ro": "25–27 septembrie"
-      },
-      "place": {
-       "ru": "Комрат, Tekwill",
-       "en": "Comrat, Tekwill",
-       "ro": "Comrat, Tekwill"
-      },
-      "deadline": {
-       "ru": "30 мая",
-       "en": "May 30",
-       "ro": "30 mai"
-      }
-     },
-     {
-      "when": "15.06.2025",
-      "dates": {
-       "ru": "25–27 сентября",
-       "en": "25–27 September",
-       "ro": "25–27 septembrie"
-      },
-      "place": {
-       "ru": "Комрат, Tekwill",
-       "en": "Comrat, Tekwill",
-       "ro": "Comrat, Tekwill"
-      },
-      "deadline": {
-       "ru": "20 сентября",
-       "en": "September 20",
-       "ro": "20 septembrie"
-      }
-     },
-     {
-      "when": "15.10.2025",
-      "dates": {
-       "ru": "31 октября — 2 ноября",
-       "en": "31 October — 2 November",
-       "ro": "31 octombrie — 2 noiembrie"
-      },
-      "place": {
-       "ru": "Комрат, университет / Tekwill",
-       "en": "Comrat, University / Tekwill",
-       "ro": "Comrat, Universitatea / Tekwill"
-      },
-      "deadline": {
-       "ru": "20 октября",
-       "en": "October 20",
-       "ro": "20 octombrie"
-      }
-     }
-    ]
-   },
-   {
-    "school": 3,
-    "steps": [
-     {
-      "when": "10.03.2025",
-      "dates": {
-       "ru": "18–20 сентября",
-       "en": "18–20 September",
-       "ro": "18–20 septembrie"
-      },
-      "place": {
-       "ru": "Тирасполь, Business Hub",
-       "en": "Tiraspol, Business Hub",
-       "ro": "Tiraspol, Business Hub"
-      },
-      "deadline": {
-       "ru": "5 сентября",
-       "en": "September 5",
-       "ro": "5 septembrie"
-      }
-     },
-     {
-      "when": "23.03.2025",
-      "dates": {
-       "ru": "23–25 октября",
-       "en": "23–25 October",
-       "ro": "23–25 octombrie"
-      },
-      "place": {
-       "ru": "Тирасполь, Business Hub",
-       "en": "Tiraspol, Business Hub",
-       "ro": "Tiraspol, Business Hub"
-      },
-      "deadline": {
-       "ru": "5 сентября",
-       "en": "September 5",
-       "ro": "5 septembrie"
-      }
-     },
-     {
-      "when": "15.06.2025",
-      "dates": {
-       "ru": "23–25 октября",
-       "en": "23–25 October",
-       "ro": "23–25 octombrie"
-      },
-      "place": {
-       "ru": "Тирасполь, Business Hub",
-       "en": "Tiraspol, Business Hub",
-       "ro": "Tiraspol, Business Hub"
-      },
-      "deadline": {
-       "ru": "17 октября",
-       "en": "October 17",
-       "ro": "17 octombrie"
-      }
-     },
-     {
-      "when": "15.10.2025",
-      "dates": {
-       "ru": "21–23 ноября",
-       "en": "21–23 November",
-       "ro": "21–23 noiembrie"
-      },
-      "place": {
-       "ru": "Тирасполь, Business Hub",
-       "en": "Tiraspol, Business Hub",
-       "ro": "Tiraspol, Business Hub"
-      },
-      "deadline": {
-       "ru": "10 ноября",
-       "en": "November 10",
-       "ro": "10 noiembrie"
-      }
-     }
-    ]
-   }
-  ]
- },
- "albums": [
-  {
-   "ru": "2025 Итоговая конференция, Кишинёв",
-   "en": "2025 Final Conference, Chisinau",
-   "ro": "2025 Conferința finală, Chișinău"
-  },
-  {
-   "ru": "2025 Тирасполь",
-   "en": "2025 Tiraspol",
-   "ro": "2025 Tiraspol"
-  },
-  {
-   "ru": "2025 Комрат",
-   "en": "2025 Comrat",
-   "ro": "2025 Comrat"
-  },
-  {
-   "ru": "2025 Кишинёв",
-   "en": "2025 Chisinau",
-   "ro": "2025 Chișinău"
-  },
-  {
-   "ru": "2024",
-   "en": "2024",
-   "ro": "2024"
-  }
- ]
 }

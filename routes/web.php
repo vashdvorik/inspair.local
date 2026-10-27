@@ -12,40 +12,53 @@ use SergiX44\Nutgram\Nutgram;
 
 // ── Public site ───────────────────────────────────────────────────────────
 Route::get('/', function () {
-    return view('public.about', [
-        'c25'      => PublicUi::content('academy2025'),
+    return view('public.home', [
+        'site'     => PublicUi::content('site'),
         'c23'      => PublicUi::content('academy2023'),
         'people'   => PublicUi::content('people'),
         'partners' => PublicUi::content('partners'),
         'videos'   => PublicUi::content('videos'),
-        'photos'   => PublicUi::content('photos'),
+        'gallery'  => PublicUi::content('gallery'),
     ]);
 })->name('home');
 Route::get('/experts', fn () => view('public.experts', ['people' => PublicUi::content('people')]))->name('experts');
 Route::get('/partners', fn () => view('public.partners', ['partners' => PublicUi::content('partners')]))->name('partners');
 Route::redirect('/participants', '/experts', 301);
-Route::get('/academy-2025', function () {
+
+// Events: Hackathon 2026, Schools 2025, School 2023
+Route::get('/events/hackathon-2026', fn () => view('public.hackathon', ['site' => PublicUi::content('site')]))->name('hackathon');
+Route::get('/events/schools-2025', function () {
     return view('public.academy2025.index', [
         'c'        => PublicUi::content('academy2025'),
+        'site'     => PublicUi::content('site'),
         'people'   => PublicUi::content('people'),
         'partners' => PublicUi::content('partners'),
         'videos'   => PublicUi::content('videos'),
+        'gallery'  => PublicUi::content('gallery'),
     ]);
 })->name('academy2025');
-Route::get('/academy-2025/school-{n}', function (int $n) {
+Route::get('/events/schools-2025/school-{n}', function (int $n) {
     abort_unless(in_array($n, [1, 2, 3], true), 404);
 
-    return view('public.academy2025.school', ['c' => PublicUi::content('academy2025'), 'n' => $n]);
+    return view('public.academy2025.school', ['c' => PublicUi::content('academy2025'), 'site' => PublicUi::content('site'), 'n' => $n]);
 })->whereNumber('n')->name('academy2025.school');
-Route::get('/academy-2023', function () {
+Route::get('/events/school-2023', function () {
     return view('public.academy2023.index', [
         'c'        => PublicUi::content('academy2023'),
+        'site'     => PublicUi::content('site'),
         'people'   => PublicUi::content('people'),
         'partners' => PublicUi::content('partners'),
-        'photos'   => PublicUi::content('photos'),
+        'gallery'  => PublicUi::content('gallery'),
     ]);
 })->name('academy2023');
+// previous addresses keep working
+Route::redirect('/academy-2025', '/events/schools-2025', 301);
+Route::redirect('/academy-2025/school-{n}', '/events/schools-2025/school-{n}', 301)->where('n', '[1-3]');
+Route::redirect('/academy-2023', '/events/school-2023', 301);
 
+Route::get('/photo', fn () => view('public.photo', ['gallery' => PublicUi::content('gallery')]))->name('photo');
+Route::get('/video', fn () => view('public.video', ['videos' => PublicUi::content('videos')]))->name('video');
+Route::get('/publications', fn () => view('public.publications', ['site' => PublicUi::content('site')]))->name('publications');
 // Telegram Webhook — POST запрос от серверов Telegram
 Route::post('/telegram/webhook', function (Nutgram $bot) {
     $bot->run();

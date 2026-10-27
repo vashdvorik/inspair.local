@@ -13,8 +13,7 @@
     <link rel="manifest" href="{{ asset('site.webmanifest') }}">
     <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="{{ asset('design/tailwind.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }

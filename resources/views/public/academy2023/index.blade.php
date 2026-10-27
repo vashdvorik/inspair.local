@@ -1,9 +1,10 @@
 @extends('public.layout')
 
-@section('title', 'Академия 2023 — Youth Leaders Peace Summer School')
-@section('description', 'Летняя школа «Молодёжные лидеры за мир», 14–18 сентября 2023: программа, эксперты и партнёры.')
+@section('title', 'School 2023 — Youth Leaders Peace Summer School')
+@section('description', 'Youth Leaders Peace Summer School 2023: 14–18 September 2023, IT Relax Complex, Vadul lui Vodă, Moldova.')
 
 @php
+    $E23 = $site['events']['school2023'];
     $experts23 = array_values(array_filter($people, fn ($x) => in_array(2023, $x['years'])));
     $partners23 = array_values(array_filter($partners, fn ($x) => in_array(2023, $x['years'])));
     $avatarTone = ['linear-gradient(135deg,#006de0,#019eff)', 'linear-gradient(135deg,#72299c,#006de0)', 'linear-gradient(135deg,#ff6c0b,#fdba07)', 'linear-gradient(135deg,#3d932e,#019eff)'];
@@ -22,7 +23,7 @@
     </div>
     <div class="i-container">
         <div class="flex flex-wrap items-center gap-3 i-in i-in-1">
-            <span class="i-chip"><span class="i-dot"></span>{!! $tm($c['dates']) !!}</span>
+            <span class="i-chip"><span class="i-dot"></span>{!! $tm($E23['dates']) !!}</span><span class="i-chip">{!! $icon('pin', 'w-4 h-4') !!} {!! $tm($E23['place']) !!}</span>
             <span class="i-badge i-badge--yellow">{!! $t('Архив', 'Archive', 'Arhivă') !!}</span>
         </div>
         <h1 class="i-h1 i-in i-in-2" style="margin:18px 0 12px;">YOUTH LEADERS<br><span class="i-grad-text">PEACE SUMMER SCHOOL</span></h1>
@@ -42,25 +43,31 @@
 {{-- ───────────── ABOUT ───────────── --}}
 <section class="i-section" id="about">
     <div class="i-container">
-        <h2 class="i-h2 i-reveal">{!! $tm($c['aboutH']) !!}</h2>
-        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 26px;"></div>
-        <div class="grid md:grid-cols-2 gap-8">
-            @foreach($c['about'] as $i => $par)
-                <div class="i-reveal" style="--d:{{ $i * .08 }}s">{!! $pm($par, 'text-gray-600 leading-relaxed') !!}</div>
-            @endforeach
+        <h2 class="i-h2 i-reveal">{!! $tm($E23['title']) !!}</h2>
+        <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 22px;"></div>
+        <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold text-ink mb-5 i-reveal">
+            <span class="inline-flex items-center gap-1.5">{!! $icon('cal', 'w-4 h-4 text-orange') !!}{!! $t('Даты:', 'Dates:', 'Date:') !!} {!! $tm($E23['dates']) !!}</span>
+            <span class="inline-flex items-center gap-1.5">{!! $icon('pin', 'w-4 h-4 text-orange') !!}{!! $t('Место:', 'Location:', 'Locația:') !!} {!! $tm($E23['place']) !!}</span>
         </div>
-        <div class="i-card i-card--spectrum i-reveal" style="margin-top:38px;padding:34px;">
-            <div class="grid md:grid-cols-[auto_1fr] gap-6 items-start">
-                <div class="i-card__icon i-card__icon--green" style="width:60px;height:60px;border-radius:20px;margin:0">{!! $icon('heart', 'w-7 h-7') !!}</div>
-                <div>
-                    <h3 class="i-h3" style="margin-bottom:10px">{!! $tm($c['valuesH']) !!}</h3>
-                    {!! $pm($c['values'], 'text-gray-600 leading-relaxed') !!}
+        <div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10 items-start">
+            <div>
+                <div class="i-reveal">{!! $pm($E23['format'], 'font-semibold text-ink leading-relaxed mb-3') !!}</div>
+                @foreach($E23['paras'] as $par)<div class="i-reveal">{!! $pm($par, 'text-gray-600 leading-relaxed mb-3') !!}</div>@endforeach
+                <p class="i-eyebrow mt-6 mb-3 i-reveal">{!! $t('Ключевые темы', 'Key Focus Areas', 'Domenii-cheie') !!}</p>
+                <div class="areas i-reveal">@foreach($E23['areas'] as $ar)<span class="i-chip">{!! $tm($ar) !!}</span>@endforeach</div>
+            </div>
+            <div class="i-card i-card--spectrum i-reveal" style="padding:30px;">
+                <div class="grid md:grid-cols-[auto_1fr] gap-5 items-start">
+                    <div class="i-card__icon i-card__icon--green" style="width:56px;height:56px;border-radius:18px;margin:0">{!! $icon('heart', 'w-6 h-6') !!}</div>
+                    <div>
+                        <h3 class="i-h4" style="margin-bottom:8px">{!! $tm($c['valuesH']) !!}</h3>
+                        {!! $pm($c['values'], 'text-sm text-gray-600 leading-relaxed') !!}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 {{-- ───────────── FOR YOU ───────────── --}}
 <section class="i-section i-section--tint" id="for-you">
     <div class="i-container i-container--narrow">
@@ -71,7 +78,6 @@
                 <li class="i-card i-reveal" style="--d:{{ $i * .05 }}s;padding:20px 22px;display:flex;gap:14px;align-items:flex-start;"><span class="i-dot" style="margin-top:8px;flex:none"></span><span>{!! $tm($item) !!}</span></li>
             @endforeach
         </ul>
-        <div class="mt-8 i-reveal"><a class="i-btn i-btn--secondary" href="{{ $c['formUrl'] }}" target="_blank" rel="noopener"><span>{!! $t('Форма регистрации 2023 (архив)', '2023 registration form (archive)', 'Formularul de înscriere 2023 (arhivă)') !!}</span>{!! $arrow !!}</a></div>
     </div>
 </section>
 
@@ -113,19 +119,18 @@
 {{-- ───────────── PHOTO ───────────── --}}
 <section class="i-section" id="photo">
     <div class="i-container">
-        <div class="flex flex-wrap items-end justify-between gap-4 mb-6">
+        @php $ph23 = $gallery['school-2023']; @endphp
+        <div class="flex flex-wrap items-end justify-between gap-4 mb-8">
             <div class="i-reveal"><h2 class="i-h2">{!! $t('Фото школы', 'Photos of the school', 'Fotografii de la școală') !!}</h2><div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div></div>
-            <span class="i-chip i-reveal">{{ count($photos['y2023']) }} {!! $t('фото', 'photos', 'fotografii') !!}</span>
+            <a href="{{ route('photo') }}#school-2023" class="i-btn i-btn--secondary i-reveal"><span>{!! $t('Все фотографии', 'All photos', 'Toate fotografiile') !!} ({{ count($ph23) }})</span>{!! $arrow !!}</a>
         </div>
-        {!! $p('Фотоархив восстановлен из сохранившихся миниатюр: оригиналы в большом размере не сохранились.', 'The photo archive was restored from the thumbnails that survived; the full-size originals are no longer available.', 'Arhiva foto a fost restaurată din miniaturile păstrate; originalele în dimensiune mare nu s-au păstrat.', 'text-sm text-gray-500 mb-8 i-reveal') !!}
-        <div class="gallery" id="gallery">
-            @foreach($photos['y2023'] as $k => $ph)
-                <a class="gal-item" href="{{ $img($ph) }}" data-i="{{ $k }}" aria-label="{{ $k + 1 }}"><img src="{{ $img($ph) }}" alt="" loading="lazy" width="150" height="150"></a>
+        <div class="masonry" data-gallery>
+            @foreach(array_slice($ph23, 0, 16) as $k => $ph)
+                <a href="{{ $gal('school-2023', $ph['f']) }}" aria-label="School 2023 {{ $k + 1 }}"><img src="{{ $gal('school-2023', $ph['f'], true) }}" alt="" loading="lazy" width="{{ $ph['w'] }}" height="{{ $ph['h'] }}"></a>
             @endforeach
         </div>
     </div>
 </section>
-
 {{-- ───────────── PARTNERS ───────────── --}}
 <section class="i-section i-section--soft">
     <div class="i-container">
@@ -148,10 +153,14 @@
 <section class="i-section">
     <div class="i-container">
         <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:56px 28px;text-align:center;box-shadow:var(--sh-md);">
-            <h2 class="i-h2" style="max-width:640px;margin:0 auto 14px;">{!! $t('Следующий шаг — Академия 2025', 'The next step — Academy 2025', 'Următorul pas — Academia 2025') !!}</h2>
-            {!! $p('Три школы в Кишинёве, Комрате и Тирасполе. Регистрация открыта.', 'Three schools in Chisinau, Comrat and Tiraspol. Registration is open.', 'Trei școli la Chișinău, Comrat și Tiraspol. Înregistrarea este deschisă.', 'i-lead mx-auto mb-8') !!}
-            <a href="{{ route('academy2025') }}" class="i-btn i-btn--lg"><span>{!! $t('Академия 2025', 'Academy 2025', 'Academia 2025') !!}</span>{!! $arrow !!}</a>
+            <h2 class="i-h2" style="max-width:640px;margin:0 auto 14px;">{!! $t('Следующий шаг — Школы 2025', 'The next step — Schools 2025', 'Următorul pas — Școlile 2025') !!}</h2>
+            {!! $p('Три школы в Кишинёве, Комрате и Тирасполе и итоговая конференция.', 'Three schools in Chișinău, Comrat and Tiraspol and the Final Conference.', 'Trei școli la Chișinău, Comrat și Tiraspol și conferința finală.', 'i-lead mx-auto mb-8') !!}
+            <a href="{{ route('academy2025') }}" class="i-btn i-btn--lg"><span>{!! $t('Школы 2025', 'Schools 2025', 'Școli 2025') !!}</span>{!! $arrow !!}</a>
         </div>
     </div>
 </section>
 @endsection
+
+@push('scripts')
+<script src="{{ asset('design/gallery.js') }}" defer></script>
+@endpush

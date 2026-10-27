@@ -3,22 +3,23 @@
 @php
     $T = $c['t'];
     $i = $n - 1;
-    $titleEn = $T['en']['schools'][$i]['title'];
+    $sc = $site['events']['schools2025']['items'][$i];
+    $titleEn = $sc['title']['en'];
 @endphp
 
 @section('title', $titleEn.' — Academy 2025')
-@section('description', $T['en']['schools'][$i]['text'])
+@section('description', $sc['paras'][0]['en'])
 
 @section('content')
 
 <section class="page-head i-airy" style="padding-bottom:56px;">
     <div class="i-container">
-        <a class="crumb" href="{{ route('academy2025') }}#schools">← {!! $t('Академия 2025', 'Academy 2025', 'Academia 2025') !!}</a>
-        <p class="i-eyebrow i-in i-in-1" style="display:block">{!! $tk($T, 'school') !!} {{ $n }}</p>
-        <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 0;max-width:900px;font-size:clamp(1.9rem,1.1rem + 2.8vw,3rem);">{!! $tk($T, "schools.$i.title") !!}</h1>
+        <a class="crumb" href="{{ route('academy2025') }}#schools">← {!! $t('Школы 2025', 'Schools 2025', 'Școli 2025') !!}</a>
+        <p class="i-eyebrow i-in i-in-1" style="display:block">{!! $t('Школа ' . $n, 'School ' . $n, 'Școala ' . $n) !!}</p>
+        <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 0;max-width:900px;font-size:clamp(1.9rem,1.1rem + 2.8vw,3rem);">{!! $tm($sc['title']) !!}</h1>
         <div class="meta i-in i-in-3">
-            <span>{!! $icon('cal', 'w-5 h-5') !!}{!! $tk($T, "schools.$i.dates") !!}</span>
-            <span>{!! $icon('pin', 'w-5 h-5') !!}{!! $tk($T, "schools.$i.place") !!}</span>
+            <span>{!! $icon('cal', 'w-5 h-5') !!}{!! $tm($sc['dates']) !!}</span>
+            <span>{!! $icon('pin', 'w-5 h-5') !!}{!! $tm($sc['place']) !!}</span>
         </div>
     </div>
 </section>
@@ -28,20 +29,17 @@
         <p class="note">{!! $t('Подробная программа опубликована на английском языке.', 'The detailed programme is published in English.', 'Programul detaliat este publicat în limba engleză.') !!}</p>
         <div class="grid lg:grid-cols-[2fr_1fr] gap-6 items-start">
             <div class="i-card prose i-reveal">
-                {!! $pk($T, "schools.$i.text", 'mb-4 text-gray-600') !!}
+                @foreach($sc['paras'] as $par){!! $pm($par, 'mb-4 text-gray-600') !!}@endforeach
                 {!! $c['programmes'][$i] !!}
             </div>
             <aside class="i-card i-card--spectrum i-reveal lg:sticky" style="top:96px;">
-                <p class="i-eyebrow">{!! $tk($T, 'deadline') !!}</p>
-                <h2 class="i-h3" style="margin:6px 0 14px;">{!! $tk($T, "schools.$i.dl") !!}</h2>
-                <ul class="text-sm text-gray-500 mb-5" style="padding-left:1.1rem;list-style:disc;display:grid;gap:4px;">
-                    @foreach($T['en']['schools'][$i]['areas'] as $j => $a)
-                        <li>{!! $tk($T, "schools.$i.areas.$j") !!}</li>
+                <p class="i-eyebrow">{!! $t('Ключевые темы', 'Key Focus Areas', 'Domenii-cheie') !!}</p>
+                <ul class="text-sm text-gray-600 mb-5 mt-3" style="padding-left:1.1rem;list-style:disc;display:grid;gap:4px;">
+                    @foreach($sc['areas'] as $ar)
+                        <li>{!! $tm($ar) !!}</li>
                     @endforeach
                 </ul>
-                @if(!empty($c['forms'][$i]))
-                    <a class="i-btn i-btn--block" href="{{ $c['forms'][$i] }}" target="_blank" rel="noopener">{!! $t('Регистрация', 'Register', 'Înregistrare') !!}</a>
-                @endif
+                <a class="i-btn i-btn--secondary i-btn--block" href="{{ route('photo') }}#{{ ['school-1-chisinau', 'school-2-comrat', 'school-3-tiraspol'][$i] }}">{!! $t('Фото школы', 'Photos of the school', 'Fotografii de la școală') !!}</a>
             </aside>
         </div>
         <div class="flex flex-wrap gap-3 mt-10">
