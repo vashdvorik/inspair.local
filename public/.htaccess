@@ -5,9 +5,6 @@
 
     RewriteEngine On
 
-    # Assets requested with ?v=<timestamp> never change under that URL: let browsers keep them for a year
-    RewriteCond %{QUERY_STRING} (^|&)v=[0-9]+
-    RewriteRule \.(css|js|png|jpe?g|webp|svg|ico|woff2?)$ - [E=VERSIONED:1]
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -25,8 +22,4 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-</IfModule>
-
-<IfModule mod_headers.c>
-    Header set Cache-Control "public, max-age=31536000, immutable" env=VERSIONED
 </IfModule>
