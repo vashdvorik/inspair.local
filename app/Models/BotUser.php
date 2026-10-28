@@ -57,6 +57,23 @@ class BotUser extends Model
         'last_reminded_at'     => 'datetime',
     ];
 
+    /**
+     * Игровые данные удаляются вместе с участником. Внешние ключи делают это сами,
+     * но на серверах, где ключи не создались, это делает код.
+     */
+    protected static function booted(): void
+    {
+        static::deleting(function (self $user): void {
+            $questIds = \Illuminate\Support\Facades\DB::table('quests')->where('subject_user_id', $user->id)->pluck('id');
+            \Illuminate\Support\Facades\DB::table('quest_attempts')->where('bot_user_id', $user->id)->orWhereIn('quest_id', $questIds)->delete();
+            \Illuminate\Support\Facades\DB::table('quest_reports')->where('bot_user_id', $user->id)->orWhereIn('quest_id', $questIds)->delete();
+            \Illuminate\Support\Facades\DB::table('quests')->where('subject_user_id', $user->id)->delete();
+            \Illuminate\Support\Facades\DB::table('connections')->where('user_id', $user->id)->orWhere('target_id', $user->id)->delete();
+            \Illuminate\Support\Facades\DB::table('xp_events')->where('bot_user_id', $user->id)->delete();
+            \Illuminate\Support\Facades\DB::table('profile_facts')->where('bot_user_id', $user->id)->delete();
+        });
+    }
+
     public function scopePending(Builder $query): Builder
     {
         return $query->where('status', self::STATUS_PENDING);

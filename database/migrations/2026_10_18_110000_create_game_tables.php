@@ -1,37 +1,48 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\QueryException;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+/**
+ * Game tables. The migration is re-runnable (a failed run can simply be started again) and tolerant:
+ * if the server refuses foreign keys to bot_users (error 1824/1215 on some hosts), the tables are
+ * created without foreign keys and BotUser::deleting() removes related rows instead.
+ */
 return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('bot_users', function (Blueprint $table) {
-            $table->boolean('is_moderator')->default(false);
-            $table->boolean('contacts_closed')->default(false);
-            $table->boolean('quests_opt_out')->default(false);
-            $table->boolean('notifications_muted')->default(false);
-            $table->unsignedInteger('xp')->default(0);
-            $table->unsignedTinyInteger('level')->default(1);
-            $table->timestamp('quest_locked_until')->nullable();
-            $table->timestamp('last_active_at')->nullable();
-            $table->timestamp('last_reminded_at')->nullable();
-        });
+        $columns = [
+            'is_moderator'        => fn (Blueprint $t) => $t->boolean('is_moderator')->default(false),
+            'contacts_closed'     => fn (Blueprint $t) => $t->boolean('contacts_closed')->default(false),
+            'quests_opt_out'      => fn (Blueprint $t) => $t->boolean('quests_opt_out')->default(false),
+            'notifications_muted' => fn (Blueprint $t) => $t->boolean('notifications_muted')->default(false),
+            'xp'                  => fn (Blueprint $t) => $t->unsignedInteger('xp')->default(0),
+            'level'               => fn (Blueprint $t) => $t->unsignedTinyInteger('level')->default(1),
+            'quest_locked_until'  => fn (Blueprint $t) => $t->timestamp('quest_locked_until')->nullable(),
+            'last_active_at'      => fn (Blueprint $t) => $t->timestamp('last_active_at')->nullable(),
+            'last_reminded_at'    => fn (Blueprint $t) => $t->timestamp('last_reminded_at')->nullable(),
+        ];
+        foreach ($columns as $name => $add) {
+            if (! Schema::hasColumn('bot_users', $name)) {
+                Schema::table('bot_users', fn (Blueprint $t) => $add($t));
+            }
+        }
 
         // Короткие факты о себе: из них ИИ делает загадки
-        Schema::create('profile_facts', function (Blueprint $table) {
+        $this->make('profile_facts', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('bot_user_id')->constrained('bot_users')->cascadeOnDelete();
+            $this->ref($table, 'bot_user_id', 'bot_users', $fk);
             $table->string('body', 300);
             $table->timestamps();
         });
 
         // Журнал начислений очков. Уникальный ключ делает разовые награды идемпотентными.
-        Schema::create('xp_events', function (Blueprint $table) {
+        $this->make('xp_events', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('bot_user_id')->constrained('bot_users')->cascadeOnDelete();
+            $this->ref($table, 'bot_user_id', 'bot_users', $fk);
             $table->string('type', 40);
             $table->string('ref', 64)->default('');
             $table->integer('points');
@@ -43,10 +54,10 @@ return new class extends Migration
         });
 
         // Нити сети: user_id добавил target_id (за верный ответ); mutual — взаимно
-        Schema::create('connections', function (Blueprint $table) {
+        $this->make('connections', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('user_id')->constrained('bot_users')->cascadeOnDelete();
-            $table->foreignId('target_id')->constrained('bot_users')->cascadeOnDelete();
+            $this->ref($table, 'user_id', 'bot_users', $fk);
+            $this->ref($table, 'target_id', 'bot_users', $fk);
             $table->string('source', 16)->default('quest'); // quest | reciprocate
             $table->boolean('mutual')->default(false);
             $table->timestamp('target_notified_at')->nullable();
@@ -56,10 +67,10 @@ return new class extends Migration
             $table->index('target_id');
         });
 
-        Schema::create('quests', function (Blueprint $table) {
+        $this->make('quests', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('fact_id')->nullable()->constrained('profile_facts')->nullOnDelete();
-            $table->foreignId('subject_user_id')->constrained('bot_users')->cascadeOnDelete();
+            $table->unsignedBigInteger('fact_id')->nullable()->index();
+            $this->ref($table, 'subject_user_id', 'bot_users', $fk);
             $table->json('option_ids');      // три id участников, один из них subject
             $table->json('question');        // {ru,en,ro}
             $table->json('explanation');     // {ru,en,ro}
@@ -70,10 +81,10 @@ return new class extends Migration
             $table->index(['status', 'subject_user_id']);
         });
 
-        Schema::create('quest_attempts', function (Blueprint $table) {
+        $this->make('quest_attempts', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('bot_user_id')->constrained('bot_users')->cascadeOnDelete();
-            $table->foreignId('quest_id')->constrained('quests')->cascadeOnDelete();
+            $this->ref($table, 'bot_user_id', 'bot_users', $fk);
+            $this->ref($table, 'quest_id', 'quests', $fk);
             $table->unsignedBigInteger('chosen_user_id');
             $table->boolean('correct');
             $table->timestamp('created_at')->useCurrent();
@@ -81,17 +92,17 @@ return new class extends Migration
             $table->unique(['bot_user_id', 'quest_id']);
         });
 
-        Schema::create('quest_reports', function (Blueprint $table) {
+        $this->make('quest_reports', function (Blueprint $table, bool $fk) {
             $table->id();
-            $table->foreignId('quest_id')->constrained('quests')->cascadeOnDelete();
-            $table->foreignId('bot_user_id')->constrained('bot_users')->cascadeOnDelete();
+            $this->ref($table, 'quest_id', 'quests', $fk);
+            $this->ref($table, 'bot_user_id', 'bot_users', $fk);
             $table->string('reason', 200)->nullable();
             $table->timestamp('created_at')->useCurrent();
 
             $table->unique(['quest_id', 'bot_user_id']);
         });
 
-        Schema::create('game_settings', function (Blueprint $table) {
+        $this->make('game_settings', function (Blueprint $table, bool $fk) {
             $table->string('key', 64)->primary();
             $table->text('value')->nullable();
             $table->timestamps();
@@ -100,18 +111,37 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('game_settings');
-        Schema::dropIfExists('quest_reports');
-        Schema::dropIfExists('quest_attempts');
-        Schema::dropIfExists('quests');
-        Schema::dropIfExists('connections');
-        Schema::dropIfExists('xp_events');
-        Schema::dropIfExists('profile_facts');
-        Schema::table('bot_users', function (Blueprint $table) {
-            $table->dropColumn([
-                'is_moderator', 'contacts_closed', 'quests_opt_out', 'notifications_muted',
-                'xp', 'level', 'quest_locked_until', 'last_active_at', 'last_reminded_at',
-            ]);
-        });
+        foreach (['game_settings', 'quest_reports', 'quest_attempts', 'quests', 'connections', 'xp_events', 'profile_facts'] as $table) {
+            Schema::dropIfExists($table);
+        }
+        foreach (['is_moderator', 'contacts_closed', 'quests_opt_out', 'notifications_muted', 'xp', 'level', 'quest_locked_until', 'last_active_at', 'last_reminded_at'] as $column) {
+            if (Schema::hasColumn('bot_users', $column)) {
+                Schema::table('bot_users', fn (Blueprint $t) => $t->dropColumn($column));
+            }
+        }
+    }
+
+    /** Создать таблицу, если её нет: сначала с внешними ключами, при отказе сервера без них. */
+    private function make(string $name, callable $define): void
+    {
+        if (Schema::hasTable($name)) {
+            return;
+        }
+
+        try {
+            Schema::create($name, fn (Blueprint $table) => $define($table, true));
+        } catch (QueryException) {
+            Schema::dropIfExists($name);
+            Schema::create($name, fn (Blueprint $table) => $define($table, false));
+        }
+    }
+
+    private function ref(Blueprint $table, string $column, string $on, bool $fk): void
+    {
+        if ($fk) {
+            $table->foreignId($column)->constrained($on)->cascadeOnDelete();
+        } else {
+            $table->unsignedBigInteger($column)->index();
+        }
     }
 };
