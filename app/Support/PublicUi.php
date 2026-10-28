@@ -22,6 +22,17 @@ final class PublicUi
         return self::$cache[$name] ??= json_decode((string) file_get_contents(resource_path("data/{$name}.json")), true, 512, JSON_THROW_ON_ERROR);
     }
 
+    /**
+     * Asset URL with a version (?v=<file modification time>): after a deploy the browser fetches the new
+     * CSS/JS/image by itself, nobody has to press F5. Only files that really changed get a new version.
+     */
+    public static function versioned(string $path): string
+    {
+        $path = ltrim($path, '/');
+        $file = public_path($path);
+
+        return asset($path) . (is_file($file) ? '?v=' . filemtime($file) : '');
+    }
     /** Plain text is escaped, text that already contains markup is trusted (developer-authored content). */
     private static function esc(?string $s): string
     {

@@ -202,5 +202,5 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('design/gallery.js') }}" defer></script>
+<script src="{{ \App\Support\PublicUi::versioned('design/gallery.js') }}" defer></script>
 @endpush

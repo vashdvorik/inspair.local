@@ -49,7 +49,7 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('design/gallery.js') }}" defer></script>
+<script src="{{ \App\Support\PublicUi::versioned('design/gallery.js') }}" defer></script>
 <script>
     (function () {
         var tabs = document.querySelectorAll('#album-filter button'), albums = document.querySelectorAll('.album');

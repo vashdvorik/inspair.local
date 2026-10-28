@@ -6,13 +6,13 @@
     <title>Вход — INSPIRE EDU Network</title>
     <meta name="robots" content="noindex,nofollow">
     <meta name="theme-color" content="#ffffff">
-    <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
+    <link rel="icon" href="{{ \App\Support\PublicUi::versioned('brand/favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ \App\Support\PublicUi::versioned('brand/favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ \App\Support\PublicUi::versioned('brand/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ \App\Support\PublicUi::versioned('site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
     <style>
         .login-art { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
         .login-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--sh-lg); padding: 34px 30px; }
@@ -32,14 +32,14 @@
 
     {{-- TMA loading overlay (hidden by default, shown via JS when inside Telegram) --}}
     <div id="tma-loading" style="display:none" class="fixed inset-0 z-50 flex-col items-center justify-center bg-white">
-        <img src="{{ asset('brand/logo-mark.png') }}" alt="" class="i-float mb-4" style="width:96px;height:auto">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" class="i-float mb-4" style="width:96px;height:auto">
         <div class="w-9 h-9 rounded-full animate-spin mb-4" style="border:4px solid var(--blue-100);border-top-color:var(--blue-600)"></div>
         <p class="text-sm text-gray-500 font-medium">Выполняется вход…</p>
     </div>
 
     {{-- TMA: not a member message --}}
     <div id="tma-not-member" style="display:none" class="w-full max-w-sm text-center">
-        <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" class="mx-auto mb-6" style="height:84px;width:auto">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="mx-auto mb-6" style="height:84px;width:auto">
         <div class="login-card">
             <p class="font-bold text-ink mb-1">Доступ пока закрыт</p>
             <p class="text-sm text-gray-500">Ваша заявка ещё не одобрена или не подана. Напишите боту /start чтобы подать заявку.</p>
@@ -49,7 +49,7 @@
     {{-- Normal login form (hidden when inside Telegram) --}}
     <div id="login-form-wrapper" class="w-full max-w-sm i-in">
         <div class="flex flex-col items-center mb-7 text-center">
-            <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" width="190" height="97" style="height:96px;width:auto">
+            <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="190" height="97" style="height:96px;width:auto">
             <p class="i-eyebrow mt-3" style="color:var(--muted)">Личный кабинет участника</p>
         </div>
 
@@ -86,7 +86,7 @@
         </p>
     </div>{{-- /login-form-wrapper --}}
 
-    <script src="{{ asset('design/inspire.js') }}"></script>
+    <script src="{{ \App\Support\PublicUi::versioned('design/inspire.js') }}"></script>
     <script>
         // ── Telegram Mini App: auto-auth ──────────────────────────────────────
         (function () {

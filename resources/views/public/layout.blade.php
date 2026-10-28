@@ -14,13 +14,13 @@
     <link rel="canonical" href="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('img/hero/og.jpg') }}">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
-    <link rel="stylesheet" href="{{ asset('design/pages.css') }}">
-    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
+    <link rel="icon" href="{{ \App\Support\PublicUi::versioned('brand/favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ \App\Support\PublicUi::versioned('brand/favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ \App\Support\PublicUi::versioned('brand/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ \App\Support\PublicUi::versioned('site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/pages.css') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
     <script>
         // the Telegram WebApp script is only needed when the page is opened inside Telegram
         (function () {
@@ -61,7 +61,7 @@
 <nav id="navbar" class="i-nav" aria-label="Main">
     <div class="i-container i-nav__inner">
         <a href="{{ route('home') }}" class="i-nav__logo" aria-label="INSPIRE EDU Network">
-            <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" width="90" height="46">
+            <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="90" height="46">
         </a>
         <div class="i-nav__links" style="margin-left:auto;">
             @foreach($menu as $m)
@@ -117,7 +117,7 @@
     <div class="i-container">
         <div class="grid md:grid-cols-4 gap-10 mb-10">
             <div class="md:col-span-2">
-                <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" width="130" height="66" style="height:66px;width:auto;margin-bottom:14px;">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="130" height="66" style="height:66px;width:auto;margin-bottom:14px;">
                 {!! $p('Платформа для партнёрства и развития будущих лидеров Молдовы. Реализуется при поддержке Посольства Королевства Нидерландов в Молдове.', 'Platform for partnership and development of future leaders of Moldova. Implemented with the support of the Embassy of the Kingdom of the Netherlands in Moldova.', 'Platformă pentru parteneriat și dezvoltarea viitorilor lideri ai Moldovei. Implementat cu sprijinul Ambasadei Regatului Țărilor de Jos în Moldova.', 'text-sm text-gray-500 leading-relaxed max-w-md') !!}
             </div>
             <div>
@@ -151,7 +151,7 @@
     </div>
 </footer>
 
-<script src="{{ asset('design/inspire.js') }}"></script>
+<script src="{{ \App\Support\PublicUi::versioned('design/inspire.js') }}"></script>
 <script>
     const LANG_KEY = 'inspair_lang';
     function setLang(lang) {

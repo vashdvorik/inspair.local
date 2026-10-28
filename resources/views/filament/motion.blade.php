@@ -1,5 +1,5 @@
 {{-- Admin panel skin — INSPIRE design system: light, airy, one theme. Tokens come from /design/inspire.css --}}
-<link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
+<link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
 <style>
     :root { color-scheme: light; }
     /* never dark, even if the OS asks for it */

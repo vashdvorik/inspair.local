@@ -104,6 +104,16 @@ class PublicSiteTest extends TestCase
         $this->assertSame(380, array_sum(array_map('count', $gallery)));
     }
 
+    public function test_assets_carry_a_version_so_browsers_pick_up_new_files(): void
+    {
+        $html = $this->get("/")->getContent();
+        foreach (["design/inspire.css", "design/pages.css", "design/tailwind.css", "design/inspire.js"] as $asset) {
+            $this->assertMatchesRegularExpression("#" . preg_quote($asset, "#") . "\?v=\d+#", $html, $asset);
+        }
+        $this->assertMatchesRegularExpression("#img/hero/group-soft\.webp\?v=\d+#", $html);
+        $this->get("/app/account/login")->assertOk();
+    }
+
     public function test_customer_folder_is_not_inside_public(): void
     {
         $this->assertDirectoryDoesNotExist(public_path('user'));

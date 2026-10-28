@@ -7,13 +7,13 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="theme-color" content="#ffffff">
-    <link rel="icon" href="{{ asset('brand/favicon.ico') }}" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('brand/favicon-32.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('brand/apple-touch-icon.png') }}">
-    <link rel="manifest" href="{{ asset('site.webmanifest') }}">
-    <link rel="stylesheet" href="{{ asset('design/inspire.css') }}">
+    <link rel="icon" href="{{ \App\Support\PublicUi::versioned('brand/favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ \App\Support\PublicUi::versioned('brand/favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ \App\Support\PublicUi::versioned('brand/apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ \App\Support\PublicUi::versioned('site.webmanifest') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="{{ asset('design/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
@@ -70,7 +70,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('account.index') }}" class="block shrink-0 px-6 pb-4 pt-5" aria-label="INSPIRE EDU Network">
-                <img src="{{ asset('brand/logo.png') }}" alt="INSPIRE EDU Network" width="120" height="61" style="height:58px;width:auto">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="120" height="61" style="height:58px;width:auto">
             </a>
 
             {{-- User card --}}
@@ -151,7 +151,7 @@
                 <button @click="sidebarOpen = true" class="flex h-10 w-10 items-center justify-center rounded-xl text-navy-800 transition hover:bg-brand-50" aria-label="Открыть меню">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
-                <img src="{{ asset('brand/logo-mark.png') }}" alt="" class="h-9 w-9">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" class="h-9 w-9">
                 <span class="text-sm font-bold text-ink">@yield('title', 'Кабинет')</span>
             </header>
 

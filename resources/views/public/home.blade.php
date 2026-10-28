@@ -366,7 +366,7 @@
 <section class="i-section" style="padding-top:0">
     <div class="i-container">
         <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:68px 28px;text-align:center;box-shadow:var(--sh-md);">
-            <img src="{{ asset('brand/logo-mark.png') }}" alt="" width="120" height="120" class="i-float" style="width:104px;height:auto;margin:0 auto 14px;">
+            <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" width="120" height="120" class="i-float" style="width:104px;height:auto;margin:0 auto 14px;">
             <h2 class="i-h2" style="max-width:700px;margin:0 auto 14px;">{!! $tm($S['hero']['tagline']) !!}</h2>
             {!! $p('Присоединяйтесь к сети INSPIRE в Telegram: мероприятия, эксперты и новые возможности.', 'Join the INSPIRE network in Telegram: events, experts and new opportunities.', 'Alătură-te rețelei INSPIRE în Telegram: evenimente, experți și noi oportunități.', 'i-lead mx-auto mb-8') !!}
             <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn i-btn--lg">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
