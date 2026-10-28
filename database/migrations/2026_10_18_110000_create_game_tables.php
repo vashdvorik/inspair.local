@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -28,6 +29,13 @@ return new class extends Migration
         foreach ($columns as $name => $add) {
             if (! Schema::hasColumn('bot_users', $name)) {
                 Schema::table('bot_users', fn (Blueprint $t) => $add($t));
+            }
+        }
+
+        // Остатки неудачного запуска: пустые игровые таблицы пересоздаются начисто (с данными таблицу не трогаем)
+        foreach (['game_settings', 'quest_reports', 'quest_attempts', 'quests', 'connections', 'xp_events', 'profile_facts'] as $leftover) {
+            if (Schema::hasTable($leftover) && DB::table($leftover)->count() === 0) {
+                Schema::drop($leftover);
             }
         }
 
@@ -57,7 +65,7 @@ return new class extends Migration
         $this->make('connections', function (Blueprint $table, bool $fk) {
             $table->id();
             $this->ref($table, 'user_id', 'bot_users', $fk);
-            $this->ref($table, 'target_id', 'bot_users', $fk);
+            $this->ref($table, 'target_id', 'bot_users', $fk, false);
             $table->string('source', 16)->default('quest'); // quest | reciprocate
             $table->boolean('mutual')->default(false);
             $table->timestamp('target_notified_at')->nullable();
@@ -132,16 +140,24 @@ return new class extends Migration
             Schema::create($name, fn (Blueprint $table) => $define($table, true));
         } catch (QueryException) {
             Schema::dropIfExists($name);
-            Schema::create($name, fn (Blueprint $table) => $define($table, false));
+            try {
+                Schema::create($name, fn (Blueprint $table) => $define($table, false));
+            } catch (QueryException $e) {
+                Schema::dropIfExists($name);
+                throw $e;
+            }
         }
     }
 
-    private function ref(Blueprint $table, string $column, string $on, bool $fk): void
+    private function ref(Blueprint $table, string $column, string $on, bool $fk, bool $index = true): void
     {
         if ($fk) {
             $table->foreignId($column)->constrained($on)->cascadeOnDelete();
         } else {
-            $table->unsignedBigInteger($column)->index();
+            $column = $table->unsignedBigInteger($column);
+            if ($index) {
+                $column->index();
+            }
         }
     }
 };

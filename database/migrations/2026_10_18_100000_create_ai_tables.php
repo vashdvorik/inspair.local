@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         // Переопределения настроек задач из админки (по умолчанию — config/ai.php)
-        Schema::create('ai_task_settings', function (Blueprint $table) {
+        if (! Schema::hasTable('ai_task_settings')) Schema::create('ai_task_settings', function (Blueprint $table) {
             $table->id();
             $table->string('task', 64)->unique();
             $table->string('model')->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
         });
 
         // Журнал обращений к моделям: расход и ошибки
-        Schema::create('ai_usage_logs', function (Blueprint $table) {
+        if (! Schema::hasTable('ai_usage_logs')) Schema::create('ai_usage_logs', function (Blueprint $table) {
             $table->id();
             $table->string('task', 64);
             $table->string('model');
@@ -39,9 +39,11 @@ return new class extends Migration
         });
 
         // Эмбеддинги разных моделей несравнимы — помним, какой моделью посчитан вектор
-        Schema::table('bot_users', function (Blueprint $table) {
-            $table->string('embedding_model')->nullable()->after('embedding_updated_at');
-        });
+        if (! Schema::hasColumn('bot_users', 'embedding_model')) {
+            Schema::table('bot_users', function (Blueprint $table) {
+                $table->string('embedding_model')->nullable()->after('embedding_updated_at');
+            });
+        }
     }
 
     public function down(): void

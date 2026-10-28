@@ -11,6 +11,13 @@ class BotUserSeeder extends Seeder
 {
     public function run(): void
     {
+        // Demo data must never reach a live site (set ALLOW_DEMO_SEED=true only for a deliberate test)
+        if (app()->isProduction() && ! filter_var(env('ALLOW_DEMO_SEED', false), FILTER_VALIDATE_BOOLEAN)) {
+            $this->command?->warn('BotUserSeeder: skipped in production.');
+
+            return;
+        }
+
         $users = [
             [
                 'telegram_id'       => 100000001,
