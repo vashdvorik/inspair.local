@@ -1,5 +1,20 @@
 [
  {
+  "key": "van-eerten",
+  "name": {
+   "en": "Ms. Esselien van Eerten",
+   "ru": "Г-жа Esselien van Eerten",
+   "ro": "Dna Esselien van Eerten"
+  },
+  "role": {
+   "en": "Ambassador of the Kingdom of the Netherlands in Chișinău",
+   "ru": "Посол Королевства Нидерландов в Кишинёве",
+   "ro": "Ambasadoarea Regatului Țărilor de Jos la Chișinău"
+  },
+  "img": "academy-2025/van-eerten.webp",
+  "years": []
+ },
+ {
   "key": "duijn",
   "name": {
    "en": "Mr. Fred Duijn",
@@ -7,9 +22,9 @@
    "ro": "Dl Fred Duijn"
   },
   "role": {
-   "en": "Ambassador of the Kingdom of the Netherlands to the Republic of Moldova",
-   "ru": "Посол Королевства Нидерландов в Республике Молдова",
-   "ro": "Ambasadorul Regatului Țărilor de Jos în Republica Moldova"
+   "en": "Ambassador of the Kingdom of the Netherlands to the Republic of Panama",
+   "ru": "Посол Королевства Нидерландов в Республике Панама",
+   "ro": "Ambasadorul Regatului Țărilor de Jos în Republica Panama"
   },
   "img": "academy-2025/1.png",
   "years": [
