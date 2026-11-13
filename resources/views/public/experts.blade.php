@@ -14,8 +14,7 @@
 <section class="page-head i-airy">
     <div class="i-nodes" aria-hidden="true">
         <svg viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice">
-            <line x1="70" y1="330" x2="210" y2="210"/><line x1="210" y1="210" x2="360" y2="290"/><line x1="860" y1="80" x2="1000" y2="170"/><line x1="1000" y1="170" x2="1120" y2="90"/>
-            <circle cx="70" cy="330" r="9" fill="#006de0"/><circle cx="210" cy="210" r="11" fill="#fdba07"/><circle cx="360" cy="290" r="8" fill="#72299c"/>
+            <line x1="860" y1="80" x2="1000" y2="170"/><line x1="1000" y1="170" x2="1120" y2="90"/>
             <circle cx="860" cy="80" r="8" fill="#ff6c0b"/><circle cx="1000" cy="170" r="10" fill="#019eff"/><circle cx="1120" cy="90" r="7" fill="#3d932e"/>
         </svg>
     </div>
@@ -44,7 +43,7 @@
                 <button type="button" data-f="2023">{!! $t('Академия 2023', 'Academy 2023', 'Academia 2023') !!}</button>
             </div>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5" id="exp-grid">
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-5" id="exp-grid">
             @foreach($people as $i => $e)
                 <article class="i-card i-card--hover person i-reveal" data-years="{{ implode(',', $e['years']) }}" style="--d:{{ ($i % 5) * .05 }}s">
                     <div class="ph" @if(!$e['img']) style="background:{{ $avatarTone[$i % count($avatarTone)] }}" @endif>

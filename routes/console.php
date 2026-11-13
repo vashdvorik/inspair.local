@@ -9,4 +9,3 @@ Artisan::command('inspire', function () {
 
 // Игра: пополнение пула квестов (когда игра запущена)
 \Illuminate\Support\Facades\Schedule::command('game:generate-quests')->everyThirtyMinutes()->withoutOverlapping();
-\Illuminate\Support\Facades\Schedule::command('game:remind')->dailyAt('15:00')->withoutOverlapping(); // 17:00–18:00 по Кишинёву

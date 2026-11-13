@@ -2,7 +2,7 @@
 @section('title', $person->full_name)
 
 @section('content')
-<div class="max-w-2xl">
+<div class="cab-page">
 
     {{-- Back --}}
     <a href="{{ route('account.people') }}"
@@ -58,15 +58,6 @@
                 $needLevel = fn (string $field) => (int) config("game.visibility.$field", 1);
                 $lvlName = fn (string $field) => $game->levelInfo($needLevel($field))['name'];
             @endphp
-
-            <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Регион</p>
-                @if($see($person, 'region'))
-                    <p class="mt-1 text-sm text-[#0e2442]">{{ $person->region ?: '—' }}</p>
-                @else
-                    <p class="mt-1 text-sm text-gray-400">🔒 Откроется на уровне «{{ $lvlName('region') }}»</p>
-                @endif
-            </div>
 
             <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Кто и чем занимается</p>

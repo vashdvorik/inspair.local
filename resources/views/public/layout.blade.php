@@ -49,10 +49,13 @@
             ['route' => 'academy2023', 'label' => ['Школа 2023', 'School 2023', 'Școala 2023']],
         ]],
         ['route' => 'experts',      'label' => ['Эксперты', 'Experts', 'Experți'],        'active' => ['experts']],
-        ['route' => 'photo',        'label' => ['Фото', 'Photo', 'Foto'],                 'active' => ['photo']],
-        ['route' => 'video',        'label' => ['Видео', 'Video', 'Video'],               'active' => ['video']],
+        ['label' => ['Медиа', 'Media', 'Media'], 'active' => ['photo', 'video'], 'children' => [
+            ['route' => 'photo', 'label' => ['Фото', 'Photo', 'Foto']],
+            ['route' => 'video', 'label' => ['Видео', 'Video', 'Video']],
+        ]],
         ['route' => 'partners',     'label' => ['Партнёры', 'Partners', 'Parteneri'],     'active' => ['partners']],
         ['route' => 'publications', 'label' => ['Публикации', 'Publications', 'Publicații'], 'active' => ['publications']],
+        ['url' => 'https://education.md/opportunities', 'label' => ['Возможности', 'Opportunities', 'Oportunități']],
     ];
     $isActive = fn (array $m) => request()->routeIs(...$m['active']);
 @endphp
@@ -74,6 +77,8 @@
                             @endforeach
                         </div>
                     </div>
+                @elseif(isset($m['url']))
+                    <a href="{{ $m['url'] }}" target="_blank" rel="noopener">{!! $t(...$m['label']) !!}<svg class="nav-ext" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
                 @else
                     <a href="{{ route($m['route']) }}" @class(['is-active' => $isActive($m)])>{!! $t(...$m['label']) !!}</a>
                 @endif
@@ -100,6 +105,8 @@
                     @foreach($m['children'] as $ch)
                         <a href="{{ route($ch['route']) }}" class="mobile-nav-link px-4 py-3 pl-8 rounded-xl text-sm font-bold transition {{ request()->routeIs($ch['route'] . '*') ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$ch['label']) !!}</a>
                     @endforeach
+                @elseif(isset($m['url']))
+                    <a href="{{ $m['url'] }}" target="_blank" rel="noopener" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold transition text-gray-700 hover:bg-gray-50">{!! $t(...$m['label']) !!} ↗</a>
                 @else
                     <a href="{{ route($m['route']) }}" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold transition {{ $isActive($m) ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$m['label']) !!}</a>
                 @endif
@@ -115,23 +122,31 @@
 {{-- ───────────── FOOTER ───────────── --}}
 <footer style="background:var(--bg-soft);border-top:1px solid var(--line);padding:56px 0 28px;">
     <div class="i-container">
-        <div class="grid md:grid-cols-4 gap-10 mb-10">
-            <div class="md:col-span-2">
+        <div class="grid md:grid-cols-[1.5fr_1fr_1.1fr_1.2fr] gap-10 mb-10">
+            <div>
                 <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="130" height="66" style="height:66px;width:auto;margin-bottom:14px;">
                 {!! $p('Платформа для партнёрства и развития будущих лидеров Молдовы. Реализуется при поддержке Посольства Королевства Нидерландов в Молдове.', 'Platform for partnership and development of future leaders of Moldova. Implemented with the support of the Embassy of the Kingdom of the Netherlands in Moldova.', 'Platformă pentru parteneriat și dezvoltarea viitorilor lideri ai Moldovei. Implementat cu sprijinul Ambasadei Regatului Țărilor de Jos în Moldova.', 'text-sm text-gray-500 leading-relaxed max-w-md') !!}
             </div>
             <div>
                 <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Разделы', 'Sections', 'Secțiuni') !!}</p>
                 <div class="flex flex-col gap-2.5 text-sm font-semibold">
-                    @foreach($menu as $m)
-                        @if(isset($m['children']))
-                            @foreach($m['children'] as $ch)
-                                <a href="{{ route($ch['route']) }}" style="text-decoration:none">{!! $t(...$ch['label']) !!}</a>
-                            @endforeach
-                        @else
-                            <a href="{{ route($m['route']) }}" style="text-decoration:none">{!! $t(...$m['label']) !!}</a>
-                        @endif
-                    @endforeach
+                    <a href="{{ route('home') }}" style="text-decoration:none">{!! $t('Главная', 'Home', 'Acasă') !!}</a>
+                    <a href="{{ route('hackathon') }}" style="text-decoration:none">{!! $t('Хакатон 2026', 'Hackathon 2026', 'Hackathon 2026') !!}</a>
+                    <a href="{{ route('experts') }}" style="text-decoration:none">{!! $t('Эксперты', 'Experts', 'Experți') !!}</a>
+                    <a href="{{ route('photo') }}" style="text-decoration:none">{!! $t('Фото', 'Photo', 'Foto') !!}</a>
+                    <a href="{{ route('video') }}" style="text-decoration:none">{!! $t('Видео', 'Video', 'Video') !!}</a>
+                    <a href="{{ route('partners') }}" style="text-decoration:none">{!! $t('Партнёры', 'Partners', 'Parteneri') !!}</a>
+                    <a href="{{ route('publications') }}" style="text-decoration:none">{!! $t('Публикации', 'Publications', 'Publicații') !!}</a>
+                </div>
+            </div>
+            <div>
+                <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Школы', 'Schools', 'Școli') !!}</p>
+                <div class="flex flex-col gap-2.5 text-sm font-semibold">
+                    <a href="{{ route('academy2025') }}" style="text-decoration:none">{!! $t('Школы 2025', 'Schools 2025', 'Școli 2025') !!}</a>
+                    <a href="{{ route('academy2025.school', 1) }}" style="text-decoration:none">{!! $t('Школа 1 · Кишинёв', 'School 1 · Chișinău', 'Școala 1 · Chișinău') !!}</a>
+                    <a href="{{ route('academy2025.school', 2) }}" style="text-decoration:none">{!! $t('Школа 2 · Комрат', 'School 2 · Comrat', 'Școala 2 · Comrat') !!}</a>
+                    <a href="{{ route('academy2025.school', 3) }}" style="text-decoration:none">{!! $t('Школа 3 · Тирасполь', 'School 3 · Tiraspol', 'Școala 3 · Tiraspol') !!}</a>
+                    <a href="{{ route('academy2023') }}" style="text-decoration:none">{!! $t('Школа 2023', 'School 2023', 'Școala 2023') !!}</a>
                 </div>
             </div>
             <div>

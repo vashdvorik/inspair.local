@@ -87,10 +87,9 @@ class QuestService
             return false;
         }
 
-        // два отвлекающих варианта, лучше из того же региона
+        // два отвлекающих варианта
         $others = $users->where('id', '!=', $subject->id)->shuffle();
-        $sameRegion = $subject->region ? $others->where('region', $subject->region) : collect();
-        $distractors = $sameRegion->concat($others)->unique('id')->take(2)->values();
+        $distractors = $others->take(2)->values();
         if ($distractors->count() < 2) {
             return false;
         }
@@ -207,7 +206,6 @@ class QuestService
         $connected = Connection::where('user_id', $user->id)->pluck('target_id')->all();
 
         return Quest::active()
-            ->where('reports_count', '<', (int) config('game.reports_hide'))
             ->whereNotIn('id', $done)
             ->where('subject_user_id', '!=', $user->id)
             ->when($connected, fn ($q) => $q->whereNotIn('subject_user_id', $connected))
@@ -222,7 +220,6 @@ class QuestService
         $connected = Connection::where('user_id', $user->id)->pluck('target_id')->all();
 
         return Quest::active()
-            ->where('reports_count', '<', (int) config('game.reports_hide'))
             ->whereNotIn('id', $done)
             ->where('subject_user_id', '!=', $user->id)
             ->when($connected, fn ($q) => $q->whereNotIn('subject_user_id', $connected))
@@ -234,7 +231,7 @@ class QuestService
     // ───────────────────────── ответ ─────────────────────────
 
     /**
-     * @return array{correct: bool, correct_user_id: int, explanation: string, gained: int, level_up: int|null, connected: bool, mutual: bool, wait: int}
+     * @return array{correct: bool, correct_user_id: int, explanation: string, gained: int, level_up: int|null, connected: bool, wait: int}
      */
     public function answer(BotUser $user, Quest $quest, int $chosenId): array
     {
@@ -255,7 +252,6 @@ class QuestService
             $xp = config('game.xp');
             $up = null;
             $connected = false;
-            $mutual = false;
             $wait = 0;
 
             if ($correct) {
@@ -267,7 +263,6 @@ class QuestService
                     ['source' => 'quest'],
                 );
                 $connected = $conn->wasRecentlyCreated;
-                $mutual = $this->settleMutual($user, $quest->subject_user_id, $up);
             } else {
                 $gained = (int) $xp['quest_wrong'];
                 $up = $this->game->award($user, 'quest_wrong', $gained, (string) $quest->id);
@@ -279,66 +274,11 @@ class QuestService
                 'correct'         => $correct,
                 'correct_user_id' => $quest->subject_user_id,
                 'explanation'     => $quest->explanation['ru'] ?? '',
-                'gained'          => $gained + ($mutual ? (int) $xp['mutual'] : 0),
+                'gained'          => $gained,
                 'level_up'        => $up,
                 'connected'       => $connected,
-                'mutual'          => $mutual,
                 'wait'            => $wait,
             ];
         });
-    }
-
-    /** Если обе стороны добавили друг друга: нить становится золотой, оба получают очки. */
-    private function settleMutual(BotUser $user, int $otherId, ?int &$levelUp): bool
-    {
-        $other = BotUser::find($otherId);
-        $reverse = Connection::where('user_id', $otherId)->where('target_id', $user->id)->first();
-        if (! $other || ! $reverse) {
-            return false;
-        }
-
-        Connection::whereIn('id', Connection::where(function ($q) use ($user, $otherId) {
-            $q->where('user_id', $user->id)->where('target_id', $otherId);
-        })->orWhere(function ($q) use ($user, $otherId) {
-            $q->where('user_id', $otherId)->where('target_id', $user->id);
-        })->pluck('id'))->update(['mutual' => true]);
-
-        $pts = (int) config('game.xp.mutual');
-        $pair = [min($user->id, $otherId), max($user->id, $otherId)];
-        $ref = $pair[0] . '-' . $pair[1];
-        $up = $this->game->award($user, 'mutual', $pts, $ref);
-        $levelUp = $up ?? $levelUp;
-        $this->game->award($other, 'mutual', $pts, $ref);
-
-        return true;
-    }
-
-    /** Ответить взаимностью на то, что тебя угадали. */
-    public function reciprocate(BotUser $user, BotUser $other): bool
-    {
-        $incoming = Connection::where('user_id', $other->id)->where('target_id', $user->id)->exists();
-        if (! $incoming || $other->id === $user->id) {
-            return false;
-        }
-
-        Connection::firstOrCreate(['user_id' => $user->id, 'target_id' => $other->id], ['source' => 'reciprocate']);
-        $up = null;
-        $this->settleMutual($user, $other->id, $up);
-
-        return true;
-    }
-
-    public function report(BotUser $user, Quest $quest, ?string $reason): void
-    {
-        $created = \App\Models\QuestReport::firstOrCreate(
-            ['quest_id' => $quest->id, 'bot_user_id' => $user->id],
-            ['reason' => $reason ? mb_substr($reason, 0, 200) : null],
-        );
-        if ($created->wasRecentlyCreated) {
-            $quest->increment('reports_count');
-            if ($quest->fresh()->reports_count >= (int) config('game.reports_hide')) {
-                $quest->update(['status' => Quest::REPORTED]);
-            }
-        }
     }
 }

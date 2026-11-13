@@ -74,14 +74,14 @@ class GameFlowTest extends TestCase
 
     public function test_profile_rewards_give_quick_access(): void
     {
-        $u = $this->player(['avatar_path' => 'a.jpg', 'expectation' => 'Ищу команду для проектов о мире.', 'region' => 'comrat']);
+        $u = $this->player(['avatar_path' => 'a.jpg', 'expectation' => 'Ищу команду для проектов о мире.']);
         ProfileFact::create(['bot_user_id' => $u->id, 'body' => 'перевожу субтитры']);
 
         app(GameService::class)->syncProfileRewards($u);
         app(GameService::class)->syncProfileRewards($u); // повтор не задваивает
 
         $u->refresh();
-        $this->assertSame(30 + 50 + 30 + 10 + 15, $u->xp);
+        $this->assertSame(30 + 50 + 30 + 15, $u->xp);
         $this->assertSame(2, $u->level);
     }
 
@@ -92,17 +92,17 @@ class GameFlowTest extends TestCase
         $u = $this->player();
 
         $this->withSession($this->sess($u))->get(route('account.people'))->assertRedirect(route('account.game', ['locked' => 'people']));
-        $this->withSession($this->sess($u))->get(route('account.search'))->assertRedirect(route('account.game', ['locked' => 'search']));
+        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertRedirect(route('account.game', ['locked' => 'opportunities']));
 
         app(GameService::class)->setLaunched(true);
         $this->withSession($this->sess($u))->get(route('account.people'))->assertRedirect(); // уровень 1 < 2
 
         $u->update(['xp' => 120, 'level' => 2]);
         $this->withSession($this->sess($u))->get(route('account.people'))->assertOk();
-        $this->withSession($this->sess($u))->get(route('account.search'))->assertRedirect(); // нужен уровень 3
+        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertRedirect(); // нужен уровень 4
 
-        $u->update(['xp' => 320, 'level' => 3]);
-        $this->withSession($this->sess($u))->get(route('account.search'))->assertOk();
+        $u->update(['xp' => 720, 'level' => 4]);
+        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertOk();
     }
 
     public function test_moderator_sees_everything_without_launch(): void
@@ -199,50 +199,6 @@ class GameFlowTest extends TestCase
     {
         $me = $this->player();
         $this->withSession($this->sess($me))->getJson(route('account.game.api.quest'))->assertJsonPath('status', 'not_launched');
-    }
-
-    public function test_mutual_guess_makes_golden_thread_and_pays_both(): void
-    {
-        app(GameService::class)->setLaunched(true);
-        $a = $this->player();
-        $b = $this->player();
-        $c = $this->player();
-
-        $qa = $this->quest($b, [$c, $this->player()]);
-        $qb = $this->quest($a, [$c, $this->player()]);
-
-        $this->withSession($this->sess($a))->postJson(route('account.game.api.answer', $qa), ['chosen' => $b->id])->assertOk();
-        $this->withSession($this->sess($b))->postJson(route('account.game.api.answer', $qb), ['chosen' => $a->id])
-            ->assertOk()->assertJsonPath('mutual', true);
-
-        $this->assertSame(2, Connection::where('mutual', true)->count());
-        $this->assertSame(20 + 25, $a->fresh()->xp);
-        $this->assertSame(20 + 25, $b->fresh()->xp);
-    }
-
-    public function test_reciprocate_requires_incoming_connection(): void
-    {
-        app(GameService::class)->setLaunched(true);
-        $a = $this->player();
-        $b = $this->player();
-
-        $this->withSession($this->sess($b))->postJson(route('account.game.api.reciprocate', $a))->assertStatus(422);
-
-        Connection::create(['user_id' => $a->id, 'target_id' => $b->id, 'source' => 'quest']);
-        $this->withSession($this->sess($b))->postJson(route('account.game.api.reciprocate', $a))->assertOk();
-        $this->assertSame(2, Connection::where('mutual', true)->count());
-    }
-
-    public function test_reports_hide_quest(): void
-    {
-        app(GameService::class)->setLaunched(true);
-        $subject = $this->player();
-        $quest = $this->quest($subject, [$this->player(), $this->player()]);
-
-        foreach ([$this->player(), $this->player()] as $reporter) {
-            $this->withSession($this->sess($reporter))->postJson(route('account.game.api.report', $quest), ['reason' => 'странный'])->assertOk();
-        }
-        $this->assertSame(Quest::REPORTED, $quest->fresh()->status);
     }
 
     // ───────────── генерация ─────────────

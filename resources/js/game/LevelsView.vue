@@ -1,4 +1,5 @@
 <script setup>
+import { points } from './api';
 defineProps({ levels: Array, me: Object, checklist: Array, editUrl: String });
 </script>
 
@@ -10,14 +11,14 @@ defineProps({ levels: Array, me: Object, checklist: Array, editUrl: String });
                  :class="{ cur: l.n === me.level.n, locked: l.n > me.level.n }" :style="{ '--c': l.color }">
                 <div class="g-dot">{{ l.n }}</div>
                 <div>
-                    <b>{{ l.name }}</b> <span class="g-muted" style="font-size:.74rem">от {{ l.from }} очков</span>
-                    <ul><li v-for="u in l.unlocks" :key="u">{{ u }}</li></ul>
+                    <b>{{ l.name }}</b> <span class="g-muted" style="font-size:.74rem">от {{ points(l.from) }}</span>
+                    <ul v-if="l.n === me.level.n + 1 && l.unlocks.length"><li v-for="u in l.unlocks" :key="u">{{ u }}</li></ul>
                 </div>
             </div>
         </div>
 
-        <div class="g-eyebrow" style="margin-top:22px">Быстро открыть доступ</div>
-        <p class="g-muted" style="margin-bottom:6px">Расскажите о себе: это сразу даёт очки и открывает разделы.</p>
+        <div class="g-eyebrow" style="margin-top:18px">Быстро набрать очки</div>
+        <p class="g-muted" style="margin-bottom:6px">Расскажите о себе: за это сразу дают очки.</p>
         <div class="g-check" v-for="c in checklist" :key="c.key" :class="{ done: c.done }">
             <span class="g-tick">{{ c.done ? '✓' : '' }}</span>
             <span>{{ c.label }}</span>

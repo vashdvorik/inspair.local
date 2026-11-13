@@ -145,7 +145,6 @@ class AccountController extends Controller
         ] + ($gameOn ? [
             // эти поля есть в форме только при включённой игре: иначе не трогаем сохранённые значения
             'quests_opt_out'      => $request->boolean('quests_opt_out'),
-            'notifications_muted' => $request->boolean('notifications_muted'),
         ] : []));
 
         if ($gameOn) {
@@ -184,7 +183,7 @@ class AccountController extends Controller
         $people = BotUser::approved()
             ->where('telegram_id', '!=', $accountUser->telegram_id)
             ->orderBy('full_name')
-            ->get(['id', 'full_name', 'telegram_username', 'description', 'expectation', 'avatar_path', 'contacts_closed', 'region']);
+            ->get(['id', 'full_name', 'telegram_username', 'description', 'expectation', 'avatar_path', 'contacts_closed']);
 
         return view('account.people', compact('people'));
     }
@@ -202,9 +201,7 @@ class AccountController extends Controller
 
         // Раздел «Люди» закрыт уровнем, но люди из своей сети всегда доступны
         if ($viewer->id !== $botUser->id && ! $game->canAccess($viewer, 'people')) {
-            $inNetwork = \App\Models\Connection::where(fn ($q) => $q->where('user_id', $viewer->id)->where('target_id', $botUser->id))
-                ->orWhere(fn ($q) => $q->where('user_id', $botUser->id)->where('target_id', $viewer->id)->where('mutual', true))
-                ->exists();
+            $inNetwork = \App\Models\Connection::where('user_id', $viewer->id)->where('target_id', $botUser->id)->exists();
             if (! $inNetwork) {
                 return redirect()->route('account.game', ['locked' => 'people']);
             }

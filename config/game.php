@@ -21,8 +21,6 @@ return [
      */
     'access' => [
         'people'        => 2,
-        'search'        => 3,
-        'matches'       => 3,
         'opportunities' => 4, // размещение возможностей
     ],
 
@@ -31,7 +29,6 @@ return [
      * Аватар и имя видны всегда (уровень 1).
      */
     'visibility' => [
-        'region'      => 2,
         'description' => 3,
         'facts'       => 3,
         'expectation' => 4,
@@ -45,11 +42,9 @@ return [
         'profile_avatar'      => 30,
         'profile_description' => 50,
         'profile_expectation' => 30,
-        'profile_region'      => 10,
         'fact'                => 15, // за каждый факт, максимум max_facts
         'quest_correct'       => 20,
         'quest_wrong'         => 3,
-        'mutual'              => 25,
     ],
 
     // Файл с режимом игры (off | waiting | live). Админка переключает его, база не нужна.
@@ -63,12 +58,8 @@ return [
     // Для запуска игры нужно столько одобренных участников с заполненным «о себе» (показывается на экране ожидания)
     'launch_target' => 12,
 
-    // Квесты: сколько штук держим в пуле на одного участника и сколько жалоб скрывают вопрос
+    // Квесты: сколько штук держим в пуле на одного участника
     'pool_per_user'  => 2,
     'pool_min'       => 6,
     'generate_batch' => 8,
-    'reports_hide'   => 2,
-
-    // Напоминания бота: не чаще раза в N часов
-    'remind_every_hours' => 20,
 ];

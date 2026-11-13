@@ -33,14 +33,13 @@
             <circle cx="30" cy="370" r="7" fill="#fdba07"/><circle cx="80" cy="450" r="11" fill="#006de0"/><circle cx="118" cy="520" r="7" fill="#e31e27"/>
         </svg>
     </div>
-    <div class="i-container grid lg:grid-cols-[.88fr_1.12fr] gap-8 items-center">
-        <div>
-            <span class="i-chip i-in i-in-1"><span class="i-dot i-pulse-dot"></span>INSPIRE EDU Network &middot; Moldova</span>
-            <h1 class="i-h1 i-in i-in-2" style="margin:20px 0 0;" aria-label="{{ $S['hero']['title']['en'] }}"><span class="hero-main i-grad-text">{!! $tm($S['hero']['title_main']) !!}</span><span class="hero-sub">{!! $tm($S['hero']['title_sub']) !!}</span></h1>
+    <div class="i-container grid lg:grid-cols-[.8fr_1.2fr] gap-8 items-center">
+        <div class="hero-text">
+            <h1 class="i-h1 i-in i-in-2" style="margin:0;" aria-label="{{ $S['hero']['title']['en'] }}"><span class="hero-main i-grad-text">{!! $tm($S['hero']['title_main']) !!}</span><span class="hero-sub">{!! $tm($S['hero']['title_sub']) !!}</span></h1>
             <p class="hero-tagline i-grad-text i-in i-in-3">{!! $tm($S['hero']['tagline']) !!}</p>
-            <div class="flex flex-wrap items-center gap-4 mt-9 i-in i-in-4">
-                <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn i-btn--lg">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
-                <a href="{{ route('academy2025') }}" class="i-btn i-btn--secondary i-btn--lg"><span>{!! $t('Мероприятия', 'Events', 'Evenimente') !!}</span>{!! $arrow !!}</a>
+            <div class="flex flex-wrap items-center gap-3 mt-8 i-in i-in-4">
+                <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
+                <a href="{{ route('academy2025') }}" class="i-btn i-btn--secondary"><span>{!! $t('Мероприятия', 'Events', 'Evenimente') !!}</span>{!! $arrow !!}</a>
             </div>
         </div>
         <div class="hero-pic i-in i-in-3">
@@ -49,7 +48,7 @@
             <span class="pic-spot pic-orange" style="--c:#ff6c0b;width:38%;aspect-ratio:1;right:-4%;top:-12%"></span>
             <span class="pic-spot pic-purple" style="--c:#72299c;width:30%;aspect-ratio:1;left:-10%;top:24%"></span>
             <span class="pic-spot pic-green" style="--c:#3d932e;width:34%;aspect-ratio:1;right:8%;bottom:-14%"></span>
-            <img src="{{ $img('hero/group-soft.webp') }}" srcset="{{ $img('hero/group-soft-800.webp') }} 800w, {{ $img('hero/group-soft.webp') }} 1400w" sizes="(min-width:1024px) 58vw, 100vw" alt="INSPIRE Leadership Academy 2025 participants" width="1400" height="787" fetchpriority="high" decoding="async">
+            <img src="{{ $img('hero/group-soft.webp') }}" srcset="{{ $img('hero/group-soft-800.webp') }} 800w, {{ $img('hero/group-soft.webp') }} 1400w" sizes="(min-width:1024px) 62vw, 100vw" alt="INSPIRE Leadership Academy 2025 participants" width="1400" height="787" fetchpriority="high" decoding="async">
         </div>
     </div>
 </section>
@@ -67,9 +66,8 @@
 {{-- ───────────── INSPIRE = 7 letters ───────────── --}}
 <section class="i-section" id="inspire">
     <div class="i-container">
-        <div class="text-center max-w-3xl mx-auto mb-14 i-reveal">
-            <p class="i-eyebrow">INSPIRE EDU Network</p>
-            <h2 class="i-h2" style="margin-top:10px;">{!! $tm($S['acronym']['title']) !!}</h2>
+        <div class="text-center max-w-3xl mx-auto mb-10 i-reveal">
+            <h2 class="i-h2 i-grad-text h2-compact" style="margin-top:10px;">{!! $tm($S['acronym']['title']) !!}</h2>
             <div class="i-spectrum-line" style="width:84px;margin:16px auto 0;"></div>
         </div>
         <div class="acr-grid">
@@ -95,18 +93,22 @@
                     <div class="i-reveal" style="--d:{{ $i * .04 }}s">{!! $pm($par) !!}</div>
                 @endforeach
                 <div class="i-reveal"><p style="font-weight:700;color:var(--navy-800)">{!! $tm($S['story']['closing']) !!}</p></div>
-                <a class="funding i-reveal" href="{{ $S['story']['funding_url'] }}" target="_blank" rel="noopener">
-                    <img src="{{ $img('partners/embassy-nl.png') }}" alt="Kingdom of the Netherlands" loading="lazy">
-                    <span>{!! $tm($S['story']['funding']) !!}</span>
-                </a>
             </div>
-            <div class="grid grid-cols-2 gap-4 lg:sticky" style="top:100px;">
-                @foreach($S['story']['stats'] as $i => $st)
-                    <div class="i-card story-stat i-reveal" style="--d:{{ $i * .07 }}s">
-                        <div class="num-big i-grad-text stat-num">{{ $st['n'] }}</div>
-                        <p class="i-eyebrow" style="margin-top:8px;color:var(--muted);letter-spacing:.06em;text-transform:none;font-size:.8rem">{!! $tm($st['label']) !!}</p>
-                    </div>
+            <div class="lg:sticky" style="top:100px;">
+            <div class="story-albums">
+                @foreach(['school-2023', 'school-1-chisinau', 'school-2-comrat', 'school-3-tiraspol', 'final-conference', 'organizations'] as $i => $key)
+                    @php
+                        $al = collect($S['albums'])->firstWhere('key', $key);
+                        $items = $gallery[$key];
+                        $cover = $al['cover'] < 0 ? $items[count($items) + $al['cover']] : $items[$al['cover']];
+                    @endphp
+                    <a class="cover-card i-reveal" style="--d:{{ $i * .07 }}s" href="{{ route('photo') }}#{{ $key }}">
+                        <img src="{{ $gal($key, $cover['f'], true) }}" alt="{{ $al['title']['en'] }}" loading="lazy" width="{{ min($cover['w'], 520) }}" height="{{ round(min($cover['w'], 520) * $cover['h'] / $cover['w']) }}">
+                        <span>{!! $tm($al['title']) !!}<small>{!! $tm($al['sub']) !!}</small></span>
+                    </a>
                 @endforeach
+            </div>
+            <a href="{{ route('photo') }}" class="i-btn i-btn--secondary i-reveal" style="margin-top:16px"><span>{!! $t('Все фотографии', 'All photos', 'Toate fotografiile') !!} ({{ array_sum(array_map('count', $gallery)) }})</span>{!! $arrow !!}</a>
             </div>
         </div>
     </div>
@@ -129,7 +131,7 @@
             @endforeach
         </div>
         <div class="vision mt-10 i-reveal">
-            <p class="i-eyebrow" style="color:#fff;opacity:.85;margin-bottom:8px">{!! $tm($S['values']['vision_label']) !!}</p>
+            <p class="i-eyebrow" style="margin-bottom:8px">{!! $tm($S['values']['vision_label']) !!}</p>
             {!! $pm($S['values']['vision']) !!}
         </div>
     </div>
@@ -155,7 +157,7 @@
             </div>
             <div class="cloud" aria-label="Core areas">
                 @foreach($S['core']['phrases'] as $i => $ph)
-                    <span style="font-size:{{ $cloud[$i][0] }};color:{{ $cloud[$i][1] }}">{!! $tm($ph) !!}</span>
+                    <span style="font-size:calc({{ $cloud[$i][0] }} * .62);color:{{ $cloud[$i][1] }}">{!! $tm($ph) !!}</span>
                 @endforeach
             </div>
         </div>
@@ -178,7 +180,7 @@
             foreach ($E['schools2025']['items'] as $sc) {
                 $cards[] = ['badge' => ['ru' => 'Школа ' . $sc['n'], 'en' => 'School ' . $sc['n'], 'ro' => 'Școala ' . $sc['n']], 'title' => $sc['title'], 'dates' => $sc['dates'], 'place' => array_map(fn ($v) => preg_replace('/^.*\s\/\s/u', '', $v), $sc['place']), 'url' => route('academy2025.school', $sc['n']), 'tone' => ['green', 'yellow', 'blue'][$sc['n'] - 1]];
             }
-            $cards[] = ['badge' => ['ru' => 'Архив 2023', 'en' => 'Archive 2023', 'ro' => 'Arhivă 2023'], 'title' => $E['school2023']['title'], 'dates' => $E['school2023']['dates'], 'place' => array_map(fn ($v) => preg_replace(['/^Комплекс\s+/u', '/^Complexul\s+/u', '/\s+Complex\b/u'], '', $v), $E['school2023']['place']), 'url' => route('academy2023'), 'tone' => 'red'];
+            $cards[] = ['badge' => ['ru' => 'Школа 2023', 'en' => 'School 2023', 'ro' => 'Școala 2023'], 'title' => $E['school2023']['title'], 'dates' => $E['school2023']['dates'], 'place' => array_map(fn ($v) => preg_replace(['/^Комплекс\s+/u', '/^Complexul\s+/u', '/\s+Complex\b/u'], '', $v), $E['school2023']['place']), 'url' => route('academy2023'), 'tone' => 'red'];
         @endphp
         @php $evColor = ['orange' => '#ff6c0b', 'purple' => '#72299c', 'green' => '#3d932e', 'yellow' => '#d99b00', 'blue' => '#006de0', 'red' => '#e31e27']; @endphp
         {{-- agenda list: the date leads (largest), then type + title, then place; one row per event --}}
@@ -307,6 +309,29 @@
     </div>
 </section>
 
+{{-- ───────────── TESTIMONIALS ───────────── --}}
+@php $R = \App\Support\PublicUi::content('testimonials'); $reviews = $R['items']; @endphp
+<section class="i-section" id="reviews">
+    <div class="i-container">
+        <div class="mb-9 i-reveal">
+            <h2 class="i-h2">{!! $tm($R['title']) !!}</h2>
+            <div class="i-spectrum-line" style="width:84px;margin:14px 0 14px;"></div>
+            <p class="text-gray-500" style="max-width:56ch">{!! $tm($R['lead']) !!}</p>
+        </div>
+        <div class="rv-grid">
+            @foreach($reviews as $i => $r)
+                <figure class="rv-card i-reveal" style="--c:{{ $tones[$i % count($tones)] }};--d:{{ ($i % 3) * .06 }}s">
+                    <svg class="rv-q" width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path fill="currentColor" d="M0 26V14.4C0 6.3 4.3 1.1 12.2 0l1.1 3.9C8.9 5.1 7.2 8 7 11.5h6.2V26H0zm20.8 0V14.4C20.8 6.3 25.1 1.1 33 0l1 3.9c-4.4 1.2-6 4.1-6.2 7.6H34V26H20.8z"/></svg>
+                    <blockquote>{!! $tm($r['text']) !!}</blockquote>
+                    <figcaption>
+                        <img src="{{ $img($r['img']) }}" alt="{{ $r['name']['en'] }}" loading="lazy" width="56" height="56">
+                        <span><b>{!! $tm($r['name']) !!}</b><small>{!! $tm($r['city']) !!}</small></span>
+                    </figcaption>
+                </figure>
+            @endforeach
+        </div>
+    </div>
+</section>
 {{-- ───────────── PHOTO ───────────── --}}
 <section class="i-section">
     <div class="i-container">
@@ -359,17 +384,15 @@
                 <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .05 }}s" href="{{ $pt['url'] ?: route('partners') }}" @if($pt['url']) target="_blank" rel="noopener" @endif title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></a>
             @endforeach
         </div>
-        <div class="text-center mt-8 i-reveal"><a href="{{ route('partners') }}" class="i-btn i-btn--secondary"><span>{!! $t('Все партнёры', 'All partners', 'Toți partenerii') !!} ({{ count($partners) }})</span>{!! $arrow !!}</a></div>
     </div>
 </section>
 {{-- ───────────── CTA ───────────── --}}
 <section class="i-section" style="padding-top:0">
     <div class="i-container">
-        <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:68px 28px;text-align:center;box-shadow:var(--sh-md);">
-            <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" width="120" height="120" class="i-float" style="width:104px;height:auto;margin:0 auto 14px;">
-            <h2 class="i-h2" style="max-width:700px;margin:0 auto 14px;">{!! $tm($S['hero']['tagline']) !!}</h2>
+        <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:34px 28px 36px;text-align:center;box-shadow:var(--sh-sm);">
+            <h2 class="i-h2 h2-cta" style="margin:0 auto 8px;">{!! $tm($S['hero']['tagline']) !!}</h2>
             {!! $p('Присоединяйтесь к сети INSPIRE в Telegram: мероприятия, эксперты и новые возможности.', 'Join the INSPIRE network in Telegram: events, experts and new opportunities.', 'Alătură-te rețelei INSPIRE în Telegram: evenimente, experți și noi oportunități.', 'i-lead mx-auto mb-8') !!}
-            <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn i-btn--lg">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
+            <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
         </div>
     </div>
 </section>

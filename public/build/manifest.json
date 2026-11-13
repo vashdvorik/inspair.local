@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-BVcuejDH.css",
+    "file": "assets/app-Cvv_50qE.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -15,12 +15,12 @@
     "isEntry": true
   },
   "resources/js/game/main.js": {
-    "file": "assets/main-DxKr1PvD.js",
+    "file": "assets/main-B1ZoL0QD.js",
     "name": "main",
     "src": "resources/js/game/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-v5LIAz-I.css"
+      "assets/main-D-MKljoA.css"
     ]
   }
 }

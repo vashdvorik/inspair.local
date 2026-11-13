@@ -10,7 +10,7 @@
         <h1 class="i-h1 i-in i-in-2" style="margin:16px 0 0">{!! $tm($site['hackathon']['title']) !!}</h1>
     </div>
 </section>
-<section class="i-section" style="padding-top:0">
+<section class="i-section" style="padding-top:48px">
     <div class="i-container">
         <div class="i-card stub i-reveal">
             <div class="ico">{!! $icon('code', 'w-10 h-10') !!}</div>

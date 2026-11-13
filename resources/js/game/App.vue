@@ -1,11 +1,12 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { get } from './api';
+import { get, points } from './api';
 import Avatar from './Avatar.vue';
 import QuestView from './QuestView.vue';
 import NetworkView from './NetworkView.vue';
 import LevelsView from './LevelsView.vue';
 import WaitingView from './WaitingView.vue';
+import RulesView from './RulesView.vue';
 
 const props = defineProps({ api: Object, locked: String });
 
@@ -16,7 +17,7 @@ const levelUp = ref(null);
 const netKey = ref(0);
 const error = ref('');
 
-const lockedLabel = { people: 'Люди', search: 'Поиск', matches: 'Матчи', opportunities: 'Размещение возможностей' };
+const lockedLabel = { people: 'Люди', opportunities: 'Размещение возможностей' };
 const playable = computed(() => state.value && (state.value.launched || state.value.staff));
 
 async function loadState() {
@@ -28,15 +29,8 @@ async function loadState() {
     }
 }
 
-async function refreshIncoming() {
-    const s = await get(props.api.state);
-    state.value.incoming = s.incoming;
-    state.value.access = s.access;
-    me.value = s.me;
-}
-
 function onMe(m) { if (m) me.value = m; }
-function onNetworkChanged() { netKey.value += 1; refreshIncoming(); }
+function onNetworkChanged() { netKey.value += 1; }
 
 onMounted(loadState);
 </script>
@@ -50,37 +44,49 @@ onMounted(loadState);
             <div v-if="locked" class="g-alert">
                 Раздел «{{ lockedLabel[locked] || locked }}» пока закрыт.
                 <span v-if="!state.launched">Он откроется после запуска игры.</span>
-                <span v-else>Он откроется с повышением уровня: проходите квесты и заполняйте профиль.</span>
+                <span v-else>Он откроется с повышением уровня: отвечайте на вопросы и заполняйте профиль.</span>
             </div>
 
-            <!-- шапка игрока -->
-            <div class="g-me g-card">
+            <RulesView :rules="state.rules" />
+
+            <div v-if="!playable" class="g-me g-card">
                 <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="52" />
                 <div class="g-me-main">
                     <b>{{ me.name }}</b>
                     <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }}</div>
-                    <div class="g-xp"><div :style="{ width: me.percent + '%', background: me.level.color }"></div></div>
-                    <div class="g-xpn"><span>{{ me.xp }} очков</span><span v-if="me.next">до «{{ me.next.name }}»: {{ me.next.from - me.xp }}</span><span v-else>максимальный уровень</span></div>
+                    <div class="g-xpn"><span>{{ points(me.xp) }}</span></div>
                 </div>
             </div>
-
             <WaitingView v-if="!playable" :waiting="state.waiting" :checklist="state.checklist" :edit-url="state.edit_url" />
 
             <template v-else>
-                <div class="g-tabs">
-                    <button :class="{ on: tab === 'quest' }" @click="tab = 'quest'">Квест</button>
-                    <button :class="{ on: tab === 'net' }" @click="tab = 'net'">Моя сеть<span v-if="state.incoming.length" class="g-badge">{{ state.incoming.length }}</span></button>
-                    <button :class="{ on: tab === 'lvl' }" @click="tab = 'lvl'">Уровни</button>
+                <!-- 1. я: уровень и очки -->
+                <div class="g-me g-card">
+                    <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="52" />
+                    <div class="g-me-main">
+                        <b>{{ me.name }}</b>
+                        <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }}</div>
+                        <div class="g-xp"><div :style="{ width: me.percent + '%', background: me.level.color }"></div></div>
+                        <div class="g-xpn"><span>{{ points(me.xp) }}</span><span v-if="me.next">до «{{ me.next.name }}»: {{ me.next.from - me.xp }}</span><span v-else>максимальный уровень</span></div>
+                    </div>
                 </div>
 
+                <!-- 2. вопрос -->
                 <div class="g-card">
-                    <QuestView v-if="tab === 'quest'" :api="api" @me="onMe" @levelup="levelUp = $event" @network-changed="onNetworkChanged" />
-                    <NetworkView v-else-if="tab === 'net'" :api="api" :me="me" :incoming="state.incoming" :refresh-key="netKey" @me="onMe" @changed="onNetworkChanged" />
-                    <LevelsView v-else :levels="state.levels" :me="me" :checklist="state.checklist" :edit-url="state.edit_url" />
+                    <QuestView :api="api" @me="onMe" @levelup="levelUp = $event" @network-changed="onNetworkChanged" />
+                </div>
+
+                <!-- 3. кого я уже узнал(а) -->
+                <div class="g-card">
+                    <NetworkView :api="api" :refresh-key="netKey" @me="onMe" />
+                </div>
+
+                <!-- 4. уровни и как набрать очки -->
+                <div class="g-card">
+                    <LevelsView :levels="state.levels" :me="me" :checklist="state.checklist" :edit-url="state.edit_url" />
                 </div>
             </template>
         </template>
-
         <div v-if="levelUp" class="g-modal" @click.self="levelUp = null">
             <div class="g-modal-box">
                 <div class="g-bigdot" :style="{ background: levelUp.color }">{{ levelUp.n }}</div>
@@ -95,7 +101,7 @@ onMounted(loadState);
 </template>
 
 <style>
-.g-wrap { max-width: 640px; font-family: Montserrat, system-ui, sans-serif; color: #10264a; }
+.g-wrap { max-width: 760px; margin: 0 auto; font-family: Montserrat, system-ui, sans-serif; color: #10264a; }
 .g-wrap * { box-sizing: border-box; }
 .g-muted { color: #5b6f8d; font-size: .84rem; line-height: 1.5; margin: 0; }
 .g-card { background: #fff; border: 1px solid #e3ecf8; border-radius: 22px; padding: 20px; margin-bottom: 14px; box-shadow: 0 8px 24px rgba(0, 56, 122, .06); }
@@ -107,6 +113,12 @@ onMounted(loadState);
 .g-err { color: #e31e27; font-size: .84rem; }
 .g-alert { background: #fff5ea; border: 1px solid #ffdcb8; border-radius: 16px; padding: 12px 16px; font-size: .84rem; margin-bottom: 14px; }
 
+.g-rules-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 0; border: 0; background: none; cursor: pointer; font: inherit; text-align: left; }
+.g-rules-toggle { font-size: .76rem; font-weight: 600; color: #5b6f8d; text-decoration: underline; text-underline-offset: 3px; }
+.g-rules-list { list-style: none; counter-reset: r; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+.g-rules-list li { counter-increment: r; position: relative; padding-left: 40px; font-size: .86rem; line-height: 1.6; color: #26405f; }
+.g-rules-list li::before { content: counter(r); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: #eaf3fe; color: #006de0; font-weight: 800; font-size: .8rem; }
+.g-rules-list b { color: #10264a; }
 .g-me { display: flex; gap: 14px; align-items: center; }
 .g-me-main { flex: 1; min-width: 0; }
 .g-me-main > b { display: block; margin-bottom: 2px; }
@@ -116,10 +128,6 @@ onMounted(loadState);
 .g-xp > div { height: 100%; border-radius: 99px; transition: width .6s cubic-bezier(.2, .8, .2, 1), background .4s; }
 .g-xpn { display: flex; justify-content: space-between; font-size: .7rem; color: #5b6f8d; margin-top: 5px; }
 
-.g-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-.g-tabs button { border: 1px solid #e3ecf8; background: #fff; border-radius: 999px; padding: 9px 18px; font: 600 .82rem Montserrat, sans-serif; color: #5b6f8d; cursor: pointer; }
-.g-tabs button.on { background: #006de0; color: #fff; border-color: #006de0; box-shadow: 0 6px 18px rgba(0, 109, 224, .25); }
-.g-badge { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; margin-left: 6px; border-radius: 9px; background: #ff6c0b; color: #fff; font-size: .68rem; }
 
 .g-opt { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; background: #fff; border: 1.5px solid #e3ecf8; border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; cursor: pointer; font: inherit; color: inherit; transition: transform .15s, border-color .2s, box-shadow .2s; }
 .g-opt:hover:not(:disabled) { transform: translateY(-2px); border-color: #019eff; box-shadow: 0 10px 24px rgba(0, 109, 224, .12); }
@@ -139,23 +147,24 @@ onMounted(loadState);
 .g-btn--sm { padding: 8px 14px; font-size: .76rem; }
 .g-btn--ghost { background: #fff; color: #006de0; border: 1.5px solid #cfe3fb; box-shadow: none; }
 .g-row { display: flex; gap: 10px; margin-top: 14px; align-items: center; flex-wrap: wrap; }
-.g-link { background: none; border: 0; color: #5b6f8d; font: inherit; font-size: .74rem; text-decoration: underline; cursor: pointer; margin-left: auto; }
 
-.g-canvas { width: 100%; height: auto; aspect-ratio: 700 / 680; display: block; border-radius: 22px; background: radial-gradient(circle at 50% 45%, #f1f8ff, #fff 70%); border: 1px solid #e3ecf8; margin-top: 10px; cursor: pointer; }
-.g-incoming { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #e3ecf8; font-size: .86rem; }
-.g-incoming .g-btn { margin-left: auto; }
+.g-people { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; margin-top: 12px; }
+.g-pcard { display: flex; align-items: center; gap: 12px; text-align: left; background: #fff; border: 1.5px solid #e3ecf8; border-radius: 18px; padding: 10px 12px; cursor: pointer; font: inherit; color: inherit; transition: border-color .2s, box-shadow .2s; }
+.g-pcard:hover, .g-pcard.on { border-color: #019eff; box-shadow: 0 8px 20px rgba(0, 109, 224, .1); }
+.g-pcard b { display: block; font-size: .86rem; }
+.g-pcard small { display: block; font-size: .72rem; font-weight: 700; margin-top: 2px; }
 .g-person { display: flex; gap: 14px; align-items: center; margin-bottom: 8px; }
 .g-line { font-size: .86rem; margin: 6px 0; }
 .g-facts { margin: 6px 0 6px 18px; font-size: .84rem; }
 .g-lock { font-size: .78rem; color: #5b6f8d; margin: 4px 0; }
 
-.g-ladder { display: grid; gap: 10px; margin-top: 10px; }
-.g-step { display: flex; gap: 12px; align-items: flex-start; padding: 12px; border-radius: 16px; border: 1px solid #e3ecf8; }
+.g-ladder { display: grid; gap: 6px; margin-top: 10px; }
+.g-step { display: flex; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 14px; border: 1px solid #e3ecf8; }
 .g-step.cur { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); }
 .g-step ul { margin: 4px 0 0 16px; font-size: .78rem; color: #5b6f8d; }
-.g-dot { width: 34px; height: 34px; border-radius: 50%; background: var(--c); flex: none; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: .8rem; }
+.g-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--c); flex: none; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: .8rem; }
 .g-step.locked .g-dot { opacity: .4; }
-.g-check { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #e3ecf8; font-size: .86rem; }
+.g-check { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #e3ecf8; font-size: .86rem; }
 .g-check b { margin-left: auto; color: #3d932e; font-size: .8rem; }
 .g-tick { width: 20px; height: 20px; border-radius: 6px; border: 2px solid #cfdcef; display: grid; place-items: center; color: #fff; font-size: .75rem; flex: none; }
 .g-check.done .g-tick { background: #3d932e; border-color: #3d932e; }

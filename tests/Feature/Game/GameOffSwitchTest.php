@@ -8,7 +8,6 @@ use App\Models\BotUser;
 use App\Models\Connection;
 use App\Models\ProfileFact;
 use App\Models\User;
-use App\Services\GameReminders;
 use App\Services\GameService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
@@ -65,23 +64,21 @@ class GameOffSwitchTest extends TestCase
             ->assertSee('Закрыть мои контакты'); // приватность остаётся
     }
 
-    public function test_no_points_and_no_reminders_when_off(): void
+    public function test_no_points_when_off(): void
     {
         Http::fake();
         $u = $this->player(['avatar_path' => 'a.jpg']);
         app(GameService::class)->syncProfileRewards($u);
         $this->assertSame(0, $u->fresh()->xp);
-        $this->assertSame(0, app(GameReminders::class)->run());
         Http::assertNothingSent();
     }
 
     public function test_saving_profile_keeps_game_flags_when_off(): void
     {
-        $u = $this->player(['quests_opt_out' => true, 'notifications_muted' => true]);
+        $u = $this->player(['quests_opt_out' => true]);
         $this->withSession($this->sess($u))->post(route('account.profile.update'), ['full_name' => 'Мария Петреску'])->assertRedirect();
         $u->refresh();
         $this->assertTrue($u->quests_opt_out);
-        $this->assertTrue($u->notifications_muted);
         $this->assertSame(0, $u->facts()->count());
     }
 

@@ -2,7 +2,7 @@
 @section('title', 'База знаний')
 
 @section('content')
-<div class="max-w-2xl">
+<div class="cab-page">
 
     <div class="mb-8">
         <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">База знаний</h1>

@@ -11,6 +11,8 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
         // режим игры хранится в файле: каждый тест начинает с выключенной игры
         @unlink(\App\Services\GameService::modeFile());
+        // AI-матчи, AI-поиск и база знаний выключены в config/features.php; тесты самих разделов включают их (см. CabinetFeaturesTest)
+        config(['features.cabinet_matches' => true, 'features.cabinet_search' => true, 'features.cabinet_knowledge' => true]);
     }
 
     //

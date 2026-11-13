@@ -13,11 +13,8 @@
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
-    <style>
-        .login-art { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-        .login-card { background: #fff; border: 1px solid var(--line); border-radius: var(--r-2xl); box-shadow: var(--sh-lg); padding: 34px 30px; }
-        .step-dot { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: .78rem; font-weight: 800; color: #fff; background: var(--grad-primary); box-shadow: var(--sh-primary); }
-    </style>
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/cabinet.css') }}">
+    <style>.login-art { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }</style>
 </head>
 <body class="i-body i-airy min-h-screen flex items-center justify-center px-4 py-10">
 
@@ -38,52 +35,42 @@
     </div>
 
     {{-- TMA: not a member message --}}
-    <div id="tma-not-member" style="display:none" class="w-full max-w-sm text-center">
-        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="mx-auto mb-6" style="height:84px;width:auto">
-        <div class="login-card">
-            <p class="font-bold text-ink mb-1">Доступ пока закрыт</p>
-            <p class="text-sm text-gray-500">Ваша заявка ещё не одобрена или не подана. Напишите боту /start чтобы подать заявку.</p>
+    <div id="tma-not-member" style="display:none" class="login-shell">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="173" height="88">
+        <div class="login-card" style="text-align:center">
+            <h1>Доступ пока закрыт</h1>
+            <p class="login-lead" style="margin-bottom:0">Ваша заявка ещё не одобрена или не подана. Напишите боту /start, чтобы подать заявку.</p>
         </div>
     </div>
-
     {{-- Normal login form (hidden when inside Telegram) --}}
-    <div id="login-form-wrapper" class="w-full max-w-sm i-in">
-        <div class="flex flex-col items-center mb-7 text-center">
-            <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="190" height="97" style="height:96px;width:auto">
-            <p class="i-eyebrow mt-3" style="color:var(--muted)">Личный кабинет участника</p>
-        </div>
+    <div id="login-form-wrapper" class="login-shell i-in">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="173" height="88">
+        <p class="i-eyebrow login-tag" style="color:var(--muted)">Личный кабинет участника</p>
 
         @if(session('error'))
-            <div class="i-alert i-alert--danger mb-4" role="alert">
+            <div class="i-alert i-alert--danger mb-5" role="alert">
                 <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 {{ session('error') }}
             </div>
         @endif
 
-        <div class="login-card text-center">
-            <h1 class="i-h3 mb-5" style="font-size:1.35rem">Войти через Telegram</h1>
+        <div class="login-card">
+            <h1>Войти через Telegram</h1>
+            <p class="login-lead">Пароль не нужен: вход подтверждает наш бот.</p>
 
-            <div class="text-left grid gap-3.5 mb-7">
-                <div class="flex items-center gap-3">
-                    <span class="step-dot">1</span>
-                    <p class="text-sm text-gray-600 font-medium">Откройте бота по кнопке ниже</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <span class="step-dot" style="background:linear-gradient(135deg,var(--orange),var(--yellow));box-shadow:0 8px 20px rgba(255,108,11,.25)">2</span>
-                    <p class="text-sm text-gray-600 font-medium">Перейдите по ссылке из сообщения бота</p>
-                </div>
-            </div>
+            <ol class="login-steps">
+                <li><span class="step-dot">1</span><span>Откройте бота по кнопке ниже и нажмите «Старт»</span></li>
+                <li><span class="step-dot step-dot--2">2</span><span>Перейдите по ссылке из сообщения бота, и кабинет откроется</span></li>
+            </ol>
 
             <a href="https://t.me/Inspiremoldova_bot?start=login" id="tg-login-btn" target="_blank" rel="noopener" class="i-btn i-btn--block">
                 <svg class="w-[18px] h-[18px]" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                Открыть @Inspiremoldova_bot
+                <span>Открыть @Inspiremoldova_bot</span>
             </a>
-            <p class="mt-4 text-xs text-gray-500">Доступ только для одобренных участников</p>
+            <p class="login-note">Доступ только для одобренных участников</p>
         </div>
 
-        <p class="text-center mt-6 text-sm">
-            <a href="/" class="font-semibold">← Вернуться на сайт</a>
-        </p>
+        <p class="login-back"><a href="/"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>Вернуться на сайт</a></p>
     </div>{{-- /login-form-wrapper --}}
 
     <script src="{{ \App\Support\PublicUi::versioned('design/inspire.js') }}"></script>

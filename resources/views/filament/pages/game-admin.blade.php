@@ -22,12 +22,12 @@
             </button>
         @endforeach
     </div>
-    <p class="mt-4 text-xs text-gray-400">Данные игры (очки, факты, нити, квесты) при выключении не удаляются: они просто никому не видны и вернутся при повторном включении.</p>
+    <p class="mt-4 text-xs text-gray-400">Данные игры (очки, факты, знакомства, квесты) при выключении не удаляются: они просто никому не видны и вернутся при повторном включении.</p>
 </div>
 
 @if($mode !== 'off')
-<div class="grid grid-cols-2 gap-4 lg:grid-cols-5">
-    @foreach([['Активных квестов', $activeQuests], ['Ответов', $attempts], ['Точность', $accuracy . '%'], ['Нитей', $connections], ['Взаимных', $mutual]] as [$label, $value])
+<div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
+    @foreach([['Активных квестов', $activeQuests], ['Ответов', $attempts], ['Точность', $accuracy . '%'], ['Знакомств', $connections]] as [$label, $value])
         <div class="rounded-xl border border-gray-200 bg-white p-4">
             <p class="text-2xl font-bold text-gray-800">{{ $value }}</p>
             <p class="text-xs text-gray-500">{{ $label }}</p>
@@ -46,14 +46,14 @@
 
 <div class="rounded-xl border border-gray-200 bg-white p-5">
     <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
-        <p class="font-semibold text-gray-800">Квесты и жалобы</p>
+        <p class="font-semibold text-gray-800">Последние квесты</p>
         <button type="button" wire:click="generate" class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Создать квесты сейчас</button>
     </div>
-    @forelse($reported as $q)
+    @forelse($recentQuests as $q)
         <div class="flex flex-wrap items-start justify-between gap-3 border-t border-gray-100 py-3">
             <div class="min-w-0">
                 <p class="text-sm font-medium text-gray-800">{{ $q->question['ru'] ?? '' }}</p>
-                <p class="text-xs text-gray-500">Ответ: {{ $q->subject?->full_name }} · жалоб: {{ $q->reports_count }} · статус: {{ $q->status }}</p>
+                <p class="text-xs text-gray-500">Ответ: {{ $q->subject?->full_name }} · статус: {{ $q->status }}</p>
             </div>
             <div class="flex gap-2">
                 @if($q->status !== 'active')
@@ -65,7 +65,7 @@
             </div>
         </div>
     @empty
-        <p class="text-sm text-gray-500">Жалоб пока нет.</p>
+        <p class="text-sm text-gray-500">Квестов пока нет.</p>
     @endforelse
 </div>
 @endif

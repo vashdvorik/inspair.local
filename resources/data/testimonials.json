@@ -1,0 +1,205 @@
+{
+    "_note": "ЧЕРНОВИКИ. Тексты написаны как заготовка и не являются цитатами. Перед публикацией каждый участник должен прочитать свой отзыв, поправить и подтвердить его, а также согласиться на публикацию фото и имени.",
+    "title": {
+        "ru": "Отзывы участников",
+        "en": "What participants say",
+        "ro": "Ce spun participanții"
+    },
+    "lead": {
+        "ru": "Выпускники Академии INSPIRE о том, чему они научились и кого встретили.",
+        "en": "Graduates of INSPIRE Academy on what they learned and who they met.",
+        "ro": "Absolvenții Academiei INSPIRE despre ce au învățat și pe cine au cunoscut."
+    },
+    "items": [
+        {
+            "key": "adriana",
+            "name": {
+                "ru": "Адриана",
+                "en": "Adriana",
+                "ro": "Adriana"
+            },
+            "city": {
+                "ru": "Кишинёв",
+                "en": "Chișinău",
+                "ro": "Chișinău"
+            },
+            "img": "reviews/adriana.webp",
+            "text": {
+                "ru": "Академия научила меня смотреть на мир шире и не бояться сложных тем. Я познакомилась с ребятами из разных городов и поняла: перемены начинаются с диалога молодых.",
+                "en": "The Academy taught me to look at the world more broadly and not to fear difficult topics. I met people from different cities and understood that change begins with dialogue between young people.",
+                "ro": "Academia m-a învățat să privesc lumea mai larg și să nu mă tem de subiectele dificile. Am cunoscut tineri din orașe diferite și am înțeles că schimbarea începe cu dialogul dintre tineri."
+            }
+        },
+        {
+            "key": "vlad",
+            "name": {
+                "ru": "Влад",
+                "en": "Vlad",
+                "ro": "Vlad"
+            },
+            "city": {
+                "ru": "Кишинёв",
+                "en": "Chișinău",
+                "ro": "Chișinău"
+            },
+            "img": "reviews/vlad.webp",
+            "text": {
+                "ru": "Здесь я получил то, чего не дают обычные лекции: навыки командной работы и публичных выступлений. Ребята из Комрата и Тирасполя стали друзьями, и мы до сих пор на связи.",
+                "en": "I gained what ordinary lectures do not give: teamwork and public speaking skills. Peers from Comrat and Tiraspol became friends, and we are still in touch.",
+                "ro": "Am primit ce nu oferă cursurile obișnuite: abilități de lucru în echipă și de vorbire în public. Tinerii din Comrat și Tiraspol mi-au devenit prieteni și suntem în continuare în contact."
+            }
+        },
+        {
+            "key": "anastasia",
+            "name": {
+                "ru": "Анастасия",
+                "en": "Anastasia",
+                "ro": "Anastasia"
+            },
+            "city": {
+                "ru": "Тирасполь",
+                "en": "Tiraspol",
+                "ro": "Tiraspol"
+            },
+            "img": "reviews/anastasia.webp",
+            "text": {
+                "ru": "Школа помогла мне выйти за рамки привычного круга общения. Я поняла, что лидерство — это умение слышать других, и стала смелее предлагать свои идеи.",
+                "en": "The school helped me step outside my usual circle. I understood that leadership is the ability to hear others, and I became braver in sharing my ideas.",
+                "ro": "Școala m-a ajutat să ies din cercul meu obișnuit. Am înțeles că leadershipul înseamnă să-i auzi pe ceilalți și am devenit mai curajoasă în a-mi propune ideile."
+            }
+        },
+        {
+            "key": "daniil",
+            "name": {
+                "ru": "Даниил",
+                "en": "Daniil",
+                "ro": "Daniil"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/daniil.webp",
+            "text": {
+                "ru": "INSPIRE показала, что у молодёжи есть голос, если говорить уверенно и по делу. Я нашёл единомышленников из разных университетов Молдовы.",
+                "en": "INSPIRE showed me that young people have a voice if they speak with confidence and to the point. I found like-minded people from different universities in Moldova.",
+                "ro": "INSPIRE mi-a arătat că tinerii au o voce dacă vorbesc cu încredere și la obiect. Am găsit oameni cu aceleași idei din universități diferite din Moldova."
+            }
+        },
+        {
+            "key": "elena",
+            "name": {
+                "ru": "Елена",
+                "en": "Elena",
+                "ro": "Elena"
+            },
+            "city": {
+                "ru": "Тирасполь",
+                "en": "Tiraspol",
+                "ro": "Tiraspol"
+            },
+            "img": "reviews/elena.webp",
+            "text": {
+                "ru": "Школа подарила мне не только знания, но и друзей по всей Молдове. Когда молодые люди встречаются и слушают друг друга, исчезают многие барьеры.",
+                "en": "The school gave me not only knowledge but also friends all over Moldova. When young people meet and listen to each other, many barriers disappear.",
+                "ro": "Școala mi-a dăruit nu doar cunoștințe, ci și prieteni din toată Moldova. Când tinerii se întâlnesc și se ascultă, multe bariere dispar."
+            }
+        },
+        {
+            "key": "dima",
+            "name": {
+                "ru": "Дима",
+                "en": "Dima",
+                "ro": "Dima"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/dima.webp",
+            "text": {
+                "ru": "INSPIRE — место, где студенты из разных городов наконец говорят друг с другом на одном языке. Я узнал много о лидерстве и миростроительстве и поверил, что вместе действовать проще.",
+                "en": "INSPIRE is a place where students from different cities finally speak to each other in one language. I learned a lot about leadership and peacebuilding and believed that it is easier to act together.",
+                "ro": "INSPIRE este locul unde studenți din orașe diferite vorbesc, în sfârșit, pe aceeași limbă. Am aflat multe despre leadership și construirea păcii și am crezut că împreună este mai ușor să acționăm."
+            }
+        },
+        {
+            "key": "dilara",
+            "name": {
+                "ru": "Дилара",
+                "en": "Dilara",
+                "ro": "Dilara"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/dilara.webp",
+            "text": {
+                "ru": "Благодаря Академии я познакомилась с замечательными людьми и поняла, как важно молодёжное общение. Теперь я увереннее выступаю и не стесняюсь своих идей.",
+                "en": "Thanks to the Academy I met wonderful people and understood how important communication between young people is. Now I speak more confidently and am not shy about my ideas.",
+                "ro": "Datorită Academiei am cunoscut oameni minunați și am înțeles cât de important este dialogul dintre tineri. Acum vorbesc mai încrezător și nu mă mai sfiesc de ideile mele."
+            }
+        },
+        {
+            "key": "danil",
+            "name": {
+                "ru": "Данил",
+                "en": "Danil",
+                "ro": "Danil"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/danil.webp",
+            "text": {
+                "ru": "Эксперты объяснили, как технологии помогают сближать людей и строить доверие. В команде я научился брать ответственность и слушать других.",
+                "en": "The experts explained how technology helps bring people closer and build trust. In a team I learned to take responsibility and listen to others.",
+                "ro": "Experții ne-au explicat cum tehnologiile ajută oamenii să se apropie și să construiască încredere. În echipă am învățat să-mi asum responsabilitatea și să-i ascult pe ceilalți."
+            }
+        },
+        {
+            "key": "lena",
+            "name": {
+                "ru": "Лена",
+                "en": "Lena",
+                "ro": "Lena"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/lena.webp",
+            "text": {
+                "ru": "На INSPIRE я впервые почувствовала себя частью большой сети молодых лидеров. Я научилась превращать идеи в проекты и поняла, что общение молодёжи делает общество сильнее.",
+                "en": "At INSPIRE I felt for the first time part of a large network of young leaders. I learned to turn ideas into projects and understood that communication among young people makes society stronger.",
+                "ro": "La INSPIRE m-am simțit pentru prima dată parte dintr-o rețea mare de tineri lideri. Am învățat să transform ideile în proiecte și am înțeles că dialogul dintre tineri face societatea mai puternică."
+            }
+        },
+        {
+            "key": "daniil2",
+            "name": {
+                "ru": "Даниил",
+                "en": "Daniil",
+                "ro": "Daniil"
+            },
+            "city": {
+                "ru": "Комрат",
+                "en": "Comrat",
+                "ro": "Comrat"
+            },
+            "img": "reviews/daniil2.webp",
+            "text": {
+                "ru": "Мне было важно увидеть, что молодые люди из разных городов могут договариваться и работать вместе. Теперь я знаю: общение между молодёжью — основа доверия в обществе.",
+                "en": "It was important for me to see that young people from different cities can agree and work together. Now I know that communication among young people is the foundation of trust in society.",
+                "ro": "Pentru mine a fost important să văd că tinerii din orașe diferite pot ajunge la un acord și pot lucra împreună. Acum știu că dialogul dintre tineri este temelia încrederii în societate."
+            }
+        }
+    ]
+}

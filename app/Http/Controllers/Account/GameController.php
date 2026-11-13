@@ -50,17 +50,17 @@ class GameController extends Controller
             'checklist'  => $this->checklist($user),
             'waiting'    => ['ready' => $this->game->readyParticipants(), 'target' => (int) config('game.launch_target')],
             'edit_url'   => route('account.profile.edit'),
-            'links'      => [
-                'people'  => route('account.people'),
-                'search'  => route('account.search'),
-                'matches' => route('account.matches'),
+            'rules'      => [
+                'max_facts'           => (int) config('game.max_facts'),
+                'fact'                => (int) config('game.xp.fact'),
+                'correct'             => (int) config('game.xp.quest_correct'),
+                'wrong'               => (int) config('game.xp.quest_wrong'),
+                'pause'               => (int) config('game.miss_cooldown'),
+                'people_level'        => $this->game->levelInfo((int) config('game.access.people'))['name'],
+                'opportunities_level' => $this->game->levelInfo((int) config('game.access.opportunities'))['name'],
             ],
-            'access'     => [
-                'people'  => $this->game->canAccess($user, 'people'),
-                'search'  => $this->game->canAccess($user, 'search'),
-                'matches' => $this->game->canAccess($user, 'matches'),
-            ],
-            'incoming'   => $this->incoming($user),
+            'links'      => ['people' => route('account.people')],
+            'access'     => ['people' => $this->game->canAccess($user, 'people')],
         ]);
     }
 
@@ -86,8 +86,8 @@ class GameController extends Controller
     {
         $map = [
             1 => ['Аватар и имя участников из вашей сети'],
-            2 => ['Раздел «Люди»', 'Регион участников'],
-            3 => ['Разделы «Поиск» и «Матчи»', 'Блок «о себе» и факты участников'],
+            2 => ['Раздел «Люди»'],
+            3 => ['Блок «о себе» и факты участников'],
             4 => ['Размещение возможностей', 'Ожидания участников'],
             5 => ['Полные профили всех участников'],
         ];
@@ -105,22 +105,8 @@ class GameController extends Controller
             ['key' => 'avatar',      'label' => 'Фото профиля',               'points' => $xp['profile_avatar'],      'done' => (bool) $user->avatar_path],
             ['key' => 'description', 'label' => 'Расскажи о себе',            'points' => $xp['profile_description'], 'done' => mb_strlen(trim((string) $user->description)) >= 20],
             ['key' => 'expectation', 'label' => 'Чего ждёшь от сообщества',   'points' => $xp['profile_expectation'], 'done' => mb_strlen(trim((string) $user->expectation)) >= 20],
-            ['key' => 'region',      'label' => 'Регион',                     'points' => $xp['profile_region'],      'done' => (bool) $user->region],
             ['key' => 'facts',       'label' => "Факты о себе ({$facts} из 3 для старта)", 'points' => $xp['fact'] * 3, 'done' => $facts >= 3],
         ];
-    }
-
-    /** Кто тебя угадал, но ты его ещё не добавил(а). */
-    private function incoming(BotUser $user): array
-    {
-        $mine = Connection::where('user_id', $user->id)->pluck('target_id')->all();
-
-        return Connection::with('user')
-            ->where('target_id', $user->id)
-            ->when($mine, fn ($q) => $q->whereNotIn('user_id', $mine))
-            ->latest()->limit(10)->get()
-            ->map(fn (Connection $c) => $this->person($c->user, $user, false))
-            ->values()->all();
     }
 
     // ───────────────────────── квесты ─────────────────────────
@@ -185,15 +171,6 @@ class GameController extends Controller
         ]);
     }
 
-    public function report(Request $request, Quest $quest): JsonResponse
-    {
-        /** @var BotUser $user */
-        $user = view()->shared('accountUser');
-        $this->quests->report($user, $quest, (string) $request->input('reason', ''));
-
-        return response()->json(['ok' => true]);
-    }
-
     // ───────────────────────── сеть ─────────────────────────
 
     public function network(): JsonResponse
@@ -201,32 +178,13 @@ class GameController extends Controller
         /** @var BotUser $user */
         $user = view()->shared('accountUser');
 
-        $conns = Connection::where('user_id', $user->id)->orWhere(function ($q) use ($user) {
-            $q->where('target_id', $user->id)->where('mutual', true);
-        })->get();
-
-        $ids = $conns->map(fn (Connection $c) => $c->user_id === $user->id ? $c->target_id : $c->user_id)->unique()->values();
-        $people = BotUser::approved()->with('facts')->whereIn('id', $ids)->get();
-
-        $mutualIds = $conns->where('mutual', true)->map(fn (Connection $c) => $c->user_id === $user->id ? $c->target_id : $c->user_id)->all();
+        $ids = Connection::where('user_id', $user->id)->latest()->pluck('target_id');
+        $people = BotUser::approved()->with('facts')->whereIn('id', $ids)->get()->sortBy(fn (BotUser $p) => $ids->search($p->id))->values();
 
         return response()->json([
-            'nodes' => $people->map(fn (BotUser $p) => $this->person($p, $user, true) + ['mutual' => in_array($p->id, $mutualIds, true)])->values(),
+            'nodes' => $people->map(fn (BotUser $p) => $this->person($p, $user, true))->values(),
             'me'    => $this->me($user),
         ]);
-    }
-
-    public function reciprocate(BotUser $botUser): JsonResponse
-    {
-        /** @var BotUser $user */
-        $user = view()->shared('accountUser');
-
-        if (! $this->quests->reciprocate($user, $botUser)) {
-            return response()->json(['message' => 'Не удалось.'], 422);
-        }
-        $user->refresh();
-
-        return response()->json(['ok' => true, 'me' => $this->me($user)]);
     }
 
     // ───────────────────────── общее ─────────────────────────
@@ -250,12 +208,10 @@ class GameController extends Controller
             return $out;
         }
 
-        $out['region']      = $this->game->canSee($viewer, $p, 'region') ? $p->region : null;
         $out['description'] = $this->game->canSee($viewer, $p, 'description') ? $p->description : null;
         $out['facts']       = $this->game->canSee($viewer, $p, 'facts') ? $p->facts->pluck('body')->all() : [];
         $out['expectation'] = $this->game->canSee($viewer, $p, 'expectation') ? $p->expectation : null;
         $out['locks']       = array_values(array_filter([
-            $this->game->canSee($viewer, $p, 'region') ? null : ['field' => 'region', 'level' => $this->game->levelInfo((int) config('game.visibility.region'))['name']],
             $this->game->canSee($viewer, $p, 'description') ? null : ['field' => 'description', 'level' => $this->game->levelInfo((int) config('game.visibility.description'))['name']],
             $this->game->canSee($viewer, $p, 'expectation') ? null : ['field' => 'expectation', 'level' => $this->game->levelInfo((int) config('game.visibility.expectation'))['name']],
         ]));

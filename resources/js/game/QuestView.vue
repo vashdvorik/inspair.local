@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { get, post } from './api';
+import { get, post, points } from './api';
 import Avatar from './Avatar.vue';
 
 const props = defineProps({ api: Object });
@@ -12,7 +12,6 @@ const result = ref(null);
 const chosen = ref(null);
 const busy = ref(false);
 const wait = ref(0);
-const reported = ref(false);
 const error = ref('');
 let timer = null;
 
@@ -33,7 +32,6 @@ async function load() {
     state.value = 'loading';
     result.value = null;
     chosen.value = null;
-    reported.value = false;
     error.value = '';
     try {
         const q = await get(props.api.quest);
@@ -60,7 +58,7 @@ async function pick(option) {
         const r = await post(`${props.api.quest}/${quest.value.id}/answer`, { chosen: option.id });
         result.value = r;
         emit('me', r.me);
-        if (r.connected || r.mutual) emit('network-changed');
+        if (r.connected) emit('network-changed');
         if (r.level_up_info) emit('levelup', r.level_up_info);
         if (r.wait > 0) startCountdown(r.wait);
     } catch (e) {
@@ -76,12 +74,6 @@ async function pick(option) {
     }
 }
 
-async function report() {
-    if (reported.value) return;
-    reported.value = true;
-    try { await post(`${props.api.quest}/${quest.value.id}/report`, {}); } catch (e) { /* не критично */ }
-}
-
 onMounted(load);
 onBeforeUnmount(() => clearInterval(timer));
 </script>
@@ -93,7 +85,7 @@ onBeforeUnmount(() => clearInterval(timer));
         <div v-else-if="state === 'empty'" class="g-card g-center">
             <div class="g-big-emoji">🌱</div>
             <h3>Пока квестов нет</h3>
-            <p class="g-muted">Новые загадки появляются, когда участники рассказывают о себе. Загляните позже: бот напомнит, когда появится новый квест.</p>
+            <p class="g-muted">Новые вопросы появляются, когда участники рассказывают о себе. Загляните позже.</p>
         </div>
 
         <div v-else-if="state === 'wait'" class="g-card g-center">
@@ -107,7 +99,7 @@ onBeforeUnmount(() => clearInterval(timer));
         </div>
 
         <div v-else>
-            <div class="g-eyebrow">Квест</div>
+            <div class="g-eyebrow">Угадай, кто это</div>
             <h2 class="g-q">{{ quest.question }}</h2>
             <p class="g-muted g-src">Вопрос составлен ИИ по рассказам участников · выберите одного из троих</p>
 
@@ -119,8 +111,8 @@ onBeforeUnmount(() => clearInterval(timer));
             </button>
 
             <div v-if="result" class="g-res" :class="result.correct ? 'good' : 'miss'">
-                <b v-if="result.correct">Верно! {{ result.subject?.name }} теперь в вашей сети · +{{ result.gained }} очков<span v-if="result.mutual"> · Взаимная нить!</span></b>
-                <b v-else>Не угадали. Это {{ result.subject?.name }} · +{{ result.gained }}</b>
+                <b v-if="result.correct">Верно! {{ result.subject?.name }} · +{{ points(result.gained) }}</b>
+                <b v-else>Не угадали. Это {{ result.subject?.name }} · +{{ points(result.gained) }}</b>
                 <span>{{ result.explanation }}</span>
             </div>
             <p v-if="error && !result" class="g-err">{{ error }}</p>
@@ -129,7 +121,6 @@ onBeforeUnmount(() => clearInterval(timer));
                 <button v-if="result" class="g-btn" :disabled="wait > 0" @click="load">
                     {{ wait > 0 ? `Следующий вопрос через ${wait} с` : 'Следующий вопрос' }}
                 </button>
-                <button class="g-link" :disabled="reported" @click="report">{{ reported ? 'жалоба отправлена' : 'пожаловаться на вопрос' }}</button>
             </div>
         </div>
     </div>

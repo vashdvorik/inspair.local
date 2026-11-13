@@ -1,0 +1,86 @@
+/* ───────── Participants' cabinet + login: one calm, light system on top of inspire.css ─────────
+   Page roots use .cab-page; everything below is scoped to it, so the Vue game island and the public site are untouched. */
+
+/* page shell: centred column, the same rhythm on every screen */
+.cab-main { padding: 36px 24px 64px; }
+.cab-page { width: 100%; max-width: 860px; margin: 0 auto; animation: cab-in .45s var(--ease) both; }
+.cab-page--wide { max-width: 1120px; }
+@keyframes cab-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (min-width: 1024px) { .cab-main { padding: 44px 48px 72px; } }
+@media (prefers-reduced-motion: reduce) { .cab-page { animation: none; } }
+
+/* page heading: title, quiet subtitle, thin spectrum accent */
+.cab-page h1 { font-size: clamp(1.55rem, 1.2rem + 1vw, 2rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; color: var(--ink); }
+.cab-page h1 + p { margin-top: 8px; font-size: .95rem; line-height: 1.55; color: var(--muted); max-width: 62ch; }
+.cab-page > div:first-child { margin-bottom: 28px; }
+
+/* section titles inside cards: small blue-grey caps, with room under them */
+.cab-page h2.uppercase, .cab-page h2.tracking-widest { margin-bottom: 18px; font-size: .72rem; font-weight: 700; letter-spacing: .14em; color: var(--blue-700); }
+.cab-page h2.text-base { font-size: 1.05rem; font-weight: 700; }
+
+/* cards */
+.cab-page .rounded-2xl.bg-white, .cab-page .rounded-2xl.bg-gray-50 { border-color: var(--line); border-radius: 22px; box-shadow: var(--sh-xs); }
+.cab-page .rounded-2xl.bg-white.p-6 { padding: 26px 28px; }
+.cab-page a.rounded-2xl:hover, .cab-page div.rounded-2xl.hover\:shadow-md:hover { border-color: var(--blue-200); box-shadow: var(--sh-md); }
+
+/* text: a little larger and darker than the hairline greys the first version used */
+.cab-page .text-xs { font-size: .8rem; line-height: 1.55; }
+.cab-page .text-sm { font-size: .92rem; }
+.cab-page .text-\[10px\] { font-size: .7rem; letter-spacing: .12em; }
+.cab-page .text-gray-300 { color: #8497b1; }
+.cab-page .text-gray-400 { color: #6a7d99; }
+.cab-page .text-gray-500 { color: #52688a; }
+.cab-page .text-gray-600 { color: #3f5576; }
+
+/* buttons: the public site's pill shape */
+.cab-page a.inline-flex.rounded-xl, .cab-page button.inline-flex.rounded-xl, .cab-page button.rounded-xl, .cab-page a.shrink-0.rounded-lg { border-radius: 999px; }
+.cab-page a.inline-flex.rounded-xl, .cab-page button.inline-flex.rounded-xl { min-height: 42px; padding-left: 22px; padding-right: 22px; }
+.cab-page a.inline-flex.border.bg-white, .cab-page button.inline-flex.border.bg-white { border-color: var(--blue-200); color: var(--blue-700); box-shadow: none; }
+.cab-page a.inline-flex.border.bg-white:hover, .cab-page button.inline-flex.border.bg-white:hover { border-color: var(--blue-500); background: var(--blue-50); }
+
+/* forms */
+.cab-page label.block { margin-bottom: 8px; font-size: .88rem; font-weight: 600; color: var(--ink); }
+.cab-page input[type="text"], .cab-page input[type="search"], .cab-page input[type="url"], .cab-page input[type="date"], .cab-page input[type="datetime-local"],
+.cab-page input:not([type]), .cab-page textarea, .cab-page select {
+  width: 100%; padding: 13px 16px; border: 1.5px solid var(--line-strong); border-radius: 16px; background: #fff; color: var(--ink);
+  font: inherit; font-size: .92rem; line-height: 1.5; transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.cab-page textarea { resize: vertical; min-height: 96px; }
+.cab-page input::placeholder, .cab-page textarea::placeholder { color: #8fa0b8; }
+.cab-page input:hover, .cab-page textarea:hover, .cab-page select:hover { border-color: var(--blue-300); }
+.cab-page input:focus, .cab-page textarea:focus, .cab-page select:focus { outline: none; border-color: var(--blue-500) !important; box-shadow: var(--ring); background: #fff; }
+.cab-page input[type="checkbox"] { width: 18px; height: 18px; flex: none; margin-top: 3px; accent-color: var(--blue-600); border-radius: 5px; cursor: pointer; }
+.cab-page .space-y-5 > * + * { margin-top: 22px; }
+.cab-page form > .space-y-5 > * + * { margin-top: 20px; }
+
+/* inline notices */
+.cab-page .border-emerald-200, .cab-page .border-red-100 { border-radius: 18px; }
+
+/* the cabinet home: a grid of tiles */
+.cab-tiles { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.cab-tile { position: relative; display: flex; flex-direction: column; gap: 18px; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--sh-xs); text-decoration: none; transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease), border-color var(--t-base); }
+.cab-tile:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: var(--blue-200); }
+.cab-tile__ico { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 15px; background: var(--bg-tint); color: var(--blue-600); }
+.cab-tile__ico--yellow { background: var(--yellow-100); color: #b07d00; } .cab-tile__ico--orange { background: var(--orange-100); color: #c4500a; }
+.cab-tile__ico--green { background: var(--green-100); color: var(--green); } .cab-tile__ico--purple { background: var(--purple-100); color: var(--purple); } .cab-tile__ico--red { background: var(--red-100); color: var(--red); }
+.cab-tile b { display: block; font-size: 1rem; color: var(--ink); }
+.cab-tile small { display: block; margin-top: 4px; font-size: .84rem; line-height: 1.5; color: var(--muted); }
+.cab-tile__go { position: absolute; right: 20px; top: 22px; color: var(--blue-300); transition: transform var(--t-base) var(--ease), color var(--t-base); }
+.cab-tile:hover .cab-tile__go { color: var(--blue-600); transform: translateX(3px); }
+
+/* ───────── login ───────── */
+.login-shell { width: 100%; max-width: 440px; }
+.login-card { background: #fff; border: 1px solid var(--line); border-radius: 30px; box-shadow: var(--sh-lg); padding: 40px 38px 34px; }
+.login-card h1 { margin: 0 0 6px; font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; text-align: center; color: var(--ink); }
+.login-lead { margin: 0 0 28px; text-align: center; font-size: .92rem; line-height: 1.55; color: var(--muted); }
+.login-steps { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 18px; }
+.login-steps li { display: flex; align-items: flex-start; gap: 14px; font-size: .92rem; line-height: 1.5; color: var(--text); }
+.step-dot { flex: none; width: 30px; height: 30px; margin-top: -2px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 800; color: #fff; background: var(--grad-primary); box-shadow: var(--sh-primary); }
+.step-dot--2 { background: linear-gradient(135deg, var(--orange), var(--yellow)); box-shadow: 0 8px 20px rgba(255,108,11,.25); }
+.login-note { margin: 18px 0 0; text-align: center; font-size: .8rem; color: var(--subtle); }
+.login-back { margin: 26px 0 0; text-align: center; font-size: .9rem; }
+.login-back a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: none; color: var(--muted); }
+.login-back a:hover { color: var(--blue-700); }
+.login-logo { display: block; margin: 0 auto 10px; height: 88px; width: auto; }
+.login-tag { margin: 0 0 26px; text-align: center; }
+@media (max-width: 480px) { .login-card { padding: 32px 24px 28px; border-radius: 26px; } }

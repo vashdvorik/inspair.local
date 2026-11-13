@@ -19,8 +19,7 @@
 <section class="page-head i-airy">
     <div class="i-nodes" aria-hidden="true">
         <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
-            <line x1="70" y1="400" x2="210" y2="270"/><line x1="210" y1="270" x2="360" y2="350"/><line x1="860" y1="90" x2="1000" y2="190"/><line x1="1000" y1="190" x2="1120" y2="100"/>
-            <circle cx="70" cy="400" r="9" fill="#006de0"/><circle cx="210" cy="270" r="11" fill="#fdba07"/><circle cx="360" cy="350" r="8" fill="#72299c"/>
+            <line x1="860" y1="90" x2="1000" y2="190"/><line x1="1000" y1="190" x2="1120" y2="100"/>
             <circle cx="860" cy="90" r="8" fill="#ff6c0b"/><circle cx="1000" cy="190" r="10" fill="#019eff"/><circle cx="1120" cy="100" r="7" fill="#3d932e"/>
         </svg>
     </div>
@@ -177,7 +176,7 @@
     <div class="i-container">
         <h2 class="i-h2 i-reveal" style="text-align:center">{!! $t('Организаторы и партнёры', 'Organisers and partners', 'Organizatori și parteneri') !!}</h2>
         <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px auto 30px;"></div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
             @foreach($partners25 as $j => $pt)
                 @if($pt['url'])
                     <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .04 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></a>
@@ -185,17 +184,6 @@
                     <span class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .04 }}s" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></span>
                 @endif
             @endforeach
-        </div>
-    </div>
-</section>
-
-{{-- ───────────── CTA ───────────── --}}
-<section class="i-section">
-    <div class="i-container">
-        <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:60px 28px;text-align:center;box-shadow:var(--sh-md);">
-            <h2 class="i-h2" style="max-width:640px;margin:0 auto 14px;">{!! $t('Готовы вести за собой?', 'Ready to lead?', 'Ești gata să conduci?') !!}</h2>
-            {!! $p('Присоединяйтесь к сети INSPIRE в Telegram, чтобы узнавать о новых мероприятиях первыми.', 'Join the INSPIRE network in Telegram to hear about new events first.', 'Alătură-te rețelei INSPIRE în Telegram ca să afli primul despre noile evenimente.', 'i-lead mx-auto mb-8') !!}
-            <a href="{{ $bot }}" target="_blank" rel="noopener" class="i-btn i-btn--lg">{!! $tg !!}<span>{!! $t('Присоединиться', 'Join now', 'Alătură-te') !!}</span></a>
         </div>
     </div>
 </section>

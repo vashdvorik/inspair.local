@@ -2,7 +2,7 @@
 @section('title', 'Редактировать профиль')
 
 @section('content')
-<div class="max-w-2xl">
+<div class="cab-page">
 
     {{-- Header --}}
     <div class="mb-8 flex items-start justify-between gap-4">
@@ -139,10 +139,6 @@
                 <label class="flex items-start gap-3 text-sm text-[#0e2442]">
                     <input type="checkbox" name="quests_opt_out" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('quests_opt_out', $accountUser->quests_opt_out) ? 'checked' : '' }}>
                     <span><b>Не использовать меня в квестах</b><br><span class="text-xs text-gray-500">Мои факты не попадут в загадки, и другие не смогут угадывать меня.</span></span>
-                </label>
-                <label class="flex items-start gap-3 text-sm text-[#0e2442]">
-                    <input type="checkbox" name="notifications_muted" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('notifications_muted', $accountUser->notifications_muted) ? 'checked' : '' }}>
-                    <span><b>Тише: без напоминаний в Telegram</b><br><span class="text-xs text-gray-500">Бот перестанет присылать напоминания об игре.</span></span>
                 </label>
                 @endif
             </div>

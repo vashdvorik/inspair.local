@@ -2,7 +2,7 @@
 @section('title', 'Новая возможность')
 
 @section('content')
-<div class="max-w-2xl">
+<div class="cab-page">
 
     {{-- Back link + title --}}
     <div class="mb-8">

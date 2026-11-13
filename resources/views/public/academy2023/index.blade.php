@@ -16,19 +16,16 @@
 <section class="page-head i-airy" style="padding-bottom:84px;">
     <div class="i-nodes" aria-hidden="true">
         <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice">
-            <line x1="70" y1="400" x2="210" y2="270"/><line x1="210" y1="270" x2="360" y2="350"/><line x1="860" y1="90" x2="1000" y2="190"/><line x1="1000" y1="190" x2="1120" y2="100"/>
-            <circle cx="70" cy="400" r="9" fill="#006de0"/><circle cx="210" cy="270" r="11" fill="#fdba07"/><circle cx="360" cy="350" r="8" fill="#72299c"/>
+            <line x1="860" y1="90" x2="1000" y2="190"/><line x1="1000" y1="190" x2="1120" y2="100"/>
             <circle cx="860" cy="90" r="8" fill="#ff6c0b"/><circle cx="1000" cy="190" r="10" fill="#019eff"/><circle cx="1120" cy="100" r="7" fill="#3d932e"/>
         </svg>
     </div>
     <div class="i-container">
         <div class="flex flex-wrap items-center gap-3 i-in i-in-1">
             <span class="i-chip"><span class="i-dot"></span>{!! $tm($E23['dates']) !!}</span><span class="i-chip">{!! $icon('pin', 'w-4 h-4') !!} {!! $tm($E23['place']) !!}</span>
-            <span class="i-badge i-badge--yellow">{!! $t('Архив', 'Archive', 'Arhivă') !!}</span>
         </div>
         <h1 class="i-h1 i-in i-in-2" style="margin:18px 0 12px;">YOUTH LEADERS<br><span class="i-grad-text">PEACE SUMMER SCHOOL</span></h1>
         <p class="i-in i-in-3" style="font-size:var(--fs-xl);font-weight:600;color:var(--ink);">{!! $tm($c['subtitle']) !!}</p>
-        {!! $pm($c['archiveNote'], 'i-lead i-in i-in-4 mt-3') !!}
         <div class="flex flex-wrap gap-4 mt-8 i-in i-in-5">
             <a href="#programme" class="i-btn i-btn--lg">{!! $tm($c['programmeH']) !!}</a>
             <a href="#experts" class="i-btn i-btn--secondary i-btn--lg"><span>{!! $t('Эксперты', 'Experts', 'Experți') !!}</span>{!! $arrow !!}</a>
@@ -70,7 +67,7 @@
 </section>
 {{-- ───────────── FOR YOU ───────────── --}}
 <section class="i-section i-section--tint" id="for-you">
-    <div class="i-container i-container--narrow">
+    <div class="i-container">
         <h2 class="i-h2 i-reveal">{!! $tm($c['forYouH']) !!}</h2>
         <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 26px;"></div>
         <ul class="grid md:grid-cols-2 gap-4">
@@ -83,11 +80,11 @@
 
 {{-- ───────────── PROGRAMME ───────────── --}}
 <section class="i-section i-section--soft" id="programme">
-    <div class="i-container i-container--narrow">
+    <div class="i-container">
         <h2 class="i-h2 i-reveal">{!! $tm($c['programmeH']) !!}</h2>
         <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px 0 14px;"></div>
         {!! $pm($c['programmeNote'], 'text-gray-500 mb-8 i-reveal') !!}
-        <ol class="timeline">
+        <ol class="timeline timeline--2" style="--rows:{{ (int) ceil(count($c['programme']) / 2) }}">
             @foreach($c['programme'] as $i => $item)
                 <li class="i-reveal" style="--d:{{ ($i % 6) * .04 }}s">{!! $tm($item) !!}</li>
             @endforeach
@@ -136,7 +133,7 @@
     <div class="i-container">
         <h2 class="i-h2 i-reveal" style="text-align:center">{!! $t('Донор и партнёры', 'Donor and partners', 'Donator și parteneri') !!}</h2>
         <div class="i-spectrum-line i-reveal" style="width:84px;margin:14px auto 30px;"></div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4">
             @foreach($partners23 as $j => $pt)
                 @if($pt['url'])
                     <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .04 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></a>
@@ -146,17 +143,6 @@
             @endforeach
         </div>
         <p class="text-center mt-10 text-sm text-gray-500">{!! $t('Связаться с организаторами:', 'Contact the organisers:', 'Contactați organizatorii:') !!} <a class="font-semibold" href="mailto:{{ $c['contact'] }}">{{ $c['contact'] }}</a></p>
-    </div>
-</section>
-
-{{-- ───────────── NEXT ───────────── --}}
-<section class="i-section">
-    <div class="i-container">
-        <div class="i-airy i-reveal" style="border-radius:var(--r-2xl);border:1px solid var(--line);padding:56px 28px;text-align:center;box-shadow:var(--sh-md);">
-            <h2 class="i-h2" style="max-width:640px;margin:0 auto 14px;">{!! $t('Следующий шаг — Школы 2025', 'The next step — Schools 2025', 'Următorul pas — Școlile 2025') !!}</h2>
-            {!! $p('Три школы в Кишинёве, Комрате и Тирасполе и итоговая конференция.', 'Three schools in Chișinău, Comrat and Tiraspol and the Final Conference.', 'Trei școli la Chișinău, Comrat și Tiraspol și conferința finală.', 'i-lead mx-auto mb-8') !!}
-            <a href="{{ route('academy2025') }}" class="i-btn i-btn--lg"><span>{!! $t('Школы 2025', 'Schools 2025', 'Școli 2025') !!}</span>{!! $arrow !!}</a>
-        </div>
     </div>
 </section>
 @endsection

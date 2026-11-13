@@ -191,7 +191,7 @@ body.i-body, .i-body {
   font-family: var(--font); font-size: var(--fs-base); line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-.i-body h1, .i-body h2, .i-body h3, .i-body h4, .i-h1, .i-h2, .i-h3, .i-h4 { color: var(--ink); font-family: var(--font); margin: 0; }
+:where(.i-body) h1, :where(.i-body) h2, :where(.i-body) h3, :where(.i-body) h4, .i-h1, .i-h2, .i-h3, .i-h4 { color: var(--ink); font-family: var(--font); margin: 0; }
 .i-h1 { font-size: var(--fs-6xl); font-weight: 800; line-height: var(--lh-tight); letter-spacing: var(--track-tight); }
 .i-h2 { font-size: var(--fs-4xl); font-weight: 800; line-height: var(--lh-snug); letter-spacing: var(--track-tight); }
 .i-h3 { font-size: var(--fs-2xl); font-weight: 700; line-height: var(--lh-snug); letter-spacing: -.015em; }
@@ -302,8 +302,8 @@ body.i-body, .i-body {
 .i-nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--spectrum); transform: scaleX(0); transform-origin: left; transition: transform var(--t-base) var(--ease); }
 .i-nav__links a:hover, .i-nav__links a.is-active { color: var(--blue-700); }
 .i-nav__links a:hover::after, .i-nav__links a.is-active::after { transform: scaleX(1); }
-.i-lang { display: inline-flex; padding: 3px; border-radius: var(--r-pill); background: var(--bg-tint); }
-.i-lang button, .i-lang a { border: 0; background: transparent; padding: .3rem .7rem; border-radius: var(--r-pill); font: 700 .72rem/1 var(--font); letter-spacing: .05em; color: var(--muted); cursor: pointer; text-decoration: none; transition: background var(--t-fast), color var(--t-fast); }
+.i-lang { display: inline-flex; padding: 2px; border-radius: var(--r-pill); background: var(--bg-tint); }
+.i-lang button, .i-lang a { border: 0; background: transparent; padding: .26rem .5rem; border-radius: var(--r-pill); font: 700 .68rem/1 var(--font); letter-spacing: .03em; color: var(--muted); cursor: pointer; text-decoration: none; transition: background var(--t-fast), color var(--t-fast); }
 .i-lang .is-active, .i-lang [aria-current] { background: #fff; color: var(--blue-700); box-shadow: var(--sh-xs); }
 
 /* ── Backgrounds: airy gradient, pastel blobs, node network ────────────── */

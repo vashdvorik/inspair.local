@@ -67,7 +67,7 @@ class GameAdmin extends Page
 
     public function restoreQuest(int $id): void
     {
-        Quest::whereKey($id)->update(['status' => Quest::ACTIVE, 'reports_count' => 0]);
+        Quest::whereKey($id)->update(['status' => Quest::ACTIVE]);
     }
 
     /** @return array<string, mixed> */
@@ -87,11 +87,10 @@ class GameAdmin extends Page
             'attempts'   => $attempts,
             'accuracy'   => $attempts ? round(QuestAttempt::where('correct', true)->count() / $attempts * 100) : 0,
             'connections' => Connection::count(),
-            'mutual'     => (int) (Connection::where('mutual', true)->count() / 2),
             'levels'     => collect($game->levels())->map(fn ($def, $n) => [
                 'name' => $def['name']['ru'], 'color' => $def['color'], 'count' => BotUser::approved()->where('level', $n)->count(),
             ])->values(),
-            'reported'   => Quest::whereIn('status', [Quest::REPORTED])->orWhere('reports_count', '>', 0)->with('subject')->latest()->limit(20)->get(),
+            'recentQuests' => Quest::with('subject')->latest()->limit(20)->get(),
         ];
     }
 }

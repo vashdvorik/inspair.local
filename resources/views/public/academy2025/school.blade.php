@@ -26,7 +26,6 @@
 
 <section class="i-section" style="padding-top:40px;">
     <div class="i-container">
-        <p class="note">{!! $t('Подробная программа опубликована на английском языке.', 'The detailed programme is published in English.', 'Programul detaliat este publicat în limba engleză.') !!}</p>
         <div class="grid lg:grid-cols-[2fr_1fr] gap-6 items-start">
             <div class="i-card prose i-reveal">
                 @foreach($sc['paras'] as $par){!! $pm($par, 'mb-4 text-gray-600') !!}@endforeach

@@ -2,7 +2,7 @@
 @section('title', 'Возможности')
 
 @section('content')
-<div class="max-w-3xl">
+<div class="cab-page">
 
     {{-- Header --}}
     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

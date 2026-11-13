@@ -2,7 +2,7 @@
 @section('title', 'Люди')
 
 @section('content')
-<div class="max-w-3xl">
+<div class="cab-page cab-page--wide">
 
     <div class="mb-8">
         <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Люди</h1>
@@ -18,7 +18,7 @@
         <p class="text-sm text-gray-400">Пока нет других участников</p>
     </div>
     @else
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @foreach($people as $person)
         <div class="relative flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm
                     transition-all duration-200 hover:border-brand-200 hover:shadow-md">

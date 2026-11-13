@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/cabinet.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         [x-cloak] { display: none !important; }
@@ -39,15 +40,8 @@
         .side-ico--yellow { background: var(--yellow-100); color: #b07d00; } .side-ico--orange { background: var(--orange-100); color: #c4500a; }
         .side-ico--green { background: var(--green-100); color: var(--green); } .side-ico--purple { background: var(--purple-100); color: var(--purple); } .side-ico--red { background: var(--red-100); color: var(--red); }
 
-        /* gentle entrance + hover for page content */
-        @keyframes app-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-        main > * > * { animation: app-in .6s var(--ease) both; }
-        main > * > *:nth-child(2) { animation-delay: .06s; } main > * > *:nth-child(3) { animation-delay: .12s; } main > * > *:nth-child(4) { animation-delay: .18s; } main > * > *:nth-child(5) { animation-delay: .24s; }
-        main a.rounded-2xl, main a.rounded-xl { transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease), border-color var(--t-base); }
-        main a.rounded-2xl:hover { transform: translateY(-3px); box-shadow: var(--sh-md); border-color: var(--blue-200); }
-        main button, main a.rounded-xl { transition: transform var(--t-base) var(--ease), box-shadow var(--t-base) var(--ease), background var(--t-base); }
         main input:focus, main textarea:focus, main select:focus { outline: none; border-color: var(--blue-500) !important; box-shadow: var(--ring); }
-        @media (prefers-reduced-motion: reduce) { main *, .side-link, .app-bg::before, .app-bg::after { animation: none !important; transition: none !important; } }
+        @media (prefers-reduced-motion: reduce) { .side-link, .app-bg::before, .app-bg::after { animation: none !important; transition: none !important; } }
     </style>
     @stack('head')
 </head>
@@ -99,7 +93,7 @@
                         ['route' => 'account.index',     'label' => 'Главная',      'tone' => '',
                          'path'  => 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6'],
                         ['route' => 'account.game',      'label' => 'Игра',         'tone' => 'orange',
-                         'path'  => 'M13 10V3L4 14h7v7l9-11h-7z'],
+                         'path'  => 'M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z'],
                         ['route' => 'account.matches',   'label' => 'AI-матчи',     'tone' => 'yellow',
                          'path'  => 'M13 10V3L4 14h7v7l9-11h-7z'],
                         ['route' => 'account.search',    'label' => 'AI-поиск',     'tone' => 'purple',
@@ -116,6 +110,9 @@
                 @endphp
                 @foreach($navItems as $item)
                     @continue($item['route'] === 'account.game' && ! $game->isEnabled())
+                    @continue($item['route'] === 'account.matches' && ! config('features.cabinet_matches'))
+                    @continue($item['route'] === 'account.search' && ! config('features.cabinet_search'))
+                    @continue($item['route'] === 'account.knowledge' && ! config('features.cabinet_knowledge'))
                     @php $active = request()->routeIs($item['route']) || request()->routeIs($item['route'] . '.*'); @endphp
                     <a href="{{ route($item['route']) }}" @click="sidebarOpen = false" class="side-link {{ $active ? 'is-active' : '' }}">
                         <span class="side-ico {{ !$active && $item['tone'] ? 'side-ico--' . $item['tone'] : '' }}">
@@ -156,7 +153,7 @@
             </header>
 
             {{-- Page content --}}
-            <main class="flex-1 overflow-y-auto px-5 py-8 lg:px-10">
+            <main class="cab-main flex-1 overflow-y-auto">
                 @if(session('success'))
                     <div class="i-alert i-alert--success mb-6 items-center" role="status">
                         <svg class="h-5 w-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
