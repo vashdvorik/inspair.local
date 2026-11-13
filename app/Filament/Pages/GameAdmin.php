@@ -32,7 +32,7 @@ class GameAdmin extends Page
         Notification::make()->title([
             GameService::MODE_OFF     => 'Игра выключена: кабинет такой, как был до неё',
             GameService::MODE_WAITING => 'Включён режим ожидания: разделы закрыты, участники видят экран ожидания',
-            GameService::MODE_LIVE    => 'Игра запущена: участники видят квесты и лестницу уровней',
+            GameService::MODE_LIVE    => 'Игра запущена: участники отвечают на вопросы и копят очки',
         ][$game->mode()])->success()->send();
     }
 

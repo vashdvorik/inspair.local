@@ -78,15 +78,16 @@ class SecurityTest extends TestCase
         $this->assertNotEquals($userB->telegram_id, $accountUser->telegram_id);
     }
 
-    public function test_revoked_user_session_is_rejected(): void
+    public function test_deleted_user_session_is_rejected(): void
     {
         $user = BotUser::factory()->approved()->moderator()->create();
+        $telegramId = $user->telegram_id;
 
-        // Revoke access mid-session
-        $user->update(['status' => BotUser::STATUS_REJECTED]);
+        // Profile deleted mid-session
+        $user->delete();
 
         $this->withSession([
-            'account_telegram_id' => $user->telegram_id,
+            'account_telegram_id' => $telegramId,
             '_account_expires'    => now()->addDays(7)->timestamp,
         ])
             ->get(route('account.index'))
@@ -164,14 +165,9 @@ class SecurityTest extends TestCase
 
     public function test_tma_auth_rejects_non_member(): void
     {
-        // Build a correctly signed initData for a user who is NOT in the DB
-        // We can't easily sign it without the real token, so we verify the DB check
-        // by mocking — instead test via an approved user that becomes pending
-        $user = BotUser::factory()->pending()->create();
-
-        // Even with a valid session manually set for a pending user — middleware rejects
+        // A session for someone who is not registered (no row in bot_users) must not open the cabinet
         $this->withSession([
-            'account_telegram_id' => $user->telegram_id,
+            'account_telegram_id' => 999000111,
             '_account_expires'    => now()->addDays(7)->timestamp,
         ])
             ->get(route('account.index'))

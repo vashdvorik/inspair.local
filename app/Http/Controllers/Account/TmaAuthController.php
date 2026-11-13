@@ -39,7 +39,6 @@ class TmaAuthController extends Controller
         }
 
         $user = BotUser::where('telegram_id', $telegramId)
-            ->where('status', BotUser::STATUS_APPROVED)
             ->first();
 
         if (! $user) {

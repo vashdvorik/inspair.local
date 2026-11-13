@@ -90,23 +90,23 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/profile/edit', [AccountController::class, 'profileEdit'])->name('profile.edit');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
         Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
-        Route::get('/matches', [AccountController::class, 'matches'])->middleware('feature:cabinet_matches')->name('matches');
-        Route::get('/people', [AccountController::class, 'people'])->middleware('game.access:people')->name('people');
-        Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->name('people.show');
-        Route::get('/search', [AccountController::class, 'search'])->middleware('feature:cabinet_search')->name('search');
+        Route::get('/matches', [AccountController::class, 'matches'])->middleware(['approved', 'feature:cabinet_matches'])->name('matches');
+        Route::get('/people', [AccountController::class, 'people'])->middleware(['approved', 'game.access:people'])->name('people');
+        Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->middleware('approved')->name('people.show');
+        Route::get('/search', [AccountController::class, 'search'])->middleware(['approved', 'feature:cabinet_search'])->name('search');
 
         // Игра: страница (Vue) и JSON-API
-        Route::get('/game', [GameController::class, 'index'])->middleware('game.on')->name('game');
-        Route::prefix('game/api')->middleware('game.on')->name('game.api.')->group(function (): void {
+        Route::get('/game', [GameController::class, 'index'])->middleware(['game.on', 'approved'])->name('game');
+        Route::prefix('game/api')->middleware(['game.on', 'approved'])->name('game.api.')->group(function (): void {
             Route::get('/state', [GameController::class, 'state'])->name('state');
             Route::get('/quest', [GameController::class, 'quest'])->name('quest');
             Route::post('/quest/{quest}/answer', [GameController::class, 'answer'])->middleware('throttle:60,1')->name('answer');
             Route::get('/network', [GameController::class, 'network'])->name('network');
         });
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->middleware('feature:cabinet_knowledge')->name('knowledge');
-        Route::get('opportunities/create', [OpportunityController::class, 'create'])->middleware('game.access:opportunities')->name('opportunities.create');
-        Route::post('opportunities', [OpportunityController::class, 'store'])->middleware('game.access:opportunities')->name('opportunities.store');
-        Route::resource('opportunities', OpportunityController::class)->only(['index', 'destroy']);
+        Route::get('opportunities/create', [OpportunityController::class, 'create'])->middleware(['approved', 'game.access:opportunities'])->name('opportunities.create');
+        Route::post('opportunities', [OpportunityController::class, 'store'])->middleware(['approved', 'game.access:opportunities'])->name('opportunities.store');
+        Route::resource('opportunities', OpportunityController::class)->only(['index', 'destroy'])->middleware('approved');
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 

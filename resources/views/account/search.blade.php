@@ -126,11 +126,11 @@
                     </span>
                 </div>
 
-                @if($person->description && $see($person, 'description'))
+                @if($person->description)
                 <p class="mt-2 text-xs leading-relaxed text-gray-500 line-clamp-2">{{ $person->description }}</p>
                 @endif
 
-                @if($person->expectation && $see($person, 'expectation'))
+                @if($person->expectation)
                 <p class="mt-1 text-xs leading-relaxed text-gray-400 line-clamp-1">
                     <span class="font-medium text-gray-500">Ищет:</span> {{ $person->expectation }}
                 </p>

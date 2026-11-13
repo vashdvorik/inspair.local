@@ -56,20 +56,7 @@ $bot->onText('/start login', function (Nutgram $bot) {
         return;
     }
 
-    if ($user->isPending()) {
-        $firstName = explode(' ', (string) $user->full_name)[0];
-        $bot->sendMessage(
-            "{$firstName}, твоя заявка уже в работе 🙌\n\nАдминистратор лично рассматривает и свяжется в течение 24 часов.\nЕсли есть срочный вопрос — @lesnichenkoP"
-        );
-        return;
-    }
-
-    if ($user->isApproved()) {
-        sendLoginLink($bot, $user);
-        return;
-    }
-
-    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
+    sendLoginLink($bot, $user);
 });
 
 $bot->onCommand('start', function (Nutgram $bot) {
@@ -81,29 +68,16 @@ $bot->onCommand('start', function (Nutgram $bot) {
         return;
     }
 
-    if ($user->isPending()) {
-        $firstName = explode(' ', (string) $user->full_name)[0];
-        $bot->sendMessage(
-            "{$firstName}, твоя заявка уже в работе 🙌\n\nАдминистратор лично рассматривает и свяжется в течение 24 часов.\nЕсли есть срочный вопрос — @lesnichenkoP"
-        );
-        return;
-    }
-
-    if ($user->isApproved()) {
-        sendLoginLink($bot, $user);
-        return;
-    }
-
-    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
+    sendLoginLink($bot, $user);
 })->description('Запустить бота');
 
-// /login — send magic link to approved users
+// /login — send magic link to any registered participant
 $bot->onCommand('login', function (Nutgram $bot) {
     $telegramId = $bot->userId();
     $user = BotUser::where('telegram_id', $telegramId)->first();
 
-    if (! $user || ! $user->isApproved()) {
-        $bot->sendMessage('🔒 Вход доступен только одобренным участникам сообщества.');
+    if (! $user) {
+        RegistrationConversation::begin($bot);
         return;
     }
 
@@ -120,14 +94,6 @@ $bot->fallback(function (Nutgram $bot) {
         return;
     }
 
-    if ($user->isPending()) {
-        $firstName = explode(' ', (string) $user->full_name)[0];
-        $bot->sendMessage(
-            "{$firstName}, твоя заявка уже в работе 🙌\n\nАдминистратор лично рассматривает и свяжется в течение 24 часов.\nЕсли есть срочный вопрос — @lesnichenkoP"
-        );
-        return;
-    }
-
     if ($user->isApproved()) {
         $text = $bot->message()?->text;
         match ($text) {
@@ -138,8 +104,8 @@ $bot->fallback(function (Nutgram $bot) {
         return;
     }
 
-    // Отклонённый пользователь
-    $bot->sendMessage('🔒 Ваш доступ был закрыт.' . "\n\n" . 'Если у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP');
+    // Ещё не одобренные и отклонённые: кабинет открыт, остальное покажет модератор
+    sendLoginLink($bot, $user);
 });
 
 /**
@@ -151,9 +117,12 @@ function sendLoginLink(Nutgram $bot, BotUser $user): void
     $url   = url('/go/' . substr($token->token, 0, 8));
 
     $firstName = explode(' ', (string) $user->full_name)[0];
+    $status = $user->isApproved() ? '' : ($user->isRejected()
+        ? "\n\nИгра и список участников для тебя закрыты, подробности в кабинете."
+        : "\n\nМодератор ещё посмотрит твой профиль: после этого откроются игра и список участников.");
 
     $bot->sendMessage(
-        "Привет, {$firstName}! Нажми ссылку ниже, чтобы войти в личный кабинет.\n\n🔐 {$url}\n\n⏱ Ссылка действует 24 часа.",
+        "Привет, {$firstName}! Нажми ссылку ниже, чтобы войти в личный кабинет.\n\n🔐 {$url}\n\n⏱ Ссылка действует 24 часа.{$status}",
         reply_markup: TelegramKeyboards::mainMenu()
     );
 }

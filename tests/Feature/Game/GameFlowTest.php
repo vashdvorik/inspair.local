@@ -87,21 +87,17 @@ class GameFlowTest extends TestCase
 
     // ───────────── доступ ─────────────
 
-    public function test_sections_closed_before_launch_and_for_low_levels_after(): void
+    public function test_sections_wait_for_launch_but_never_for_a_level(): void
     {
-        $u = $this->player();
+        $u = $this->player(); // уровень 1, ноль очков
 
+        // до запуска игры разделы закрыты
         $this->withSession($this->sess($u))->get(route('account.people'))->assertRedirect(route('account.game', ['locked' => 'people']));
         $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertRedirect(route('account.game', ['locked' => 'opportunities']));
 
+        // после запуска они открыты сразу всем одобренным: уровень ничего не решает
         app(GameService::class)->setLaunched(true);
-        $this->withSession($this->sess($u))->get(route('account.people'))->assertRedirect(); // уровень 1 < 2
-
-        $u->update(['xp' => 120, 'level' => 2]);
         $this->withSession($this->sess($u))->get(route('account.people'))->assertOk();
-        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertRedirect(); // нужен уровень 4
-
-        $u->update(['xp' => 720, 'level' => 4]);
         $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertOk();
     }
 
@@ -111,18 +107,27 @@ class GameFlowTest extends TestCase
         $this->withSession($this->sess($m))->get(route('account.people'))->assertOk();
     }
 
-    public function test_person_page_hides_fields_above_viewer_level(): void
+    public function test_person_page_shows_full_profile_to_any_level(): void
     {
         app(GameService::class)->setLaunched(true);
-        $viewer = $this->player(['xp' => 120, 'level' => 2]);
-        $target = $this->player(['description' => 'СЕКРЕТНОЕ ОПИСАНИЕ участника', 'expectation' => 'СЕКРЕТНЫЕ ОЖИДАНИЯ участника']);
+        $viewer = $this->player(); // уровень 1
+        $target = $this->player(['description' => 'ОПИСАНИЕ участника', 'expectation' => 'ОЖИДАНИЯ участника']);
 
-        $this->withSession($this->sess($viewer))->get(route('account.people.show', $target))
-            ->assertOk()->assertDontSee('СЕКРЕТНОЕ ОПИСАНИЕ')->assertDontSee('СЕКРЕТНЫЕ ОЖИДАНИЯ');
+        $html = $this->withSession($this->sess($viewer))->get(route('account.people.show', $target))
+            ->assertOk()->assertSee('ОПИСАНИЕ участника')->assertSee('ОЖИДАНИЯ участника')->getContent();
+        $this->assertStringNotContainsString('Откроется на уровне', $html);
+    }
 
-        $viewer->update(['xp' => 760, 'level' => 4]);
-        $this->withSession($this->sess($viewer))->get(route('account.people.show', $target))
-            ->assertOk()->assertSee('СЕКРЕТНОЕ ОПИСАНИЕ')->assertSee('СЕКРЕТНЫЕ ОЖИДАНИЯ');
+    public function test_state_does_not_promise_unlocks_for_levels(): void
+    {
+        app(GameService::class)->setLaunched(true);
+        $u = $this->player();
+
+        $json = $this->withSession($this->sess($u))->getJson(route('account.game.api.state'))->assertOk()->json();
+        foreach ($json['levels'] as $level) {
+            $this->assertArrayNotHasKey('unlocks', $level);
+        }
+        $this->assertArrayNotHasKey('access', $json);
     }
 
     public function test_closed_contacts_hide_write_button(): void

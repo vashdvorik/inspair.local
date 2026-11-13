@@ -87,13 +87,11 @@ class AccountController extends Controller
                 ->with('error', 'Ссылка истекла. Запросите новую через бот командой /login.');
         }
 
-        $user = BotUser::where('telegram_id', $loginToken->telegram_id)
-            ->where('status', BotUser::STATUS_APPROVED)
-            ->first();
+        $user = BotUser::where('telegram_id', $loginToken->telegram_id)->first();
 
         if (! $user) {
             return redirect()->route('account.login')
-                ->with('error', 'Доступ закрыт. Ваша заявка ещё не одобрена или была отозвана.');
+                ->with('error', 'Сначала зарегистрируйтесь в боте: нажмите /start.');
         }
 
         // Start session (7 days)
@@ -196,17 +194,6 @@ class AccountController extends Controller
         abort_if($botUser->status !== BotUser::STATUS_APPROVED, 404);
 
         /** @var BotUser $viewer */
-        $viewer = view()->shared('accountUser');
-        $game   = app(GameService::class);
-
-        // Раздел «Люди» закрыт уровнем, но люди из своей сети всегда доступны
-        if ($viewer->id !== $botUser->id && ! $game->canAccess($viewer, 'people')) {
-            $inNetwork = \App\Models\Connection::where('user_id', $viewer->id)->where('target_id', $botUser->id)->exists();
-            if (! $inNetwork) {
-                return redirect()->route('account.game', ['locked' => 'people']);
-            }
-        }
-
         $botUser->load('facts');
 
         return view('account.person', ['person' => $botUser]);

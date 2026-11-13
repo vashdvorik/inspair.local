@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Закрывает разделы кабинета лестницей уровней: ->middleware('game.access:people').
+ * Пока игра в режиме «Ожидание», «Люди» и «Возможности» закрыты: ->middleware('game.access:people').
+ * Уровень участника на доступ не влияет.
  */
 class GameAccess
 {

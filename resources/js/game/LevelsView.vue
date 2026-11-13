@@ -12,7 +12,6 @@ defineProps({ levels: Array, me: Object, checklist: Array, editUrl: String });
                 <div class="g-dot">{{ l.n }}</div>
                 <div>
                     <b>{{ l.name }}</b> <span class="g-muted" style="font-size:.74rem">от {{ points(l.from) }}</span>
-                    <ul v-if="l.n === me.level.n + 1 && l.unlocks.length"><li v-for="u in l.unlocks" :key="u">{{ u }}</li></ul>
                 </div>
             </div>
         </div>

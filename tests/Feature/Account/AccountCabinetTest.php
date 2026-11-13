@@ -40,10 +40,8 @@ class AccountCabinetTest extends TestCase
 
     public function test_protected_route_redirects_when_session_has_no_valid_user(): void
     {
-        // Session exists but user is pending (not approved)
-        $user = BotUser::factory()->pending()->create();
-
-        $this->withSession(['account_telegram_id' => $user->telegram_id])
+        // Session exists but no such participant (never registered or deleted)
+        $this->withSession(['account_telegram_id' => 999000111])
             ->get(route('account.index'))
             ->assertRedirect(route('account.login'))
             ->assertSessionHas('error');

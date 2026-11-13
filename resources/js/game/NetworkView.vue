@@ -50,7 +50,6 @@ watch(() => props.refreshKey, load);
             </div>
             <p v-if="selected.description" class="g-line">{{ selected.description }}</p>
             <ul v-if="selected.facts && selected.facts.length" class="g-facts"><li v-for="f in selected.facts" :key="f">{{ f }}</li></ul>
-            <p v-for="l in selected.locks" :key="l.field" class="g-lock">{{ { description: 'О себе', expectation: 'Ожидания' }[l.field] }}: откроется на уровне «{{ l.level }}»</p>
             <div class="g-row">
                 <a v-if="selected.write_url" class="g-btn" :href="selected.write_url" target="_blank" rel="noopener">Написать в Telegram</a>
                 <span v-else class="g-muted">Контакты скрыты участником</span>

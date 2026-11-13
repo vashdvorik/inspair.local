@@ -30,16 +30,14 @@ class RequireAccountAuth
                 ->with('error', 'Сессия истекла. Войдите снова.');
         }
 
-        $user = BotUser::where('telegram_id', $telegramId)
-            ->where('status', BotUser::STATUS_APPROVED)
-            ->first();
+        $user = BotUser::where('telegram_id', $telegramId)->first();
 
         if (! $user) {
             session()->forget('account_telegram_id');
             session()->forget('_account_expires');
 
             return redirect()->route('account.login')
-                ->with('error', 'Доступ закрыт. Убедитесь, что ваша заявка одобрена.');
+                ->with('error', 'Сначала зарегистрируйтесь в боте: нажмите /start.');
         }
 
         // Share the authenticated user with all views in this middleware group
@@ -48,7 +46,6 @@ class RequireAccountAuth
         // Игра: помощники для шаблонов (что виден в чужом профиле) и отметка активности
         $game = app(GameService::class);
         view()->share('game', $game);
-        view()->share('see', fn (BotUser $target, string $field): bool => $game->canSee($user, $target, $field));
 
 
         return $next($request);

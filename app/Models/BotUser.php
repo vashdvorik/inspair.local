@@ -39,6 +39,7 @@ class BotUser extends Model
         'last_active_at',
         'last_reminded_at',
         'region',
+        'moderation_note',
     ];
 
     protected $casts = [

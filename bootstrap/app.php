@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'game.access' => \App\Http\Middleware\GameAccess::class,
             'game.on'     => \App\Http\Middleware\GameEnabled::class,
             'feature'     => \App\Http\Middleware\RequireFeature::class,
+            'approved'    => \App\Http\Middleware\RequireApproved::class,
         ]);
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',

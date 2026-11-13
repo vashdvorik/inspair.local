@@ -42,9 +42,7 @@ onMounted(loadState);
 
         <template v-else>
             <div v-if="locked" class="g-alert">
-                Раздел «{{ lockedLabel[locked] || locked }}» пока закрыт.
-                <span v-if="!state.launched">Он откроется после запуска игры.</span>
-                <span v-else>Он откроется с повышением уровня: отвечайте на вопросы и заполняйте профиль.</span>
+                Раздел «{{ lockedLabel[locked] || locked }}» пока закрыт: он откроется после запуска игры.
             </div>
 
             <RulesView :rules="state.rules" />
@@ -92,8 +90,7 @@ onMounted(loadState);
                 <div class="g-bigdot" :style="{ background: levelUp.color }">{{ levelUp.n }}</div>
                 <div class="g-eyebrow">Новый уровень</div>
                 <h2 class="g-q" style="margin:6px 0">{{ levelUp.name }}</h2>
-                <p class="g-muted">Теперь открыто:</p>
-                <ul class="g-unlocks"><li v-for="u in levelUp.unlocks" :key="u">{{ u }}</li></ul>
+                <p class="g-muted" style="margin-bottom:18px">Так держать! Копите очки дальше.</p>
                 <button class="g-btn" @click="levelUp = null">Продолжить</button>
             </div>
         </div>
@@ -177,6 +174,5 @@ onMounted(loadState);
 .g-modal { position: fixed; inset: 0; background: rgba(16, 38, 74, .45); display: grid; place-items: center; z-index: 60; padding: 20px; }
 .g-modal-box { background: #fff; border-radius: 28px; padding: 30px 26px; text-align: center; max-width: 340px; animation: g-pop .5s; }
 .g-bigdot { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 14px; display: grid; place-items: center; color: #fff; font-size: 2rem; font-weight: 800; box-shadow: 0 14px 36px rgba(0, 0, 0, .18); }
-.g-unlocks { text-align: left; margin: 8px 0 18px 20px; font-size: .86rem; }
 @media (prefers-reduced-motion: reduce) { .g-wrap * { animation: none !important; transition: none !important; } }
 </style>

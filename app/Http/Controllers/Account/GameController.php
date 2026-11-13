@@ -39,7 +39,7 @@ class GameController extends Controller
 
         $levels = [];
         foreach ($this->game->levels() as $n => $def) {
-            $levels[] = $this->game->levelInfo($n) + ['unlocks' => $this->unlocks($n)];
+            $levels[] = $this->game->levelInfo($n);
         }
 
         return response()->json([
@@ -56,11 +56,8 @@ class GameController extends Controller
                 'correct'             => (int) config('game.xp.quest_correct'),
                 'wrong'               => (int) config('game.xp.quest_wrong'),
                 'pause'               => (int) config('game.miss_cooldown'),
-                'people_level'        => $this->game->levelInfo((int) config('game.access.people'))['name'],
-                'opportunities_level' => $this->game->levelInfo((int) config('game.access.opportunities'))['name'],
             ],
             'links'      => ['people' => route('account.people')],
-            'access'     => ['people' => $this->game->canAccess($user, 'people')],
         ]);
     }
 
@@ -79,20 +76,6 @@ class GameController extends Controller
             'next'     => $p['next_from'] ? $this->game->levelInfo($p['level'] + 1) : null,
             'percent'  => $p['percent'],
         ];
-    }
-
-    /** @return list<string> */
-    private function unlocks(int $level): array
-    {
-        $map = [
-            1 => ['Аватар и имя участников из вашей сети'],
-            2 => ['Раздел «Люди»'],
-            3 => ['Блок «о себе» и факты участников'],
-            4 => ['Размещение возможностей', 'Ожидания участников'],
-            5 => ['Полные профили всех участников'],
-        ];
-
-        return $map[$level] ?? [];
     }
 
     /** @return list<array{key: string, label: string, points: int, done: bool}> */
@@ -167,7 +150,7 @@ class GameController extends Controller
         return response()->json($result + [
             'subject' => $subject ? $this->person($subject, $user, false) : null,
             'me'      => $this->me($user),
-            'level_up_info' => $result['level_up'] ? $this->game->levelInfo($result['level_up']) + ['unlocks' => $this->unlocks($result['level_up'])] : null,
+            'level_up_info' => $result['level_up'] ? $this->game->levelInfo($result['level_up']) : null,
         ]);
     }
 
@@ -208,13 +191,9 @@ class GameController extends Controller
             return $out;
         }
 
-        $out['description'] = $this->game->canSee($viewer, $p, 'description') ? $p->description : null;
-        $out['facts']       = $this->game->canSee($viewer, $p, 'facts') ? $p->facts->pluck('body')->all() : [];
-        $out['expectation'] = $this->game->canSee($viewer, $p, 'expectation') ? $p->expectation : null;
-        $out['locks']       = array_values(array_filter([
-            $this->game->canSee($viewer, $p, 'description') ? null : ['field' => 'description', 'level' => $this->game->levelInfo((int) config('game.visibility.description'))['name']],
-            $this->game->canSee($viewer, $p, 'expectation') ? null : ['field' => 'expectation', 'level' => $this->game->levelInfo((int) config('game.visibility.expectation'))['name']],
-        ]));
+        $out['description'] = $p->description;
+        $out['facts']       = $p->facts->pluck('body')->all();
+        $out['expectation'] = $p->expectation;
         $out['write_url']   = $p->canBeContacted() ? 'https://t.me/' . $p->telegram_username : null;
         $out['profile_url'] = route('account.people.show', $p);
 

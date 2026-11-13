@@ -154,6 +154,7 @@ class GameService
     }
 
     /** Можно ли открыть раздел: people | search | matches | opportunities. */
+    /** Раздел открыт: игра выключена, пользователь модератор или игра уже запущена. */
     public function canAccess(BotUser $user, string $feature): bool
     {
         if (! $this->isEnabled() || $this->isStaff($user)) {
@@ -163,23 +164,7 @@ class GameService
             return false;
         }
 
-        return $user->level >= (int) config("game.access.{$feature}", 1);
-    }
-
-    /** С какого уровня раздел открыт (для подсказок «откроется на уровне …»). */
-    public function levelNeeded(string $feature): int
-    {
-        return (int) config("game.access.{$feature}", 1);
-    }
-
-    /** Видит ли зритель поле профиля другого участника. */
-    public function canSee(BotUser $viewer, BotUser $target, string $field): bool
-    {
-        if (! $this->isEnabled() || $viewer->id === $target->id || $this->isStaff($viewer)) {
-            return true;
-        }
-
-        return $viewer->level >= (int) config("game.visibility.{$field}", 1);
+        return true; // уровень ничего не открывает: он только звание в игре
     }
 
     // ───────── очки ─────────

@@ -128,8 +128,11 @@ class RegistrationConversation extends Conversation
 
         $firstName = explode(' ', (string) $this->fullName)[0];
 
+        $token = \App\Models\LoginToken::generateFor((int) $botUser->telegram_id);
+        $url   = url('/go/' . substr($token->token, 0, 8));
+
         $bot->sendMessage(
-            "Спасибо, {$firstName}!\n\nЗаявка принята. Мы рассмотрим её и свяжемся с тобой в Telegram в течение 24 часов.\n\nПока можешь посмотреть сайт сообщества:\n".config('nutgram.community_url', config('app.url')),
+            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет уже открыт, заходи по ссылке:\n🔐 {$url}\n\n⏱ Ссылка действует 24 часа.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
         );
 
         $this->end();

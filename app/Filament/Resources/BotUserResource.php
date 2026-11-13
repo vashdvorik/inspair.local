@@ -77,6 +77,12 @@ class BotUserResource extends Resource
                 DateTimePicker::make('approved_at')
                     ->label('Дата одобрения')
                     ->disabled(),
+                Textarea::make('moderation_note')
+                    ->label('Сообщение участнику')
+                    ->helperText('Показывается в кабинете на страницах «Игра» и «Участники», если доступ закрыт.')
+                    ->rows(3)
+                    ->maxLength(1000)
+                    ->columnSpanFull(),
             ])->columns(2),
 
             Section::make('Игра')->schema([
@@ -143,8 +149,9 @@ class BotUserResource extends Resource
                     ->requiresConfirmation()
                     ->action(function (BotUser $record): void {
                         $record->update([
-                            'status'      => BotUser::STATUS_APPROVED,
-                            'approved_at' => now(),
+                            'status'          => BotUser::STATUS_APPROVED,
+                            'approved_at'     => now(),
+                            'moderation_note' => null,
                         ]);
 
                         self::sendApprovalMessage($record);
@@ -160,11 +167,23 @@ class BotUserResource extends Resource
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->visible(fn (BotUser $record): bool => ! $record->isRejected())
-                    ->requiresConfirmation()
-                    ->action(function (BotUser $record): void {
+                    ->modalHeading('Отказать в доступе к игре')
+                    ->modalDescription('Участник по-прежнему сможет войти в кабинет, но игра и список участников останутся закрытыми. Сообщение ниже он увидит в кабинете.')
+                    ->form([
+                        Textarea::make('note')
+                            ->label('Сообщение участнику')
+                            ->placeholder('Например: профиль не заполнен, добавьте информацию о себе и напишите нам.')
+                            ->rows(4)
+                            ->maxLength(1000),
+                    ])
+                    ->action(function (BotUser $record, array $data): void {
                         $wasApproved = $record->isApproved();
 
-                        $record->update(['status' => BotUser::STATUS_REJECTED]);
+                        $record->update([
+                            'status'          => BotUser::STATUS_REJECTED,
+                            'moderation_note' => filled($data['note'] ?? null) ? trim((string) $data['note']) : null,
+                        ]);
+                        $record->refresh();
 
                         if ($wasApproved) {
                             self::sendAccessRevokedMessage($record);
@@ -236,7 +255,7 @@ class BotUserResource extends Resource
         try {
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "😔 {$firstName}, к сожалению твоя заявка не была одобрена.\n\nЕсли у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP",
+                text: "😔 {$firstName}, модератор отказал тебе в доступе к игре." . (filled($record->moderation_note) ? "\n\nСообщение модератора:\n{$record->moderation_note}" : '') . "\n\nЛичный кабинет остаётся открытым. Если есть вопросы — напиши напрямую: @lesnichenkoP",
             );
         } catch (\Throwable $e) {
             Log::error('Telegram: не удалось отправить сообщение об отклонении', [
@@ -251,7 +270,7 @@ class BotUserResource extends Resource
         try {
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "🔒 Ваш доступ был закрыт.\n\nЕсли у тебя есть вопросы или ты хочешь узнать причину — напиши напрямую: @lesnichenkoP",
+                text: "🔒 Модератор закрыл тебе доступ к игре." . (filled($record->moderation_note) ? "\n\nСообщение модератора:\n{$record->moderation_note}" : '') . "\n\nЛичный кабинет остаётся открытым. Если есть вопросы — напиши напрямую: @lesnichenkoP",
                 reply_markup: ReplyKeyboardRemove::make(remove_keyboard: true),
             );
         } catch (\Throwable $e) {

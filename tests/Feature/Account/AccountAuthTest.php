@@ -51,24 +51,22 @@ class AccountAuthTest extends TestCase
             ->assertSessionHas('error');
     }
 
-    public function test_auth_with_valid_token_for_pending_user_redirects_to_login_with_error(): void
+    public function test_auth_with_valid_token_for_pending_user_opens_the_cabinet(): void
     {
         $user  = BotUser::factory()->pending()->create();
         $token = LoginToken::generateFor((int) $user->telegram_id);
 
         $this->get(route('account.auth') . '?token=' . $token->token)
-            ->assertRedirect(route('account.login'))
-            ->assertSessionHas('error');
+            ->assertRedirect(route('account.index'));
     }
 
-    public function test_auth_with_valid_token_for_rejected_user_redirects_to_login_with_error(): void
+    public function test_auth_with_valid_token_for_rejected_user_opens_the_cabinet(): void
     {
         $user = BotUser::factory()->create(['status' => BotUser::STATUS_REJECTED]);
         $token = LoginToken::generateFor((int) $user->telegram_id);
 
         $this->get(route('account.auth') . '?token=' . $token->token)
-            ->assertRedirect(route('account.login'))
-            ->assertSessionHas('error');
+            ->assertRedirect(route('account.index'));
     }
 
     // ──────────────────────────────────────────────

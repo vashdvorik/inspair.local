@@ -47,7 +47,7 @@
                     @endif
                 </div>
             </div>
-            @if($person->description && $see($person, 'description'))
+            @if($person->description)
             <p class="flex-1 text-xs leading-relaxed text-gray-500 line-clamp-3">{{ $person->description }}</p>
             @else
             <p class="text-xs italic text-gray-300">Профиль не заполнен</p>
