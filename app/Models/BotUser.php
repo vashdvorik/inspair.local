@@ -19,6 +19,9 @@ class BotUser extends Model
     protected $fillable = [
         'telegram_id',
         'telegram_username',
+        'contact_phone',
+        'contact_email',
+        'contact_instagram',
         'avatar_path',
         'first_name',
         'full_name',

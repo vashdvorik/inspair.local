@@ -205,6 +205,8 @@ body.i-body, .i-body {
 .i-section { padding: var(--s-20) 0; position: relative; }
 .i-section--soft { background: var(--bg-soft); }
 .i-section--tint { background: linear-gradient(180deg, var(--bg-soft), var(--bg-tint)); }
+/* строки абзаца выравниваются по длине: на последней строке не остаётся одного-двух коротких слов (браузер делает это для текста до 6 строк, длинные абзацы переносятся как обычно) */
+:where(.i-body) :where(p, li, dd, figcaption, blockquote, label > span, small) { text-wrap: balance; }
 :where(.i-body) a { color: var(--blue-600); text-underline-offset: 3px; }
 :where(.i-body) :focus-visible { outline: 3px solid rgba(0, 109, 224, .45); outline-offset: 3px; border-radius: 6px; }
 ::selection { background: var(--blue-200); color: var(--navy-900); }

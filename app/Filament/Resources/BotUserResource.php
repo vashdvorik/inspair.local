@@ -22,12 +22,11 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables;
 use Filament\Tables\Table;
-use App\Telegram\TelegramKeyboards;
+use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 use Illuminate\Support\Facades\Log;
 use Nutgram\Laravel\Facades\Telegram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 
 class BotUserResource extends Resource
 {
@@ -54,6 +53,12 @@ class BotUserResource extends Resource
                     ->label('Username')
                     ->disabled(),
             ])->columns(2),
+
+            Section::make('Контакты (видят только администраторы)')->schema([
+                TextInput::make('contact_phone')->label('Телефон')->disabled(),
+                TextInput::make('contact_email')->label('Почта')->disabled(),
+                TextInput::make('contact_instagram')->label('Instagram')->disabled(),
+            ])->columns(3),
 
             Section::make('Анкета')->schema([
                 TextInput::make('full_name')
@@ -226,13 +231,17 @@ class BotUserResource extends Resource
                 InlineKeyboardButton::make('С чего начать? →', callback_data: 'start_guide')
             );
 
-        $mainMenu = TelegramKeyboards::mainMenu();
+        // перечисляем только то, что в кабинете реально есть; игру упоминаем, когда она включена
+        $gameLine = app(\App\Services\GameService::class)->isEnabled()
+            ? "\n🎮 игра «Угадай, кто это»: отвечай на вопросы, копи очки и знакомься с участниками"
+            : '';
+        $approvalText = "🎉 {$firstName}, добро пожаловать в Инспайр!\n\nМодератор одобрил твой профиль. Теперь в личном кабинете тебе доступны:\n\n👥 список участников сообщества\n📅 возможности: учебные курсы и мероприятия за рубежом{$gameLine}\n\nКабинет открывается по кнопке «Кабинет» рядом с полем ввода сообщения.";
 
         try {
             Telegram::sendMessage(
                 chat_id: $record->telegram_id,
-                text: "🎉 {$firstName}, добро пожаловать в Инспайр!\n\nТы принят в сообщество активных молодых людей.\n\nЭто значит, что у тебя есть доступ:\n\n✅ Полный доступ в закрытый чат сообщества\n✅ Доступ к закрытым обучающим материалам академии\n✅ AI-нетворкинг — когда заполнишь профиль.",
-                reply_markup: $mainMenu,
+                text: $approvalText,
+                reply_markup: ReplyKeyboardRemove::make(true),
             );
 
             Telegram::sendMessage(

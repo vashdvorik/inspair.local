@@ -53,7 +53,7 @@
 
             <ol class="login-steps">
                 <li><span class="step-dot">1</span><span>{{ $tr('Откройте бота по кнопке ниже и нажмите «Старт»', 'Open the bot with the button below and press “Start”', 'Deschide botul cu butonul de mai jos și apasă „Start”') }}</span></li>
-                <li><span class="step-dot step-dot--2">2</span><span>{{ $tr('Ответьте на вопросы бота, и кабинет откроется.', 'Answer the bot’s questions and your account opens.', 'Răspunde la întrebările botului și contul se deschide.') }}</span></li>
+                <li><span class="step-dot step-dot--2">2</span><span>{{ $tr('Ответьте на вопросы бота и нажмите «Кабинет» рядом с полем ввода.', 'Answer the bot’s questions and press “Cabinet” next to the message field.', 'Răspunde la întrebările botului și apasă „Cabinet” lângă câmpul de mesaj.') }}</span></li>
             </ol>
 
             <a href="https://t.me/Inspiremoldova_bot?start=login" id="tg-login-btn" target="_blank" rel="noopener" class="i-btn i-btn--block">

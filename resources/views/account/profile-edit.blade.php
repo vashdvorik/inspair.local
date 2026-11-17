@@ -80,22 +80,7 @@
                               class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
                                      transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                      {{ $errors->has('description') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('description', $accountUser->description) }}</textarea>
-                    <p class="mt-1.5 text-xs text-gray-400">{{ $tr('Используется алгоритмом для подбора партнёров · до 1000 символов', 'Used by the algorithm to suggest partners · up to 1000 characters', 'Folosit de algoritm pentru a sugera parteneri · până la 1000 de caractere') }}</p>
                     @error('description')
-                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div>
-                    <label class="mb-1.5 block text-sm font-medium text-[#0e2442]">
-                        {{ $tr('Что ждёшь от сообщества?', 'What do you expect from the community?', 'Ce aștepți de la comunitate?') }}
-                    </label>
-                    <textarea name="expectation" rows="3" maxlength="1000"
-                              placeholder="{{ $tr('Чего ищешь и чем можешь быть полезен.', 'What you are looking for and how you can help.', 'Ce cauți și cum poți fi de folos.') }}"
-                              class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
-                                     transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
-                                     {{ $errors->has('expectation') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('expectation', $accountUser->expectation) }}</textarea>
-                    @error('expectation')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
@@ -126,6 +111,37 @@
         </div>
 
         @endif
+
+        {{-- Contacts: shown to approved participants unless the profile hides them --}}
+        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Контакты', 'Contacts', 'Contacte') }}</h2>
+            <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                    <label for="contact_phone" class="mb-1.5 block text-sm font-medium text-[#0e2442]">{{ $tr('Телефон', 'Phone', 'Telefon') }}</label>
+                    <input id="contact_phone" type="text" inputmode="tel" name="contact_phone" value="{{ old('contact_phone', $accountUser->contact_phone) }}" maxlength="30" autocomplete="tel" placeholder="+373 600 00000"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('contact_phone') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('contact_phone')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label for="contact_email" class="mb-1.5 block text-sm font-medium text-[#0e2442]">{{ $tr('Почта', 'Email', 'E-mail') }}</label>
+                    <input id="contact_email" type="text" inputmode="email" name="contact_email" value="{{ old('contact_email', $accountUser->contact_email) }}" maxlength="120" autocomplete="email" placeholder="name@example.com"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('contact_email') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('contact_email')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="contact_instagram" class="mb-1.5 block text-sm font-medium text-[#0e2442]">Instagram</label>
+                    <input id="contact_instagram" type="text" name="contact_instagram" value="{{ old('contact_instagram', $accountUser->contact_instagram) }}" maxlength="80" autocomplete="off" placeholder="@username"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('contact_instagram') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('contact_instagram')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
+                </div>
+            </div>
+        </div>
 
         {{-- Privacy --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">

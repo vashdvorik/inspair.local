@@ -97,7 +97,6 @@ class AccountCabinetTest extends TestCase
             ->post(route('account.profile.update'), [
                 'full_name'   => 'Иван Иванов',
                 'description' => 'Предприниматель',
-                'expectation' => 'Партнёрство',
             ])
             ->assertRedirect(route('account.profile'))
             ->assertSessionHas('success');
@@ -106,7 +105,6 @@ class AccountCabinetTest extends TestCase
             'id'          => $user->id,
             'full_name'   => 'Иван Иванов',
             'description' => 'Предприниматель',
-            'expectation' => 'Партнёрство',
         ]);
 
         Bus::assertDispatched(ComputeUserEmbedding::class);
@@ -129,9 +127,8 @@ class AccountCabinetTest extends TestCase
             ->post(route('account.profile.update'), [
                 'full_name'   => str_repeat('a', 121),
                 'description' => str_repeat('a', 1001),
-                'expectation' => str_repeat('a', 1001),
             ])
-            ->assertSessionHasErrors(['full_name', 'description', 'expectation']);
+            ->assertSessionHasErrors(['full_name', 'description']);
     }
 
     // ──────────────────────────────────────────────

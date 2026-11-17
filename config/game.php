@@ -22,7 +22,6 @@ return [
     'xp' => [
         'profile_avatar'      => 30,
         'profile_description' => 50,
-        'profile_expectation' => 30,
         'fact'                => 15, // за каждый факт, максимум max_facts
         'quest_correct'       => 20,
         'quest_wrong'         => 3,

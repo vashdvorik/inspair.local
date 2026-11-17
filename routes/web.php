@@ -102,7 +102,6 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
         Route::get('/profile/edit', [AccountController::class, 'profileEdit'])->name('profile.edit');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
-        Route::delete('/profile', [AccountController::class, 'deleteProfile'])->name('profile.delete');
         Route::get('/matches', [AccountController::class, 'matches'])->middleware(['approved', 'feature:cabinet_matches'])->name('matches');
         Route::get('/people', [AccountController::class, 'people'])->middleware(['approved', 'game.access:people'])->name('people');
         Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->middleware('approved')->name('people.show');
@@ -117,9 +116,7 @@ Route::middleware(RequireAccountAuth::class)
             Route::get('/network', [GameController::class, 'network'])->name('network');
         });
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->middleware('feature:cabinet_knowledge')->name('knowledge');
-        Route::get('opportunities/create', [OpportunityController::class, 'create'])->middleware(['approved', 'game.access:opportunities'])->name('opportunities.create');
-        Route::post('opportunities', [OpportunityController::class, 'store'])->middleware(['approved', 'game.access:opportunities'])->name('opportunities.store');
-        Route::resource('opportunities', OpportunityController::class)->only(['index', 'destroy'])->middleware('approved');
+        Route::get('opportunities', [OpportunityController::class, 'index'])->middleware('approved')->name('opportunities.index');
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 

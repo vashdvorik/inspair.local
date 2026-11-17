@@ -138,8 +138,10 @@ class AccountController extends Controller
         $user->update([
             'full_name'       => $request->validated('full_name'),
             'description'     => $request->validated('description'),
-            'expectation'     => $request->validated('expectation'),
             'contacts_closed' => $request->boolean('contacts_closed'),
+            'contact_phone'     => $request->validated('contact_phone') ?: null,
+            'contact_email'     => $request->validated('contact_email') ?: null,
+            'contact_instagram' => $request->validated('contact_instagram') ?: null,
         ] + ($gameOn ? [
             // эти поля есть в форме только при включённой игре: иначе не трогаем сохранённые значения
             'quests_opt_out'      => $request->boolean('quests_opt_out'),
@@ -231,37 +233,6 @@ class AccountController extends Controller
     public function knowledge(): View
     {
         return view('account.knowledge');
-    }
-
-    /**
-     * Delete account and clear session.
-     */
-    public function deleteProfile(Request $request): RedirectResponse
-    {
-        /** @var BotUser $user */
-        $user = view()->shared('accountUser');
-
-        // Remove the bot keyboard from the user's Telegram chat
-        Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
-            'chat_id'      => $user->telegram_id,
-            'text'         => "✅ " . \App\Support\Lang::t('Ваш профиль удалён.', 'Your profile has been deleted.', 'Profilul tău a fost șters.') . "\n\n" . \App\Support\Lang::t('Спасибо, что были с нами — будем рады видеть вас снова 🙏', 'Thank you for being with us — we would be glad to see you again 🙏', 'Mulțumim că ai fost cu noi — te vom primi cu drag din nou 🙏'),
-            'reply_markup' => json_encode([
-                'remove_keyboard' => true,
-                'inline_keyboard' => [[
-                    ['text' => '↩️ ' . \App\Support\Lang::t('Вернуться', 'Come back', 'Revino'), 'callback_data' => 'restart'],
-                ]],
-            ]),
-        ]);
-
-        $user->delete();
-
-        session()->forget('account_telegram_id');
-        session()->forget('_account_expires');
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('account.login')
-            ->with('success', \App\Support\Lang::t('Ваш профиль удалён.', 'Your profile has been deleted.', 'Profilul tău a fost șters.'));
     }
 
     /**

@@ -17,7 +17,6 @@ class RegistrationConversation extends Conversation
 {
     protected ?string $fullName = null;
     protected ?string $description = null;
-    protected ?string $expectation = null;
 
     public function start(Nutgram $bot): void
     {
@@ -80,30 +79,6 @@ class RegistrationConversation extends Conversation
 
         $this->description = $text;
 
-        $bot->sendMessage(
-            text: "Что ждёшь от Инспайр и чем можешь быть полезен сообществу?",
-            reply_markup: InlineKeyboardMarkup::make()
-                ->addRow(InlineKeyboardButton::make('Пропустить', callback_data: 'reg:skip')),
-        );
-
-        $this->next('handleExpectation');
-    }
-
-    public function handleExpectation(Nutgram $bot): void
-    {
-        if ($bot->callbackQuery()?->data === 'reg:skip') {
-            $bot->answerCallbackQuery();
-            $this->expectation = null;
-        } else {
-            $text = $bot->message()?->text;
-            if (empty($text)) {
-                $this->next('handleExpectation');
-
-                return;
-            }
-            $this->expectation = $text;
-        }
-
         $this->save($bot);
     }
 
@@ -117,7 +92,6 @@ class RegistrationConversation extends Conversation
             'first_name'        => $telegramUser->first_name,
             'full_name'         => $this->fullName,
             'description'       => $this->description,
-            'expectation'       => $this->expectation,
             'status'            => BotUser::STATUS_PENDING,
         ]);
 
@@ -128,11 +102,9 @@ class RegistrationConversation extends Conversation
 
         $firstName = explode(' ', (string) $this->fullName)[0];
 
-        $token = \App\Models\LoginToken::generateFor((int) $botUser->telegram_id);
-        $url   = url('/go/' . substr($token->token, 0, 8));
-
         $bot->sendMessage(
-            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет уже открыт, заходи по ссылке:\n🔐 {$url}\n\n⏱ Ссылка действует 24 часа.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
+            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет откроется по кнопке «Кабинет» рядом с полем ввода сообщения.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
+            reply_markup: \SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove::make(true),
         );
 
         $this->end();

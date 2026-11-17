@@ -9,6 +9,8 @@ use Tests\TestCase;
 /** «Возможности»: новости о поездках вместо ссылки на внешний сайт. */
 class OpportunitiesPageTest extends TestCase
 {
+    use \Illuminate\Foundation\Testing\RefreshDatabase;
+
     public function test_page_lists_trips_with_local_photos_and_instagram_links(): void
     {
         $this->get(route('opportunities'))
@@ -60,5 +62,19 @@ class OpportunitiesPageTest extends TestCase
                 $this->assertNotEmpty($item['country'][$lang] ?? '', $item['code'].' '.$lang);
             }
         }
+    }
+
+    public function test_cabinet_shows_the_same_opportunities_and_nobody_can_publish(): void
+    {
+        $u = \App\Models\BotUser::create(['telegram_id' => 777002, 'telegram_username' => 'opp_test', 'full_name' => 'Opp Test', 'status' => \App\Models\BotUser::STATUS_APPROVED]);
+        $session = ['account_telegram_id' => $u->telegram_id, '_account_expires' => now()->addDay()->timestamp];
+
+        $html = $this->withSession($session)->get(route('account.opportunities.index'))->assertOk()->getContent();
+        $this->assertStringContainsString(route('opportunities.show', 'emotion-armenia'), $html);
+        $this->assertStringContainsString('cab-opp', $html);
+        $this->assertStringNotContainsString(route('account.index').'/opportunities/create', $html);
+
+        $this->withSession($session)->get('/app/account/opportunities/create')->assertNotFound();
+        $this->withSession($session)->post('/app/account/opportunities', ['type' => 'project', 'title' => 'x', 'body' => 'y'])->assertStatus(405);
     }
 }

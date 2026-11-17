@@ -225,9 +225,6 @@ class GameService
         if (mb_strlen(trim((string) $user->description)) >= 20) {
             $pick($this->award($user, 'profile_description', $xp['profile_description']));
         }
-        if (mb_strlen(trim((string) $user->expectation)) >= 20) {
-            $pick($this->award($user, 'profile_expectation', $xp['profile_expectation']));
-        }
         foreach ($user->facts()->limit((int) config('game.max_facts'))->get() as $fact) {
             $pick($this->award($user, 'fact', $xp['fact'], (string) $fact->id));
         }

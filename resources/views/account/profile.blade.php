@@ -69,6 +69,25 @@
         </div>
     </div>
 
+    {{-- Contacts --}}
+    <div class="mt-5 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
+        <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Контакты', 'Contacts', 'Contacte') }}</h2>
+        <div class="space-y-4">
+            <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Телефон', 'Phone', 'Telefon') }}</p>
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->contact_phone ?: '—' }}</p>
+            </div>
+            <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Почта', 'Email', 'E-mail') }}</p>
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->contact_email ?: '—' }}</p>
+            </div>
+            <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Instagram</p>
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->contact_instagram ? '@'.$accountUser->contact_instagram : '—' }}</p>
+            </div>
+        </div>
+    </div>
+
     {{-- About --}}
     <div class="mt-5 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
         <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('О себе', 'About me', 'Despre mine') }}</h2>
@@ -81,45 +100,9 @@
                 </p>
             </div>
 
-            <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Что ждёшь от сообщества?', 'What do you expect from the community?', 'Ce aștepți de la comunitate?') }}</p>
-                <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">
-                    {{ $accountUser->expectation ?: '—' }}
-                </p>
-            </div>
-
         </div>
-    </div>
-
-    {{-- Danger zone --}}
-    <div class="mt-10 rounded-2xl border border-red-100 bg-red-50 p-6">
-        <h2 class="mb-1 text-sm font-semibold text-red-700">{{ $tr('Удалить профиль', 'Delete profile', 'Șterge profilul') }}</h2>
-        <p class="mb-4 text-sm text-red-500">{{ $tr('Все ваши данные будут безвозвратно удалены. Это действие нельзя отменить.', 'All your data will be deleted permanently. This cannot be undone.', 'Toate datele tale vor fi șterse definitiv. Această acțiune nu poate fi anulată.') }}</p>
-
-        <form id="delete-profile-form" action="{{ route('account.profile.delete') }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="button" onclick="confirmDelete()"
-                class="inline-flex h-10 items-center gap-2 rounded-xl border border-red-300 bg-white px-5
-                       text-sm font-semibold text-red-600 transition hover:bg-red-600 hover:text-white hover:border-red-600">
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6M9 7h6m2 0a1 1 0 00-1-1h-4a1 1 0 00-1 1H5"/>
-                </svg>
-                {{ $tr('Удалить профиль', 'Delete profile', 'Șterge profilul') }}
-            </button>
-        </form>
     </div>
 
 </div>
 
-@push('scripts')
-<script>
-function confirmDelete() {
-    if (confirm({{ \Illuminate\Support\Js::from($tr('Вы уверены? Профиль и все данные будут удалены безвозвратно.', 'Are you sure? Your profile and all data will be deleted permanently.', 'Ești sigur? Profilul și toate datele vor fi șterse definitiv.')) }})) {
-        document.getElementById('delete-profile-form').submit();
-    }
-}
-</script>
-@endpush
 @endsection

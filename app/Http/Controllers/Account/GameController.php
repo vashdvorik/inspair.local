@@ -87,7 +87,6 @@ class GameController extends Controller
         return [
             ['key' => 'avatar',      'label' => \App\Support\Lang::t('Фото профиля', 'Profile photo', 'Poză de profil'), 'points' => $xp['profile_avatar'],      'done' => (bool) $user->avatar_path],
             ['key' => 'description', 'label' => \App\Support\Lang::t('Расскажи о себе', 'Tell us about yourself', 'Povestește despre tine'), 'points' => $xp['profile_description'], 'done' => mb_strlen(trim((string) $user->description)) >= 20],
-            ['key' => 'expectation', 'label' => \App\Support\Lang::t('Чего ждёшь от сообщества', 'What you expect from the community', 'Ce aștepți de la comunitate'), 'points' => $xp['profile_expectation'], 'done' => mb_strlen(trim((string) $user->expectation)) >= 20],
             ['key' => 'facts',       'label' => str_replace('{FACTS}', (string) $facts, \App\Support\Lang::t('Факты о себе ({FACTS} из 3 для старта)', 'Facts about you ({FACTS} of 3 to start)', 'Fapte despre tine ({FACTS} din 3 pentru start)')), 'points' => $xp['fact'] * 3, 'done' => $facts >= 3],
         ];
     }
@@ -193,7 +192,6 @@ class GameController extends Controller
 
         $out['description'] = $p->description;
         $out['facts']       = $p->facts->pluck('body')->all();
-        $out['expectation'] = $p->expectation;
         $out['write_url']   = $p->canBeContacted() ? 'https://t.me/' . $p->telegram_username : null;
         $out['profile_url'] = route('account.people.show', $p);
 

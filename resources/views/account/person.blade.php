@@ -68,11 +68,6 @@
             </div>
             @endif
 
-            <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Что ищет в сообществе', 'What they look for in the community', 'Ce caută în comunitate') }}</p>
-                    <p class="mt-1 whitespace-pre-line text-sm text-[#0e2442]">{{ $person->expectation ?: '—' }}</p>
-            </div>
-
         </div>
     </div>
 

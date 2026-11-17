@@ -74,14 +74,15 @@ class GameFlowTest extends TestCase
 
     public function test_profile_rewards_give_quick_access(): void
     {
-        $u = $this->player(['avatar_path' => 'a.jpg', 'expectation' => 'Ищу команду для проектов о мире.']);
+        $u = $this->player(['avatar_path' => 'a.jpg']);
         ProfileFact::create(['bot_user_id' => $u->id, 'body' => 'перевожу субтитры']);
+        ProfileFact::create(['bot_user_id' => $u->id, 'body' => 'катаюсь на велосипеде']);
 
         app(GameService::class)->syncProfileRewards($u);
         app(GameService::class)->syncProfileRewards($u); // повтор не задваивает
 
         $u->refresh();
-        $this->assertSame(30 + 50 + 30 + 15, $u->xp);
+        $this->assertSame(30 + 50 + 15 + 15, $u->xp);
         $this->assertSame(2, $u->level);
     }
 
@@ -93,12 +94,10 @@ class GameFlowTest extends TestCase
 
         // до запуска игры разделы закрыты
         $this->withSession($this->sess($u))->get(route('account.people'))->assertRedirect(route('account.game', ['locked' => 'people']));
-        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertRedirect(route('account.game', ['locked' => 'opportunities']));
 
         // после запуска они открыты сразу всем одобренным: уровень ничего не решает
         app(GameService::class)->setLaunched(true);
         $this->withSession($this->sess($u))->get(route('account.people'))->assertOk();
-        $this->withSession($this->sess($u))->get(route('account.opportunities.create'))->assertOk();
     }
 
     public function test_moderator_sees_everything_without_launch(): void
@@ -111,10 +110,10 @@ class GameFlowTest extends TestCase
     {
         app(GameService::class)->setLaunched(true);
         $viewer = $this->player(); // уровень 1
-        $target = $this->player(['description' => 'ОПИСАНИЕ участника', 'expectation' => 'ОЖИДАНИЯ участника']);
+        $target = $this->player(['description' => 'ОПИСАНИЕ участника']);
 
         $html = $this->withSession($this->sess($viewer))->get(route('account.people.show', $target))
-            ->assertOk()->assertSee('ОПИСАНИЕ участника')->assertSee('ОЖИДАНИЯ участника')->getContent();
+            ->assertOk()->assertSee('ОПИСАНИЕ участника')->getContent();
         $this->assertStringNotContainsString('Откроется на уровне', $html);
     }
 

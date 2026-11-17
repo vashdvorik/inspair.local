@@ -46,13 +46,13 @@ class GameOffSwitchTest extends TestCase
     public function test_cabinet_is_open_to_everyone_like_before_the_game(): void
     {
         $low = $this->player(); // уровень 1
-        $other = $this->player(['description' => 'ПОЛНОЕ ОПИСАНИЕ участника', 'expectation' => 'ПОЛНЫЕ ОЖИДАНИЯ участника']);
+        $other = $this->player(['description' => 'ПОЛНОЕ ОПИСАНИЕ участника']);
 
-        foreach (['account.people', 'account.search', 'account.matches', 'account.opportunities.create'] as $route) {
+        foreach (['account.people', 'account.search', 'account.matches', 'account.opportunities.index'] as $route) {
             $this->withSession($this->sess($low))->get(route($route))->assertOk();
         }
         $this->withSession($this->sess($low))->get(route('account.people.show', $other))
-            ->assertOk()->assertSee('ПОЛНОЕ ОПИСАНИЕ')->assertSee('ПОЛНЫЕ ОЖИДАНИЯ');
+            ->assertOk()->assertSee('ПОЛНОЕ ОПИСАНИЕ');
     }
 
     public function test_no_trace_of_game_in_menu_and_profile_form(): void
