@@ -37,7 +37,7 @@
                 <a href="#final" class="i-btn i-btn--secondary i-btn--lg"><span>{!! $t('Итоговая конференция', 'Final Conference', 'Conferința finală') !!}</span>{!! $arrow !!}</a>
             </div>
         </div>
-        <div class="i-in i-in-3 hidden lg:block"><img class="i-float" src="{{ $img('academy-2025/leadership.png') }}" alt="INSPIRE Leadership Academy 2025" width="380" height="356" style="width:min(360px,100%);height:auto;margin:0 auto;"></div>
+        <div class="i-in i-in-3 hidden lg:block"><img class="i-float" src="{{ $img('academy-2025/leadership.webp') }}" alt="INSPIRE Leadership Academy 2025" width="380" height="356" style="width:min(360px,100%);height:auto;margin:0 auto;"></div>
     </div>
 </section>
 

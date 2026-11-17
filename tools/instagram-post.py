@@ -81,8 +81,8 @@ def main() -> None:
         info = parse(code)
 
         img = Image.open(io.BytesIO(fetch(info['image_url']))).convert('RGB')
-        img.thumbnail((1080, 1350), Image.LANCZOS)
-        img.save(IMG / f'{code}.webp', 'WEBP', quality=80, method=6)
+        img.thumbnail((900, 1200), Image.LANCZOS)  # 900 px хватает карточке и странице, а файл втрое легче
+        img.save(IMG / f'{code}.webp', 'WEBP', quality=78, method=6)
 
         entry = next((e for e in data['items'] if e['code'] == code), None)
         if entry is None:

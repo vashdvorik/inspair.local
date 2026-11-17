@@ -274,7 +274,7 @@ footer { content-visibility: auto; contain-intrinsic-size: auto 380px; }
 /* coloured spots: pre-rendered soft WebP images (the original blurred look, no runtime blur filter) */
 .pic-spot, .hero-edge .pic-spot { background: none; opacity: .34; }
 .pic-spot::before { content: ""; position: absolute; inset: -25%; background: var(--c);
-  -webkit-mask: url(../img/spots/mask.png?v=2) center / 100% 100% no-repeat; mask: url(../img/spots/mask.png?v=2) center / 100% 100% no-repeat; }
+  -webkit-mask: url(../img/spots/mask.webp?v=2) center / 100% 100% no-repeat; mask: url(../img/spots/mask.webp?v=2) center / 100% 100% no-repeat; }
 .pic-sky { --spot: url(../img/spots/sky.webp?v=2); } .pic-yellow { --spot: url(../img/spots/yellow.webp?v=2); } .pic-orange { --spot: url(../img/spots/orange.webp?v=2); }
 .pic-purple { --spot: url(../img/spots/purple.webp?v=2); } .pic-green { --spot: url(../img/spots/green.webp?v=2); }
 .hero-edge .pic-spot { opacity: .15; }

@@ -31,14 +31,14 @@
 
     {{-- TMA loading overlay (hidden by default, shown via JS when inside Telegram) --}}
     <div id="tma-loading" style="display:none" class="fixed inset-0 z-50 flex-col items-center justify-center bg-white">
-        <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" class="i-float mb-4" style="width:96px;height:auto">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.webp') }}" alt="" class="i-float mb-4" style="width:96px;height:auto">
         <div class="w-9 h-9 rounded-full animate-spin mb-4" style="border:4px solid var(--blue-100);border-top-color:var(--blue-600)"></div>
         <p class="text-sm text-gray-500 font-medium">{{ $tr('Выполняется вход…', 'Signing you in…', 'Se face autentificarea…') }}</p>
     </div>
 
     {{-- Normal login form (hidden when inside Telegram) --}}
     <main id="login-shell" class="login-shell i-in">
-        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="164" height="88">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.webp') }}" alt="INSPIRE EDU Network" class="login-logo" width="164" height="88">
         <p class="i-eyebrow login-tag" style="color:var(--muted)">{{ $tr('Личный кабинет участника', 'Participant account', 'Contul participantului') }}</p>
 
         @if(session('error'))

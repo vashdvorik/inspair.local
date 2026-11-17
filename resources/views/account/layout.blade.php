@@ -64,7 +64,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('account.index') }}" class="block shrink-0 px-6 pb-4 pt-5" aria-label="INSPIRE EDU Network">
-                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="108" height="58" style="height:58px;width:auto">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.webp') }}" alt="INSPIRE EDU Network" width="108" height="58" style="height:58px;width:auto">
             </a>
 
             {{-- User card --}}
@@ -151,7 +151,7 @@
                 <button @click="sidebarOpen = true" class="flex h-10 w-10 items-center justify-center rounded-xl text-navy-800 transition hover:bg-brand-50" aria-label="{{ $tr('Открыть меню', 'Open menu', 'Deschide meniul') }}">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
-                <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.png') }}" alt="" class="h-9 w-9">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo-mark.webp') }}" alt="" class="h-9 w-9">
                 <span class="min-w-0 flex-1 truncate text-sm font-bold text-ink">@yield('title', $tr('Кабинет', 'Account', 'Cabinet'))</span>
                 @include('account._lang')
             </header>

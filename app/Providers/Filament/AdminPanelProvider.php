@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             // INSPIRE design system: light only, logo-derived palette (see /design)
             ->darkMode(false)
             ->brandName('INSPIRE EDU Network')
-            ->brandLogo(PublicUi::versioned('brand/logo.png'))
+            ->brandLogo(PublicUi::versioned('brand/logo.webp'))
             ->brandLogoHeight('3rem')
             ->favicon(PublicUi::versioned('brand/favicon.ico'))
             ->font('Montserrat', url: asset('design/fonts.css'), provider: LocalFontProvider::class)
