@@ -12,7 +12,7 @@
     <meta property="og:site_name" content="INSPIRE EDU Network">
     <meta property="og:url" content="{{ url()->current() }}">
     <link rel="canonical" href="{{ url()->current() }}">
-    <meta property="og:image" content="{{ asset('img/hero/og.jpg') }}">
+    <meta property="og:image" content="{{ \App\Support\PublicUi::versioned('img/hero/og.jpg') }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="{{ \App\Support\PublicUi::versioned('brand/favicon.ico') }}" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ \App\Support\PublicUi::versioned('brand/favicon-32.png') }}">

@@ -19,6 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'feature'     => \App\Http\Middleware\RequireFeature::class,
             'approved'    => \App\Http\Middleware\RequireApproved::class,
         ]);
+        $middleware->web(append: [\App\Http\Middleware\FreshPages::class]);
+        $middleware->encryptCookies(except: [\App\Http\Middleware\FreshPages::COOKIE]);
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',
         ]);

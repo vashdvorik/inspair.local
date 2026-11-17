@@ -134,9 +134,9 @@
                     <h2 class="i-h2" style="font-size:1.9rem">{!! $tk($T, 'grantH') !!}</h2>
                     {!! $pk($T, 'grant', 'text-gray-600 leading-relaxed mt-3') !!}
                     <div class="flex flex-wrap gap-3 mt-6">
-                        <a class="i-btn i-btn--secondary" href="{{ asset('files/academy-2025-grants-ru.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (RU)', 'Regulation (RU)', 'Regulament (RU)') !!}</span></a>
-                        <a class="i-btn i-btn--secondary" href="{{ asset('files/academy-2025-grants-en.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (EN)', 'Regulation (EN)', 'Regulament (EN)') !!}</span></a>
-                        <a class="i-btn i-btn--secondary" href="{{ asset('files/academy-2025-grants-ro.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (RO)', 'Regulation (RO)', 'Regulament (RO)') !!}</span></a>
+                        <a class="i-btn i-btn--secondary" href="{{ \App\Support\PublicUi::versioned('files/academy-2025-grants-ru.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (RU)', 'Regulation (RU)', 'Regulament (RU)') !!}</span></a>
+                        <a class="i-btn i-btn--secondary" href="{{ \App\Support\PublicUi::versioned('files/academy-2025-grants-en.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (EN)', 'Regulation (EN)', 'Regulament (EN)') !!}</span></a>
+                        <a class="i-btn i-btn--secondary" href="{{ \App\Support\PublicUi::versioned('files/academy-2025-grants-ro.pdf') }}" target="_blank" rel="noopener">{!! $icon('book', 'w-4 h-4') !!}<span>{!! $t('Положение (RO)', 'Regulation (RO)', 'Regulament (RO)') !!}</span></a>
                     </div>
                 </div>
             </div>

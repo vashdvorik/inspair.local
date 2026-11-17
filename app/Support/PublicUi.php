@@ -23,15 +23,16 @@ final class PublicUi
     }
 
     /**
-     * Asset URL with a version (?v=<file modification time>): after a deploy the browser fetches the new
-     * CSS/JS/image by itself, nobody has to press F5. Only files that really changed get a new version.
+     * Asset URL with a version (?v=<file modification time>-<CACHE_EPOCH>): after a deploy the browser fetches the new
+     * CSS/JS/image by itself, nobody has to press F5. Only files that really changed get a new version;
+     * raising CACHE_EPOCH refreshes everything at once.
      */
     public static function versioned(string $path): string
     {
         $path = ltrim($path, '/');
         $file = public_path($path);
 
-        return asset($path) . (is_file($file) ? '?v=' . filemtime($file) : '');
+        return asset($path) . (is_file($file) ? '?v=' . filemtime($file) . '-' . config('app.cache_epoch') : '');
     }
     /** Plain text is escaped, text that already contains markup is trusted (developer-authored content). */
     private static function esc(?string $s): string
