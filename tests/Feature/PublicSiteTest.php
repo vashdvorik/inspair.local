@@ -64,10 +64,10 @@ class PublicSiteTest extends TestCase
         $this->get('/academy-2025/school-2')->assertRedirect('/events/schools-2025/school-2')->assertStatus(301);
     }
 
-    public function test_hackathon_and_publications_are_stubs(): void
+    public function test_hackathon_is_a_stub_and_publications_list_the_collection(): void
     {
         $this->get('/events/hackathon-2026')->assertOk()->assertSee('Information will appear here very soon', false);
-        $this->get('/publications')->assertOk()->assertSee('We are preparing the Publications section', false);
+        $this->get('/publications')->assertOk()->assertSee('Leadership Through People and Ideas', false)->assertDontSee('We are preparing the Publications section', false);
     }
 
     public function test_events_have_the_correct_dates(): void
@@ -101,7 +101,7 @@ class PublicSiteTest extends TestCase
             $this->assertFileExists(public_path("img/gallery/{$album}/{$first}.webp"));
             $this->assertFileExists(public_path("img/gallery/{$album}/{$first}-t.webp"));
         }
-        $this->assertSame(380, array_sum(array_map('count', $gallery)));
+        $this->assertSame(375, array_sum(array_map('count', $gallery)));
     }
 
     public function test_assets_carry_a_version_so_browsers_pick_up_new_files(): void

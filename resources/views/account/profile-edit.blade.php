@@ -1,5 +1,5 @@
 @extends('account.layout')
-@section('title', 'Редактировать профиль')
+@section('title', $tr('Редактировать профиль', 'Edit profile', 'Editează profilul'))
 
 @section('content')
 <div class="cab-page">
@@ -7,8 +7,8 @@
     {{-- Header --}}
     <div class="mb-8 flex items-start justify-between gap-4">
         <div>
-            <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Редактировать профиль</h1>
-            <p class="mt-1.5 text-sm text-gray-500">Изменения сразу видны другим участникам</p>
+            <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">{{ $tr('Редактировать профиль', 'Edit profile', 'Editează profilul') }}</h1>
+            <p class="mt-1.5 text-sm text-gray-500">{{ $tr('Изменения сразу видны другим участникам', 'Changes are visible to other participants right away', 'Modificările sunt vizibile imediat pentru ceilalți participanți') }}</p>
         </div>
         <a href="{{ route('account.profile') }}"
            class="inline-flex h-10 shrink-0 items-center gap-2 rounded-xl border border-gray-200 bg-white px-5
@@ -16,7 +16,7 @@
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
-            Назад
+            {{ $tr('Назад', 'Back', 'Înapoi') }}
         </a>
     </div>
 
@@ -25,17 +25,17 @@
 
         {{-- Identity --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">Личные данные</h2>
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Личные данные', 'Personal details', 'Date personale') }}</h2>
             <div class="space-y-5">
 
                 <div>
                     <label class="mb-1.5 block text-sm font-medium text-[#0e2442]">
-                        Имя и фамилия <span class="text-red-400">*</span>
+                        {{ $tr('Имя и фамилия', 'Full name', 'Nume și prenume') }} <span class="text-red-400">*</span>
                     </label>
                     <input type="text" name="full_name"
                            value="{{ old('full_name', $accountUser->full_name) }}"
                            maxlength="120" required
-                           placeholder="Иван Иванов"
+                           placeholder="{{ $tr('Иван Иванов', 'John Smith', 'Ion Popescu') }}"
                            class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
                                   transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                   {{ $errors->has('full_name') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
@@ -58,7 +58,7 @@
                             {{ '@' . $accountUser->telegram_username }}
                         </a>
                         @else
-                        <span class="text-gray-400">Не указан</span>
+                        <span class="text-gray-400">{{ $tr('Не указан', 'Not set', 'Nespecificat') }}</span>
                         @endif
                     </p>
                 </div>
@@ -68,19 +68,19 @@
 
         {{-- About --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">О себе</h2>
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('О себе', 'About me', 'Despre mine') }}</h2>
             <div class="space-y-5">
 
                 <div>
                     <label class="mb-1.5 block text-sm font-medium text-[#0e2442]">
-                        Кто ты и чем занимаешься?
+                        {{ $tr('Кто ты и чем занимаешься?', 'Who are you and what do you do?', 'Cine ești și cu ce te ocupi?') }}
                     </label>
                     <textarea name="description" rows="4" maxlength="1000"
-                              placeholder="Роль, сфера, компания. Ссылки приветствуются."
+                              placeholder="{{ $tr('Роль, сфера, компания. Ссылки приветствуются.', 'Role, field, company. Links are welcome.', 'Rol, domeniu, companie. Link-urile sunt binevenite.') }}"
                               class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
                                      transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                      {{ $errors->has('description') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('description', $accountUser->description) }}</textarea>
-                    <p class="mt-1.5 text-xs text-gray-400">Используется алгоритмом для подбора партнёров · до 1000 символов</p>
+                    <p class="mt-1.5 text-xs text-gray-400">{{ $tr('Используется алгоритмом для подбора партнёров · до 1000 символов', 'Used by the algorithm to suggest partners · up to 1000 characters', 'Folosit de algoritm pentru a sugera parteneri · până la 1000 de caractere') }}</p>
                     @error('description')
                     <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
@@ -88,10 +88,10 @@
 
                 <div>
                     <label class="mb-1.5 block text-sm font-medium text-[#0e2442]">
-                        Что ждёшь от сообщества?
+                        {{ $tr('Что ждёшь от сообщества?', 'What do you expect from the community?', 'Ce aștepți de la comunitate?') }}
                     </label>
                     <textarea name="expectation" rows="3" maxlength="1000"
-                              placeholder="Чего ищешь и чем можешь быть полезен."
+                              placeholder="{{ $tr('Чего ищешь и чем можешь быть полезен.', 'What you are looking for and how you can help.', 'Ce cauți și cum poți fi de folos.') }}"
                               class="w-full resize-none rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
                                      transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                      {{ $errors->has('expectation') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">{{ old('expectation', $accountUser->expectation) }}</textarea>
@@ -106,8 +106,8 @@
         {{-- Facts (feed the quests) --}}
         @if($game->isEnabled())
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h2 class="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400">Факты о себе</h2>
-            <p class="mb-5 text-xs text-gray-500">Короткие и живые: чем занимаешься в свободное время, о чём мечтаешь, что умеешь. За каждый факт <b>+{{ config('game.xp.fact') }} очков</b>, а из них получаются загадки для других участников.</p>
+            <h2 class="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Факты о себе', 'Facts about you', 'Fapte despre tine') }}</h2>
+            <p class="mb-5 text-xs text-gray-500">{{ $tr('Короткие и живые: чем занимаешься в свободное время, о чём мечтаешь, что умеешь. За каждый факт', 'Short and lively: what you do in your free time, what you dream about, what you can do. Each fact earns', 'Scurte și vii: ce faci în timpul liber, la ce visezi, ce știi să faci. Pentru fiecare fapt primești') }} <b>+{{ $plural((int) config('game.xp.fact'), ['очко', 'очка', 'очков'], ['point', 'points'], ['punct', 'puncte', 'de puncte']) }}</b>{{ $tr(', а из них получаются загадки для других участников.', ', and they become riddles for other participants.', ', iar din ele se fac ghicitori pentru ceilalți participanți.') }}</p>
             @php
                 $facts = $accountUser->facts;
                 $slots = max(0, min(config('game.max_facts') - $facts->count(), 3));
@@ -118,27 +118,27 @@
                            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
                 @endforeach
                 @for($i = 0; $i < $slots; $i++)
-                    <input type="text" name="new_facts[]" maxlength="300" placeholder="Например: перевожу субтитры к старым фильмам"
+                    <input type="text" name="new_facts[]" maxlength="300" placeholder="{{ $tr('Например: перевожу субтитры к старым фильмам', 'For example: I translate subtitles for old films', 'De exemplu: traduc subtitrări pentru filme vechi') }}"
                            class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
                 @endfor
             </div>
-            <p class="mt-2 text-xs text-gray-400">Очистите поле, чтобы удалить факт. Всего до {{ config('game.max_facts') }}.</p>
+            <p class="mt-2 text-xs text-gray-400">{{ $tr('Очистите поле, чтобы удалить факт. Всего до', 'Clear the field to delete a fact. Up to', 'Golește câmpul ca să ștergi un fapt. Maximum') }} {{ config('game.max_facts') }}{{ $tr('.', ' in total.', '.') }}</p>
         </div>
 
         @endif
 
         {{-- Privacy --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">Приватность</h2>
+            <h2 class="mb-5 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Приватность', 'Privacy', 'Confidențialitate') }}</h2>
             <div class="space-y-4">
                 <label class="flex items-start gap-3 text-sm text-[#0e2442]">
                     <input type="checkbox" name="contacts_closed" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('contacts_closed', $accountUser->contacts_closed) ? 'checked' : '' }}>
-                    <span><b>Закрыть мои контакты</b><br><span class="text-xs text-gray-500">Мой Telegram и кнопка «Написать» не показываются другим участникам. Я по-прежнему могу писать им сам.</span></span>
+                    <span><b>{{ $tr('Закрыть мои контакты', 'Hide my contacts', 'Ascunde contactele mele') }}</b><br><span class="text-xs text-gray-500">{{ $tr('Мой Telegram и кнопка «Написать» не показываются другим участникам. Я по-прежнему могу писать им сам.', 'My Telegram and the “Message” button are not shown to other participants. I can still write to them myself.', 'Telegramul meu și butonul „Scrie” nu sunt afișate celorlalți participanți. Eu pot în continuare să le scriu.') }}</span></span>
                 </label>
                 @if($game->isEnabled())
                 <label class="flex items-start gap-3 text-sm text-[#0e2442]">
                     <input type="checkbox" name="quests_opt_out" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('quests_opt_out', $accountUser->quests_opt_out) ? 'checked' : '' }}>
-                    <span><b>Не использовать меня в квестах</b><br><span class="text-xs text-gray-500">Мои факты не попадут в загадки, и другие не смогут угадывать меня.</span></span>
+                    <span><b>{{ $tr('Не использовать меня в квестах', 'Don’t use me in questions', 'Nu mă folosi în întrebări') }}</b><br><span class="text-xs text-gray-500">{{ $tr('Мои факты не попадут в загадки, и другие не смогут угадывать меня.', 'My facts won’t appear in riddles, and others won’t be able to guess me.', 'Faptele mele nu vor apărea în ghicitori, iar ceilalți nu mă vor putea ghici.') }}</span></span>
                 </label>
                 @endif
             </div>
@@ -153,7 +153,7 @@
                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
-                Сохранить изменения
+                {{ $tr('Сохранить изменения', 'Save changes', 'Salvează modificările') }}
             </button>
             
         </div>

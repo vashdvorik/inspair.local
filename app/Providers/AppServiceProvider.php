@@ -51,6 +51,15 @@ class AppServiceProvider extends ServiceProvider
             ]);
         });
 
+        // Кабинет и страница входа: тексты на языке посетителя ($tr('ru', 'en', 'ro'))
+        View::composer('account.*', function ($view): void {
+            $view->with([
+                'lang'   => \App\Support\Lang::current(),
+                'tr'     => fn (string $ru, ?string $en = null, ?string $ro = null) => \App\Support\Lang::t($ru, $en, $ro),
+                'plural' => fn (int $n, array $ru, array $en, array $ro) => \App\Support\Lang::plural($n, $ru, $en, $ro),
+            ]);
+        });
+
         // 20 auth attempts per minute per IP — prevents brute-force on tokens
         RateLimiter::for('20,1', function (Request $request) {
             return Limit::perMinute(20)->by($request->ip());

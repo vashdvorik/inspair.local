@@ -36,8 +36,8 @@ class AccountController extends Controller
         $request->validate([
             'username' => ['required', 'string', 'regex:/^[a-zA-Z0-9_]{3,32}$/'],
         ], [
-            'username.required' => 'Введите Telegram username.',
-            'username.regex'    => 'Username должен содержать только буквы, цифры и _. Без @.',
+            'username.required' => \App\Support\Lang::t('Введите Telegram username.', 'Enter your Telegram username.', 'Introdu username-ul de Telegram.'),
+            'username.regex'    => \App\Support\Lang::t('Username должен содержать только буквы, цифры и _. Без @.', 'The username may contain only letters, digits and _. No @.', 'Username-ul poate conține doar litere, cifre și _. Fără @.'),
         ]);
 
         $username = ltrim($request->input('username'), '@');
@@ -57,10 +57,10 @@ class AccountController extends Controller
 
         Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
             'chat_id'      => $user->telegram_id,
-            'text'         => "Привет, {$firstName}! Нажми кнопку ниже, чтобы войти в личный кабинет.\n\n⏱ Ссылка действует 24 часа.",
+            'text'         => str_replace('{NAME}', (string) $firstName, \App\Support\Lang::t('Привет, {NAME}! Нажми кнопку ниже, чтобы войти в личный кабинет.', 'Hi, {NAME}! Press the button below to sign in to your account.', 'Salut, {NAME}! Apasă butonul de mai jos ca să intri în cont.')) . "\n\n⏱ " . \App\Support\Lang::t('Ссылка действует 24 часа.', 'The link is valid for 24 hours.', 'Linkul este valabil 24 de ore.'),
             'reply_markup' => json_encode([
                 'inline_keyboard' => [[
-                    ['text' => '🔐 Войти в кабинет →', 'url' => $url],
+                    ['text' => '🔐 ' . \App\Support\Lang::t('Войти в кабинет →', 'Sign in →', 'Intră în cont →'), 'url' => $url],
                 ]],
             ]),
         ]);
@@ -77,21 +77,21 @@ class AccountController extends Controller
 
         if ($token === '') {
             return redirect()->route('account.login')
-                ->with('error', 'Ссылка недействительна.');
+                ->with('error', \App\Support\Lang::t('Ссылка недействительна.', 'The link is not valid.', 'Linkul nu este valid.'));
         }
 
         $loginToken = LoginToken::where('token', $token)->first();
 
         if (! $loginToken || ! $loginToken->isValid()) {
             return redirect()->route('account.login')
-                ->with('error', 'Ссылка истекла. Запросите новую через бот командой /login.');
+                ->with('error', \App\Support\Lang::t('Ссылка истекла. Запросите новую через бот командой /login.', 'The link has expired. Request a new one in the bot with /login.', 'Linkul a expirat. Cere unul nou în bot cu comanda /login.'));
         }
 
         $user = BotUser::where('telegram_id', $loginToken->telegram_id)->first();
 
         if (! $user) {
             return redirect()->route('account.login')
-                ->with('error', 'Сначала зарегистрируйтесь в боте: нажмите /start.');
+                ->with('error', \App\Support\Lang::t('Сначала зарегистрируйтесь в боте: нажмите /start.', 'Register in the bot first: press /start.', 'Mai întâi înregistrează-te în bot: apasă /start.'));
         }
 
         // Start session (7 days)
@@ -154,7 +154,7 @@ class AccountController extends Controller
         ComputeUserEmbedding::dispatch($user);
 
         return redirect()->route('account.profile')
-            ->with('success', 'Профиль обновлён.');
+            ->with('success', \App\Support\Lang::t('Профиль обновлён.', 'Profile updated.', 'Profil actualizat.'));
     }
 
     /**
@@ -244,11 +244,11 @@ class AccountController extends Controller
         // Remove the bot keyboard from the user's Telegram chat
         Http::post('https://api.telegram.org/bot' . config('nutgram.token') . '/sendMessage', [
             'chat_id'      => $user->telegram_id,
-            'text'         => "✅ Ваш профиль удалён.\n\nСпасибо, что были с нами — будем рады видеть вас снова 🙏",
+            'text'         => "✅ " . \App\Support\Lang::t('Ваш профиль удалён.', 'Your profile has been deleted.', 'Profilul tău a fost șters.') . "\n\n" . \App\Support\Lang::t('Спасибо, что были с нами — будем рады видеть вас снова 🙏', 'Thank you for being with us — we would be glad to see you again 🙏', 'Mulțumim că ai fost cu noi — te vom primi cu drag din nou 🙏'),
             'reply_markup' => json_encode([
                 'remove_keyboard' => true,
                 'inline_keyboard' => [[
-                    ['text' => '↩️ Вернуться', 'callback_data' => 'restart'],
+                    ['text' => '↩️ ' . \App\Support\Lang::t('Вернуться', 'Come back', 'Revino'), 'callback_data' => 'restart'],
                 ]],
             ]),
         ]);
@@ -261,7 +261,7 @@ class AccountController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('account.login')
-            ->with('success', 'Ваш профиль удалён.');
+            ->with('success', \App\Support\Lang::t('Ваш профиль удалён.', 'Your profile has been deleted.', 'Profilul tău a fost șters.'));
     }
 
     /**

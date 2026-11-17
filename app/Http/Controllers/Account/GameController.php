@@ -85,10 +85,10 @@ class GameController extends Controller
         $facts = $user->facts()->count();
 
         return [
-            ['key' => 'avatar',      'label' => 'Фото профиля',               'points' => $xp['profile_avatar'],      'done' => (bool) $user->avatar_path],
-            ['key' => 'description', 'label' => 'Расскажи о себе',            'points' => $xp['profile_description'], 'done' => mb_strlen(trim((string) $user->description)) >= 20],
-            ['key' => 'expectation', 'label' => 'Чего ждёшь от сообщества',   'points' => $xp['profile_expectation'], 'done' => mb_strlen(trim((string) $user->expectation)) >= 20],
-            ['key' => 'facts',       'label' => "Факты о себе ({$facts} из 3 для старта)", 'points' => $xp['fact'] * 3, 'done' => $facts >= 3],
+            ['key' => 'avatar',      'label' => \App\Support\Lang::t('Фото профиля', 'Profile photo', 'Poză de profil'), 'points' => $xp['profile_avatar'],      'done' => (bool) $user->avatar_path],
+            ['key' => 'description', 'label' => \App\Support\Lang::t('Расскажи о себе', 'Tell us about yourself', 'Povestește despre tine'), 'points' => $xp['profile_description'], 'done' => mb_strlen(trim((string) $user->description)) >= 20],
+            ['key' => 'expectation', 'label' => \App\Support\Lang::t('Чего ждёшь от сообщества', 'What you expect from the community', 'Ce aștepți de la comunitate'), 'points' => $xp['profile_expectation'], 'done' => mb_strlen(trim((string) $user->expectation)) >= 20],
+            ['key' => 'facts',       'label' => str_replace('{FACTS}', (string) $facts, \App\Support\Lang::t('Факты о себе ({FACTS} из 3 для старта)', 'Facts about you ({FACTS} of 3 to start)', 'Fapte despre tine ({FACTS} din 3 pentru start)')), 'points' => $xp['fact'] * 3, 'done' => $facts >= 3],
         ];
     }
 
@@ -117,7 +117,7 @@ class GameController extends Controller
         return response()->json([
             'status'  => 'ok',
             'id'      => $quest->id,
-            'question' => $quest->question['ru'],
+            'question' => $quest->question[\App\Support\Lang::current()] ?? $quest->question['ru'],
             'options' => collect($quest->option_ids)->map(fn ($id) => $this->person($options[$id], $user, false))->values(),
         ]);
     }
@@ -129,13 +129,13 @@ class GameController extends Controller
         $data = $request->validate(['chosen' => ['required', 'integer']]);
 
         if (! $this->game->isLaunched() && ! $this->game->isStaff($user)) {
-            return response()->json(['message' => 'Игра ещё не запущена.'], 403);
+            return response()->json(['message' => \App\Support\Lang::t('Игра ещё не запущена.', 'The game has not launched yet.', 'Jocul nu a fost lansat încă.')], 403);
         }
         if ($user->quest_locked_until && $user->quest_locked_until->isFuture()) {
-            return response()->json(['message' => 'Подождите несколько секунд.', 'wait' => (int) now()->diffInSeconds($user->quest_locked_until, false) + 1], 429);
+            return response()->json(['message' => \App\Support\Lang::t('Подождите несколько секунд.', 'Please wait a few seconds.', 'Așteaptă câteva secunde.'), 'wait' => (int) now()->diffInSeconds($user->quest_locked_until, false) + 1], 429);
         }
         if (\App\Models\QuestAttempt::where('bot_user_id', $user->id)->where('quest_id', $quest->id)->exists()) {
-            return response()->json(['message' => 'Вы уже отвечали на этот вопрос.'], 409);
+            return response()->json(['message' => \App\Support\Lang::t('Вы уже отвечали на этот вопрос.', 'You have already answered this question.', 'Ai răspuns deja la această întrebare.')], 409);
         }
 
         try {

@@ -41,7 +41,7 @@ class OpportunityController extends Controller
         NotifyOpportunity::dispatch($opportunity);
 
         return redirect()->route('account.opportunities.index')
-            ->with('success', 'Возможность опубликована! Участники получат уведомление в боте.');
+            ->with('success', \App\Support\Lang::t('Возможность опубликована! Участники получат уведомление в боте.', 'Opportunity published! Participants will get a notification in the bot.', 'Oportunitatea a fost publicată! Participanții vor primi o notificare în bot.'));
     }
 
     public function destroy(Opportunity $opportunity): RedirectResponse
@@ -54,6 +54,6 @@ class OpportunityController extends Controller
         $opportunity->delete();
 
         return redirect()->route('account.opportunities.index')
-            ->with('success', 'Возможность удалена.');
+            ->with('success', \App\Support\Lang::t('Возможность удалена.', 'Opportunity deleted.', 'Oportunitatea a fost ștearsă.'));
     }
 }

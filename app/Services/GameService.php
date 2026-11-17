@@ -124,11 +124,11 @@ class GameService
      *
      * @return array{n: int, name: string, color: string, from: int}
      */
-    public function levelInfo(int $level, string $lang = 'ru'): array
+    public function levelInfo(int $level, ?string $lang = null): array
     {
         $def = $this->levels()[$level] ?? $this->levels()[1];
 
-        return ['n' => $level, 'name' => $def['name'][$lang] ?? $def['name']['ru'], 'color' => $def['color'], 'from' => $def['from']];
+        return ['n' => $level, 'name' => $def['name'][$lang ?? \App\Support\Lang::current()] ?? $def['name']['ru'], 'color' => $def['color'], 'from' => $def['from']];
     }
 
     /** Данные для полосы прогресса. */

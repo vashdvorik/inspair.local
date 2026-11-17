@@ -60,7 +60,7 @@
                 </div>
                 <div class="pgrid" data-gallery>
                     @foreach($gallery[$al['key']] as $k => $ph)
-                        <a href="{{ $gal($al['key'], $ph['f']) }}" aria-label="{{ $al['title']['en'] }} {{ $k + 1 }}" @if($k >= 12) hidden @endif><img @if($k < 12) src="{{ $gal($al['key'], $ph['f'], true) }}" @else data-src="{{ $gal($al['key'], $ph['f'], true) }}" @endif alt="" loading="lazy" decoding="async" width="{{ $ph['w'] }}" height="{{ $ph['h'] }}"></a>
+                        <a href="{{ $gal($al['key'], $ph['f']) }}" aria-label="{{ $al['title']['en'] }} {{ $k + 1 }}" @class(['is-tall' => ($ph['h'] ?? 0) > ($ph['w'] ?? 1)]) @if($k >= 12) hidden @endif><img @if($k < 12) src="{{ $gal($al['key'], $ph['f'], true) }}" @else data-src="{{ $gal($al['key'], $ph['f'], true) }}" @endif alt="" loading="lazy" decoding="async" width="{{ $ph['w'] }}" height="{{ $ph['h'] }}"></a>
                     @endforeach
                 </div>
                 @if($cnt > 12)

@@ -1,0 +1,41 @@
+{
+  "items": [
+    {
+      "slug": "inspire-2025-collection",
+      "year": 2025,
+      "title": {
+        "ru": "INSPIRE 2025: Академия лидерства в лицах и идеях",
+        "en": "INSPIRE 2025: Leadership Through People and Ideas",
+        "ro": "INSPIRE 2025: Leadership prin oameni și idei"
+      },
+      "description": {
+        "ru": "Сборник статей участников и экспертов INSPIRE Leadership Academy 2025: молодёжь и политика, публичная дипломатия, европейская интеграция, безопасность и окружающая среда.",
+        "en": "A collection of articles by participants and experts of the INSPIRE Leadership Academy 2025: youth and politics, public diplomacy, European integration, security and the environment.",
+        "ro": "Culegere de articole ale participanților și experților INSPIRE Leadership Academy 2025: tineret și politică, diplomație publică, integrare europeană, securitate și mediu."
+      },
+      "pages": 228,
+      "ratio": 0.703,
+      "cover": "cover.webp"
+    },
+    {
+      "slug": "youth-leaders-peace-project",
+      "year": 2023,
+      "title": {
+        "ru": "Молодёжные лидеры за мир: сборник статей",
+        "en": "Youth Leaders Peace Project: Collection of Articles",
+        "ro": "Tineri lideri pentru pace: culegere de articole"
+      },
+      "description": {
+        "ru": "Статьи экспертов, консультантов и студентов проекта «Молодёжные лидеры за мир», реализованного при поддержке Посольства Королевства Нидерландов: миротворчество, права человека, молодёжное лидерство, социальные и политические вызовы.",
+        "en": "Articles by experts, consultants and students of the Youth Leaders Peace Project, implemented with the support of the Embassy of the Kingdom of the Netherlands: peacebuilding, human rights, youth leadership, social and political challenges.",
+        "ro": "Articole ale experților, consultanților și studenților din proiectul „Tineri lideri pentru pace”, realizat cu sprijinul Ambasadei Regatului Țărilor de Jos: consolidarea păcii, drepturile omului, leadershipul tinerilor, provocări sociale și politice."
+      },
+      "pages": 225,
+      "ratio": 0.703,
+      "cover": "cover.webp",
+      "skip": [
+        7
+      ]
+    }
+  ]
+}

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Support\PublicUi;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -34,9 +35,9 @@ class AdminPanelProvider extends PanelProvider
             // INSPIRE design system: light only, logo-derived palette (see /design)
             ->darkMode(false)
             ->brandName('INSPIRE EDU Network')
-            ->brandLogo(asset('brand/logo.png'))
+            ->brandLogo(PublicUi::versioned('brand/logo.png'))
             ->brandLogoHeight('3rem')
-            ->favicon(asset('brand/favicon.ico'))
+            ->favicon(PublicUi::versioned('brand/favicon.ico'))
             ->font('Montserrat', url: asset('design/fonts.css'), provider: LocalFontProvider::class)
             ->colors([
                 'primary' => Color::hex('#006de0'),

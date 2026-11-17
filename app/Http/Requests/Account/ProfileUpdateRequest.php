@@ -25,4 +25,22 @@ class ProfileUpdateRequest extends FormRequest
             'new_facts.*' => ['nullable', 'string', 'max:300'],
         ];
     }
+
+    public function messages(): array
+    {
+        $fact = \App\Support\Lang::t('Факт не длиннее 300 символов.', 'A fact can be at most 300 characters.', 'Un fapt poate avea cel mult 300 de caractere.');
+        $many = \App\Support\Lang::t('Слишком много фактов.', 'Too many facts.', 'Prea multe fapte.');
+        $text = \App\Support\Lang::t('Не более 1000 символов.', 'At most 1000 characters.', 'Cel mult 1000 de caractere.');
+
+        return [
+            'full_name.required' => \App\Support\Lang::t('Введите имя и фамилию.', 'Enter your full name.', 'Introdu numele și prenumele.'),
+            'full_name.max'      => \App\Support\Lang::t('Имя не длиннее 120 символов.', 'The name can be at most 120 characters.', 'Numele poate avea cel mult 120 de caractere.'),
+            'description.max'    => $text,
+            'expectation.max'    => $text,
+            'facts.max'          => $many,
+            'new_facts.max'      => $many,
+            'facts.*.max'        => $fact,
+            'new_facts.*.max'    => $fact,
+        ];
+    }
 }

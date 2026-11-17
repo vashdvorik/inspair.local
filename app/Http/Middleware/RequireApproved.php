@@ -23,7 +23,9 @@ class RequireApproved
         }
 
         $rejected = (bool) $user?->isRejected();
-        $message = $rejected ? 'Модератор отказал вам в доступе к игре.' : 'Модератор ещё не посмотрел ваш профиль.';
+        $message = $rejected
+            ? \App\Support\Lang::t('Модератор отказал вам в доступе к игре.', 'The moderator has denied you access to the game.', 'Moderatorul ți-a refuzat accesul la joc.')
+            : \App\Support\Lang::t('Модератор ещё не посмотрел ваш профиль.', 'The moderator has not reviewed your profile yet.', 'Moderatorul nu ți-a verificat încă profilul.');
 
         if ($request->expectsJson()) {
             return response()->json(['message' => $message, 'moderation' => $rejected ? 'rejected' : 'pending'], 403);
@@ -33,9 +35,9 @@ class RequireApproved
             'rejected' => $rejected,
             'note'     => $user?->moderation_note,
             'section'  => match (true) {
-                $request->routeIs('account.game*')          => 'Игра',
-                $request->routeIs('account.opportunities*') => 'Возможности',
-                default                                     => 'Люди',
+                $request->routeIs('account.game*')          => \App\Support\Lang::t('Игра', 'Game', 'Joc'),
+                $request->routeIs('account.opportunities*') => \App\Support\Lang::t('Возможности', 'Opportunities', 'Oportunități'),
+                default                                     => \App\Support\Lang::t('Люди', 'People', 'Oameni'),
             },
         ]);
     }

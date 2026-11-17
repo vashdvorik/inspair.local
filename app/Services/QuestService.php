@@ -236,10 +236,10 @@ class QuestService
     public function answer(BotUser $user, Quest $quest, int $chosenId): array
     {
         if (! in_array($chosenId, $quest->option_ids, true)) {
-            throw new \InvalidArgumentException('Такого варианта нет.');
+            throw new \InvalidArgumentException(\App\Support\Lang::t('Такого варианта нет.', 'There is no such option.', 'Nu există o astfel de variantă.'));
         }
         if ($quest->status !== Quest::ACTIVE || in_array($user->id, $quest->option_ids, true) || $quest->subject_user_id === $user->id) {
-            throw new \InvalidArgumentException('Этот квест недоступен.');
+            throw new \InvalidArgumentException(\App\Support\Lang::t('Этот квест недоступен.', 'This question is not available.', 'Această întrebare nu este disponibilă.'));
         }
 
         $correct = $chosenId === $quest->subject_user_id;
@@ -273,7 +273,7 @@ class QuestService
             return [
                 'correct'         => $correct,
                 'correct_user_id' => $quest->subject_user_id,
-                'explanation'     => $quest->explanation['ru'] ?? '',
+                'explanation'     => $quest->explanation[\App\Support\Lang::current()] ?? $quest->explanation['ru'] ?? '',
                 'gained'          => $gained,
                 'level_up'        => $up,
                 'connected'       => $connected,

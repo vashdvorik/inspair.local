@@ -37,11 +37,6 @@
                 <h2 class="i-h2">{!! $t('Эксперты и наставники', 'Experts and mentors', 'Experți și mentori') !!}</h2>
                 <div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div>
             </div>
-            <div class="i-filter i-reveal" role="group" aria-label="Filter" id="exp-filter">
-                <button type="button" class="is-active" data-f="all">{!! $t('Все', 'All', 'Toți') !!}</button>
-                <button type="button" data-f="2025">{!! $t('Академия 2025', 'Academy 2025', 'Academia 2025') !!}</button>
-                <button type="button" data-f="2023">{!! $t('Академия 2023', 'Academy 2023', 'Academia 2023') !!}</button>
-            </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-5" id="exp-grid">
             @foreach($people as $i => $e)
@@ -56,10 +51,6 @@
                     <h3>{!! $tm($e['name']) !!}</h3>
                     <p>{!! $tm($e['role']) !!}</p>
                     @if(!empty($e['roleByYear'][2023]))<p style="font-size:.78rem;opacity:.8;margin-top:6px"><b>2023:</b> {!! $tm($e['roleByYear'][2023]) !!}</p>@endif
-                    <div class="yrs">
-                        @if(in_array(2023, $e['years'])) <span class="i-badge">2023</span> @endif
-                        @if(in_array(2025, $e['years'])) <span class="i-badge i-badge--yellow">2025</span> @endif
-                    </div>
                 </article>
             @endforeach
         </div>
@@ -77,18 +68,3 @@
 </section>
 @endsection
 
-@push('scripts')
-<script>
-    (function () {
-        var bar = document.getElementById('exp-filter'); if (!bar) return;
-        bar.addEventListener('click', function (e) {
-            var b = e.target.closest('button'); if (!b) return;
-            bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
-            var f = b.dataset.f;
-            document.querySelectorAll('#exp-grid .person').forEach(function (c) {
-                c.hidden = !(f === 'all' || c.dataset.years.split(',').indexOf(f) >= 0);
-            });
-        });
-    })();
-</script>
-@endpush

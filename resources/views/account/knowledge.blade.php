@@ -32,27 +32,6 @@
             </svg>
         </a>
 
-        <a href="https://peace.education.md/" target="_blank"
-           class="group flex items-center gap-4 rounded-2xl border border-gray-100 bg-white px-5 py-4 shadow-sm
-                  transition-all duration-200 hover:border-brand-200 hover:shadow-md">
-            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50">
-                <svg class="h-5 w-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9"/>
-                </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-                <p class="text-sm font-semibold text-[#0e2442] transition group-hover:text-brand-700">
-                    Сайт проекта INSPIRE
-                </p>
-                <p class="mt-0.5 truncate text-xs text-gray-400">peace.education.md</p>
-            </div>
-            <svg class="h-4 w-4 shrink-0 text-gray-300 transition group-hover:text-brand-500"
-                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-        </a>
-
         <div class="flex items-center gap-4 rounded-2xl border border-dashed border-gray-200 bg-gray-50 px-5 py-4">
             <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gray-100">
                 <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

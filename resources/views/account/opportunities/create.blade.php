@@ -1,5 +1,5 @@
 @extends('account.layout')
-@section('title', 'Новая возможность')
+@section('title', $tr('Новая возможность', 'New opportunity', 'Oportunitate nouă'))
 
 @section('content')
 <div class="cab-page">
@@ -11,11 +11,11 @@
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
-            Возможности
+            {{ $tr('Возможности', 'Opportunities', 'Oportunități') }}
         </a>
-        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Новая возможность</h1>
+        <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">{{ $tr('Новая возможность', 'New opportunity', 'Oportunitate nouă') }}</h1>
         <p class="mt-1.5 text-sm text-gray-500">
-            Все участники сообщества получат уведомление в боте сразу после публикации
+            {{ $tr('Все участники сообщества получат уведомление в боте сразу после публикации', 'All community members get a notification in the bot right after publishing', 'Toți membrii comunității primesc o notificare în bot imediat după publicare') }}
         </p>
     </div>
 
@@ -25,11 +25,11 @@
 
         {{-- Type selector --}}
         <div x-data="{ selected: '{{ old('type', '') }}' }">
-            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Тип *</p>
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-500">{{ $tr('Тип', 'Type', 'Tip') }} *</p>
             <div class="grid grid-cols-3 gap-3">
-                @foreach(['project' => ['emoji' => '🚀', 'label' => 'Проект'],
-                          'meeting' => ['emoji' => '🤝', 'label' => 'Встреча'],
-                          'event'   => ['emoji' => '🎉', 'label' => 'Мероприятие']] as $val => $meta)
+                @foreach(['project' => ['emoji' => '🚀', 'label' => $tr('Проект', 'Project', 'Proiect')],
+                          'meeting' => ['emoji' => '🤝', 'label' => $tr('Встреча', 'Meeting', 'Întâlnire')],
+                          'event'   => ['emoji' => '🎉', 'label' => $tr('Мероприятие', 'Event', 'Eveniment')]] as $val => $meta)
                 <label @click="selected = '{{ $val }}'"
                        :class="selected === '{{ $val }}'
                            ? 'border-brand-500 bg-brand-50 shadow-sm'
@@ -50,11 +50,11 @@
         {{-- Title --}}
         <div>
             <label for="title" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">
-                Заголовок *
+                {{ $tr('Заголовок', 'Title', 'Titlu') }} *
             </label>
             <input id="title" name="title" type="text" maxlength="200"
                    value="{{ old('title') }}"
-                   placeholder="Например: Ищу дизайнера для стартапа"
+                   placeholder="{{ $tr('Например: Ищу дизайнера для стартапа', 'For example: Looking for a designer for a startup', 'De exemplu: Caut un designer pentru un startup') }}"
                    class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                           transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                           @error('title') border-red-300 @enderror">
@@ -66,10 +66,10 @@
         {{-- Body --}}
         <div>
             <label for="body" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">
-                Описание *
+                {{ $tr('Описание', 'Description', 'Descriere') }} *
             </label>
             <textarea id="body" name="body" rows="5" maxlength="2000"
-                      placeholder="Расскажи подробнее: что за проект, что ищешь, чем можно помочь..."
+                      placeholder="{{ $tr('Расскажи подробнее: что за проект, что ищешь, чем можно помочь...', 'Tell us more: what the project is, what you are looking for, how people can help...', 'Povestește mai mult: ce proiect este, ce cauți, cum se poate ajuta...') }}"
                       class="w-full resize-none rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                              transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                              @error('body') border-red-300 @enderror">{{ old('body') }}</textarea>
@@ -82,7 +82,7 @@
         <div class="grid gap-4 sm:grid-cols-2">
             <div>
                 <label for="event_date" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    Дата <span class="font-normal normal-case text-gray-400">(необязательно)</span>
+                    {{ $tr('Дата', 'Date', 'Data') }} <span class="font-normal normal-case text-gray-400">({{ $tr('необязательно', 'optional', 'opțional') }})</span>
                 </label>
                 <input id="event_date" name="event_date" type="date"
                        value="{{ old('event_date') }}"
@@ -96,11 +96,11 @@
             </div>
             <div>
                 <label for="location" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">
-                    Место <span class="font-normal normal-case text-gray-400">(необязательно)</span>
+                    {{ $tr('Место', 'Place', 'Locul') }} <span class="font-normal normal-case text-gray-400">({{ $tr('необязательно', 'optional', 'opțional') }})</span>
                 </label>
                 <input id="location" name="location" type="text" maxlength="200"
                        value="{{ old('location') }}"
-                       placeholder="Кишинёв, онлайн..."
+                       placeholder="{{ $tr('Кишинёв, онлайн...', 'Chișinău, online...', 'Chișinău, online...') }}"
                        class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                               transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                               @error('location') border-red-300 @enderror">
@@ -113,11 +113,11 @@
         {{-- Contact URL --}}
         <div>
             <label for="contact_url" class="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-gray-500">
-                Ссылка для связи <span class="font-normal normal-case text-gray-400">(необязательно)</span>
+                {{ $tr('Ссылка для связи', 'Contact link', 'Link de contact') }} <span class="font-normal normal-case text-gray-400">({{ $tr('необязательно', 'optional', 'opțional') }})</span>
             </label>
             <input id="contact_url" name="contact_url" type="url"
                    value="{{ old('contact_url') }}"
-                   placeholder="https://t.me/username или ссылка на форму..."
+                   placeholder="{{ $tr('https://t.me/username или ссылка на форму...', 'https://t.me/username or a link to a form...', 'https://t.me/username sau un link către un formular...') }}"
                    class="w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm text-[#0e2442] placeholder-gray-300
                           transition focus:border-brand-400 focus:outline-none focus:ring-2 focus:ring-brand-100
                           @error('contact_url') border-red-300 @enderror">
@@ -136,7 +136,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                 </svg>
-                Опубликовать и уведомить участников
+                {{ $tr('Опубликовать и уведомить участников', 'Publish and notify participants', 'Publică și notifică participanții') }}
             </button>
         </div>
 

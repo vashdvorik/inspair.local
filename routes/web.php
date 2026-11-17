@@ -58,7 +58,10 @@ Route::redirect('/academy-2023', '/events/school-2023', 301);
 
 Route::get('/photo', fn () => view('public.photo', ['gallery' => PublicUi::content('gallery')]))->name('photo');
 Route::get('/video', fn () => view('public.video', ['videos' => PublicUi::content('videos')]))->name('video');
-Route::get('/publications', fn () => view('public.publications', ['site' => PublicUi::content('site')]))->name('publications');
+Route::get('/publications', [\App\Http\Controllers\PublicationsController::class, 'index'])->name('publications');
+Route::get('/opportunities', [\App\Http\Controllers\OpportunitiesController::class, 'index'])->name('opportunities');
+Route::get('/opportunities/{slug}', [\App\Http\Controllers\OpportunitiesController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('opportunities.show');
+Route::get('/publications/{slug}', [\App\Http\Controllers\PublicationsController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('publications.show');
 // Telegram Webhook — POST запрос от серверов Telegram
 Route::post('/telegram/webhook', function (Nutgram $bot) {
     $bot->run();
@@ -81,6 +84,16 @@ Route::get('/go/{code}', function (string $code) {
 })->middleware('throttle:20,1')->where('code', '[0-9a-f]{8}')->name('account.go');
 
 // Account: protected cabinet
+// Переключатель языка в кабинете и на странице входа: ставит куку и возвращает на ту же страницу
+Route::get('/lang/{code}', function (\Illuminate\Http\Request $request, string $code) {
+    abort_unless(in_array($code, \App\Support\Lang::LOCALES, true), 404);
+    $back = (string) url()->previous();
+    $sameSite = parse_url($back, PHP_URL_HOST) === $request->getHost();
+
+    return redirect($sameSite ? $back : '/')
+        ->withCookie(cookie(\App\Support\Lang::COOKIE, $code, 525600, '/', null, $request->isSecure(), false, false, 'lax'));
+})->name('lang');
+
 Route::middleware(RequireAccountAuth::class)
     ->prefix('app/account')
     ->name('account.')

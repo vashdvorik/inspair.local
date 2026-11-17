@@ -31,9 +31,9 @@ class Opportunity extends Model
     public function typeLabel(): string
     {
         return match ($this->type) {
-            'project' => 'Проект',
-            'meeting' => 'Встреча',
-            'event'   => 'Мероприятие',
+            'project' => \App\Support\Lang::t('Проект', 'Project', 'Proiect'),
+            'meeting' => \App\Support\Lang::t('Встреча', 'Meeting', 'Întâlnire'),
+            'event'   => \App\Support\Lang::t('Мероприятие', 'Event', 'Eveniment'),
             default   => $this->type,
         };
     }

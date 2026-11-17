@@ -21,7 +21,6 @@
         </svg>
     </div>
     <div class="i-container">
-        <p class="i-eyebrow i-in i-in-1">INSPIRE EDU Network</p>
         <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 16px;">{!! $t('Партнёры', 'Partners', 'Parteneri') !!}</h1>
         {!! $p('Университеты, международные организации и НПО, которые вместе с нами строят сообщество молодых лидеров Молдовы.', 'Universities, international organisations and NGOs that build the community of Moldova’s young leaders together with us.', 'Universități, organizații internaționale și ONG-uri care construiesc împreună cu noi comunitatea tinerilor lideri din Moldova.', 'i-lead i-in i-in-3') !!}
         <div class="flex flex-wrap gap-8 mt-8 i-in i-in-4">
@@ -37,11 +36,6 @@
             <div class="i-reveal">
                 <h2 class="i-h2">{!! $t('Организации и партнёры', 'Organisations and partners', 'Organizații și parteneri') !!}</h2>
                 <div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div>
-            </div>
-            <div class="i-filter i-reveal" role="group" aria-label="Filter" id="par-filter">
-                <button type="button" class="is-active" data-f="all">{!! $t('Все', 'All', 'Toți') !!}</button>
-                <button type="button" data-f="2025">{!! $t('Академия 2025', 'Academy 2025', 'Academia 2025') !!}</button>
-                <button type="button" data-f="2023">{!! $t('Академия 2023', 'Academy 2023', 'Academia 2023') !!}</button>
             </div>
         </div>
         @foreach($groups as $key => $title)
@@ -75,17 +69,3 @@
 </section>
 @endsection
 
-@push('scripts')
-<script>
-    (function () {
-        var bar = document.getElementById('par-filter'); if (!bar) return;
-        bar.addEventListener('click', function (e) {
-            var b = e.target.closest('button'); if (!b) return;
-            bar.querySelectorAll('button').forEach(function (x) { x.classList.toggle('is-active', x === b); });
-            var f = b.dataset.f;
-            document.querySelectorAll('.par-item').forEach(function (c) { c.style.display = (f === 'all' || c.dataset.years.split(',').indexOf(f) >= 0) ? '' : 'none'; });
-            document.querySelectorAll('.par-group').forEach(function (g) { g.style.display = g.querySelector('.par-item:not([style*="display: none"])') ? '' : 'none'; });
-        });
-    })();
-</script>
-@endpush

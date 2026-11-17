@@ -27,7 +27,7 @@ class RequireAccountAuth
             session()->forget('_account_expires');
 
             return redirect()->route('account.login')
-                ->with('error', 'Сессия истекла. Войдите снова.');
+                ->with('error', \App\Support\Lang::t('Сессия истекла. Войдите снова.', 'Your session has expired. Please sign in again.', 'Sesiunea a expirat. Autentifică-te din nou.'));
         }
 
         $user = BotUser::where('telegram_id', $telegramId)->first();
@@ -37,7 +37,7 @@ class RequireAccountAuth
             session()->forget('_account_expires');
 
             return redirect()->route('account.login')
-                ->with('error', 'Сначала зарегистрируйтесь в боте: нажмите /start.');
+                ->with('error', \App\Support\Lang::t('Сначала зарегистрируйтесь в боте: нажмите /start.', 'Register in the bot first: press /start.', 'Mai întâi înregistrează-te în bot: apasă /start.'));
         }
 
         // Share the authenticated user with all views in this middleware group

@@ -1,0 +1,1344 @@
+{
+  "title": {
+    "ru": "Возможности",
+    "en": "Opportunities",
+    "ro": "Oportunități"
+  },
+  "intro": {
+    "ru": "Новости о международных поездках: учебные курсы и мероприятия за рубежом для молодёжных работников, лидеров и активистов.",
+    "en": "News about international trips: training courses and events abroad for youth workers, leaders and activists.",
+    "ro": "Noutăți despre călătorii internaționale: cursuri de formare și evenimente în străinătate pentru lucrători de tineret, lideri și activiști."
+  },
+  "items": [
+    {
+      "code": "DejdWEjNR2m",
+      "url": "https://www.instagram.com/p/DejdWEjNR2m/",
+      "date": "2026-10-16",
+      "image": "DejdWEjNR2m.webp",
+      "image_ratio": 1.0,
+      "caption": "Учебный курс в Армении! 🇦🇲\n\n🌍 E-motion: A Practical Guide to Emotional Intelligence in Youth Work — международный учебный курс, посвященный развитию эмоционального интеллекта и его практическому применению в работе с молодежью.\n\n📚 Участники исследуют:\n– самосознание и способы регулирования эмоций;\n– эмпатию, активное слушание и поддерживающую коммуникацию;\n– методы повышения мотивации и вовлеченности молодых людей;\n– подходы к поддержке эмоционального благополучия в безопасной и инклюзивной среде;\n– практические методы неформального образования для повседневной молодежной работы.\n\n💡 Проект сочетает самоанализ, практические упражнения на основе реальных ситуаций, обмен опытом и взаимное обучение молодежных работников из разных стран.\n\n🧩 Что даст участие в «E-motion»:\n– развитие навыков распознавания эмоций и управления ими;\n– инструменты для поддержки уверенности, мотивации и эмоционального благополучия молодежи;\n– улучшение навыков эмпатии, активного слушания и конструктивного общения;\n– практические методы интеграции эмоционального интеллекта в молодежную работу;\n– участие в создании практического E-motion Toolkit для использования в местных организациях.\n\n👥 Для кого: молодежные работники, заинтересованные в эмоциональном интеллекте, благополучии молодых людей, развитии мотивации и создании инклюзивной среды.\n\n📌 Даты: 1–8 декабря 2026 года\n❗️ Крайний срок подачи заявки: 24 октября 2026 года\n🔗 Ссылка на подачу заявки в хайлайте \"Emotion\"",
+      "flag": "🇦🇲",
+      "country": {
+        "ru": "Армения",
+        "en": "Armenia",
+        "ro": "Armenia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "E-motion: A Practical Guide to Emotional Intelligence in Youth Work",
+      "start": "2026-12-01",
+      "end": "2026-12-08",
+      "deadline": "2026-10-24",
+      "text": {
+        "ru": "Международный курс об эмоциональном интеллекте в работе с молодёжью: самосознание, эмпатия, мотивация и неформальное образование. Участники помогают создать практический E-motion Toolkit для местных организаций.",
+        "en": "An international course on emotional intelligence in youth work: self-awareness, empathy, motivation and non-formal education. Participants help create a practical E-motion Toolkit for local organisations.",
+        "ro": "Curs internațional despre inteligența emoțională în munca cu tinerii: conștientizare de sine, empatie, motivare și educație non-formală. Participanții contribuie la crearea unui E-motion Toolkit practic pentru organizațiile locale."
+      },
+      "photo": "DejdWEjNR2m-photo.webp",
+      "credit": {
+        "title": "Mount Ararat and the Yerevan skyline",
+        "author": "Serouj Ourishian",
+        "license": "CC BY-SA 3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Yerevan_skyline.jpg"
+      },
+      "slug": "emotion-armenia",
+      "detail": {
+        "ru": {
+          "lead": "E-motion: A Practical Guide to Emotional Intelligence in Youth Work — международный учебный курс, посвященный развитию эмоционального интеллекта и его практическому применению в работе с молодежью.",
+          "explore": [
+            "самосознание и способы регулирования эмоций",
+            "эмпатию, активное слушание и поддерживающую коммуникацию",
+            "методы повышения мотивации и вовлеченности молодых людей",
+            "подходы к поддержке эмоционального благополучия в безопасной и инклюзивной среде",
+            "практические методы неформального образования для повседневной молодежной работы"
+          ],
+          "format": "самоанализ, практические упражнения на основе реальных ситуаций, обмен опытом и взаимное обучение молодежных работников из разных стран",
+          "benefits": [
+            "развитие навыков распознавания эмоций и управления ими",
+            "инструменты для поддержки уверенности, мотивации и эмоционального благополучия молодежи",
+            "улучшение навыков эмпатии, активного слушания и конструктивного общения",
+            "практические методы интеграции эмоционального интеллекта в молодежную работу",
+            "участие в создании практического E-motion Toolkit для использования в местных организациях"
+          ],
+          "audience": "Молодежные работники, заинтересованные в эмоциональном интеллекте, благополучии молодых людей, развитии мотивации и создании инклюзивной среды."
+        },
+        "en": {
+          "lead": "E-motion: A Practical Guide to Emotional Intelligence in Youth Work is an international training course on developing emotional intelligence and applying it in youth work.",
+          "explore": [
+            "self-awareness and ways to regulate emotions",
+            "empathy, active listening and supportive communication",
+            "ways to raise young people’s motivation and engagement",
+            "approaches to supporting emotional wellbeing in a safe, inclusive environment",
+            "practical non-formal education methods for everyday youth work"
+          ],
+          "format": "self-reflection, practical exercises based on real situations, an exchange of experience and mutual learning among youth workers from different countries",
+          "benefits": [
+            "skills for recognising and managing emotions",
+            "tools to support young people’s confidence, motivation and emotional wellbeing",
+            "better empathy, active listening and constructive communication",
+            "practical ways to bring emotional intelligence into youth work",
+            "taking part in creating a practical E-motion Toolkit for local organisations"
+          ],
+          "audience": "Youth workers interested in emotional intelligence, young people’s wellbeing, motivation and building an inclusive environment."
+        },
+        "ro": {
+          "lead": "E-motion: A Practical Guide to Emotional Intelligence in Youth Work este un curs internațional de formare dedicat dezvoltării inteligenței emoționale și aplicării ei practice în munca cu tinerii.",
+          "explore": [
+            "conștientizarea de sine și modalități de reglare a emoțiilor",
+            "empatia, ascultarea activă și comunicarea de sprijin",
+            "metode de creștere a motivației și implicării tinerilor",
+            "abordări pentru sprijinirea stării emoționale de bine într-un mediu sigur și incluziv",
+            "metode practice de educație non-formală pentru munca zilnică cu tinerii"
+          ],
+          "format": "autoanaliză, exerciții practice bazate pe situații reale, schimb de experiență și învățare reciprocă între lucrători de tineret din diferite țări",
+          "benefits": [
+            "abilități de recunoaștere și gestionare a emoțiilor",
+            "instrumente pentru sprijinirea încrederii, motivației și stării emoționale a tinerilor",
+            "îmbunătățirea empatiei, ascultării active și comunicării constructive",
+            "metode practice de integrare a inteligenței emoționale în munca cu tinerii",
+            "participarea la crearea unui E-motion Toolkit practic pentru organizațiile locale"
+          ],
+          "audience": "Lucrători de tineret interesați de inteligența emoțională, starea de bine a tinerilor, motivare și crearea unui mediu incluziv."
+        }
+      }
+    },
+    {
+      "code": "Dd_jb06tXyk",
+      "url": "https://www.instagram.com/p/Dd_jb06tXyk/",
+      "date": "2026-10-02",
+      "image": "Dd_jb06tXyk.webp",
+      "image_ratio": 1.33,
+      "caption": "Учебный курс в Испании! 🇪🇸\n\n🌍 Dive in. Foundations of conflict transformation at the interpersonal level — это международный учебный курс о трансформации конфликтов, ненасильственной коммуникации, диалоге и построении инклюзивных сообществ.\n\n📚 Участники исследуют:\n– понятия мира, конфликта, насилия, ненасилия и культуры мира\n– стратегии ненасильственной трансформации конфликтов и их связь с правами человека\n– эмоциональную грамотность и ненасильственную коммуникацию\n– анализ конфликтов в локальном контексте и поиск творческих решений\n– инструменты для развития здоровых межличностных отношений и мирных сообществ\n\n💡 Проект сочетает неформальное образование, практические упражнения, рефлексию, групповое обучение, обмен опытом и разработку последующих локальных инициатив.\n\n🧩 Что даст участие в «Dive in»:\n– новые инструменты для работы с конфликтами и их трансформации\n– развитие навыков ненасильственной коммуникации и эмоциональной грамотности\n– практику анализа конфликтов в локальном контексте\n– опыт совместного создания последующих активностей для решения локальных конфликтов\n– участие в разработке рекомендаций для молодежных лидеров по построению устойчивых сообществ и команд\n\n👥 Для кого:\nмолодежные работники, лидеры и активисты, заинтересованные в трансформации конфликтов, ненасильственной коммуникации, правах человека и развитии сообществ. Важны готовность к совместному проживанию, участию в бытовых задачах, рефлексии и работе в инклюзивной группе.\n\n📌 Даты: 2–9 ноября 2026 года\n❗️ Крайний срок подачи заявки: 15 октября 2026 года\n\n🔗 Ссылка на подачу заявке в хайлайте \"Dive in\"",
+      "flag": "🇪🇸",
+      "country": {
+        "ru": "Испания",
+        "en": "Spain",
+        "ro": "Spania"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Dive in. Foundations of conflict transformation at the interpersonal level",
+      "start": "2026-11-02",
+      "end": "2026-11-09",
+      "deadline": "2026-10-15",
+      "text": {
+        "ru": "Международный курс о трансформации конфликтов, ненасильственной коммуникации и диалоге. Практика, рефлексия и разработка местных инициатив для мирных и инклюзивных сообществ.",
+        "en": "An international course on conflict transformation, nonviolent communication and dialogue. Practice, reflection and the development of local initiatives for peaceful, inclusive communities.",
+        "ro": "Curs internațional despre transformarea conflictelor, comunicarea nonviolentă și dialog. Practică, reflecție și dezvoltarea unor inițiative locale pentru comunități pașnice și incluzive."
+      },
+      "slug": "dive-in-spain",
+      "detail": {
+        "ru": {
+          "lead": "Dive in. Foundations of conflict transformation at the interpersonal level — это международный учебный курс о трансформации конфликтов, ненасильственной коммуникации, диалоге и построении инклюзивных сообществ.",
+          "explore": [
+            "понятия мира, конфликта, насилия, ненасилия и культуры мира",
+            "стратегии ненасильственной трансформации конфликтов и их связь с правами человека",
+            "эмоциональную грамотность и ненасильственную коммуникацию",
+            "анализ конфликтов в локальном контексте и поиск творческих решений",
+            "инструменты для развития здоровых межличностных отношений и мирных сообществ"
+          ],
+          "format": "неформальное образование, практические упражнения, рефлексию, групповое обучение, обмен опытом и разработку последующих локальных инициатив",
+          "benefits": [
+            "новые инструменты для работы с конфликтами и их трансформации",
+            "развитие навыков ненасильственной коммуникации и эмоциональной грамотности",
+            "практику анализа конфликтов в локальном контексте",
+            "опыт совместного создания последующих активностей для решения локальных конфликтов",
+            "участие в разработке рекомендаций для молодежных лидеров по построению устойчивых сообществ и команд"
+          ],
+          "audience": "Молодежные работники, лидеры и активисты, заинтересованные в трансформации конфликтов, ненасильственной коммуникации, правах человека и развитии сообществ. Важны готовность к совместному проживанию, участию в бытовых задачах, рефлексии и работе в инклюзивной группе."
+        },
+        "en": {
+          "lead": "Dive in. Foundations of conflict transformation at the interpersonal level is an international training course on conflict transformation, nonviolent communication, dialogue and building inclusive communities.",
+          "explore": [
+            "the concepts of peace, conflict, violence, nonviolence and a culture of peace",
+            "strategies for nonviolent conflict transformation and their link to human rights",
+            "emotional literacy and nonviolent communication",
+            "analysing conflicts in a local context and finding creative solutions",
+            "tools for building healthy interpersonal relationships and peaceful communities"
+          ],
+          "format": "non-formal education, practical exercises, reflection, group learning, an exchange of experience and the development of follow-up local initiatives",
+          "benefits": [
+            "new tools for working with conflicts and transforming them",
+            "nonviolent communication and emotional literacy skills",
+            "practice in analysing conflicts in a local context",
+            "experience of jointly creating follow-up activities to address local conflicts",
+            "taking part in drafting recommendations for youth leaders on building sustainable communities and teams"
+          ],
+          "audience": "Youth workers, leaders and activists interested in conflict transformation, nonviolent communication, human rights and community development. Readiness for shared accommodation, taking part in everyday tasks, reflection and work in an inclusive group is important."
+        },
+        "ro": {
+          "lead": "Dive in. Foundations of conflict transformation at the interpersonal level este un curs internațional de formare despre transformarea conflictelor, comunicarea nonviolentă, dialog și construirea unor comunități incluzive.",
+          "explore": [
+            "conceptele de pace, conflict, violență, nonviolență și cultură a păcii",
+            "strategii de transformare nonviolentă a conflictelor și legătura lor cu drepturile omului",
+            "alfabetizarea emoțională și comunicarea nonviolentă",
+            "analiza conflictelor în context local și găsirea de soluții creative",
+            "instrumente pentru relații interpersonale sănătoase și comunități pașnice"
+          ],
+          "format": "educație non-formală, exerciții practice, reflecție, învățare în grup, schimb de experiență și dezvoltarea unor inițiative locale ulterioare",
+          "benefits": [
+            "instrumente noi pentru lucrul cu conflictele și transformarea lor",
+            "abilități de comunicare nonviolentă și alfabetizare emoțională",
+            "practică în analiza conflictelor în context local",
+            "experiență de creare în comun a unor activități ulterioare pentru rezolvarea conflictelor locale",
+            "participarea la elaborarea de recomandări pentru liderii de tineret privind construirea unor comunități și echipe durabile"
+          ],
+          "audience": "Lucrători de tineret, lideri și activiști interesați de transformarea conflictelor, comunicarea nonviolentă, drepturile omului și dezvoltarea comunităților. Sunt importante disponibilitatea pentru cazare comună, participarea la sarcinile zilnice, reflecția și lucrul într-un grup incluziv."
+        }
+      }
+    },
+    {
+      "code": "DdtU6ZHtfT8",
+      "url": "https://www.instagram.com/p/DdtU6ZHtfT8/",
+      "date": "2026-09-25",
+      "image": "DdtU6ZHtfT8.webp",
+      "image_ratio": 1.0,
+      "caption": "Мероприятие по развитию сотрудничества в Польше! 🇵🇱\n\n🌍 «European Network for Mental Health of Youth» — это мероприятие, которое объединяет молодёжных работников и представителей НКО из разных стран Европы для обмена опытом, изучения темы ментального здоровья молодёжи и построения будущих проектов Erasmus+.\n\n📚 Участники исследуют:\n– вызовы, с которыми сегодня сталкивается молодёжь\n– практики заботы о ментальном здоровье в молодёжной работе\n– self-care, природные практики восстановления и профилактику выгорания\n– возможности финансирования, включая программу Erasmus+\n– локальные инициативы Варшавы в сфере ментального здоровья\n\n💡 Проект сочетает воркшопы, study visits, нетворкинг-сессии, активности на свежем воздухе, интерактивную городскую игру и разработку проектов в международных командах.\n\n🧩 Что даст участие в «European Network for Mental Health of Youth»:\n\n• знакомство с вдохновляющими организациями и потенциальными партнёрами\n• обмен методами и лучшими практиками\n• новые идеи и наработки для будущих международных проектов\n• понимание того, как работает программа Erasmus+\n• место в растущей европейской сети, посвящённой благополучию молодёжи\n\n👥 Для кого:\nМолодёжные работники и представители НКО (от 18 лет) из стран ЕС и стран-партнёров программы Erasmus+, заинтересованные в теме благополучия и ментального здоровья молодёжи. Опыт в Erasmus+ не обязателен — от организации можно подать до 3 участников.\n\n📌 Дата: 21–29 ноября 2026 г. \n❗️ Крайний срок подачи заявки: 18 октября 2026 г.\n🔗 Подробнее узнать в хайлайте Network Poland",
+      "flag": "🇵🇱",
+      "country": {
+        "ru": "Польша",
+        "en": "Poland",
+        "ro": "Polonia"
+      },
+      "kind": {
+        "ru": "Мероприятие",
+        "en": "Event",
+        "ro": "Eveniment"
+      },
+      "name": "European Network for Mental Health of Youth",
+      "start": "2026-11-21",
+      "end": "2026-11-29",
+      "deadline": "2026-10-18",
+      "text": {
+        "ru": "Встреча молодёжных работников и НКО из стран Европы о ментальном здоровье молодёжи: воркшопы, study visits, нетворкинг и разработка проектов Erasmus+ в международных командах.",
+        "en": "A meeting of youth workers and NGOs from across Europe on youth mental health: workshops, study visits, networking and the development of Erasmus+ projects in international teams.",
+        "ro": "Întâlnire a lucrătorilor de tineret și a ONG-urilor din Europa despre sănătatea mintală a tinerilor: ateliere, vizite de studiu, networking și dezvoltarea de proiecte Erasmus+ în echipe internaționale."
+      },
+      "photo": "DdtU6ZHtfT8-photo.webp",
+      "credit": {
+        "title": "Warsaw Old Town Market Square 10",
+        "author": "Adrian Grycuk",
+        "license": "CC BY-SA 3.0 pl",
+        "url": "https://commons.wikimedia.org/wiki/File:Warsaw_Old_Town_Market_Square_10.JPG"
+      },
+      "slug": "mental-health-network-poland",
+      "detail": {
+        "ru": {
+          "lead": "«European Network for Mental Health of Youth» — это мероприятие, которое объединяет молодёжных работников и представителей НКО из разных стран Европы для обмена опытом, изучения темы ментального здоровья молодёжи и построения будущих проектов Erasmus+.",
+          "explore": [
+            "вызовы, с которыми сегодня сталкивается молодёжь",
+            "практики заботы о ментальном здоровье в молодёжной работе",
+            "self-care, природные практики восстановления и профилактику выгорания",
+            "возможности финансирования, включая программу Erasmus+",
+            "локальные инициативы Варшавы в сфере ментального здоровья"
+          ],
+          "format": "воркшопы, study visits, нетворкинг-сессии, активности на свежем воздухе, интерактивную городскую игру и разработку проектов в международных командах",
+          "benefits": [
+            "знакомство с вдохновляющими организациями и потенциальными партнёрами",
+            "обмен методами и лучшими практиками",
+            "новые идеи и наработки для будущих международных проектов",
+            "понимание того, как работает программа Erasmus+",
+            "место в растущей европейской сети, посвящённой благополучию молодёжи"
+          ],
+          "audience": "Молодёжные работники и представители НКО (от 18 лет) из стран ЕС и стран-партнёров программы Erasmus+, заинтересованные в теме благополучия и ментального здоровья молодёжи. Опыт в Erasmus+ не обязателен — от организации можно подать до 3 участников."
+        },
+        "en": {
+          "lead": "“European Network for Mental Health of Youth” is an event that brings together youth workers and NGO representatives from different European countries to exchange experience, explore the topic of youth mental health and build future Erasmus+ projects.",
+          "explore": [
+            "the challenges young people face today",
+            "mental health care practices in youth work",
+            "self-care, nature-based recovery practices and burnout prevention",
+            "funding opportunities, including the Erasmus+ programme",
+            "local mental health initiatives in Warsaw"
+          ],
+          "format": "workshops, study visits, networking sessions, outdoor activities, an interactive city game and project development in international teams",
+          "benefits": [
+            "meeting inspiring organisations and potential partners",
+            "exchange of methods and best practices",
+            "new ideas and groundwork for future international projects",
+            "understanding how the Erasmus+ programme works",
+            "a place in a growing European network focused on youth wellbeing"
+          ],
+          "audience": "Youth workers and NGO representatives (18+) from EU countries and Erasmus+ partner countries who are interested in youth wellbeing and mental health. Erasmus+ experience is not required; an organisation can nominate up to 3 participants."
+        },
+        "ro": {
+          "lead": "„European Network for Mental Health of Youth” este un eveniment care reunește lucrători de tineret și reprezentanți ai ONG-urilor din diferite țări europene pentru a face schimb de experiență, a explora tema sănătății mintale a tinerilor și a construi viitoare proiecte Erasmus+.",
+          "explore": [
+            "provocările cu care se confruntă tinerii astăzi",
+            "practici de îngrijire a sănătății mintale în munca cu tinerii",
+            "self-care, practici de refacere în natură și prevenirea epuizării",
+            "oportunități de finanțare, inclusiv programul Erasmus+",
+            "inițiative locale din Varșovia în domeniul sănătății mintale"
+          ],
+          "format": "ateliere, vizite de studiu, sesiuni de networking, activități în aer liber, un joc interactiv în oraș și dezvoltarea de proiecte în echipe internaționale",
+          "benefits": [
+            "cunoașterea unor organizații inspirate și a unor potențiali parteneri",
+            "schimb de metode și bune practici",
+            "idei noi și prime dezvoltări pentru viitoare proiecte internaționale",
+            "înțelegerea modului în care funcționează programul Erasmus+",
+            "un loc într-o rețea europeană în creștere dedicată stării de bine a tinerilor"
+          ],
+          "audience": "Lucrători de tineret și reprezentanți ai ONG-urilor (de la 18 ani) din țările UE și din țările partenere ale programului Erasmus+, interesați de tema stării de bine și a sănătății mintale a tinerilor. Experiența în Erasmus+ nu este obligatorie; o organizație poate nominaliza până la 3 participanți."
+        }
+      }
+    },
+    {
+      "code": "DdbOddhN08I",
+      "url": "https://www.instagram.com/p/DdbOddhN08I/",
+      "date": "2026-09-18",
+      "image": "DdbOddhN08I.webp",
+      "image_ratio": 1.3333,
+      "caption": "Учебный курс в Польше! 🇵🇱\n\n🌍 STOP THE NOISE — Stop-Motion & Digital Wellbeing Tools — это международный учебный курс для молодежных работников, посвященный использованию стоп-моушен анимации как творческого инструмента для развития концентрации, командной работы и цифрового благополучия.\n\n📚 Участники исследуют:\n– создание стоп-моушен анимации с помощью смартфона и повседневных предметов\n– концентрацию, терпение и осознанное взаимодействие с цифровыми технологиями\n– командную работу и раскрытие индивидуальных сильных сторон\n– творческий подход и работу с «контролируемыми ошибками»\n– применение полученного опыта в молодежной работе и местных инициативах\n\n💡 Проект сочетает стоп-моушен анимацию, творческое обучение, командную работу, рефлексию и практики цифрового благополучия.\n\n🧩 Что даст участие в «STOP THE NOISE»:\n• практические навыки создания простой стоп-моушен анимации\n• новые творческие инструменты для работы с молодежью\n• развитие концентрации и осознанного использования смартфона\n• опыт командной работы и совместного творчества\n• идеи для применения методов в местных инициативах\n\n👥 Для кого:\nАктивные молодежные работники, наставники, работающие с молодежью из групп риска и маргинализированных групп, организаторы и специалисты, заинтересованные в творческих методах и цифровом благополучии. Предыдущий опыт в анимации не требуется. Необходимо владение английским языком.\n\n📌 Дата: 19–27 октября 2026 года\n❗️ Крайний срок подачи заявки: 29 сентября 2026 года❗️\n\n🔗 Подробнее узнать в Хайлайте \"STOP THE NOISE\"\n\nhttps://www.salto-youth.net/tools/european-training-calendar/training/stop-the-noise-stop-motion-digital-wellbeing-tools.15343/",
+      "flag": "🇵🇱",
+      "country": {
+        "ru": "Польша",
+        "en": "Poland",
+        "ro": "Polonia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "STOP THE NOISE: Stop-Motion & Digital Wellbeing Tools",
+      "start": "2026-10-19",
+      "end": "2026-10-27",
+      "deadline": "2026-09-29",
+      "text": {
+        "ru": "Международный курс для молодёжных работников: стоп-моушен анимация на смартфоне как способ развивать концентрацию, командную работу и цифровое благополучие. Опыт в анимации не нужен.",
+        "en": "An international course for youth workers: smartphone stop-motion animation as a way to build focus, teamwork and digital wellbeing. No animation experience needed.",
+        "ro": "Curs internațional pentru lucrători de tineret: animația stop-motion cu smartphone-ul ca mijloc de a dezvolta concentrarea, munca în echipă și starea de bine digitală. Nu este nevoie de experiență în animație."
+      },
+      "slug": "stop-the-noise-poland",
+      "detail": {
+        "ru": {
+          "lead": "STOP THE NOISE — Stop-Motion & Digital Wellbeing Tools — это международный учебный курс для молодежных работников, посвященный использованию стоп-моушен анимации как творческого инструмента для развития концентрации, командной работы и цифрового благополучия.",
+          "explore": [
+            "создание стоп-моушен анимации с помощью смартфона и повседневных предметов",
+            "концентрацию, терпение и осознанное взаимодействие с цифровыми технологиями",
+            "командную работу и раскрытие индивидуальных сильных сторон",
+            "творческий подход и работу с «контролируемыми ошибками»",
+            "применение полученного опыта в молодежной работе и местных инициативах"
+          ],
+          "format": "стоп-моушен анимацию, творческое обучение, командную работу, рефлексию и практики цифрового благополучия",
+          "benefits": [
+            "практические навыки создания простой стоп-моушен анимации",
+            "новые творческие инструменты для работы с молодежью",
+            "развитие концентрации и осознанного использования смартфона",
+            "опыт командной работы и совместного творчества",
+            "идеи для применения методов в местных инициативах"
+          ],
+          "audience": "Активные молодежные работники, наставники, работающие с молодежью из групп риска и маргинализированных групп, организаторы и специалисты, заинтересованные в творческих методах и цифровом благополучии. Предыдущий опыт в анимации не требуется. Необходимо владение английским языком."
+        },
+        "en": {
+          "lead": "STOP THE NOISE — Stop-Motion & Digital Wellbeing Tools is an international training course for youth workers on using stop-motion animation as a creative tool to build focus, teamwork and digital wellbeing.",
+          "explore": [
+            "making stop-motion animation with a smartphone and everyday objects",
+            "focus, patience and mindful interaction with digital technology",
+            "teamwork and discovering individual strengths",
+            "a creative approach and working with “controlled mistakes”",
+            "applying the experience in youth work and local initiatives"
+          ],
+          "format": "stop-motion animation, creative learning, teamwork, reflection and digital wellbeing practices",
+          "benefits": [
+            "practical skills for making simple stop-motion animation",
+            "new creative tools for working with young people",
+            "better focus and more mindful use of the smartphone",
+            "experience of teamwork and creating together",
+            "ideas for using the methods in local initiatives"
+          ],
+          "audience": "Active youth workers, mentors who work with at-risk and marginalised young people, organisers and professionals interested in creative methods and digital wellbeing. No previous animation experience is required. A working knowledge of English is needed."
+        },
+        "ro": {
+          "lead": "STOP THE NOISE — Stop-Motion & Digital Wellbeing Tools este un curs internațional de formare pentru lucrători de tineret despre folosirea animației stop-motion ca instrument creativ pentru dezvoltarea concentrării, a muncii în echipă și a stării de bine digitale.",
+          "explore": [
+            "crearea de animație stop-motion cu smartphone-ul și obiecte de zi cu zi",
+            "concentrare, răbdare și interacțiune conștientă cu tehnologiile digitale",
+            "munca în echipă și descoperirea punctelor forte individuale",
+            "abordare creativă și lucrul cu „greșeli controlate”",
+            "aplicarea experienței în munca cu tinerii și în inițiative locale"
+          ],
+          "format": "animație stop-motion, învățare creativă, muncă în echipă, reflecție și practici de stare de bine digitală",
+          "benefits": [
+            "abilități practice de creare a unei animații stop-motion simple",
+            "instrumente creative noi pentru munca cu tinerii",
+            "dezvoltarea concentrării și a utilizării conștiente a smartphone-ului",
+            "experiență de muncă în echipă și creație în comun",
+            "idei pentru aplicarea metodelor în inițiative locale"
+          ],
+          "audience": "Lucrători de tineret activi, mentori care lucrează cu tineri din grupuri de risc și marginalizate, organizatori și specialiști interesați de metode creative și de starea de bine digitală. Nu este necesară experiență anterioară în animație. Este necesară cunoașterea limbii engleze."
+        }
+      }
+    },
+    {
+      "code": "DbKuUvVMv0J",
+      "url": "https://www.instagram.com/p/DbKuUvVMv0J/",
+      "date": "2026-07-24",
+      "image": "DbKuUvVMv0J.webp",
+      "image_ratio": 1.9048,
+      "caption": "🌍 Открыт набор на онлайн-курс Cross-Regional Peace Education: Peace as a Plural Phenomenon in Theory and Practice в рамках проекта PeaceEdu.\n\nКурс посвящён мирному урегулированию конфликтов, диалогу, ненасилию и современным подходам к peace education. Участники смогут изучить тему мира как многомерного явления — от личного и межличностного уровня до общественного, международного и экологического.\n\n📅 Формат: онлайн\n🗓 Даты: 30 сентября — 2 декабря 2026\n🕒 Дедлайн подачи заявок: 15 августа 2026\n🗣 Язык: английский\n\nК участию приглашаются студенты бакалавриата старших курсов и магистратуры из Австрии, Финляндии, Грузии, Германии, Молдовы и Украины. \n\n🎓 Для кого: студенты продвинутого уровня бакалавриата и магистратуры, заинтересованные в образовании в интересах мира и применении полученных знаний в профессиональной деятельности.\n\n📩 Подробнее по ссылке: https://projects.tuni.fi/peaceedu/news/call-for-participants-cross-regional-peace-education-peace-as-a-plural-phenomenon-in-theory-and-practice/\n\n🔗 Или на нашем сайте, рубрика «Объявление», ссылка в шапке профиля.",
+      "country": {
+        "ru": "Онлайн",
+        "en": "Online",
+        "ro": "Online"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Cross-Regional Peace Education: Peace as a Plural Phenomenon in Theory and Practice",
+      "start": "2026-09-30",
+      "end": "2026-12-02",
+      "deadline": "2026-08-15",
+      "text": {
+        "ru": "Онлайн-курс проекта PeaceEdu о мирном урегулировании конфликтов, диалоге и ненасилии. Для студентов старших курсов бакалавриата и магистратуры из Австрии, Финляндии, Грузии, Германии, Молдовы и Украины; язык: английский.",
+        "en": "An online course of the PeaceEdu project on peaceful conflict resolution, dialogue and nonviolence. For advanced bachelor’s and master’s students from Austria, Finland, Georgia, Germany, Moldova and Ukraine; language: English.",
+        "ro": "Curs online al proiectului PeaceEdu despre soluționarea pașnică a conflictelor, dialog și nonviolență. Pentru studenți din ultimii ani de licență și masterat din Austria, Finlanda, Georgia, Germania, Moldova și Ucraina; limba: engleză."
+      },
+      "slug": "peace-education-online",
+      "detail": {
+        "ru": {
+          "lead": "Открыт набор на онлайн-курс Cross-Regional Peace Education: Peace as a Plural Phenomenon in Theory and Practice в рамках проекта PeaceEdu. Курс посвящён мирному урегулированию конфликтов, диалогу, ненасилию и современным подходам к peace education. Участники смогут изучить тему мира как многомерного явления — от личного и межличностного уровня до общественного, международного и экологического.",
+          "explore": [],
+          "format": "",
+          "benefits": [],
+          "audience": "К участию приглашаются студенты бакалавриата старших курсов и магистратуры из Австрии, Финляндии, Грузии, Германии, Молдовы и Украины. Курс для студентов продвинутого уровня, заинтересованных в образовании в интересах мира и применении полученных знаний в профессиональной деятельности.",
+          "note": "Формат: онлайн. Язык курса: английский."
+        },
+        "en": {
+          "lead": "Applications are open for the online course Cross-Regional Peace Education: Peace as a Plural Phenomenon in Theory and Practice, part of the PeaceEdu project. The course covers peaceful conflict resolution, dialogue, nonviolence and modern approaches to peace education. Participants explore peace as a multidimensional phenomenon, from the personal and interpersonal level to the societal, international and environmental.",
+          "explore": [],
+          "format": "",
+          "benefits": [],
+          "audience": "Advanced bachelor’s and master’s students from Austria, Finland, Georgia, Germany, Moldova and Ukraine are invited to take part. The course is for advanced-level students interested in education for peace and in applying what they learn in their professional work.",
+          "note": "Format: online. Course language: English."
+        },
+        "ro": {
+          "lead": "Este deschis recrutarea pentru cursul online Cross-Regional Peace Education: Peace as a Plural Phenomenon in Theory and Practice, în cadrul proiectului PeaceEdu. Cursul este dedicat soluționării pașnice a conflictelor, dialogului, nonviolenței și abordărilor moderne ale educației pentru pace. Participanții vor explora pacea ca fenomen multidimensional, de la nivelul personal și interpersonal până la cel social, internațional și ecologic.",
+          "explore": [],
+          "format": "",
+          "benefits": [],
+          "audience": "Sunt invitați să participe studenți din ultimii ani de licență și de masterat din Austria, Finlanda, Georgia, Germania, Moldova și Ucraina. Cursul este pentru studenți de nivel avansat, interesați de educația pentru pace și de aplicarea cunoștințelor în activitatea profesională.",
+          "note": "Format: online. Limba cursului: engleză."
+        }
+      }
+    },
+    {
+      "code": "Da2Gc-Etvoq",
+      "url": "https://www.instagram.com/p/Da2Gc-Etvoq/",
+      "date": "2026-07-16",
+      "image": "Da2Gc-Etvoq.webp",
+      "image_ratio": 1.0,
+      "caption": "Учебный курс в Чехии! 🇨🇿\n\nMindful Youth Work Mosaic — это международный тренинг программы Erasmus+, посвященный осознанности, заботе о ментальном здоровье и развитию устойчивости молодежных работников. В течение семи дней участники познакомятся с практиками mindfulness, телесно-ориентированными методами, обучением на природе и инструментами неформального образования, которые можно применять как в молодежной работе, так и в повседневной жизни.\n\n📚 Участники исследуют:\n• практики осознанности;\n• методы профилактики эмоционального выгорания и управления стрессом;\n• обучение через опыт и работу на открытом воздухе;\n• телесно-ориентированные практики и техники саморегуляции;\n• адаптацию образовательных методов для молодежной работы;\n• обмен опытом с участниками из разных европейских стран.\n\n🧩 Что даст участие в проекте:\n• практические инструменты для поддержания собственного благополучия;\n• развитие навыков работы с молодежью через современные образовательные подходы;\n• новые методы проведения тренингов и молодежных мероприятий;\n• международный опыт и профессиональные знакомства;\n• вклад в создание практического пособия Mosaic Guide;\n• сертификат Youthpass.\n\n👥 Для кого:\nМолодежные работники, тренеры, наставники, педагоги и специалисты, работающие с молодежью, которые хотят развивать навыки осознанности, укреплять эмоциональную устойчивость и внедрять новые методы в свою профессиональную деятельность.\n\n📌 Даты: 8–16 сентября 2026\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇨🇿",
+      "country": {
+        "ru": "Чехия",
+        "en": "Czechia",
+        "ro": "Cehia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Mindful Youth Work Mosaic",
+      "start": "2026-09-08",
+      "end": "2026-09-16",
+      "text": {
+        "ru": "Тренинг Erasmus+ об осознанности, заботе о ментальном здоровье и устойчивости молодёжных работников: mindfulness, обучение на природе и неформальное образование. Участникам выдаётся сертификат Youthpass.",
+        "en": "An Erasmus+ training on mindfulness, mental health care and resilience for youth workers: mindfulness practices, learning in nature and non-formal education. Participants receive a Youthpass certificate.",
+        "ro": "Training Erasmus+ despre atenție conștientă, grija pentru sănătatea mintală și reziliența lucrătorilor de tineret: practici mindfulness, învățare în natură și educație non-formală. Participanții primesc certificat Youthpass."
+      },
+      "photo": "Da2Gc-Etvoq-photo.webp",
+      "credit": {
+        "title": "Prague 07-2016 View from Old Town Hall Tower img3",
+        "author": "A.Savin",
+        "license": "FAL",
+        "url": "https://commons.wikimedia.org/wiki/File:Prague_07-2016_View_from_Old_Town_Hall_Tower_img3.jpg"
+      },
+      "slug": "mindful-youth-work-mosaic-czechia",
+      "detail": {
+        "ru": {
+          "lead": "Mindful Youth Work Mosaic — это международный тренинг программы Erasmus+, посвященный осознанности, заботе о ментальном здоровье и развитию устойчивости молодежных работников. В течение семи дней участники познакомятся с практиками mindfulness, телесно-ориентированными методами, обучением на природе и инструментами неформального образования, которые можно применять как в молодежной работе, так и в повседневной жизни.",
+          "explore": [
+            "практики осознанности",
+            "методы профилактики эмоционального выгорания и управления стрессом",
+            "обучение через опыт и работу на открытом воздухе",
+            "телесно-ориентированные практики и техники саморегуляции",
+            "адаптацию образовательных методов для молодежной работы",
+            "обмен опытом с участниками из разных европейских стран"
+          ],
+          "format": "",
+          "benefits": [
+            "практические инструменты для поддержания собственного благополучия",
+            "развитие навыков работы с молодежью через современные образовательные подходы",
+            "новые методы проведения тренингов и молодежных мероприятий",
+            "международный опыт и профессиональные знакомства",
+            "вклад в создание практического пособия Mosaic Guide",
+            "сертификат Youthpass"
+          ],
+          "audience": "Молодежные работники, тренеры, наставники, педагоги и специалисты, работающие с молодежью, которые хотят развивать навыки осознанности, укреплять эмоциональную устойчивость и внедрять новые методы в свою профессиональную деятельность."
+        },
+        "en": {
+          "lead": "Mindful Youth Work Mosaic is an international training under the Erasmus+ programme on mindfulness, mental health care and building the resilience of youth workers. Over seven days participants will get to know mindfulness practices, body-oriented methods, learning in nature and non-formal education tools that can be used both in youth work and in everyday life.",
+          "explore": [
+            "mindfulness practices",
+            "methods for preventing burnout and managing stress",
+            "learning through experience and working outdoors",
+            "body-oriented practices and self-regulation techniques",
+            "adapting educational methods for youth work",
+            "exchanging experience with participants from different European countries"
+          ],
+          "format": "",
+          "benefits": [
+            "practical tools for maintaining your own wellbeing",
+            "developing youth work skills through modern educational approaches",
+            "new methods for running trainings and youth events",
+            "international experience and professional contacts",
+            "a contribution to creating the practical Mosaic Guide",
+            "a Youthpass certificate"
+          ],
+          "audience": "Youth workers, trainers, mentors, educators and professionals working with young people who want to develop mindfulness skills, strengthen emotional resilience and bring new methods into their professional work."
+        },
+        "ro": {
+          "lead": "Mindful Youth Work Mosaic este un training internațional în cadrul programului Erasmus+ dedicat atenției conștiente, grijii pentru sănătatea mintală și dezvoltării rezilienței lucrătorilor de tineret. Timp de șapte zile participanții vor cunoaște practici mindfulness, metode orientate spre corp, învățarea în natură și instrumente de educație non-formală care pot fi folosite atât în munca cu tinerii, cât și în viața de zi cu zi.",
+          "explore": [
+            "practici de atenție conștientă",
+            "metode de prevenire a epuizării emoționale și de gestionare a stresului",
+            "învățare prin experiență și lucru în aer liber",
+            "practici orientate spre corp și tehnici de autoreglare",
+            "adaptarea metodelor educaționale pentru munca cu tinerii",
+            "schimb de experiență cu participanți din diferite țări europene"
+          ],
+          "format": "",
+          "benefits": [
+            "instrumente practice pentru menținerea propriei stări de bine",
+            "dezvoltarea abilităților de lucru cu tinerii prin abordări educaționale moderne",
+            "metode noi de organizare a trainingurilor și evenimentelor pentru tineri",
+            "experiență internațională și contacte profesionale",
+            "contribuția la crearea ghidului practic Mosaic Guide",
+            "certificat Youthpass"
+          ],
+          "audience": "Lucrători de tineret, traineri, mentori, pedagogi și specialiști care lucrează cu tinerii și vor să-și dezvolte abilitățile de atenție conștientă, să-și întărească reziliența emoțională și să introducă metode noi în activitatea lor profesională."
+        }
+      }
+    },
+    {
+      "code": "DZMduZLtc3m",
+      "url": "https://www.instagram.com/p/DZMduZLtc3m/",
+      "date": "2026-06-05",
+      "image": "DZMduZLtc3m.webp",
+      "image_ratio": 1.0,
+      "caption": "Учебный курс в Испании! 🇪🇸\n\n🌐 Media Education Academy — это международный Erasmus+ курс для молодёжных работников, тренеров и педагогов, направленный на развитие медиаграмотности, критического мышления и цифровой безопасности в эпоху фейковых новостей, искусственного интеллекта и информационной перегрузки.\n\n📚 Участники исследуют:\n– основы медиаграмотности и критического мышления\n– механизмы создания и манипулирования информацией\n– дезинформацию и влияние AI-контента\n– цифровую безопасность и кибергигиену\n– ответственное поведение в онлайн-среде\n– разработку образовательных игр и интерактивных инструментов\n\n💡 Проект сочетает неформальное образование, геймификацию, практическое обучение, международный обмен опытом и разработку собственных образовательных решений.\n\n🧩 Что даст участие в «Media Education Academy»:\n• практические инструменты для работы с молодёжью\n• навыки противодействия дезинформации\n• знания в области цифровой безопасности\n• опыт создания образовательных игр и активностей\n• международную сеть профессиональных контактов\n• готовые материалы для внедрения в своей организации\n\n👥 Для кого:\nСпециалисты по работе с молодежью, тренеры, лидеры молодежных организаций, руководители молодежных проектов, молодежь\n\n📌 Даты: 1–8 октября 2026 г.\n\n⚠️ Участие предполагает прохождение всех трёх этапов программы: Испания, Португалия и Чехия.\n\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇪🇸",
+      "country": {
+        "ru": "Испания",
+        "en": "Spain",
+        "ro": "Spania"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Media Education Academy",
+      "start": "2026-10-01",
+      "end": "2026-10-08",
+      "text": {
+        "ru": "Курс Erasmus+ по медиаграмотности, критическому мышлению и цифровой безопасности в эпоху дезинформации и ИИ. Программа состоит из трёх этапов: Испания, Португалия и Чехия.",
+        "en": "An Erasmus+ course on media literacy, critical thinking and digital safety in the age of disinformation and AI. The programme has three stages: Spain, Portugal and Czechia.",
+        "ro": "Curs Erasmus+ despre alfabetizare media, gândire critică și siguranță digitală în era dezinformării și a inteligenței artificiale. Programul are trei etape: Spania, Portugalia și Cehia."
+      },
+      "photo": "DZMduZLtc3m-photo.webp",
+      "credit": {
+        "title": "Cala Tío Ximo, Benidorm, España, 2014-07-02, DD 69",
+        "author": "Diego Delso",
+        "license": "CC BY-SA 3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Cala_T%C3%ADo_Ximo,_Benidorm,_Espa%C3%B1a,_2014-07-02,_DD_69.JPG"
+      },
+      "slug": "media-education-academy-spain",
+      "detail": {
+        "ru": {
+          "lead": "Media Education Academy — это международный Erasmus+ курс для молодёжных работников, тренеров и педагогов, направленный на развитие медиаграмотности, критического мышления и цифровой безопасности в эпоху фейковых новостей, искусственного интеллекта и информационной перегрузки.",
+          "explore": [
+            "основы медиаграмотности и критического мышления",
+            "механизмы создания и манипулирования информацией",
+            "дезинформацию и влияние AI-контента",
+            "цифровую безопасность и кибергигиену",
+            "ответственное поведение в онлайн-среде",
+            "разработку образовательных игр и интерактивных инструментов"
+          ],
+          "format": "неформальное образование, геймификацию, практическое обучение, международный обмен опытом и разработку собственных образовательных решений",
+          "benefits": [
+            "практические инструменты для работы с молодёжью",
+            "навыки противодействия дезинформации",
+            "знания в области цифровой безопасности",
+            "опыт создания образовательных игр и активностей",
+            "международную сеть профессиональных контактов",
+            "готовые материалы для внедрения в своей организации"
+          ],
+          "audience": "Специалисты по работе с молодежью, тренеры, лидеры молодежных организаций, руководители молодежных проектов, молодежь",
+          "note": "Участие предполагает прохождение всех трёх этапов программы: Испания, Португалия и Чехия."
+        },
+        "en": {
+          "lead": "Media Education Academy is an international Erasmus+ course for youth workers, trainers and educators on developing media literacy, critical thinking and digital safety in the age of fake news, artificial intelligence and information overload.",
+          "explore": [
+            "the basics of media literacy and critical thinking",
+            "how information is created and manipulated",
+            "disinformation and the influence of AI-generated content",
+            "digital security and cyber hygiene",
+            "responsible behaviour online",
+            "developing educational games and interactive tools"
+          ],
+          "format": "non-formal education, gamification, hands-on learning, international exchange of experience and the development of your own educational solutions",
+          "benefits": [
+            "practical tools for working with young people",
+            "skills for countering disinformation",
+            "knowledge of digital security",
+            "experience of creating educational games and activities",
+            "an international network of professional contacts",
+            "ready-made materials to use in your own organisation"
+          ],
+          "audience": "Youth work specialists, trainers, youth organisation leaders, youth project managers, young people.",
+          "note": "Taking part means completing all three stages of the programme: Spain, Portugal and Czechia."
+        },
+        "ro": {
+          "lead": "Media Education Academy este un curs internațional Erasmus+ pentru lucrători de tineret, traineri și pedagogi, dedicat dezvoltării alfabetizării media, gândirii critice și siguranței digitale în era știrilor false, a inteligenței artificiale și a suprasolicitării informaționale.",
+          "explore": [
+            "bazele alfabetizării media și ale gândirii critice",
+            "mecanismele de creare și manipulare a informației",
+            "dezinformarea și influența conținutului generat de AI",
+            "securitatea digitală și igiena cibernetică",
+            "comportamentul responsabil în mediul online",
+            "dezvoltarea de jocuri educaționale și instrumente interactive"
+          ],
+          "format": "educație non-formală, gamificare, învățare practică, schimb internațional de experiență și dezvoltarea propriilor soluții educaționale",
+          "benefits": [
+            "instrumente practice pentru munca cu tinerii",
+            "abilități de combatere a dezinformării",
+            "cunoștințe în domeniul securității digitale",
+            "experiență în crearea de jocuri și activități educaționale",
+            "o rețea internațională de contacte profesionale",
+            "materiale gata de utilizat în propria organizație"
+          ],
+          "audience": "Specialiști în munca cu tinerii, traineri, lideri ai organizațiilor de tineret, manageri de proiecte pentru tineret, tineri.",
+          "note": "Participarea presupune parcurgerea tuturor celor trei etape ale programului: Spania, Portugalia și Cehia."
+        }
+      }
+    },
+    {
+      "code": "DYwD31sNxBP",
+      "url": "https://www.instagram.com/p/DYwD31sNxBP/",
+      "date": "2026-05-25",
+      "image": "DYwD31sNxBP.webp",
+      "image_ratio": 1.7792,
+      "caption": "Учебный курс в Греции! 🇬🇷\n\nSapounofouska Playful Learning Fest — это трёхдневный международный курс на природе, объединяющий молодёжь, педагогов и специалистов по работе с молодежью через игру, творчество, STEAM-подход и неформальное образование.\n\n📚 Участники исследуют:\n– театральные и импровизационные методы\n– игры с движением и музыкой\n– STEAM-подход в обучении\n– групповую фасилитацию и командную работу\n– обучение на природе\n– развитие креативности, чувства принадлежности и устойчивости\n\n💡 Проект сочетает театр, STEAM, обучение через опыт, творчество, активное взаимодействие на природе, групповые активности, пикники и вечерние мероприятия.\n\n🧩 Что даст участие в «Sapounofouska Playful Learning Fest»:\n• практические инструменты для образовательной и молодёжной работы\n• новые методы вовлечения участников через игру и творчество\n• опыт разработки собственных обучающих активностей по модели 5E\n• международный обмен опытом и профессиональные контакты\n• вдохновение для создания инклюзивных и увлекательных образовательных пространств\n\n👥 Для кого:\nмолодёжь, педагоги, учителя, фасилитаторы, молодежные работники и специалисты, заинтересованные в неформальном обучении и образовательных практиках на природе\n\n📌 Даты: 26–28 июня 2026\n❗️Крайний срок подачи заявки: 08 июня 2026 г.❗️\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇬🇷",
+      "country": {
+        "ru": "Греция",
+        "en": "Greece",
+        "ro": "Grecia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Sapounofouska Playful Learning Fest",
+      "start": "2026-06-26",
+      "end": "2026-06-28",
+      "deadline": "2026-06-08",
+      "text": {
+        "ru": "Трёхдневный курс на природе: театр, игры, STEAM-подход и неформальное образование для молодёжи, педагогов и молодёжных работников.",
+        "en": "A three-day course in nature: theatre, games, a STEAM approach and non-formal education for young people, teachers and youth workers.",
+        "ro": "Curs de trei zile în natură: teatru, jocuri, abordare STEAM și educație non-formală pentru tineri, profesori și lucrători de tineret."
+      },
+      "slug": "playful-learning-fest-greece",
+      "detail": {
+        "ru": {
+          "lead": "Sapounofouska Playful Learning Fest — это трёхдневный международный курс на природе, объединяющий молодёжь, педагогов и специалистов по работе с молодежью через игру, творчество, STEAM-подход и неформальное образование.",
+          "explore": [
+            "театральные и импровизационные методы",
+            "игры с движением и музыкой",
+            "STEAM-подход в обучении",
+            "групповую фасилитацию и командную работу",
+            "обучение на природе",
+            "развитие креативности, чувства принадлежности и устойчивости"
+          ],
+          "format": "театр, STEAM, обучение через опыт, творчество, активное взаимодействие на природе, групповые активности, пикники и вечерние мероприятия",
+          "benefits": [
+            "практические инструменты для образовательной и молодёжной работы",
+            "новые методы вовлечения участников через игру и творчество",
+            "опыт разработки собственных обучающих активностей по модели 5E",
+            "международный обмен опытом и профессиональные контакты",
+            "вдохновение для создания инклюзивных и увлекательных образовательных пространств"
+          ],
+          "audience": "Молодёжь, педагоги, учителя, фасилитаторы, молодежные работники и специалисты, заинтересованные в неформальном обучении и образовательных практиках на природе"
+        },
+        "en": {
+          "lead": "Sapounofouska Playful Learning Fest is a three-day international course in nature that brings together young people, educators and youth work professionals through play, creativity, a STEAM approach and non-formal education.",
+          "explore": [
+            "theatre and improvisation methods",
+            "games with movement and music",
+            "a STEAM approach to learning",
+            "group facilitation and teamwork",
+            "learning in nature",
+            "developing creativity, a sense of belonging and resilience"
+          ],
+          "format": "theatre, STEAM, experiential learning, creativity, active interaction in nature, group activities, picnics and evening events",
+          "benefits": [
+            "practical tools for educational and youth work",
+            "new methods of engaging participants through play and creativity",
+            "experience of designing your own learning activities using the 5E model",
+            "international exchange of experience and professional contacts",
+            "inspiration for creating inclusive and engaging educational spaces"
+          ],
+          "audience": "Young people, educators, teachers, facilitators, youth workers and professionals interested in non-formal learning and educational practices in nature."
+        },
+        "ro": {
+          "lead": "Sapounofouska Playful Learning Fest este un curs internațional de trei zile în natură, care reunește tineri, pedagogi și specialiști în munca cu tinerii prin joc, creativitate, abordare STEAM și educație non-formală.",
+          "explore": [
+            "metode de teatru și improvizație",
+            "jocuri cu mișcare și muzică",
+            "abordarea STEAM în învățare",
+            "facilitare de grup și muncă în echipă",
+            "învățarea în natură",
+            "dezvoltarea creativității, a sentimentului de apartenență și a rezilienței"
+          ],
+          "format": "teatru, STEAM, învățare prin experiență, creativitate, interacțiune activă în natură, activități de grup, picnicuri și evenimente de seară",
+          "benefits": [
+            "instrumente practice pentru munca educațională și cu tinerii",
+            "metode noi de implicare a participanților prin joc și creativitate",
+            "experiență în proiectarea propriilor activități de învățare după modelul 5E",
+            "schimb internațional de experiență și contacte profesionale",
+            "inspirație pentru crearea unor spații educaționale incluzive și captivante"
+          ],
+          "audience": "Tineri, pedagogi, profesori, facilitatori, lucrători de tineret și specialiști interesați de învățarea non-formală și de practici educaționale în natură."
+        }
+      }
+    },
+    {
+      "code": "DYWZW8etLUb",
+      "url": "https://www.instagram.com/p/DYWZW8etLUb/",
+      "date": "2026-05-15",
+      "image": "DYWZW8etLUb.webp",
+      "image_ratio": 1.0,
+      "caption": "Учебный курс в Чехии!🇨🇿\n\n🏕 COMPASS — это 8-дневный международный учебный курс в горах Есеники, посвященный развитию устойчивости, эмоционального благополучия и навыков Adventure Education через обучение на природе.\n\n📚 Участники исследуют:\n– методы Adventure Education\n– профилактику профессионального выгорания\n– кризис-менеджмент и эмоциональную устойчивость\n– осознанность в работе с молодежью\n\n💡 Проект сочетает\nтрекинг, каноэ, активный отдых на свежем воздухе, командную работу, рефлексию и цифровой детокс\n\n🧩 Что даст участие:\n• практические инструменты для работы с молодежью\n• развитие лидерства и навыки стойкости\n• опыт жизни и обучения вне цифровой среды\n• международный обмен опытом и новые контакты\n\n👥 Для кого:\nмолодежные работники, педагоги, менторы, лидеры, представители НПО и специалисты в сфере неформального образования (18+)\n\n📌 Даты: 5–14 июня 2026 г. \n\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇨🇿",
+      "country": {
+        "ru": "Чехия",
+        "en": "Czechia",
+        "ro": "Cehia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "COMPASS",
+      "start": "2026-06-05",
+      "end": "2026-06-14",
+      "text": {
+        "ru": "Восьмидневный курс в горах Есеники об устойчивости, эмоциональном благополучии и Adventure Education: трекинг, каноэ, командная работа и цифровой детокс.",
+        "en": "An eight-day course in the Jeseníky mountains on resilience, emotional wellbeing and Adventure Education: trekking, canoeing, teamwork and a digital detox.",
+        "ro": "Curs de opt zile în Munții Jeseníky despre reziliență, stare emoțională de bine și Adventure Education: trasee montane, canoe, muncă în echipă și detox digital."
+      },
+      "photo": "DYWZW8etLUb-photo.webp",
+      "credit": {
+        "title": "NPR Praděd, Petrovy kameny a Praděd (1)",
+        "author": "Palickap",
+        "license": "CC BY-SA 4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:NPR_Prad%C4%9Bd,_Petrovy_kameny_a_Prad%C4%9Bd_(1).jpg"
+      },
+      "slug": "compass-czechia",
+      "detail": {
+        "ru": {
+          "lead": "COMPASS — это 8-дневный международный учебный курс в горах Есеники, посвященный развитию устойчивости, эмоционального благополучия и навыков Adventure Education через обучение на природе.",
+          "explore": [
+            "методы Adventure Education",
+            "профилактику профессионального выгорания",
+            "кризис-менеджмент и эмоциональную устойчивость",
+            "осознанность в работе с молодежью"
+          ],
+          "format": "трекинг, каноэ, активный отдых на свежем воздухе, командную работу, рефлексию и цифровой детокс",
+          "benefits": [
+            "практические инструменты для работы с молодежью",
+            "развитие лидерства и навыки стойкости",
+            "опыт жизни и обучения вне цифровой среды",
+            "международный обмен опытом и новые контакты"
+          ],
+          "audience": "Молодежные работники, педагоги, менторы, лидеры, представители НПО и специалисты в сфере неформального образования (18+)"
+        },
+        "en": {
+          "lead": "COMPASS is an 8-day international training course in the Jeseníky mountains on building resilience, emotional wellbeing and Adventure Education skills through learning in nature.",
+          "explore": [
+            "Adventure Education methods",
+            "preventing professional burnout",
+            "crisis management and emotional resilience",
+            "mindfulness in youth work"
+          ],
+          "format": "trekking, canoeing, outdoor recreation, teamwork, reflection and a digital detox",
+          "benefits": [
+            "practical tools for working with young people",
+            "developing leadership and resilience skills",
+            "experience of living and learning outside the digital environment",
+            "international exchange of experience and new contacts"
+          ],
+          "audience": "Youth workers, educators, mentors, leaders, NGO representatives and non-formal education professionals (18+)."
+        },
+        "ro": {
+          "lead": "COMPASS este un curs internațional de formare de 8 zile în Munții Jeseníky, dedicat dezvoltării rezilienței, stării emoționale de bine și abilităților de Adventure Education prin învățare în natură.",
+          "explore": [
+            "metode de Adventure Education",
+            "prevenirea epuizării profesionale",
+            "managementul crizelor și reziliența emoțională",
+            "atenția conștientă în munca cu tinerii"
+          ],
+          "format": "trasee montane, canoe, odihnă activă în aer liber, muncă în echipă, reflecție și detox digital",
+          "benefits": [
+            "instrumente practice pentru munca cu tinerii",
+            "dezvoltarea abilităților de leadership și a rezistenței",
+            "experiența de a trăi și a învăța în afara mediului digital",
+            "schimb internațional de experiență și contacte noi"
+          ],
+          "audience": "Lucrători de tineret, pedagogi, mentori, lideri, reprezentanți ai ONG-urilor și specialiști în educație non-formală (18+)."
+        }
+      }
+    },
+    {
+      "code": "DXv3J_sDdUM",
+      "url": "https://www.instagram.com/p/DXv3J_sDdUM/",
+      "date": "2026-04-30",
+      "image": "DXv3J_sDdUM.webp",
+      "image_ratio": 1.0,
+      "caption": "Семинар на Мальте! 🇲🇹\n\n🌍 Generation Lab: Intergenerational Solidarity & Dialogue — это практический международный семинар, посвященный межпоколенческой солидарности, диалогу и роли молодежной работы в укреплении социальной сплоченности.\n\n📚 Участники исследуют:\n– межпоколенческую солидарность и диалог\n– влияние эйджизма и социальных стереотипов\n– методы вовлечения разных возрастных групп\n– роль молодежной работы в укреплении демократии\n\n💡 Проект сочетает\nпрактические лаборатории, обмен опытом, рефлексию, анализ кейсов и интерактивные методы обучения\n\n🧩 Что даст участие:\n• новые инструменты для работы с разными поколениями\n• развитие навыков diversity management (менеджмент разнообразия)\n• идеи для инклюзивных проектов и инициатив\n• международные контакты и обмен практиками\n\n👥 Для кого:\nмолодежные работники, педагоги, социальные работники, тренеры, активисты и все, кто работает с разными возрастными группами (18+)\n\n📌 Даты: 26–30 октября 2026 г.\n\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇲🇹",
+      "country": {
+        "ru": "Мальта",
+        "en": "Malta",
+        "ro": "Malta"
+      },
+      "kind": {
+        "ru": "Семинар",
+        "en": "Seminar",
+        "ro": "Seminar"
+      },
+      "name": "Generation Lab: Intergenerational Solidarity & Dialogue",
+      "start": "2026-10-26",
+      "end": "2026-10-30",
+      "text": {
+        "ru": "Практический семинар о межпоколенческой солидарности и диалоге: эйджизм, вовлечение разных возрастных групп и роль молодёжной работы в укреплении демократии.",
+        "en": "A practical seminar on intergenerational solidarity and dialogue: ageism, engaging different age groups and the role of youth work in strengthening democracy.",
+        "ro": "Seminar practic despre solidaritatea și dialogul între generații: ageism, implicarea diferitelor grupe de vârstă și rolul muncii cu tinerii în consolidarea democrației."
+      },
+      "photo": "DXv3J_sDdUM-photo.webp",
+      "credit": {
+        "title": "Grand Harbour - Senglea",
+        "author": "MrPanyGoff",
+        "license": "CC BY-SA 3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Grand_Harbour_-_Senglea.jpg"
+      },
+      "slug": "generation-lab-malta",
+      "detail": {
+        "ru": {
+          "lead": "Generation Lab: Intergenerational Solidarity & Dialogue — это практический международный семинар, посвященный межпоколенческой солидарности, диалогу и роли молодежной работы в укреплении социальной сплоченности.",
+          "explore": [
+            "межпоколенческую солидарность и диалог",
+            "влияние эйджизма и социальных стереотипов",
+            "методы вовлечения разных возрастных групп",
+            "роль молодежной работы в укреплении демократии"
+          ],
+          "format": "практические лаборатории, обмен опытом, рефлексию, анализ кейсов и интерактивные методы обучения",
+          "benefits": [
+            "новые инструменты для работы с разными поколениями",
+            "развитие навыков diversity management (менеджмент разнообразия)",
+            "идеи для инклюзивных проектов и инициатив",
+            "международные контакты и обмен практиками"
+          ],
+          "audience": "Молодежные работники, педагоги, социальные работники, тренеры, активисты и все, кто работает с разными возрастными группами (18+)"
+        },
+        "en": {
+          "lead": "Generation Lab: Intergenerational Solidarity & Dialogue is a practical international seminar on intergenerational solidarity, dialogue and the role of youth work in strengthening social cohesion.",
+          "explore": [
+            "intergenerational solidarity and dialogue",
+            "the impact of ageism and social stereotypes",
+            "methods of engaging different age groups",
+            "the role of youth work in strengthening democracy"
+          ],
+          "format": "practical labs, an exchange of experience, reflection, case analysis and interactive learning methods",
+          "benefits": [
+            "new tools for working with different generations",
+            "developing diversity management skills",
+            "ideas for inclusive projects and initiatives",
+            "international contacts and exchange of practices"
+          ],
+          "audience": "Youth workers, educators, social workers, trainers, activists and anyone who works with different age groups (18+)."
+        },
+        "ro": {
+          "lead": "Generation Lab: Intergenerational Solidarity & Dialogue este un seminar internațional practic dedicat solidarității dintre generații, dialogului și rolului muncii cu tinerii în consolidarea coeziunii sociale.",
+          "explore": [
+            "solidaritatea și dialogul între generații",
+            "impactul ageismului și al stereotipurilor sociale",
+            "metode de implicare a diferitelor grupe de vârstă",
+            "rolul muncii cu tinerii în consolidarea democrației"
+          ],
+          "format": "laboratoare practice, schimb de experiență, reflecție, analiză de cazuri și metode interactive de învățare",
+          "benefits": [
+            "instrumente noi pentru lucrul cu diferite generații",
+            "dezvoltarea abilităților de management al diversității",
+            "idei pentru proiecte și inițiative incluzive",
+            "contacte internaționale și schimb de practici"
+          ],
+          "audience": "Lucrători de tineret, pedagogi, asistenți sociali, traineri, activiști și toți cei care lucrează cu diferite grupe de vârstă (18+)."
+        }
+      }
+    },
+    {
+      "code": "DXdxtU8jcpt",
+      "url": "https://www.instagram.com/p/DXdxtU8jcpt/",
+      "date": "2026-04-23",
+      "image": "DXdxtU8jcpt.webp",
+      "image_ratio": 1.9081,
+      "caption": "Семинар в Италии! 🇮🇹\n\n⚽️🏔 Youth@Work Seminar: Sport & Entrepreneurship – это международный семинар, где спорт рассматривается не только как физическая активность, но и как инструмент развития инициативности, лидерства и креативности у молодых людей.\n\n📚 Участники исследуют:\n– связь спорта и предпринимательства\n– развитие навыков: лидерство, командная работа, устойчивость\n– влияние спорта на благополучие и занятость молодежи\n– подходы EntreComp в молодежной работе\n\n💡 Проект сочетает неформальное обучение, воркшопы, обмен практиками, рефлексию и outdoor-активности\n\n🧩 Что даст участие:\n• практические методы объединения спорта и обучения\n• новые идеи для проектов и инициатив\n• развитие профессиональных навыков\n• международный нетворкинг и партнерства\n\n👥 Для кого:\nмолодежные работники, тренеры, фасилитаторы, спортивные специалисты, представители НПО и все, кто работает с молодежью (18+)\n\n📌 Даты: 22–26 июня 2026\n❗️Крайний срок подачи заявки: 06 мая 2026 г.❗️\n\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇮🇹",
+      "country": {
+        "ru": "Италия",
+        "en": "Italy",
+        "ro": "Italia"
+      },
+      "kind": {
+        "ru": "Семинар",
+        "en": "Seminar",
+        "ro": "Seminar"
+      },
+      "name": "Youth@Work Seminar: Sport & Entrepreneurship",
+      "start": "2026-06-22",
+      "end": "2026-06-26",
+      "deadline": "2026-05-06",
+      "text": {
+        "ru": "Семинар о том, как спорт развивает инициативность, лидерство и креативность молодёжи: подход EntreComp, воркшопы и активности на свежем воздухе.",
+        "en": "A seminar on how sport builds young people’s initiative, leadership and creativity: the EntreComp approach, workshops and outdoor activities.",
+        "ro": "Seminar despre modul în care sportul dezvoltă inițiativa, leadershipul și creativitatea tinerilor: abordarea EntreComp, ateliere și activități în aer liber."
+      },
+      "slug": "sport-entrepreneurship-italy",
+      "detail": {
+        "ru": {
+          "lead": "Youth@Work Seminar: Sport & Entrepreneurship – это международный семинар, где спорт рассматривается не только как физическая активность, но и как инструмент развития инициативности, лидерства и креативности у молодых людей.",
+          "explore": [
+            "связь спорта и предпринимательства",
+            "развитие навыков: лидерство, командная работа, устойчивость",
+            "влияние спорта на благополучие и занятость молодежи",
+            "подходы EntreComp в молодежной работе"
+          ],
+          "format": "неформальное обучение, воркшопы, обмен практиками, рефлексию и outdoor-активности",
+          "benefits": [
+            "практические методы объединения спорта и обучения",
+            "новые идеи для проектов и инициатив",
+            "развитие профессиональных навыков",
+            "международный нетворкинг и партнерства"
+          ],
+          "audience": "Молодежные работники, тренеры, фасилитаторы, спортивные специалисты, представители НПО и все, кто работает с молодежью (18+)"
+        },
+        "en": {
+          "lead": "Youth@Work Seminar: Sport & Entrepreneurship is an international seminar where sport is seen not only as physical activity but also as a tool for developing initiative, leadership and creativity in young people.",
+          "explore": [
+            "the link between sport and entrepreneurship",
+            "developing skills: leadership, teamwork, resilience",
+            "the impact of sport on young people’s wellbeing and employment",
+            "EntreComp approaches in youth work"
+          ],
+          "format": "non-formal learning, workshops, an exchange of practices, reflection and outdoor activities",
+          "benefits": [
+            "practical methods for combining sport and learning",
+            "new ideas for projects and initiatives",
+            "developing professional skills",
+            "international networking and partnerships"
+          ],
+          "audience": "Youth workers, coaches, facilitators, sports professionals, NGO representatives and anyone who works with young people (18+)."
+        },
+        "ro": {
+          "lead": "Youth@Work Seminar: Sport & Entrepreneurship este un seminar internațional în care sportul este privit nu doar ca activitate fizică, ci și ca instrument de dezvoltare a inițiativei, a leadershipului și a creativității la tineri.",
+          "explore": [
+            "legătura dintre sport și antreprenoriat",
+            "dezvoltarea abilităților: leadership, muncă în echipă, reziliență",
+            "influența sportului asupra stării de bine și a angajării tinerilor",
+            "abordările EntreComp în munca cu tinerii"
+          ],
+          "format": "învățare non-formală, ateliere, schimb de practici, reflecție și activități outdoor",
+          "benefits": [
+            "metode practice de îmbinare a sportului cu învățarea",
+            "idei noi pentru proiecte și inițiative",
+            "dezvoltarea abilităților profesionale",
+            "networking și parteneriate internaționale"
+          ],
+          "audience": "Lucrători de tineret, antrenori, facilitatori, specialiști în sport, reprezentanți ai ONG-urilor și toți cei care lucrează cu tinerii (18+)."
+        }
+      }
+    },
+    {
+      "code": "DXOU_4VDQfH",
+      "url": "https://www.instagram.com/p/DXOU_4VDQfH/",
+      "date": "2026-04-17",
+      "image": "DXOU_4VDQfH.webp",
+      "image_ratio": 1.0,
+      "caption": "🇵🇱 Учебный курс в Польше!\n\n💬 communiCARE 5.0 — это международный тренинг, посвященный развитию навыков эмпатической коммуникации и осознанного взаимодействия с другими.\n\n📚 Участники исследуют:\n– основы эмпатической и ненасильственной коммуникации\n– работу с чувствами и потребностями\n– осознанное общение в повседневной жизни\n– отношения с собой и другими\n– применение soft skills в работе с молодежью\n\n💡 Проект сочетает практику, рефлексию, безопасное пространство для обучения и методы неформального образования.\n\n🧩 Что даст участие в «communiCARE 5.0»:\n• навыки эмпатического общения\n• инструменты для работы с молодежью\n• развитие самосознания и эмоционального интеллекта\n• опыт международного обмена\n• возможность применять подход в своей локальной работе\n\n👥 Для кого:\nмолодежные работники, фасилитаторы и специалисты (21+), заинтересованные в развитии коммуникации и работе с молодежью\n\n📌 Даты: 20–27 июня 2026\n🔗 Подробности на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇵🇱",
+      "country": {
+        "ru": "Польша",
+        "en": "Poland",
+        "ro": "Polonia"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "communiCARE 5.0",
+      "start": "2026-06-20",
+      "end": "2026-06-27",
+      "text": {
+        "ru": "Международный тренинг об эмпатической и ненасильственной коммуникации: работа с чувствами и потребностями и осознанное общение в молодёжной работе (21+).",
+        "en": "An international training on empathic and nonviolent communication: working with feelings and needs and mindful communication in youth work (21+).",
+        "ro": "Training internațional despre comunicarea empatică și nonviolentă: lucrul cu sentimentele și nevoile și comunicare conștientă în munca cu tinerii (21+)."
+      },
+      "photo": "DXOU_4VDQfH-photo.webp",
+      "credit": {
+        "title": "Main Town Hall and Long Market Square in Gdańsk (2010)",
+        "author": "Nikater",
+        "license": "CC BY-SA 3.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Main_Town_Hall_and_Long_Market_Square_in_Gda%C5%84sk_(2010).jpg"
+      },
+      "slug": "communicare-poland",
+      "detail": {
+        "ru": {
+          "lead": "CommuniCARE 5.0 — это международный тренинг, посвященный развитию навыков эмпатической коммуникации и осознанного взаимодействия с другими.",
+          "explore": [
+            "основы эмпатической и ненасильственной коммуникации",
+            "работу с чувствами и потребностями",
+            "осознанное общение в повседневной жизни",
+            "отношения с собой и другими",
+            "применение soft skills в работе с молодежью"
+          ],
+          "format": "практику, рефлексию, безопасное пространство для обучения и методы неформального образования",
+          "benefits": [
+            "навыки эмпатического общения",
+            "инструменты для работы с молодежью",
+            "развитие самосознания и эмоционального интеллекта",
+            "опыт международного обмена",
+            "возможность применять подход в своей локальной работе"
+          ],
+          "audience": "Молодежные работники, фасилитаторы и специалисты (21+), заинтересованные в развитии коммуникации и работе с молодежью"
+        },
+        "en": {
+          "lead": "CommuniCARE 5.0 is an international training on developing empathic communication skills and mindful interaction with others.",
+          "explore": [
+            "the basics of empathic and nonviolent communication",
+            "working with feelings and needs",
+            "mindful communication in everyday life",
+            "relationships with yourself and others",
+            "applying soft skills in youth work"
+          ],
+          "format": "practice, reflection, a safe space for learning and non-formal education methods",
+          "benefits": [
+            "empathic communication skills",
+            "tools for working with young people",
+            "developing self-awareness and emotional intelligence",
+            "international exchange experience",
+            "the chance to apply the approach in your local work"
+          ],
+          "audience": "Youth workers, facilitators and professionals (21+) interested in developing communication and working with young people."
+        },
+        "ro": {
+          "lead": "CommuniCARE 5.0 este un training internațional dedicat dezvoltării abilităților de comunicare empatică și a interacțiunii conștiente cu ceilalți.",
+          "explore": [
+            "bazele comunicării empatice și nonviolente",
+            "lucrul cu sentimentele și nevoile",
+            "comunicare conștientă în viața de zi cu zi",
+            "relația cu sine și cu ceilalți",
+            "aplicarea soft skills în munca cu tinerii"
+          ],
+          "format": "practică, reflecție, un spațiu sigur de învățare și metode de educație non-formală",
+          "benefits": [
+            "abilități de comunicare empatică",
+            "instrumente pentru munca cu tinerii",
+            "dezvoltarea conștientizării de sine și a inteligenței emoționale",
+            "experiență de schimb internațional",
+            "posibilitatea de a aplica abordarea în munca ta locală"
+          ],
+          "audience": "Lucrători de tineret, facilitatori și specialiști (21+) interesați de dezvoltarea comunicării și de munca cu tinerii."
+        }
+      }
+    },
+    {
+      "code": "DW8PBZIDYg5",
+      "url": "https://www.instagram.com/p/DW8PBZIDYg5/",
+      "date": "2026-04-10",
+      "image": "DW8PBZIDYg5.webp",
+      "image_ratio": 1.5,
+      "caption": "Семинар в Турции! 🇹🇷\n\nYouth@Work \"Boosting Financial Literacy Among Young People\" — это международный семинар, направленный на развитие финансовой грамотности среди молодежи через обучение специалистов, работающих с молодыми людьми.\n\n📚 Участники исследуют:\n– ключевые компоненты финансовой грамотности\n– методы обучения управлению финансами\n– вызовы финансовой независимости и долговой нагрузки у молодежи\n– подходы к экономическому расширению возможностей молодежи\n– разработку образовательных и проектных инициатив\n\n💡 Проект сочетает интерактивные воркшопы, симуляционные игры, обмен практиками и методы неформального образования.\n\n🧩 Что даст участие в «Youth@Work»:\n• практические инструменты по финансовой грамотности\n• новые методы работы с молодежью\n• идеи для локальных и международных проектов\n• обмен опытом с участниками из разных стран\n• развитие профессиональных компетенций\n\n👥 Для кого:\nмолодежные работники, тренеры, педагоги и менеджеры проектов, работающие с молодежью\n\n📌 Даты: 8–11 июня 2026\n❗️ Крайний срок подачи заявки: 12 апреля 2026 г. ❗️\n\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля!",
+      "flag": "🇹🇷",
+      "country": {
+        "ru": "Турция",
+        "en": "Türkiye",
+        "ro": "Turcia"
+      },
+      "kind": {
+        "ru": "Семинар",
+        "en": "Seminar",
+        "ro": "Seminar"
+      },
+      "name": "Youth@Work: Boosting Financial Literacy Among Young People",
+      "start": "2026-06-08",
+      "end": "2026-06-11",
+      "deadline": "2026-04-12",
+      "text": {
+        "ru": "Семинар для специалистов, работающих с молодёжью, о финансовой грамотности: интерактивные воркшопы, симуляционные игры и обмен практиками.",
+        "en": "A seminar for professionals working with young people on financial literacy: interactive workshops, simulation games and an exchange of practices.",
+        "ro": "Seminar pentru profesioniști care lucrează cu tinerii despre educația financiară: ateliere interactive, jocuri de simulare și schimb de practici."
+      },
+      "slug": "financial-literacy-turkey",
+      "detail": {
+        "ru": {
+          "lead": "Youth@Work \"Boosting Financial Literacy Among Young People\" — это международный семинар, направленный на развитие финансовой грамотности среди молодежи через обучение специалистов, работающих с молодыми людьми.",
+          "explore": [
+            "ключевые компоненты финансовой грамотности",
+            "методы обучения управлению финансами",
+            "вызовы финансовой независимости и долговой нагрузки у молодежи",
+            "подходы к экономическому расширению возможностей молодежи",
+            "разработку образовательных и проектных инициатив"
+          ],
+          "format": "интерактивные воркшопы, симуляционные игры, обмен практиками и методы неформального образования",
+          "benefits": [
+            "практические инструменты по финансовой грамотности",
+            "новые методы работы с молодежью",
+            "идеи для локальных и международных проектов",
+            "обмен опытом с участниками из разных стран",
+            "развитие профессиональных компетенций"
+          ],
+          "audience": "Молодежные работники, тренеры, педагоги и менеджеры проектов, работающие с молодежью"
+        },
+        "en": {
+          "lead": "Youth@Work “Boosting Financial Literacy Among Young People” is an international seminar aimed at improving financial literacy among young people by training professionals who work with them.",
+          "explore": [
+            "the key components of financial literacy",
+            "methods of teaching money management",
+            "the challenges of financial independence and debt among young people",
+            "approaches to young people’s economic empowerment",
+            "developing educational and project initiatives"
+          ],
+          "format": "interactive workshops, simulation games, an exchange of practices and non-formal education methods",
+          "benefits": [
+            "practical tools for financial literacy",
+            "new methods of working with young people",
+            "ideas for local and international projects",
+            "exchange of experience with participants from different countries",
+            "developing professional competences"
+          ],
+          "audience": "Youth workers, trainers, educators and project managers who work with young people."
+        },
+        "ro": {
+          "lead": "Youth@Work „Boosting Financial Literacy Among Young People” este un seminar internațional care urmărește dezvoltarea educației financiare în rândul tinerilor prin formarea specialiștilor care lucrează cu ei.",
+          "explore": [
+            "componentele-cheie ale educației financiare",
+            "metode de predare a gestionării banilor",
+            "provocările independenței financiare și ale datoriilor în rândul tinerilor",
+            "abordări ale consolidării economice a tinerilor",
+            "dezvoltarea unor inițiative educaționale și de proiect"
+          ],
+          "format": "ateliere interactive, jocuri de simulare, schimb de practici și metode de educație non-formală",
+          "benefits": [
+            "instrumente practice de educație financiară",
+            "metode noi de lucru cu tinerii",
+            "idei pentru proiecte locale și internaționale",
+            "schimb de experiență cu participanți din diferite țări",
+            "dezvoltarea competențelor profesionale"
+          ],
+          "audience": "Lucrători de tineret, traineri, pedagogi și manageri de proiecte care lucrează cu tinerii."
+        }
+      }
+    },
+    {
+      "code": "DWa5AxIjZee",
+      "url": "https://www.instagram.com/p/DWa5AxIjZee/",
+      "date": "2026-03-28",
+      "image": "DWa5AxIjZee.webp",
+      "image_ratio": 1.0,
+      "caption": "Учебный визит в Литве! 🇱🇹\n\n⭐️ Этот проект посвящен изучению системы молодежной работы, политики и практик на местном уровне.\n\n📚 Участники исследуют:\n– систему молодежной работы в Литве\n– роль муниципалитетов в развитии молодежной политики\n– практики open, street и mobile youth work\n– работу молодежных центров в городах и сельской местности\n– возможности сотрудничества в рамках Erasmus+ и ESC\n\n🧩 Что даст участие в проекте:\n• понимание европейских практик молодежной работы\n• реальные кейсы и инструменты для работы\n• новые профессиональные контакты\n• идеи для внедрения в своей организации\n• возможности международного сотрудничества\n\n👥 Для кого:\nмолодежные работники и представители муниципалитетов, заинтересованные в развитии молодежной политики и практик\n\n📌 Даты: 26 апреля – 1 мая 2026\n🔗 Подробнее на нашем сайте, ссылка в шапке профиля",
+      "flag": "🇱🇹",
+      "country": {
+        "ru": "Литва",
+        "en": "Lithuania",
+        "ro": "Lituania"
+      },
+      "kind": {
+        "ru": "Учебный визит",
+        "en": "Study visit",
+        "ro": "Vizită de studiu"
+      },
+      "name": "Study visit: youth work and youth policy in Lithuania",
+      "start": "2026-04-26",
+      "end": "2026-05-01",
+      "text": {
+        "ru": "Учебный визит о системе молодёжной работы и политики в Литве: роль муниципалитетов, молодёжные центры в городах и сельской местности, возможности Erasmus+ и ESC.",
+        "en": "A study visit on the youth work and youth policy system in Lithuania: the role of municipalities, youth centres in cities and rural areas, and Erasmus+ and ESC opportunities.",
+        "ro": "Vizită de studiu despre sistemul de muncă cu tinerii și politici de tineret din Lituania: rolul municipalităților, centrele de tineret din orașe și din mediul rural, oportunități Erasmus+ și ESC."
+      },
+      "photo": "DWa5AxIjZee-photo.webp",
+      "credit": {
+        "title": "Vilnius Landmarks 170",
+        "author": "Scotch Mist",
+        "license": "CC BY-SA 4.0",
+        "url": "https://commons.wikimedia.org/wiki/File:Vilnius_Landmarks_170.jpg"
+      },
+      "slug": "study-visit-lithuania",
+      "detail": {
+        "ru": {
+          "lead": "Этот проект посвящен изучению системы молодежной работы, политики и практик на местном уровне.",
+          "explore": [
+            "систему молодежной работы в Литве",
+            "роль муниципалитетов в развитии молодежной политики",
+            "практики open, street и mobile youth work",
+            "работу молодежных центров в городах и сельской местности",
+            "возможности сотрудничества в рамках Erasmus+ и ESC"
+          ],
+          "format": "",
+          "benefits": [
+            "понимание европейских практик молодежной работы",
+            "реальные кейсы и инструменты для работы",
+            "новые профессиональные контакты",
+            "идеи для внедрения в своей организации",
+            "возможности международного сотрудничества"
+          ],
+          "audience": "Молодежные работники и представители муниципалитетов, заинтересованные в развитии молодежной политики и практик"
+        },
+        "en": {
+          "lead": "This project is devoted to studying the system of youth work, policy and practices at the local level.",
+          "explore": [
+            "the youth work system in Lithuania",
+            "the role of municipalities in developing youth policy",
+            "open, street and mobile youth work practices",
+            "how youth centres work in cities and rural areas",
+            "opportunities for cooperation within Erasmus+ and ESC"
+          ],
+          "format": "",
+          "benefits": [
+            "an understanding of European youth work practices",
+            "real cases and tools for work",
+            "new professional contacts",
+            "ideas to introduce in your own organisation",
+            "opportunities for international cooperation"
+          ],
+          "audience": "Youth workers and municipal representatives interested in developing youth policy and practice."
+        },
+        "ro": {
+          "lead": "Acest proiect este dedicat studierii sistemului de muncă cu tinerii, a politicilor și a practicilor la nivel local.",
+          "explore": [
+            "sistemul de muncă cu tinerii din Lituania",
+            "rolul municipalităților în dezvoltarea politicii de tineret",
+            "practici de open, street și mobile youth work",
+            "activitatea centrelor de tineret din orașe și din mediul rural",
+            "oportunități de cooperare în cadrul Erasmus+ și ESC"
+          ],
+          "format": "",
+          "benefits": [
+            "înțelegerea practicilor europene de muncă cu tinerii",
+            "cazuri reale și instrumente de lucru",
+            "contacte profesionale noi",
+            "idei de implementat în propria organizație",
+            "oportunități de cooperare internațională"
+          ],
+          "audience": "Lucrători de tineret și reprezentanți ai municipalităților interesați de dezvoltarea politicii și a practicilor de tineret."
+        }
+      }
+    },
+    {
+      "code": "DWG4vvnjTbo",
+      "url": "https://www.instagram.com/p/DWG4vvnjTbo/",
+      "date": "2026-03-20",
+      "image": "DWG4vvnjTbo.webp",
+      "image_ratio": 1.5,
+      "caption": "Учебный курс в Литве! 🇱🇹 \n\n🌱 Climate-Conscious Youth Work – это международный тренинг для молодежных работников, направленный на интеграцию тем климата и устойчивого развития в работу с молодежью.\n\n📚 Участники исследуют:\n• климатический кризис и его влияние на молодежь\n• устойчивое развитие и климатическую справедливость\n• роль молодежи в экологических изменениях\n• практики и кейсы устойчивых инициатив\n\n💡 Проект сочетает:\nнеформальное обучение, практические инструменты, кейс-стади, групповую работу и обмен опытом\n\n🧩 Что даст участие в проекте:\n• навыки интеграции устойчивости в молодежную работу\n• инструменты для работы с темой климата\n• развитие критического мышления\n• международный обмен и нетворкинг\n\n👥 Для кого:\nмолодежные работники, лидеры, тренеры и педагоги (18+), с базовым английским и интересом к теме устойчивого развития\n\n📌 Даты: 20–25 мая 2026\n❗️Крайний срок подачи заявки: 30 марта 2026 г.❗️",
+      "flag": "🇱🇹",
+      "country": {
+        "ru": "Литва",
+        "en": "Lithuania",
+        "ro": "Lituania"
+      },
+      "kind": {
+        "ru": "Учебный курс",
+        "en": "Training course",
+        "ro": "Curs de formare"
+      },
+      "name": "Climate-Conscious Youth Work",
+      "start": "2026-05-20",
+      "end": "2026-05-25",
+      "deadline": "2026-03-30",
+      "text": {
+        "ru": "Международный тренинг о том, как включить климат и устойчивое развитие в работу с молодёжью: кейсы, практические инструменты и групповая работа (18+).",
+        "en": "An international training on bringing climate and sustainability into youth work: case studies, practical tools and group work (18+).",
+        "ro": "Training internațional despre integrarea temelor de climă și dezvoltare durabilă în munca cu tinerii: studii de caz, instrumente practice și lucru în grup (18+)."
+      },
+      "slug": "climate-youth-work-lithuania",
+      "detail": {
+        "ru": {
+          "lead": "Climate-Conscious Youth Work – это международный тренинг для молодежных работников, направленный на интеграцию тем климата и устойчивого развития в работу с молодежью.",
+          "explore": [
+            "климатический кризис и его влияние на молодежь",
+            "устойчивое развитие и климатическую справедливость",
+            "роль молодежи в экологических изменениях",
+            "практики и кейсы устойчивых инициатив"
+          ],
+          "format": "неформальное обучение, практические инструменты, кейс-стади, групповую работу и обмен опытом",
+          "benefits": [
+            "навыки интеграции устойчивости в молодежную работу",
+            "инструменты для работы с темой климата",
+            "развитие критического мышления",
+            "международный обмен и нетворкинг"
+          ],
+          "audience": "Молодежные работники, лидеры, тренеры и педагоги (18+), с базовым английским и интересом к теме устойчивого развития"
+        },
+        "en": {
+          "lead": "Climate-Conscious Youth Work is an international training for youth workers on integrating climate and sustainability topics into youth work.",
+          "explore": [
+            "the climate crisis and its impact on young people",
+            "sustainable development and climate justice",
+            "the role of young people in environmental change",
+            "practices and cases of sustainable initiatives"
+          ],
+          "format": "non-formal learning, practical tools, case studies, group work and an exchange of experience",
+          "benefits": [
+            "skills for integrating sustainability into youth work",
+            "tools for working with the climate topic",
+            "developing critical thinking",
+            "international exchange and networking"
+          ],
+          "audience": "Youth workers, leaders, trainers and educators (18+) with basic English and an interest in sustainable development."
+        },
+        "ro": {
+          "lead": "Climate-Conscious Youth Work este un training internațional pentru lucrători de tineret, care urmărește integrarea temelor de climă și dezvoltare durabilă în munca cu tinerii.",
+          "explore": [
+            "criza climatică și impactul ei asupra tinerilor",
+            "dezvoltarea durabilă și justiția climatică",
+            "rolul tinerilor în schimbările de mediu",
+            "practici și studii de caz ale unor inițiative durabile"
+          ],
+          "format": "învățare non-formală, instrumente practice, studii de caz, muncă în grup și schimb de experiență",
+          "benefits": [
+            "abilități de integrare a dezvoltării durabile în munca cu tinerii",
+            "instrumente pentru lucrul cu tema climei",
+            "dezvoltarea gândirii critice",
+            "schimb internațional și networking"
+          ],
+          "audience": "Lucrători de tineret, lideri, traineri și pedagogi (18+), cu engleză de bază și interes pentru dezvoltare durabilă."
+        }
+      }
+    }
+  ]
+}

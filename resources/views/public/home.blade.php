@@ -4,7 +4,7 @@
 @section('description', 'INSPIRE EDU Network connects universities, young leaders, researchers and international partners in Moldova. Connecting Minds. Building Trust. Creating Change.')
 
 @php
-    $tones = ['#006de0', '#ff6c0b', '#3d932e', '#72299c', '#d99b00', '#e31e27', '#00387a'];
+    $tones = ['#006de0', '#ff6c0b', '#3d932e', '#72299c', '#d99b00', '#e31e27', '#0a2f6e'];
     $emojiTone = ['', 'yellow', 'green', 'orange', 'purple', 'red'];
     $expertsWithPhoto = array_values(array_filter($people, fn ($x) => $x['img']));
     $orgs = array_values(array_filter($partners, fn ($x) => in_array($x['group'], ['donor', 'coorg'])));
@@ -53,13 +53,16 @@
     </div>
 </section>
 {{-- ───────────── TICKER ───────────── --}}
-<div class="ticker" aria-label="Key topics">
-    <div class="ticker__track">
-        @for($rep = 0; $rep < 4; $rep++)
-            @foreach($S['ticker'] as $it)
-                <span class="ticker__item" @if($rep > 1) aria-hidden="true" @endif><i></i>{!! $tm($it) !!}</span>
-            @endforeach
-        @endfor
+<div class="ticker" id="topics" aria-label="Key topics">
+    <div class="ticker__row">
+        @foreach(array_slice($S['ticker'], 0, 6) as $i => $it)
+            <span class="tk-slot"><i></i><span class="tk-stage"><span class="tk-word">{!! $tm($it) !!}</span></span></span>
+        @endforeach
+    </div>
+    <div class="tk-pool" hidden>
+        @foreach($S['ticker'] as $it)
+            <span>{!! $tm($it) !!}</span>
+        @endforeach
     </div>
 </div>
 
@@ -143,7 +146,7 @@
         @php
             $cloud = [
                 ['2.25rem', '#006de0'], ['1.7rem', '#3d932e'], ['2.6rem', '#ff6c0b'], ['1.9rem', '#72299c'],
-                ['1.55rem', '#006de0'], ['1.85rem', '#e31e27'], ['2.15rem', '#00387a'], ['1.6rem', '#3d932e'],
+                ['1.55rem', '#006de0'], ['1.85rem', '#e31e27'], ['2.15rem', '#0a2f6e'], ['1.6rem', '#3d932e'],
             ];
         @endphp
         <div class="core-panel i-reveal">
@@ -219,7 +222,6 @@
     <div class="i-container">
         <div class="flex flex-wrap items-end justify-between gap-4 mb-9">
             <div class="i-reveal"><h2 class="i-h2">{!! $t('Эксперты и наставники', 'Expert Mentors & Advisors', 'Experți și mentori') !!}</h2><div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div></div>
-            <a href="{{ route('experts') }}" class="i-btn i-btn--secondary i-reveal"><span>{!! $t('Все эксперты', 'All experts', 'Toți experții') !!} ({{ count($people) }})</span>{!! $arrow !!}</a>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-5">
             @foreach(array_slice($expertsWithPhoto, 0, 12) as $i => $e)
@@ -229,6 +231,9 @@
                     <p>{!! $tm($e['role']) !!}</p>
                 </article>
             @endforeach
+        </div>
+        <div style="display:flex;justify-content:center;margin-top:36px">
+            <a href="{{ route('experts') }}" class="i-btn i-btn--secondary i-reveal"><span>{!! $t('Все эксперты', 'All experts', 'Toți experții') !!} ({{ count($people) }})</span>{!! $arrow !!}</a>
         </div>
     </div>
 </section>

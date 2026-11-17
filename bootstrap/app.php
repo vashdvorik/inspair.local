@@ -19,8 +19,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'feature'     => \App\Http\Middleware\RequireFeature::class,
             'approved'    => \App\Http\Middleware\RequireApproved::class,
         ]);
-        $middleware->web(append: [\App\Http\Middleware\FreshPages::class]);
-        $middleware->encryptCookies(except: [\App\Http\Middleware\FreshPages::COOKIE]);
+        $middleware->web(append: [\App\Http\Middleware\SetLocale::class, \App\Http\Middleware\FreshPages::class]);
+        // эти куки читаются как есть (их пишет и JavaScript сайта)
+        $middleware->encryptCookies(except: [\App\Http\Middleware\FreshPages::COOKIE, \App\Support\Lang::COOKIE]);
         $middleware->validateCsrfTokens(except: [
             'telegram/webhook',
         ]);

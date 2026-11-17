@@ -28,16 +28,16 @@ class OpportunityRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'type.required'             => 'Выберите тип возможности.',
-            'type.in'                   => 'Недопустимый тип.',
-            'title.required'            => 'Введите заголовок.',
-            'title.max'                 => 'Заголовок не более 200 символов.',
-            'body.required'             => 'Введите описание.',
-            'body.max'                  => 'Описание не более 2000 символов.',
-            'event_date.date'           => 'Введите корректную дату.',
-            'event_date.after_or_equal' => 'Дата не может быть в прошлом.',
-            'contact_url.url'           => 'Введите корректный URL (https://...).',
-            'contact_url.max'           => 'URL не более 500 символов.',
+            'type.required'             => \App\Support\Lang::t('Выберите тип возможности.', 'Choose the type of opportunity.', 'Alege tipul oportunității.'),
+            'type.in'                   => \App\Support\Lang::t('Недопустимый тип.', 'Invalid type.', 'Tip invalid.'),
+            'title.required'            => \App\Support\Lang::t('Введите заголовок.', 'Enter a title.', 'Introdu un titlu.'),
+            'title.max'                 => \App\Support\Lang::t('Заголовок не более 200 символов.', 'The title can be at most 200 characters.', 'Titlul poate avea cel mult 200 de caractere.'),
+            'body.required'             => \App\Support\Lang::t('Введите описание.', 'Enter a description.', 'Introdu o descriere.'),
+            'body.max'                  => \App\Support\Lang::t('Описание не более 2000 символов.', 'The description can be at most 2000 characters.', 'Descrierea poate avea cel mult 2000 de caractere.'),
+            'event_date.date'           => \App\Support\Lang::t('Введите корректную дату.', 'Enter a valid date.', 'Introdu o dată validă.'),
+            'event_date.after_or_equal' => \App\Support\Lang::t('Дата не может быть в прошлом.', 'The date cannot be in the past.', 'Data nu poate fi în trecut.'),
+            'contact_url.url'           => \App\Support\Lang::t('Введите корректный URL (https://...).', 'Enter a valid URL (https://...).', 'Introdu un URL valid (https://...).'),
+            'contact_url.max'           => \App\Support\Lang::t('URL не более 500 символов.', 'The URL can be at most 500 characters.', 'URL-ul poate avea cel mult 500 de caractere.'),
         ];
     }
 }

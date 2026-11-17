@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue';
-import { get, points } from './api';
+import { get, points, t } from './api';
 import Avatar from './Avatar.vue';
 import QuestView from './QuestView.vue';
 import NetworkView from './NetworkView.vue';
@@ -17,7 +17,7 @@ const levelUp = ref(null);
 const netKey = ref(0);
 const error = ref('');
 
-const lockedLabel = { people: 'Люди', opportunities: 'Размещение возможностей' };
+const lockedLabel = { people: t('section_people'), opportunities: t('section_opportunities') };
 const playable = computed(() => state.value && (state.value.launched || state.value.staff));
 
 async function loadState() {
@@ -38,14 +38,14 @@ onMounted(loadState);
 <template>
     <div class="g-wrap">
         <div v-if="error" class="g-card g-err">{{ error }}</div>
-        <div v-else-if="!state" class="g-muted">Загрузка…</div>
+        <div v-else-if="!state" class="g-muted">{{ t('loading') }}</div>
 
         <template v-else>
             <div v-if="locked" class="g-alert">
-                Раздел «{{ lockedLabel[locked] || locked }}» пока закрыт: он откроется после запуска игры.
+                {{ t('locked', { section: lockedLabel[locked] || locked }) }}
             </div>
 
-            <RulesView :rules="state.rules" />
+            <RulesView :rules="state.rules" :levels="state.levels" />
 
             <div v-if="!playable" class="g-me g-card">
                 <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="52" />
@@ -65,7 +65,7 @@ onMounted(loadState);
                         <b>{{ me.name }}</b>
                         <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }}</div>
                         <div class="g-xp"><div :style="{ width: me.percent + '%', background: me.level.color }"></div></div>
-                        <div class="g-xpn"><span>{{ points(me.xp) }}</span><span v-if="me.next">до «{{ me.next.name }}»: {{ me.next.from - me.xp }}</span><span v-else>максимальный уровень</span></div>
+                        <div class="g-xpn"><span>{{ points(me.xp) }}</span><span v-if="me.next">{{ t('to_level', { name: me.next.name, n: me.next.from - me.xp }) }}</span><span v-else>{{ t('max_level') }}</span></div>
                     </div>
                 </div>
 
@@ -88,10 +88,10 @@ onMounted(loadState);
         <div v-if="levelUp" class="g-modal" @click.self="levelUp = null">
             <div class="g-modal-box">
                 <div class="g-bigdot" :style="{ background: levelUp.color }">{{ levelUp.n }}</div>
-                <div class="g-eyebrow">Новый уровень</div>
+                <div class="g-eyebrow">{{ t('new_level') }}</div>
                 <h2 class="g-q" style="margin:6px 0">{{ levelUp.name }}</h2>
-                <p class="g-muted" style="margin-bottom:18px">Так держать! Копите очки дальше.</p>
-                <button class="g-btn" @click="levelUp = null">Продолжить</button>
+                <p class="g-muted" style="margin-bottom:18px">{{ t('keep_going') }}</p>
+                <button class="g-btn" @click="levelUp = null">{{ t('continue') }}</button>
             </div>
         </div>
     </div>

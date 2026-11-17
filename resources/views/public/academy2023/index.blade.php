@@ -33,8 +33,8 @@
     </div>
 </section>
 
-<div class="i-section--tint" style="padding:13px 0;overflow:hidden;white-space:nowrap;border-block:1px solid var(--blue-100);">
-    <div class="i-container" style="font-weight:700;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy-800);text-align:center">{!! $tm($c['ticker']) !!}</div>
+<div class="i-section--tint" style="padding:13px 0;overflow:hidden;border-block:1px solid var(--blue-100);">
+    <div class="i-container" style="font-weight:700;font-size:.78rem;letter-spacing:.14em;line-height:1.5;text-wrap:balance;text-transform:uppercase;color:var(--navy-800);text-align:center">{!! $tm($c['ticker']) !!}</div>
 </div>
 
 {{-- ───────────── ABOUT ───────────── --}}

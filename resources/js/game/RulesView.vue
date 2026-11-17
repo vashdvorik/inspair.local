@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-import { points } from './api';
+import { computed } from 'vue';
+import { points, t } from './api';
 
-defineProps({ rules: Object });
+const props = defineProps({ rules: Object, levels: Array });
+const levelNames = computed(() => (props.levels || []).map((l) => l.name).join(', '));
 
 const KEY = 'inspire_game_rules_hidden';
 const open = ref(true);
@@ -17,30 +19,30 @@ function toggle() {
 <template>
     <div class="g-card g-rules">
         <button class="g-rules-head" type="button" :aria-expanded="open" @click="toggle">
-            <span class="g-eyebrow">Как играть</span>
-            <span class="g-rules-toggle">{{ open ? 'Скрыть' : 'Показать правила' }}</span>
+            <span class="g-eyebrow">{{ t('how_to_play') }}</span>
+            <span class="g-rules-toggle">{{ open ? t('hide') : t('show_rules') }}</span>
         </button>
 
         <ol v-if="open" class="g-rules-list">
             <li>
-                <b>Расскажите о себе.</b>
-                В профиле добавьте несколько коротких фактов (до {{ rules.max_facts }}): чем занимаетесь, что любите. За каждый факт вы получаете {{ points(rules.fact) }}. Из этих рассказов составляются вопросы для других участников.
+                <b>{{ t('r1_title') }}</b>
+                {{ t('r1', { max: rules.max_facts, fact: points(rules.fact) }) }}
             </li>
             <li>
-                <b>Угадывайте.</b>
-                Вам показывают вопрос про одного участника и трёх людей на выбор. Нажмите на того, о ком, по-вашему, речь.
+                <b>{{ t('r2_title') }}</b>
+                {{ t('r2') }}
             </li>
             <li>
-                <b>Получайте очки.</b>
-                Верный ответ даёт {{ points(rules.correct) }}, неверный даёт {{ points(rules.wrong) }}. После промаха нужно подождать {{ rules.pause }} секунд до следующего вопроса. Штрафов нет.
+                <b>{{ t('r3_title') }}</b>
+                {{ t('r3', { correct: points(rules.correct), wrong: points(rules.wrong), pause: rules.pause }) }}
             </li>
             <li>
-                <b>Растите уровень.</b>
-                Чем больше очков, тем выше уровень: Новичок, Активист, Союзник, Посредник, Амбассадор. Уровень это ваше звание в игре, он ничего не открывает и не закрывает.
+                <b>{{ t('r4_title') }}</b>
+                {{ t('r4', { levels: levelNames }) }}
             </li>
             <li>
-                <b>Вы решаете сами.</b>
-                Если не хотите попадать в вопросы, отметьте это в профиле. Контакты тоже можно закрыть.
+                <b>{{ t('r5_title') }}</b>
+                {{ t('r5') }}
             </li>
         </ol>
     </div>

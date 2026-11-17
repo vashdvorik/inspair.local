@@ -17,15 +17,15 @@
         </div>
 
         @if($rejected)
-            <h2>Модератор отказал вам в доступе к игре</h2>
+            <h2>{{ $tr('Модератор отказал вам в доступе к игре', 'The moderator has denied you access to the game', 'Moderatorul ți-a refuzat accesul la joc') }}</h2>
             @if(filled($note))
-                <p class="mod-note-label">Сообщение модератора</p>
+                <p class="mod-note-label">{{ $tr('Сообщение модератора', 'Message from the moderator', 'Mesajul moderatorului') }}</p>
                 <blockquote class="mod-note">{!! nl2br(e($note)) !!}</blockquote>
             @endif
         @else
-            <h2>Модератор ещё не посмотрел ваш профиль</h2>
-            <p class="mod-text">Как только он проверит профиль, здесь откроются игра и список участников. Пока можно заполнить профиль: так проверка пройдёт быстрее.</p>
-            <a href="{{ route('account.profile.edit') }}" class="i-btn" style="margin-top:18px">Заполнить профиль</a>
+            <h2>{{ $tr('Модератор ещё не посмотрел ваш профиль', 'The moderator has not reviewed your profile yet', 'Moderatorul nu ți-a verificat încă profilul') }}</h2>
+            <p class="mod-text">{{ $tr('Как только он проверит профиль, здесь откроются игра и список участников. Пока можно заполнить профиль: так проверка пройдёт быстрее.', 'As soon as the profile is checked, the game and the list of participants will open here. Meanwhile you can fill in your profile: the check will go faster.', 'De îndată ce profilul este verificat, aici se vor deschide jocul și lista participanților. Între timp poți completa profilul: verificarea va merge mai repede.') }}</p>
+            <a href="{{ route('account.profile.edit') }}" class="i-btn" style="margin-top:18px">{{ $tr('Заполнить профиль', 'Complete your profile', 'Completează profilul') }}</a>
         @endif
     </div>
 </div>

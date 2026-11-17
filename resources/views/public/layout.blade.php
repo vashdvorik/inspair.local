@@ -55,7 +55,7 @@
         ]],
         ['route' => 'partners',     'label' => ['Партнёры', 'Partners', 'Parteneri'],     'active' => ['partners']],
         ['route' => 'publications', 'label' => ['Публикации', 'Publications', 'Publicații'], 'active' => ['publications']],
-        ['url' => 'https://education.md/opportunities', 'label' => ['Возможности', 'Opportunities', 'Oportunități']],
+        ['route' => 'opportunities', 'label' => ['Возможности', 'Opportunities', 'Oportunități'], 'active' => ['opportunities']],
     ];
     $isActive = fn (array $m) => request()->routeIs(...$m['active']);
 @endphp
@@ -131,7 +131,6 @@
                 <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Разделы', 'Sections', 'Secțiuni') !!}</p>
                 <div class="flex flex-col gap-2.5 text-sm font-semibold">
                     <a href="{{ route('home') }}" style="text-decoration:none">{!! $t('Главная', 'Home', 'Acasă') !!}</a>
-                    <a href="{{ route('hackathon') }}" style="text-decoration:none">{!! $t('Хакатон 2026', 'Hackathon 2026', 'Hackathon 2026') !!}</a>
                     <a href="{{ route('experts') }}" style="text-decoration:none">{!! $t('Эксперты', 'Experts', 'Experți') !!}</a>
                     <a href="{{ route('photo') }}" style="text-decoration:none">{!! $t('Фото', 'Photo', 'Foto') !!}</a>
                     <a href="{{ route('video') }}" style="text-decoration:none">{!! $t('Видео', 'Video', 'Video') !!}</a>
@@ -140,8 +139,9 @@
                 </div>
             </div>
             <div>
-                <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Школы', 'Schools', 'Școli') !!}</p>
+                <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Мероприятия', 'Events', 'Evenimente') !!}</p>
                 <div class="flex flex-col gap-2.5 text-sm font-semibold">
+                    <a href="{{ route('hackathon') }}" style="text-decoration:none">{!! $t('Хакатон 2026', 'Hackathon 2026', 'Hackathon 2026') !!}</a>
                     <a href="{{ route('academy2025') }}" style="text-decoration:none">{!! $t('Школы 2025', 'Schools 2025', 'Școli 2025') !!}</a>
                     <a href="{{ route('academy2025.school', 1) }}" style="text-decoration:none">{!! $t('Школа 1 · Кишинёв', 'School 1 · Chișinău', 'Școala 1 · Chișinău') !!}</a>
                     <a href="{{ route('academy2025.school', 2) }}" style="text-decoration:none">{!! $t('Школа 2 · Комрат', 'School 2 · Comrat', 'Școala 2 · Comrat') !!}</a>
@@ -152,16 +152,13 @@
             <div>
                 <p class="i-eyebrow" style="color:var(--muted);margin-bottom:14px;">{!! $t('Контакты', 'Contacts', 'Contacte') !!}</p>
                 <div class="flex flex-col gap-3 text-sm font-semibold">
-                    <a href="{{ $bot }}" target="_blank" rel="noopener" class="flex items-center gap-2" style="text-decoration:none">{!! $tg !!} @Inspiremoldova_bot</a>
                     <a href="mailto:globalstudy.xxi@gmail.com" class="flex items-center gap-2" style="text-decoration:none">{!! $icon('bulb', 'w-[18px] h-[18px]') !!} globalstudy.xxi@gmail.com</a>
-                    <a href="https://peace.education.md/" target="_blank" rel="noopener" class="flex items-center gap-2" style="text-decoration:none">{!! $icon('globe', 'w-[18px] h-[18px]') !!} peace.education.md</a>
                 </div>
             </div>
         </div>
         <div class="i-spectrum-line" style="opacity:.8;margin-bottom:22px;"></div>
         <div class="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
             <span>&copy; {{ date('Y') }} INSPIRE EDU Network &middot; Moldova</span>
-            <span>{!! $t('Поддержано Посольством Нидерландов', 'Supported by the Embassy of the Netherlands', 'Susținut de Ambasada Țărilor de Jos') !!}</span>
         </div>
     </div>
 </footer>
@@ -171,6 +168,7 @@
     const LANG_KEY = 'inspair_lang';
     function setLang(lang) {
         localStorage.setItem(LANG_KEY, lang);
+        document.cookie = LANG_KEY + '=' + lang + '; path=/; max-age=31536000; SameSite=Lax' + (location.protocol === 'https:' ? '; Secure' : ''); // кабинет читает язык из куки
         document.documentElement.lang = lang;
         document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('is-active', btn.id === 'btn-' + lang));
     }

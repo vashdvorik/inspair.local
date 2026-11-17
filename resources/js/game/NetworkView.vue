@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
-import { get } from './api';
+import { get, t } from './api';
 import Avatar from './Avatar.vue';
 
 const props = defineProps({ api: Object, refreshKey: Number });
@@ -30,8 +30,8 @@ watch(() => props.refreshKey, load);
 
 <template>
     <div>
-        <div class="g-eyebrow">Мои знакомства · {{ nodes.length }}</div>
-        <p v-if="!nodes.length && !loading" class="g-muted" style="margin-top:8px">Пока пусто. Отвечайте на вопросы: каждый верный ответ добавляет человека сюда.</p>
+        <div class="g-eyebrow">{{ t('my_network', { n: nodes.length }) }}</div>
+        <p v-if="!nodes.length && !loading" class="g-muted" style="margin-top:8px">{{ t('net_empty') }}</p>
 
         <div class="g-people">
             <button v-for="p in nodes" :key="p.id" class="g-pcard" :class="{ on: selected && selected.id === p.id }" @click="toggle(p)">
@@ -51,9 +51,9 @@ watch(() => props.refreshKey, load);
             <p v-if="selected.description" class="g-line">{{ selected.description }}</p>
             <ul v-if="selected.facts && selected.facts.length" class="g-facts"><li v-for="f in selected.facts" :key="f">{{ f }}</li></ul>
             <div class="g-row">
-                <a v-if="selected.write_url" class="g-btn" :href="selected.write_url" target="_blank" rel="noopener">Написать в Telegram</a>
-                <span v-else class="g-muted">Контакты скрыты участником</span>
-                <a class="g-btn g-btn--ghost" :href="selected.profile_url">Профиль</a>
+                <a v-if="selected.write_url" class="g-btn" :href="selected.write_url" target="_blank" rel="noopener">{{ t('write_tg') }}</a>
+                <span v-else class="g-muted">{{ t('contacts_hidden') }}</span>
+                <a class="g-btn g-btn--ghost" :href="selected.profile_url">{{ t('profile') }}</a>
             </div>
         </div>
     </div>

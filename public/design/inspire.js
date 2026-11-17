@@ -33,6 +33,30 @@
       addEventListener('scroll', on, { passive: true }); on();
     }
 
+    // topics strip: all words are always on; every ~2 s one of them swaps for another topic at random
+    (function () {
+      var row = document.querySelector('#topics .ticker__row'), pool = document.querySelectorAll('#topics .tk-pool > span');
+      if (!row || pool.length < 7 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var slots = [].slice.call(row.querySelectorAll('.tk-slot')), last = -1, shown = pool.length;
+      var wordsOn = function () { return slots.map(function (s) { return +s.getAttribute('data-i'); }); };
+      slots.forEach(function (s, i) { s.setAttribute('data-i', i); });
+      var swap = function () {
+        if (document.hidden || d.classList.contains('i-idle')) return;
+        var visible = slots.filter(function (s) { return s.offsetParent !== null; });
+        if (!visible.length) return;
+        var slot; do { slot = visible[Math.floor(Math.random() * visible.length)]; } while (visible.length > 1 && slots.indexOf(slot) === last);
+        last = slots.indexOf(slot);
+        var on = wordsOn(), next; do { next = Math.floor(Math.random() * pool.length); } while (on.indexOf(next) !== -1);
+        var stage = slot.querySelector('.tk-stage'), old = stage.querySelector('.tk-word:not(.is-out)'), el = document.createElement('span');
+        el.className = 'tk-word is-in'; el.innerHTML = pool[next].innerHTML;
+        slot.setAttribute('data-i', next); stage.appendChild(el);
+        if (old) { old.classList.add('is-out'); setTimeout(function () { old.remove(); }, 800); }
+        setTimeout(function () { el.classList.remove('is-in'); }, 760);
+      };
+      var tick = function () { swap(); setTimeout(tick, 1400 + Math.random() * 1800); };
+      setTimeout(tick, 2200);
+    })();
+
     // idle: after 20 s without interaction (or when the tab is hidden) decorative loops are paused
     var idleTimer, setIdle = function (on) { d.classList.toggle('i-idle', on); };
     var wake = function () { setIdle(false); clearTimeout(idleTimer); idleTimer = setTimeout(function () { setIdle(true); }, 20000); };

@@ -1,5 +1,5 @@
 @extends('account.layout')
-@section('title', 'Возможности')
+@section('title', $tr('Возможности', 'Opportunities', 'Oportunități'))
 
 @section('content')
 <div class="cab-page">
@@ -7,8 +7,8 @@
     {{-- Header --}}
     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-            <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">Возможности</h1>
-            <p class="mt-1.5 text-sm text-gray-500">Проекты, встречи и мероприятия от участников сообщества</p>
+            <h1 class="text-2xl font-bold tracking-tight text-[#0e2442]">{{ $tr('Возможности', 'Opportunities', 'Oportunități') }}</h1>
+            <p class="mt-1.5 text-sm text-gray-500">{{ $tr('Проекты, встречи и мероприятия от участников сообщества', 'Projects, meetings and events from community members', 'Proiecte, întâlniri și evenimente de la membrii comunității') }}</p>
         </div>
         <a href="{{ route('account.opportunities.create') }}"
            class="inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white
@@ -17,7 +17,7 @@
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            Опубликовать
+            {{ $tr('Опубликовать', 'Publish', 'Publică') }}
         </a>
     </div>
 
@@ -31,15 +31,15 @@
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
             </svg>
         </div>
-        <h2 class="text-base font-semibold text-[#0e2442]">Пока нет возможностей</h2>
+        <h2 class="text-base font-semibold text-[#0e2442]">{{ $tr('Пока нет возможностей', 'No opportunities yet', 'Încă nu există oportunități') }}</h2>
         <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-gray-400">
-            Будь первым — опубликуй проект, встречу или мероприятие для сообщества.
+            {{ $tr('Будь первым — опубликуй проект, встречу или мероприятие для сообщества.', 'Be the first: publish a project, meeting or event for the community.', 'Fii primul: publică un proiect, o întâlnire sau un eveniment pentru comunitate.') }}
         </p>
         <a href="{{ route('account.opportunities.create') }}"
            class="mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white
                   transition-all hover:-translate-y-px hover:shadow-md"
            style="background:var(--grad-primary)">
-            Опубликовать первым →
+            {{ $tr('Опубликовать первым →', 'Publish the first one →', 'Publică prima →') }}
         </a>
     </div>
 
@@ -70,12 +70,12 @@
                 </div>
                 @if($isOwn)
                 <form action="{{ route('account.opportunities.destroy', $opp) }}" method="POST"
-                      onsubmit="return confirm('Удалить эту возможность?')">
+                      onsubmit="return confirm({{ \Illuminate\Support\Js::from($tr('Удалить эту возможность?', 'Delete this opportunity?', 'Ștergi această oportunitate?')) }})">
                     @csrf
                     @method('DELETE')
                     <button type="submit"
                             class="shrink-0 rounded-lg p-1.5 text-gray-300 transition hover:bg-red-50 hover:text-red-500"
-                            title="Удалить">
+                            title="{{ $tr('Удалить', 'Delete', 'Șterge') }}">
                         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
@@ -126,7 +126,7 @@
                     </div>
                     @endif
                     <span class="text-xs font-medium text-gray-500">
-                        {{ explode(' ', (string) ($opp->author?->full_name ?? 'Участник'))[0] }}
+                        {{ explode(' ', (string) ($opp->author?->full_name ?? $tr('Участник', 'Participant', 'Participant')))[0] }}
                     </span>
                     <span class="text-xs text-gray-300">·</span>
                     <span class="text-xs text-gray-400">{{ $opp->created_at->diffForHumans() }}</span>
@@ -139,7 +139,7 @@
                 @if($contactHref)
                 <a href="{{ $contactHref }}" target="_blank" rel="noopener"
                    class="text-xs font-semibold text-brand-600 transition hover:text-brand-700">
-                    Написать →
+                    {{ $tr('Написать →', 'Message →', 'Scrie →') }}
                 </a>
                 @endif
             </div>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { get, post, points } from './api';
+import { get, post, points, t } from './api';
 import Avatar from './Avatar.vue';
 
 const props = defineProps({ api: Object });
@@ -80,28 +80,28 @@ onBeforeUnmount(() => clearInterval(timer));
 
 <template>
     <div>
-        <div v-if="state === 'loading'" class="g-muted">Загружаю квест…</div>
+        <div v-if="state === 'loading'" class="g-muted">{{ t('loading_quest') }}</div>
 
         <div v-else-if="state === 'empty'" class="g-card g-center">
             <div class="g-big-emoji">🌱</div>
-            <h3>Пока квестов нет</h3>
-            <p class="g-muted">Новые вопросы появляются, когда участники рассказывают о себе. Загляните позже.</p>
+            <h3>{{ t('empty_title') }}</h3>
+            <p class="g-muted">{{ t('empty_text') }}</p>
         </div>
 
         <div v-else-if="state === 'wait'" class="g-card g-center">
-            <h3>Передохните {{ wait }} с</h3>
-            <p class="g-muted">Следующий квест откроется через пару секунд.</p>
+            <h3>{{ t('rest', { n: wait }) }}</h3>
+            <p class="g-muted">{{ t('rest_text') }}</p>
         </div>
 
         <div v-else-if="state === 'error'" class="g-card g-center">
-            <p class="g-muted">{{ error || 'Не удалось загрузить.' }}</p>
-            <button class="g-btn" @click="load">Повторить</button>
+            <p class="g-muted">{{ error || t('load_failed') }}</p>
+            <button class="g-btn" @click="load">{{ t('retry') }}</button>
         </div>
 
         <div v-else>
-            <div class="g-eyebrow">Угадай, кто это</div>
+            <div class="g-eyebrow">{{ t('game_title') }}</div>
             <h2 class="g-q">{{ quest.question }}</h2>
-            <p class="g-muted g-src">Вопрос составлен ИИ по рассказам участников · выберите одного из троих</p>
+            <p class="g-muted g-src">{{ t('ai_note') }}</p>
 
             <button v-for="o in quest.options" :key="o.id" class="g-opt"
                     :class="{ ok: result && o.id === result.correct_user_id, bad: result && chosen === o.id && !result.correct }"
@@ -111,15 +111,15 @@ onBeforeUnmount(() => clearInterval(timer));
             </button>
 
             <div v-if="result" class="g-res" :class="result.correct ? 'good' : 'miss'">
-                <b v-if="result.correct">Верно! {{ result.subject?.name }} · +{{ points(result.gained) }}</b>
-                <b v-else>Не угадали. Это {{ result.subject?.name }} · +{{ points(result.gained) }}</b>
+                <b v-if="result.correct">{{ t('right', { name: result.subject?.name, points: points(result.gained) }) }}</b>
+                <b v-else>{{ t('wrong', { name: result.subject?.name, points: points(result.gained) }) }}</b>
                 <span>{{ result.explanation }}</span>
             </div>
             <p v-if="error && !result" class="g-err">{{ error }}</p>
 
             <div class="g-row">
                 <button v-if="result" class="g-btn" :disabled="wait > 0" @click="load">
-                    {{ wait > 0 ? `Следующий вопрос через ${wait} с` : 'Следующий вопрос' }}
+                    {{ wait > 0 ? t('next_in', { n: wait }) : t('next') }}
                 </button>
             </div>
         </div>

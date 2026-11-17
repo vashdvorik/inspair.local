@@ -310,24 +310,6 @@
   ]
  },
  {
-  "key": "emelianova",
-  "name": {
-   "en": "Ms. Zinaida Emelianova",
-   "ru": "Г-жа Zinaida Emelianova",
-   "ro": "Dna Zinaida Emelianova"
-  },
-  "role": {
-   "en": "Agency for Innovation and Development, Tiraspol",
-   "ru": "Агентство инноваций и развития, Тирасполь",
-   "ro": "Agenția pentru Inovare și Dezvoltare, Tiraspol"
-  },
-  "img": "academy-2025/27.png",
-  "years": [
-   2025,
-   2023
-  ]
- },
- {
   "key": "benedetti",
   "name": {
    "en": "Mr. Paolo Benedetti",
