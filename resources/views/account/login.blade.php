@@ -36,7 +36,7 @@
 
     {{-- TMA: not a member message --}}
     <div id="tma-not-member" style="display:none" class="login-shell">
-        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="173" height="88">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="164" height="88">
         <div class="login-card" style="text-align:center">
             <h1>Доступ пока закрыт</h1>
             <p class="login-lead" style="margin-bottom:0">Вы ещё не зарегистрированы. Напишите боту /start, и кабинет откроется сразу.</p>
@@ -44,7 +44,7 @@
     </div>
     {{-- Normal login form (hidden when inside Telegram) --}}
     <div id="login-form-wrapper" class="login-shell i-in">
-        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="173" height="88">
+        <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" class="login-logo" width="164" height="88">
         <p class="i-eyebrow login-tag" style="color:var(--muted)">Личный кабинет участника</p>
 
         @if(session('error'))

@@ -64,7 +64,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('account.index') }}" class="block shrink-0 px-6 pb-4 pt-5" aria-label="INSPIRE EDU Network">
-                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="120" height="61" style="height:58px;width:auto">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="108" height="58" style="height:58px;width:auto">
             </a>
 
             {{-- User card --}}

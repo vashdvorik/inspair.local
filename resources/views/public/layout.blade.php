@@ -64,7 +64,7 @@
 <nav id="navbar" class="i-nav" aria-label="Main">
     <div class="i-container i-nav__inner">
         <a href="{{ route('home') }}" class="i-nav__logo" aria-label="INSPIRE EDU Network">
-            <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="90" height="46">
+            <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="86" height="46">
         </a>
         <div class="i-nav__links" style="margin-left:auto;">
             @foreach($menu as $m)
@@ -124,7 +124,7 @@
     <div class="i-container">
         <div class="grid md:grid-cols-[1.5fr_1fr_1.1fr_1.2fr] gap-10 mb-10">
             <div>
-                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="130" height="66" style="height:66px;width:auto;margin-bottom:14px;">
+                <img src="{{ \App\Support\PublicUi::versioned('brand/logo.png') }}" alt="INSPIRE EDU Network" width="123" height="66" style="height:66px;width:auto;margin-bottom:14px;">
                 {!! $p('Платформа для партнёрства и развития будущих лидеров Молдовы. Реализуется при поддержке Посольства Королевства Нидерландов в Молдове.', 'Platform for partnership and development of future leaders of Moldova. Implemented with the support of the Embassy of the Kingdom of the Netherlands in Moldova.', 'Platformă pentru parteneriat și dezvoltarea viitorilor lideri ai Moldovei. Implementat cu sprijinul Ambasadei Regatului Țărilor de Jos în Moldova.', 'text-sm text-gray-500 leading-relaxed max-w-md') !!}
             </div>
             <div>
