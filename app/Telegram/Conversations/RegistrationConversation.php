@@ -102,9 +102,11 @@ class RegistrationConversation extends Conversation
 
         $firstName = explode(' ', (string) $this->fullName)[0];
 
+        \App\Telegram\CabinetButton::removeOldKeyboard($bot, $botUser->telegram_id);
+
         $bot->sendMessage(
-            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет откроется по кнопке «Кабинет» рядом с полем ввода сообщения.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
-            reply_markup: \SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove::make(true),
+            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет открывается по кнопке ниже или по кнопке «Кабинет» рядом с полем ввода сообщения.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
+            reply_markup: \App\Telegram\CabinetButton::keyboard(),
         );
 
         $this->end();

@@ -17,7 +17,49 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->registerHeavyPackages();
+
         $this->app->scoped(\App\Services\GameService::class);
+    }
+
+    /**
+     * Админка (Filament), Livewire и бот (Nutgram) нужны только своим адресам: /admin, /livewire…, /telegram…
+     * На сайте и в кабинете они не загружаются, и каждый запрос стартует заметно быстрее.
+     * Из автообнаружения Laravel эти пакеты исключены в composer.json (extra.laravel.dont-discover).
+     * В консоли (artisan, очереди) и в тестах подключается всё, как обычно.
+     */
+    private function registerHeavyPackages(): void
+    {
+        $uri = $_SERVER['REQUEST_URI'] ?? null;
+
+        if ($uri !== null) {
+            $path = '/'.ltrim((string) parse_url($uri, PHP_URL_PATH), '/');
+            if (! preg_match('~^/(admin|livewire|telegram)(/|-|$)~', $path)) {
+                return;
+            }
+        }
+
+        foreach ([
+            \BladeUI\Heroicons\BladeHeroiconsServiceProvider::class,
+            \BladeUI\Icons\BladeIconsServiceProvider::class,
+            \Filament\Actions\ActionsServiceProvider::class,
+            \Filament\FilamentServiceProvider::class,
+            \Filament\Forms\FormsServiceProvider::class,
+            \Filament\Infolists\InfolistsServiceProvider::class,
+            \Filament\Notifications\NotificationsServiceProvider::class,
+            \Filament\QueryBuilder\QueryBuilderServiceProvider::class,
+            \Filament\Schemas\SchemasServiceProvider::class,
+            \Filament\Support\SupportServiceProvider::class,
+            \Filament\Tables\TablesServiceProvider::class,
+            \Filament\Widgets\WidgetsServiceProvider::class,
+            \Kirschbaum\PowerJoins\PowerJoinsServiceProvider::class,
+            \Livewire\LivewireServiceProvider::class,
+            \Nutgram\Laravel\NutgramServiceProvider::class,
+            \RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider::class,
+            \App\Providers\Filament\AdminPanelProvider::class,
+        ] as $provider) {
+            $this->app->register($provider);
+        }
     }
 
     /**

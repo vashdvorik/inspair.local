@@ -226,10 +226,9 @@ class BotUserResource extends Resource
     {
         $firstName = explode(' ', (string) $record->full_name)[0];
 
-        $inlineKeyboard = InlineKeyboardMarkup::make()
-            ->addRow(
-                InlineKeyboardButton::make('С чего начать? →', callback_data: 'start_guide')
-            );
+        $inlineKeyboard = \App\Telegram\CabinetButton::keyboard(
+            InlineKeyboardButton::make('С чего начать? →', callback_data: 'start_guide')
+        );
 
         // перечисляем только то, что в кабинете реально есть; игру упоминаем, когда она включена
         $gameLine = app(\App\Services\GameService::class)->isEnabled()

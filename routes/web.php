@@ -11,57 +11,65 @@ use Illuminate\Support\Facades\Route;
 use SergiX44\Nutgram\Nutgram;
 
 // ── Public site ───────────────────────────────────────────────────────────
-Route::get('/', function () {
-    return view('public.home', [
-        'site'     => PublicUi::content('site'),
-        'c23'      => PublicUi::content('academy2023'),
-        'people'   => PublicUi::content('people'),
-        'partners' => PublicUi::content('partners'),
-        'videos'   => PublicUi::content('videos'),
-        'gallery'  => PublicUi::content('gallery'),
-    ]);
-})->name('home');
-Route::get('/experts', fn () => view('public.experts', ['people' => PublicUi::content('people')]))->name('experts');
-Route::get('/partners', fn () => view('public.partners', ['partners' => PublicUi::content('partners')]))->name('partners');
-Route::redirect('/participants', '/experts', 301);
+// Публичные страницы одинаковы для всех посетителей: сессия, ошибки формы и CSRF им не нужны.
+// Без сессии страница не ходит в базу вообще и не ставит кук, поэтому открывается быстрее.
+Route::withoutMiddleware([
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
+])->group(function () {
+    Route::get('/', function () {
+        return view('public.home', [
+            'site'     => PublicUi::content('site'),
+            'c23'      => PublicUi::content('academy2023'),
+            'people'   => PublicUi::content('people'),
+            'partners' => PublicUi::content('partners'),
+            'videos'   => PublicUi::content('videos'),
+            'gallery'  => PublicUi::content('gallery'),
+        ]);
+    })->name('home');
+    Route::get('/experts', fn () => view('public.experts', ['people' => PublicUi::content('people')]))->name('experts');
+    Route::get('/partners', fn () => view('public.partners', ['partners' => PublicUi::content('partners')]))->name('partners');
+    Route::redirect('/participants', '/experts', 301);
 
-// Events: Hackathon 2026, Schools 2025, School 2023
-Route::get('/events/hackathon-2026', fn () => view('public.hackathon', ['site' => PublicUi::content('site')]))->name('hackathon');
-Route::get('/events/schools-2025', function () {
-    return view('public.academy2025.index', [
-        'c'        => PublicUi::content('academy2025'),
-        'site'     => PublicUi::content('site'),
-        'people'   => PublicUi::content('people'),
-        'partners' => PublicUi::content('partners'),
-        'videos'   => PublicUi::content('videos'),
-        'gallery'  => PublicUi::content('gallery'),
-    ]);
-})->name('academy2025');
-Route::get('/events/schools-2025/school-{n}', function (int $n) {
-    abort_unless(in_array($n, [1, 2, 3], true), 404);
+    // Events: Hackathon 2026, Schools 2025, School 2023
+    Route::get('/events/hackathon-2026', fn () => view('public.hackathon', ['site' => PublicUi::content('site')]))->name('hackathon');
+    Route::get('/events/schools-2025', function () {
+        return view('public.academy2025.index', [
+            'c'        => PublicUi::content('academy2025'),
+            'site'     => PublicUi::content('site'),
+            'people'   => PublicUi::content('people'),
+            'partners' => PublicUi::content('partners'),
+            'videos'   => PublicUi::content('videos'),
+            'gallery'  => PublicUi::content('gallery'),
+        ]);
+    })->name('academy2025');
+    Route::get('/events/schools-2025/school-{n}', function (int $n) {
+        abort_unless(in_array($n, [1, 2, 3], true), 404);
 
-    return view('public.academy2025.school', ['c' => PublicUi::content('academy2025'), 'site' => PublicUi::content('site'), 'n' => $n]);
-})->whereNumber('n')->name('academy2025.school');
-Route::get('/events/school-2023', function () {
-    return view('public.academy2023.index', [
-        'c'        => PublicUi::content('academy2023'),
-        'site'     => PublicUi::content('site'),
-        'people'   => PublicUi::content('people'),
-        'partners' => PublicUi::content('partners'),
-        'gallery'  => PublicUi::content('gallery'),
-    ]);
-})->name('academy2023');
-// previous addresses keep working
-Route::redirect('/academy-2025', '/events/schools-2025', 301);
-Route::redirect('/academy-2025/school-{n}', '/events/schools-2025/school-{n}', 301)->where('n', '[1-3]');
-Route::redirect('/academy-2023', '/events/school-2023', 301);
+        return view('public.academy2025.school', ['c' => PublicUi::content('academy2025'), 'site' => PublicUi::content('site'), 'n' => $n]);
+    })->whereNumber('n')->name('academy2025.school');
+    Route::get('/events/school-2023', function () {
+        return view('public.academy2023.index', [
+            'c'        => PublicUi::content('academy2023'),
+            'site'     => PublicUi::content('site'),
+            'people'   => PublicUi::content('people'),
+            'partners' => PublicUi::content('partners'),
+            'gallery'  => PublicUi::content('gallery'),
+        ]);
+    })->name('academy2023');
+    // previous addresses keep working
+    Route::redirect('/academy-2025', '/events/schools-2025', 301);
+    Route::redirect('/academy-2025/school-{n}', '/events/schools-2025/school-{n}', 301)->where('n', '[1-3]');
+    Route::redirect('/academy-2023', '/events/school-2023', 301);
 
-Route::get('/photo', fn () => view('public.photo', ['gallery' => PublicUi::content('gallery')]))->name('photo');
-Route::get('/video', fn () => view('public.video', ['videos' => PublicUi::content('videos')]))->name('video');
-Route::get('/publications', [\App\Http\Controllers\PublicationsController::class, 'index'])->name('publications');
-Route::get('/opportunities', [\App\Http\Controllers\OpportunitiesController::class, 'index'])->name('opportunities');
-Route::get('/opportunities/{slug}', [\App\Http\Controllers\OpportunitiesController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('opportunities.show');
-Route::get('/publications/{slug}', [\App\Http\Controllers\PublicationsController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('publications.show');
+    Route::get('/photo', fn () => view('public.photo', ['gallery' => PublicUi::content('gallery')]))->name('photo');
+    Route::get('/video', fn () => view('public.video', ['videos' => PublicUi::content('videos')]))->name('video');
+    Route::get('/publications', [\App\Http\Controllers\PublicationsController::class, 'index'])->name('publications');
+    Route::get('/opportunities', [\App\Http\Controllers\OpportunitiesController::class, 'index'])->name('opportunities');
+    Route::get('/opportunities/{slug}', [\App\Http\Controllers\OpportunitiesController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('opportunities.show');
+    Route::get('/publications/{slug}', [\App\Http\Controllers\PublicationsController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('publications.show');
+});
 // Telegram Webhook — POST запрос от серверов Telegram
 Route::post('/telegram/webhook', function (Nutgram $bot) {
     $bot->run();

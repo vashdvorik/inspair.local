@@ -33,7 +33,10 @@ class GameController extends Controller
     {
         /** @var BotUser $user */
         $user = view()->shared('accountUser');
-        $user->forceFill(['last_active_at' => now()])->saveQuietly();
+        // отметка «был в игре» пишется не чаще раза в минуту, а не при каждом запросе
+        if ($user->last_active_at === null || $user->last_active_at->lt(now()->subMinute())) {
+            $user->forceFill(['last_active_at' => now()])->saveQuietly();
+        }
         $this->game->syncProfileRewards($user);
         $user->refresh();
 

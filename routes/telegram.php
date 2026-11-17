@@ -9,7 +9,6 @@ use App\Telegram\Conversations\RegistrationConversation;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +40,7 @@ $bot->onCommand('start', function (Nutgram $bot) {
         return;
     }
 
+    \App\Telegram\CabinetButton::removeOldKeyboard($bot, $bot->chatId());
     sendCabinetHint($bot, $user);
 })->description('Запустить бота');
 
@@ -68,7 +68,7 @@ function sendCabinetHint(Nutgram $bot, BotUser $user): void
         : "\n\nМодератор ещё посмотрит твой профиль: после этого откроются игра и список участников.");
 
     $bot->sendMessage(
-        "Привет, {$firstName}! Личный кабинет открывается по кнопке «Кабинет» рядом с полем ввода сообщения.{$status}",
-        reply_markup: ReplyKeyboardRemove::make(true)
+        "Привет, {$firstName}! Личный кабинет открывается по кнопке ниже или по кнопке «Кабинет» рядом с полем ввода сообщения.{$status}",
+        reply_markup: \App\Telegram\CabinetButton::keyboard()
     );
 }

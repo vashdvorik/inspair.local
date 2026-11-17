@@ -15,7 +15,7 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/tailwind.css') }}">
     <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/cabinet.css') }}">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="{{ \App\Support\PublicUi::versioned('design/alpine.min.js') }}"></script>
     <style>
         [x-cloak] { display: none !important; }
         body { background: var(--bg-soft); }

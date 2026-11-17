@@ -235,8 +235,11 @@ class GameService
     /** Сколько одобренных участников с заполненным «о себе» (для экрана ожидания). */
     public function readyParticipants(): int
     {
-        $fn = DB::connection()->getDriverName() === 'sqlite' ? 'length' : 'char_length';
+        // число меняется редко, а считается запросом по всей таблице: держим его в кэше минуту
+        return (int) \Illuminate\Support\Facades\Cache::remember('game.ready_participants', 60, function (): int {
+            $fn = DB::connection()->getDriverName() === 'sqlite' ? 'length' : 'char_length';
 
-        return BotUser::approved()->whereNotNull('description')->whereRaw("{$fn}(description) >= 20")->count();
+            return BotUser::approved()->whereNotNull('description')->whereRaw("{$fn}(description) >= 20")->count();
+        });
     }
 }
