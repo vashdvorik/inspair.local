@@ -1,6 +1,6 @@
 <script setup>
 import { points, t } from './api';
-defineProps({ levels: Array, me: Object, checklist: Array, editUrl: String });
+defineProps({ levels: Array, me: Object, checklist: Array });
 </script>
 
 <template>
@@ -23,6 +23,5 @@ defineProps({ levels: Array, me: Object, checklist: Array, editUrl: String });
             <span>{{ c.label }}</span>
             <b>+{{ c.points }}</b>
         </div>
-        <div class="g-row"><a class="g-btn" :href="editUrl">{{ t('fill_btn') }}</a></div>
     </div>
 </template>

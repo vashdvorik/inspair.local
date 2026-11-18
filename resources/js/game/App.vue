@@ -7,6 +7,7 @@ import NetworkView from './NetworkView.vue';
 import LevelsView from './LevelsView.vue';
 import WaitingView from './WaitingView.vue';
 import RulesView from './RulesView.vue';
+import FactsView from './FactsView.vue';
 
 const props = defineProps({ api: Object, locked: String });
 
@@ -30,6 +31,8 @@ async function loadState() {
 }
 
 function onMe(m) { if (m) me.value = m; }
+// после сохранения фактов сервер возвращает обновлённое состояние: очки, чек-лист и список фактов
+function onFactsSaved(s) { state.value = s; me.value = s.me; }
 function onNetworkChanged() { netKey.value += 1; }
 
 onMounted(loadState);
@@ -55,7 +58,10 @@ onMounted(loadState);
                     <div class="g-xpn"><span>{{ points(me.xp) }}</span></div>
                 </div>
             </div>
-            <WaitingView v-if="!playable" :waiting="state.waiting" :checklist="state.checklist" :edit-url="state.edit_url" />
+            <WaitingView v-if="!playable" :waiting="state.waiting" :checklist="state.checklist" />
+            <div v-if="!playable" class="g-card">
+                <FactsView :facts="state.facts" :api="api" :max="state.rules.max_facts" @saved="onFactsSaved" />
+            </div>
 
             <template v-else>
                 <!-- 1. я: уровень и очки -->
@@ -79,9 +85,14 @@ onMounted(loadState);
                     <NetworkView :api="api" :refresh-key="netKey" @me="onMe" />
                 </div>
 
-                <!-- 4. уровни и как набрать очки -->
+                <!-- 4. факты о себе: правятся здесь же -->
                 <div class="g-card">
-                    <LevelsView :levels="state.levels" :me="me" :checklist="state.checklist" :edit-url="state.edit_url" />
+                    <FactsView :facts="state.facts" :api="api" :max="state.rules.max_facts" @saved="onFactsSaved" />
+                </div>
+
+                <!-- 5. уровни и как набрать очки -->
+                <div class="g-card">
+                    <LevelsView :levels="state.levels" :me="me" :checklist="state.checklist" />
                 </div>
             </template>
         </template>
@@ -103,6 +114,10 @@ onMounted(loadState);
 .g-muted { color: #5b6f8d; font-size: .84rem; line-height: 1.5; margin: 0; }
 .g-card { background: #fff; border: 1px solid #e3ecf8; border-radius: 22px; padding: 20px; margin-bottom: 14px; box-shadow: 0 8px 24px rgba(0, 56, 122, .06); }
 .g-center { text-align: center; }
+.g-facts-form { display: grid; gap: 8px; }
+.g-input { width: 100%; border: 1.5px solid #e3ecf8; border-radius: 14px; background: #f6faff; padding: 11px 14px; font: 500 .86rem Montserrat, system-ui, sans-serif; color: #10264a; outline: none; transition: border-color .2s, background .2s; }
+.g-input:focus { border-color: #019eff; background: #fff; box-shadow: 0 0 0 3px rgba(1, 158, 255, .15); }
+.g-input::placeholder { color: #8497b1; }
 .g-big-emoji { font-size: 2.4rem; margin-bottom: 6px; }
 .g-eyebrow { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #006de0; }
 .g-q { font-size: 1.2rem; font-weight: 700; line-height: 1.4; margin: 8px 0 6px; }

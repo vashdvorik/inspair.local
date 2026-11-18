@@ -9,7 +9,6 @@ use App\Http\Requests\Account\ProfileUpdateRequest;
 use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
 use App\Models\LoginToken;
-use App\Models\ProfileFact;
 use App\Services\EmbeddingService;
 use App\Services\GameService;
 use App\Services\MatchingService;
@@ -189,7 +188,7 @@ class AccountController extends Controller
         ] : []));
 
         if ($gameOn) {
-            $this->syncFacts($user, (array) $request->input('facts', []), (array) $request->input('new_facts', []));
+            app(\App\Services\ProfileFacts::class)->sync($user, (array) $request->input('facts', []), (array) $request->input('new_facts', []));
             app(GameService::class)->syncProfileRewards($user->fresh());
         }
 
@@ -287,38 +286,5 @@ class AccountController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->route('account.login', ['logout' => '1']);
-    }
-
-    /**
-     * Existing facts are edited by id (cleared = deleted); new ones are appended up to the limit.
-     *
-     * @param array<int|string, mixed> $existing
-     * @param array<int, mixed>        $added
-     */
-    private function syncFacts(BotUser $user, array $existing, array $added): void
-    {
-        $max = (int) config('game.max_facts');
-
-        foreach ($user->facts as $fact) {
-            if (! array_key_exists($fact->id, $existing)) {
-                continue;
-            }
-            $body = trim((string) $existing[$fact->id]);
-            if ($body === '') {
-                $fact->delete();
-            } elseif ($body !== $fact->body) {
-                $fact->update(['body' => $body]);
-            }
-        }
-
-        $count = $user->facts()->count();
-        foreach ($added as $body) {
-            $body = trim((string) $body);
-            if ($body === '' || $count >= $max) {
-                continue;
-            }
-            ProfileFact::create(['bot_user_id' => $user->id, 'body' => $body]);
-            $count++;
-        }
     }
 }

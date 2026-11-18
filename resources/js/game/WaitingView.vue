@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { t } from './api';
 
-const props = defineProps({ waiting: Object, checklist: Array, editUrl: String });
+const props = defineProps({ waiting: Object, checklist: Array });
 const percent = computed(() => Math.min(100, Math.round((props.waiting.ready / props.waiting.target) * 100)));
 const left = computed(() => Math.max(0, props.waiting.target - props.waiting.ready));
 </script>
@@ -22,6 +22,5 @@ const left = computed(() => Math.max(0, props.waiting.target - props.waiting.rea
             <span>{{ c.label }}</span>
             <b>+{{ c.points }}</b>
         </div>
-        <div class="g-row"><a class="g-btn" :href="editUrl">{{ t('fill_btn') }}</a></div>
     </div>
 </template>

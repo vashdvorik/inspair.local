@@ -22,7 +22,7 @@
                 @foreach(['ru', 'en', 'ro'] as $l)
                     @php $d = $o['detail'][$l]; @endphp
                     <div data-lang="{{ $l }}">
-                        <p class="i-lead opp-page__lead">{{ $d['lead'] }}</p>
+                        @if(! empty($d['lead']))<p class="i-lead opp-page__lead">{{ $d['lead'] }}</p>@endif
 
                         @if(! empty($d['explore']))
                             <h2 class="opp-h">{{ $labels['explore'][$l] }}</h2>
@@ -39,8 +39,13 @@
                             <ul class="opp-list">@foreach($d['benefits'] as $x)<li>{{ $x }}</li>@endforeach</ul>
                         @endif
 
-                        <h2 class="opp-h">{{ $labels['audience'][$l] }}</h2>
-                        <p class="opp-p">{{ $d['audience'] }}</p>
+                        @if(! empty($d['audience']))
+
+                        <h2 class=\"opp-h\">{{ $labels['audience'][$l] }}</h2>
+
+                        <p class=\"opp-p\">{{ $d['audience'] }}</p>
+
+                        @endif
 
                         @if(! empty($d['note']))<p class="opp-note">{{ $d['note'] }}</p>@endif
                     </div>

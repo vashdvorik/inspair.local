@@ -150,6 +150,13 @@ final class Lang
         'fill_title'      => ['Пока ждём, заполните профиль', 'While you wait, complete your profile', 'Până atunci, completează-ți profilul'],
         'fill_text'       => ['Очки уже копятся: в игру вы войдёте с запасом.', 'Points are already adding up: you’ll enter the game with a head start.', 'Punctele se adună deja: vei intra în joc cu avans.'],
         'fill_btn'        => ['Дополнить профиль', 'Complete your profile', 'Completează profilul'],
+        'facts_title'     => ['Расскажите о себе: факты', 'Tell us about yourself: facts', 'Povestește despre tine: fapte'],
+        'facts_lead'      => ['Короткие и живые: чем занимаетесь в свободное время, о чём мечтаете, что умеете. Из них составляются вопросы для других участников, а вам идут очки.', 'Short and lively: what you do in your free time, what you dream about, what you are good at. Questions for other members are made from them, and you earn points.', 'Scurte și vii: ce faci în timpul liber, la ce visezi, ce știi să faci. Din ele se fac întrebări pentru ceilalți participanți, iar tu primești puncte.'],
+        'facts_ph'        => ['Например: перевожу субтитры к старым фильмам', 'For example: I translate subtitles for old films', 'De exemplu: traduc subtitrări pentru filme vechi'],
+        'facts_save'      => ['Сохранить', 'Save', 'Salvează'],
+        'facts_saved'     => ['Сохранено', 'Saved', 'Salvat'],
+        'facts_count'     => ['{n} из {start} для старта', '{n} of {start} to start', '{n} din {start} pentru start'],
+        'facts_hint'      => ['Очистите поле, чтобы удалить факт. Всего до {max}.', 'Clear a field to delete a fact. Up to {max} in total.', 'Golește câmpul ca să ștergi un fapt. Maximum {max}.'],
 
         'levels'          => ['Уровни', 'Levels', 'Niveluri'],
         'from'            => ['от {points}', 'from {points}', 'de la {points}'],

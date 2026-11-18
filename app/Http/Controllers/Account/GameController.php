@@ -52,6 +52,7 @@ class GameController extends Controller
             'checklist'  => $this->checklist($user),
             'waiting'    => ['ready' => $this->game->readyParticipants(), 'target' => (int) config('game.launch_target')],
             'edit_url'   => route('account.profile.edit'),
+            'facts'      => $user->facts()->orderBy('id')->get(['id', 'body'])->map(fn ($f) => ['id' => $f->id, 'body' => $f->body])->all(),
             'rules'      => [
                 'max_facts'           => (int) config('game.max_facts'),
                 'fact'                => (int) config('game.xp.fact'),
@@ -61,6 +62,24 @@ class GameController extends Controller
             ],
             'links'      => ['people' => route('account.people')],
         ]);
+    }
+
+    /** Факты о себе правятся прямо в игре; в ответ приходит обновлённое состояние (очки, чек-лист, список фактов). */
+    public function saveFacts(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'facts'       => ['nullable', 'array', 'max:10'],
+            'facts.*'     => ['nullable', 'string', 'max:300'],
+            'new_facts'   => ['nullable', 'array', 'max:10'],
+            'new_facts.*' => ['nullable', 'string', 'max:300'],
+        ]);
+
+        /** @var BotUser $user */
+        $user = view()->shared('accountUser');
+        app(\App\Services\ProfileFacts::class)->sync($user, (array) ($data['facts'] ?? []), (array) ($data['new_facts'] ?? []));
+        $this->game->syncProfileRewards($user->fresh());
+
+        return $this->state();
     }
 
     /** @return array<string, mixed> */

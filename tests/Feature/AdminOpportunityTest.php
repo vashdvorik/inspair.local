@@ -37,6 +37,19 @@ class AdminOpportunityTest extends TestCase
         $this->assertNotNull(OpportunityFeed::find('emotion-armenia'));
     }
 
+    public function test_old_cached_feed_without_language_titles_does_not_break_pages(): void
+    {
+        // после выкладки на сервере мог остаться кэш старой формы (без поля title): страницы не должны падать
+        \Illuminate\Support\Facades\Cache::forever('opportunity_feed:v2', [[
+            'slug' => 'old-one', 'name' => 'Old Cached Trip', 'flag' => null, 'country' => ['ru' => 'X', 'en' => 'X', 'ro' => 'X'],
+            'start' => null, 'end' => null, 'deadline' => null, 'date' => '2026-01-01',
+            'text' => ['ru' => 't', 'en' => 't', 'ro' => 't'], 'detail' => ['ru' => [], 'en' => [], 'ro' => []], 'image' => 'a.webp', 'url' => null,
+        ]]);
+
+        $this->get('/opportunities')->assertOk()->assertSee('Old Cached Trip');
+        $this->get('/opportunities/old-one')->assertOk();
+    }
+
     public function test_new_opportunity_appears_on_site_and_in_cabinet_and_unpublished_one_does_not(): void
     {
         $this->get('/opportunities')->assertOk()->assertDontSee('Test Trip');

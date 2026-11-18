@@ -50,16 +50,19 @@
                 <h2>{{ $tr('Новые участники', 'New members', 'Membri noi') }}</h2>
                 <a href="{{ route('account.people') }}">{{ $tr('Все', 'All', 'Toți') }} →</a>
             </div>
-            <div class="home-scroll">
-                @foreach($newMembers as $m)
-                    <a href="{{ route('account.people.show', $m) }}" class="home-person">
+            <div class="home-members">
+                @foreach($newMembers->take(8) as $m)
+                    <a href="{{ route('account.people.show', $m) }}" class="home-member">
                         @if($m->avatar_path)
-                            <img src="{{ $m->avatarUrl() }}" alt="{{ $m->full_name }}" width="84" height="84" loading="lazy">
+                            <img src="{{ $m->avatarUrl() }}" alt="{{ $m->full_name }}" width="52" height="52" loading="lazy">
                         @else
-                            <span class="home-person__letter">{{ mb_strtoupper(mb_substr((string) $m->full_name, 0, 1)) }}</span>
+                            <span class="home-member__letter">{{ mb_strtoupper(mb_substr((string) $m->full_name, 0, 1)) }}</span>
                         @endif
-                        <b>{{ explode(' ', (string) $m->full_name)[0] }}</b>
-                        @if(filled($m->description))<small>{{ \Illuminate\Support\Str::limit(trim((string) $m->description), 70) }}</small>@endif
+                        <span class="home-member__text">
+                            <b>{{ $m->full_name }}</b>
+                            @if(filled($m->description))<small>{{ \Illuminate\Support\Str::limit(trim((string) $m->description), 90) }}</small>@endif
+                        </span>
+                        <svg class="home-member__go h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"/></svg>
                     </a>
                 @endforeach
             </div>

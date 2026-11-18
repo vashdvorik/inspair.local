@@ -133,6 +133,7 @@ Route::middleware(RequireAccountAuth::class)
         Route::get('/game', [GameController::class, 'index'])->middleware('game.on')->name('game');
         Route::prefix('game/api')->middleware('game.on')->name('game.api.')->group(function (): void {
             Route::get('/state', [GameController::class, 'state'])->name('state');
+            Route::post('/facts', [GameController::class, 'saveFacts'])->middleware('throttle:30,1')->name('facts');
             Route::get('/quest', [GameController::class, 'quest'])->name('quest');
             Route::post('/quest/{quest}/answer', [GameController::class, 'answer'])->middleware('throttle:60,1')->name('answer');
             Route::get('/network', [GameController::class, 'network'])->name('network');

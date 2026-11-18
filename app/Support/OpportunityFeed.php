@@ -44,7 +44,8 @@ final class OpportunityFeed
         return PublicUi::content('opportunities')['title'];
     }
 
-    private const CACHE_KEY = 'opportunity_feed';
+    // версия в имени ключа: после выкладки, меняющей форму записи, старый кэш на сервере не используется (иначе страницы падали бы)
+    private const CACHE_KEY = 'opportunity_feed:v2';
 
     /** Сбросить кэш ленты (вызывается при любой правке возможностей в админке). */
     public static function forget(): void
@@ -92,6 +93,8 @@ final class OpportunityFeed
     private static function present(array $item): array
     {
         // вместо афиши-шаблона из Instagram можно показать фото города или страны ("photo" + "credit" в json)
+        // записи из старого кэша могли быть без названий по языкам
+        $item['title'] ??= ['ru' => $item['name'], 'en' => $item['name'], 'ro' => $item['name']];
         $item['image_url'] = PublicUi::versioned('img/opportunities/'.($item['photo'] ?? $item['image']));
         $item['dates'] = self::range($item['start'] ?? null, $item['end'] ?? null);
         $item['deadline_text'] = self::day($item['deadline'] ?? null);

@@ -20,7 +20,7 @@
             </div>
             <h1 class="cab-oppd__title">{{ $o['title'][$lang] ?? $o['name'] }}</h1>
 
-            <p class="cab-oppd__lead">{{ $d['lead'] }}</p>
+            @if(! empty($d['lead']))<p class="cab-oppd__lead">{{ $d['lead'] }}</p>@endif
 
             @if(! empty($d['explore']))
                 <h2>{{ $tr('Что изучают участники', 'What participants explore', 'Ce explorează participanții') }}</h2>
@@ -37,8 +37,13 @@
                 <ul>@foreach($d['benefits'] as $x)<li>{{ $x }}</li>@endforeach</ul>
             @endif
 
+            @if(! empty($d['audience']))
+
             <h2>{{ $tr('Для кого', 'Who it is for', 'Pentru cine este') }}</h2>
+
             <p>{{ $d['audience'] }}</p>
+
+            @endif
 
             @if(! empty($d['note']))<p class="cab-oppd__note">{{ $d['note'] }}</p>@endif
         </div>

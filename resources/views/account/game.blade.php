@@ -8,6 +8,7 @@
 @php
     $api = [
         'state'       => route('account.game.api.state'),
+        'facts'       => route('account.game.api.facts'),
         'quest'       => route('account.game.api.quest'),
         'network'     => route('account.game.api.network'),
     ];

@@ -190,7 +190,7 @@
                     'account.profile' => $tr('Профиль', 'Profile', 'Profil'),
                 ];
             @endphp
-            <nav class="cab-tabbar lg:hidden" aria-label="{{ $tr('Разделы кабинета', 'Account sections', 'Secțiunile contului') }}">
+            <nav class="cab-tabbar lg:hidden {{ $tabItems->count() + ($hasMore ? 1 : 0) >= 5 ? 'cab-tabbar--dense' : '' }}" aria-label="{{ $tr('Разделы кабинета', 'Account sections', 'Secțiunile contului') }}">
                 @foreach($tabItems as $item)
                     @php $on = request()->routeIs($item['route']) || request()->routeIs($item['route'] . '.*') || (isset($item['match']) && request()->routeIs($item['match'])); @endphp
                     <a href="{{ route($item['route']) }}" class="cab-tab {{ $on ? 'is-active' : '' }}" @if($on) aria-current="page" @endif>
