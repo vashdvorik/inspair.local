@@ -48,7 +48,7 @@
             <span class="pic-spot pic-orange" style="--c:#ff6c0b;width:38%;aspect-ratio:1;right:-4%;top:-12%"></span>
             <span class="pic-spot pic-purple" style="--c:#72299c;width:30%;aspect-ratio:1;left:-10%;top:24%"></span>
             <span class="pic-spot pic-green" style="--c:#3d932e;width:34%;aspect-ratio:1;right:8%;bottom:-14%"></span>
-            <img src="{{ $img('hero/group-soft.webp') }}" srcset="{{ $img('hero/group-soft-800.webp') }} 800w, {{ $img('hero/group-soft.webp') }} 1400w" sizes="(min-width:1024px) 62vw, 100vw" alt="INSPIRE Leadership Academy 2025 participants" width="1400" height="787" fetchpriority="high" decoding="async">
+            <img src="{{ $img('hero/group-soft.webp') }}" srcset="{{ $img('hero/group-soft-800.webp') }} 800w, {{ $img('hero/group-soft.webp') }} 1400w" sizes="(min-width:1024px) 62vw, 100vw" alt="INSPIRE Leadership Academy 2025 participants" width="1400" height="735" fetchpriority="high" decoding="async">
         </div>
     </div>
 </section>
