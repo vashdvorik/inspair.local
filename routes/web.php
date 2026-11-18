@@ -109,23 +109,25 @@ Route::middleware(RequireAccountAuth::class)
     ->group(function (): void {
         Route::get('/', [AccountController::class, 'index'])->name('index');
         Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+        Route::get('/avatar/{botUser}', [\App\Http\Controllers\Account\AvatarController::class, 'show'])->whereNumber('botUser')->name('avatar');
         Route::get('/profile/edit', [AccountController::class, 'profileEdit'])->name('profile.edit');
         Route::post('/profile', [AccountController::class, 'updateProfile'])->name('profile.update');
-        Route::get('/matches', [AccountController::class, 'matches'])->middleware(['approved', 'feature:cabinet_matches'])->name('matches');
-        Route::get('/people', [AccountController::class, 'people'])->middleware(['approved', 'game.access:people'])->name('people');
-        Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->middleware('approved')->name('people.show');
-        Route::get('/search', [AccountController::class, 'search'])->middleware(['approved', 'feature:cabinet_search'])->name('search');
+        Route::get('/matches', [AccountController::class, 'matches'])->middleware('feature:cabinet_matches')->name('matches');
+        Route::get('/people', [AccountController::class, 'people'])->middleware('game.access:people')->name('people');
+        Route::get('/people/{botUser}', [AccountController::class, 'showPerson'])->name('people.show');
+        Route::get('/search', [AccountController::class, 'search'])->middleware('feature:cabinet_search')->name('search');
 
         // Игра: страница (Vue) и JSON-API
-        Route::get('/game', [GameController::class, 'index'])->middleware(['game.on', 'approved'])->name('game');
-        Route::prefix('game/api')->middleware(['game.on', 'approved'])->name('game.api.')->group(function (): void {
+        Route::get('/game', [GameController::class, 'index'])->middleware('game.on')->name('game');
+        Route::prefix('game/api')->middleware('game.on')->name('game.api.')->group(function (): void {
             Route::get('/state', [GameController::class, 'state'])->name('state');
             Route::get('/quest', [GameController::class, 'quest'])->name('quest');
             Route::post('/quest/{quest}/answer', [GameController::class, 'answer'])->middleware('throttle:60,1')->name('answer');
             Route::get('/network', [GameController::class, 'network'])->name('network');
         });
         Route::get('/knowledge', [AccountController::class, 'knowledge'])->middleware('feature:cabinet_knowledge')->name('knowledge');
-        Route::get('opportunities', [OpportunityController::class, 'index'])->middleware('approved')->name('opportunities.index');
+        Route::get('opportunities', [OpportunityController::class, 'index'])->name('opportunities.index');
+        Route::get('opportunities/{slug}', [OpportunityController::class, 'show'])->where('slug', '[a-z0-9\-]+')->name('opportunities.show');
         Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
     });
 

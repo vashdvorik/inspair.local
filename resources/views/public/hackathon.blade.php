@@ -29,10 +29,6 @@
     </div>
 </section>
 
-<div class="i-section--tint" style="padding:13px 0;overflow:hidden;border-block:1px solid var(--blue-100);">
-    <div class="i-container" style="font-weight:700;font-size:.78rem;letter-spacing:.14em;line-height:1.6;text-wrap:balance;text-transform:uppercase;color:var(--navy-800);text-align:center">{!! $tm($H['ticker']) !!}</div>
-</div>
-
 {{-- ───────────── ABOUT ───────────── --}}
 <section class="i-section" id="about">
     <div class="i-container">

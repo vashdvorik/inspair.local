@@ -22,10 +22,7 @@ use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables;
 use Filament\Tables\Table;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\ReplyKeyboardRemove;
-use Illuminate\Support\Facades\Log;
 use Nutgram\Laravel\Facades\Telegram;
-use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 
 class BotUserResource extends Resource
@@ -75,16 +72,16 @@ class BotUserResource extends Resource
                 Select::make('status')
                     ->label('Статус')
                     ->options([
-                        BotUser::STATUS_PENDING  => 'Ожидает',
-                        BotUser::STATUS_APPROVED => 'Одобрен',
-                        BotUser::STATUS_REJECTED => 'Отклонён',
-                    ]),
+                        BotUser::STATUS_APPROVED => 'Активен',
+                        BotUser::STATUS_BANNED   => 'Теневой бан',
+                    ])
+                    ->helperText('Теневой бан: участник пользуется всем как обычно и ничего не замечает, но другие его не видят (списки, поиск, совпадения, игра).'),
                 DateTimePicker::make('approved_at')
-                    ->label('Дата одобрения')
+                    ->label('Дата регистрации')
                     ->disabled(),
                 Textarea::make('moderation_note')
-                    ->label('Сообщение участнику')
-                    ->helperText('Показывается в кабинете на страницах «Игра» и «Участники», если доступ закрыт.')
+                    ->label('Заметка администратора')
+                    ->helperText('Видна только администраторам: например, за что участник заблокирован.')
                     ->rows(3)
                     ->maxLength(1000)
                     ->columnSpanFull(),
@@ -120,14 +117,12 @@ class BotUserResource extends Resource
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Статус')
                     ->colors([
-                        'warning' => BotUser::STATUS_PENDING,
                         'success' => BotUser::STATUS_APPROVED,
-                        'danger'  => BotUser::STATUS_REJECTED,
+                        'danger'  => BotUser::STATUS_BANNED,
                     ])
                     ->formatStateUsing(fn (string $state): string => match ($state) {
-                        BotUser::STATUS_PENDING  => 'Ожидает',
-                        BotUser::STATUS_APPROVED => 'Одобрен',
-                        BotUser::STATUS_REJECTED => 'Отклонён',
+                        BotUser::STATUS_APPROVED => 'Активен',
+                        BotUser::STATUS_BANNED   => 'Теневой бан',
                         default                  => $state,
                     }),
                 Tables\Columns\TextColumn::make('created_at')
@@ -140,66 +135,44 @@ class BotUserResource extends Resource
                 Tables\Filters\SelectFilter::make('status')
                     ->label('Статус')
                     ->options([
-                        BotUser::STATUS_PENDING  => 'Ожидает',
-                        BotUser::STATUS_APPROVED => 'Одобрен',
-                        BotUser::STATUS_REJECTED => 'Отклонён',
+                        BotUser::STATUS_APPROVED => 'Активен',
+                        BotUser::STATUS_BANNED   => 'Теневой бан',
                     ]),
             ])
             ->actions([
-                Action::make('approve')
-                    ->label('Одобрить')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success')
-                    ->visible(fn (BotUser $record): bool => ! $record->isApproved())
-                    ->requiresConfirmation()
-                    ->action(function (BotUser $record): void {
-                        $record->update([
-                            'status'          => BotUser::STATUS_APPROVED,
-                            'approved_at'     => now(),
-                            'moderation_note' => null,
-                        ]);
-
-                        self::sendApprovalMessage($record);
-
-                        Notification::make()
-                            ->title('Заявка одобрена')
-                            ->success()
-                            ->send();
-                    }),
-
-                Action::make('reject')
-                    ->label('Отклонить')
-                    ->icon('heroicon-o-x-circle')
+                Action::make('ban')
+                    ->label('Теневой бан')
+                    ->icon('heroicon-o-eye-slash')
                     ->color('danger')
-                    ->visible(fn (BotUser $record): bool => ! $record->isRejected())
-                    ->modalHeading('Отказать в доступе к игре')
-                    ->modalDescription('Участник по-прежнему сможет войти в кабинет, но игра и список участников останутся закрытыми. Сообщение ниже он увидит в кабинете.')
+                    ->visible(fn (BotUser $record): bool => ! $record->isBanned())
+                    ->modalHeading('Теневой бан')
+                    ->modalDescription('Участник продолжит пользоваться кабинетом и игрой как обычно и не получит никаких сообщений, но другие участники перестанут его видеть: в списках, поиске, совпадениях и игре. Это можно отменить в любой момент.')
                     ->form([
                         Textarea::make('note')
-                            ->label('Сообщение участнику')
-                            ->placeholder('Например: профиль не заполнен, добавьте информацию о себе и напишите нам.')
-                            ->rows(4)
+                            ->label('Заметка для администраторов (необязательно)')
+                            ->placeholder('Например: спам в профиле.')
+                            ->rows(3)
                             ->maxLength(1000),
                     ])
                     ->action(function (BotUser $record, array $data): void {
-                        $wasApproved = $record->isApproved();
-
                         $record->update([
-                            'status'          => BotUser::STATUS_REJECTED,
-                            'moderation_note' => filled($data['note'] ?? null) ? trim((string) $data['note']) : null,
+                            'status'          => BotUser::STATUS_BANNED,
+                            'moderation_note' => filled($data['note'] ?? null) ? trim((string) $data['note']) : $record->moderation_note,
                         ]);
-                        $record->refresh();
 
-                        if ($wasApproved) {
-                            self::sendAccessRevokedMessage($record);
-                        } else {
-                            self::sendRejectionMessage($record);
-                        }
+                        Notification::make()->title('Участник скрыт от других')->warning()->send();
+                    }),
 
-                        Notification::make()
-                            ->title('Заявка отклонена')
-                            ->warning()
-                            ->send();
+                Action::make('unban')
+                    ->label('Снять бан')
+                    ->icon('heroicon-o-eye')
+                    ->color('success')
+                    ->visible(fn (BotUser $record): bool => $record->isBanned())
+                    ->requiresConfirmation()
+                    ->action(function (BotUser $record): void {
+                        $record->update(['status' => BotUser::STATUS_APPROVED]);
+
+                        Notification::make()->title('Участник снова виден всем')->success()->send();
                     }),
 
                 ViewAction::make(),
@@ -220,72 +193,5 @@ class BotUserResource extends Resource
             'view'  => Pages\ViewBotUser::route('/{record}'),
             'edit'  => Pages\EditBotUser::route('/{record}/edit'),
         ];
-    }
-
-    private static function sendApprovalMessage(BotUser $record): void
-    {
-        $firstName = explode(' ', (string) $record->full_name)[0];
-
-        $inlineKeyboard = \App\Telegram\CabinetButton::keyboard(
-            InlineKeyboardButton::make('С чего начать? →', callback_data: 'start_guide')
-        );
-
-        // перечисляем только то, что в кабинете реально есть; игру упоминаем, когда она включена
-        $gameLine = app(\App\Services\GameService::class)->isEnabled()
-            ? "\n🎮 игра «Угадай, кто это»: отвечай на вопросы, копи очки и знакомься с участниками"
-            : '';
-        $approvalText = "🎉 {$firstName}, добро пожаловать в Инспайр!\n\nМодератор одобрил твой профиль. Теперь в личном кабинете тебе доступны:\n\n👥 список участников сообщества\n📅 возможности: учебные курсы и мероприятия за рубежом{$gameLine}\n\nКабинет открывается по кнопке «Кабинет» рядом с полем ввода сообщения.";
-
-        try {
-            Telegram::sendMessage(
-                chat_id: $record->telegram_id,
-                text: $approvalText,
-                reply_markup: ReplyKeyboardRemove::make(true),
-            );
-
-            Telegram::sendMessage(
-                chat_id: $record->telegram_id,
-                text: "С чего начать?",
-                reply_markup: $inlineKeyboard,
-            );
-        } catch (\Throwable $e) {
-            Log::error('Telegram: не удалось отправить сообщение об одобрении', [
-                'telegram_id' => $record->telegram_id,
-                'error'       => $e->getMessage(),
-            ]);
-        }
-    }
-
-    private static function sendRejectionMessage(BotUser $record): void
-    {
-        $firstName = explode(' ', (string) $record->full_name)[0];
-
-        try {
-            Telegram::sendMessage(
-                chat_id: $record->telegram_id,
-                text: "😔 {$firstName}, модератор отказал тебе в доступе к игре." . (filled($record->moderation_note) ? "\n\nСообщение модератора:\n{$record->moderation_note}" : '') . "\n\nЛичный кабинет остаётся открытым. Если есть вопросы — напиши напрямую: @lesnichenkoP",
-            );
-        } catch (\Throwable $e) {
-            Log::error('Telegram: не удалось отправить сообщение об отклонении', [
-                'telegram_id' => $record->telegram_id,
-                'error'       => $e->getMessage(),
-            ]);
-        }
-    }
-
-    private static function sendAccessRevokedMessage(BotUser $record): void
-    {
-        try {
-            Telegram::sendMessage(
-                chat_id: $record->telegram_id,
-                text: "🔒 Модератор закрыл тебе доступ к игре." . (filled($record->moderation_note) ? "\n\nСообщение модератора:\n{$record->moderation_note}" : '') . "\n\nЛичный кабинет остаётся открытым. Если есть вопросы — напиши напрямую: @lesnichenkoP",
-                reply_markup: ReplyKeyboardRemove::make(remove_keyboard: true),
-            );
-        } catch (\Throwable $e) {
-            Log::error('Telegram: не удалось отправить сообщение об отзыве доступа', [
-                'telegram_id' => $record->telegram_id,
-                'error'       => $e->getMessage(),
-            ]);
-        }
     }
 }

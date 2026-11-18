@@ -12,7 +12,6 @@ use App\Services\GameService;
 use App\Services\QuestService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class GameController extends Controller
@@ -203,6 +202,6 @@ class GameController extends Controller
 
     private function avatar(BotUser $u): ?string
     {
-        return $u->avatar_path ? Storage::url($u->avatar_path) : null;
+        return $u->avatarUrl();
     }
 }

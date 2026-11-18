@@ -140,19 +140,19 @@ class AccountCabinetTest extends TestCase
         $currentUser = BotUser::factory()->approved()->moderator()->create();
         $other1      = BotUser::factory()->approved()->moderator()->create();
         $other2      = BotUser::factory()->approved()->moderator()->create();
-        $pending     = BotUser::factory()->pending()->create();
+        $banned      = BotUser::factory()->banned()->create();
 
         $response = $this->withSession($this->sessionFor($currentUser))
             ->get(route('account.people'));
 
         $response->assertOk()
-            ->assertViewHas('people', function ($people) use ($other1, $other2, $currentUser, $pending) {
+            ->assertViewHas('people', function ($people) use ($other1, $other2, $currentUser, $banned) {
                 $ids = $people->pluck('id');
 
                 return $ids->contains($other1->id)
                     && $ids->contains($other2->id)
                     && ! $ids->contains($currentUser->id)     // current user excluded
-                    && ! $ids->contains($pending->id);        // pending excluded
+                    && ! $ids->contains($banned->id);         // shadow-banned excluded
             });
     }
 

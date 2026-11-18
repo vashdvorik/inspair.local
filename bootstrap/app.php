@@ -17,7 +17,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'game.access' => \App\Http\Middleware\GameAccess::class,
             'game.on'     => \App\Http\Middleware\GameEnabled::class,
             'feature'     => \App\Http\Middleware\RequireFeature::class,
-            'approved'    => \App\Http\Middleware\RequireApproved::class,
         ]);
         $middleware->web(append: [\App\Http\Middleware\SetLocale::class, \App\Http\Middleware\FreshPages::class]);
         // эти куки читаются как есть (их пишет и JavaScript сайта)

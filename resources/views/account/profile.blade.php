@@ -8,7 +8,7 @@
     <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div class="flex items-center gap-4">
             @if($accountUser->avatar_path)
-            <img src="{{ Storage::url($accountUser->avatar_path) }}"
+            <img src="{{ $accountUser->avatarUrl() }}"
                  alt="{{ $accountUser->full_name }}"
                  class="h-16 w-16 shrink-0 rounded-2xl object-cover shadow-md">
             @else

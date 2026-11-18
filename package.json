@@ -5,7 +5,8 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "build:css": "node node_modules/tailwind3/lib/cli.js -c tailwind.config.cjs -i resources/css/tailwind-site.css -o public/design/tailwind.css --minify"
+        "build:css": "node node_modules/tailwind3/lib/cli.js -c tailwind.config.cjs -i resources/css/tailwind-site.css -o public/design/tailwind.css --minify",
+        "build:admin-css": "node node_modules/tailwind3/lib/cli.js -c tailwind.admin.cjs -i resources/css/tailwind-admin.css -o public/design/admin-pages.css --minify"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

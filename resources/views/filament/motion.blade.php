@@ -1,5 +1,7 @@
 {{-- Admin panel skin — INSPIRE design system: light, airy, one theme. Tokens come from /design/inspire.css --}}
 <link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/inspire.css') }}">
+{{-- utilities for our own admin pages (impact metrics, game, AI): Filament's CSS has only the classes Filament itself uses --}}
+<link rel="stylesheet" href="{{ \App\Support\PublicUi::versioned('design/admin-pages.css') }}">
 <style>
     :root { color-scheme: light; }
     /* never dark, even if the OS asks for it */

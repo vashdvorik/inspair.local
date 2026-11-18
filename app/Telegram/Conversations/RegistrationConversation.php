@@ -6,8 +6,6 @@ namespace App\Telegram\Conversations;
 
 use App\Jobs\ComputeUserEmbedding;
 use App\Models\BotUser;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 use SergiX44\Nutgram\Conversations\Conversation;
 use SergiX44\Nutgram\Nutgram;
 use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardButton;
@@ -60,7 +58,7 @@ class RegistrationConversation extends Conversation
         $this->fullName = $text;
 
         $bot->sendMessage(
-            text: "Кто ты и чем занимаешься?\n\nРоль, сфера, компания — в 2-3 предложениях.\nСайт или соцсеть — приложи ссылкой если есть.",
+            text: "Кто ты и чем занимаешься?\n\nРоль, сфера, компания — в 2-3 предложениях.",
         );
 
         $this->next('handleDescription');
@@ -92,7 +90,8 @@ class RegistrationConversation extends Conversation
             'first_name'        => $telegramUser->first_name,
             'full_name'         => $this->fullName,
             'description'       => $this->description,
-            'status'            => BotUser::STATUS_PENDING,
+            'status'            => BotUser::STATUS_APPROVED,
+            'approved_at'       => now(),
         ]);
 
         $this->downloadAvatar($bot, $botUser);
@@ -105,7 +104,7 @@ class RegistrationConversation extends Conversation
         \App\Telegram\CabinetButton::removeOldKeyboard($bot, $botUser->telegram_id);
 
         $bot->sendMessage(
-            "Спасибо, {$firstName}! Ты зарегистрирован(а).\n\nЛичный кабинет открывается по кнопке ниже или по кнопке «Кабинет» рядом с полем ввода сообщения.\n\nМодератор посмотрит твой профиль, и после этого откроются игра и список участников.\n\nСайт сообщества:\n".config('nutgram.community_url', config('app.url')),
+            "Привет, {$firstName}! 👋\n\nТы теперь в сообществе INSPIRE EDU Network.\n\nБот будет присылать тебе новости и возможности, которые публикуются на нашем сайте: курсы, программы и поездки за рубежом.\n\nВ личном кабинете тебя ждут участники сообщества, возможности и интерактивные игры.\nКабинет открывается кнопкой «Открыть кабинет» или кнопкой «Кабинет» рядом с полем ввода сообщения.",
             reply_markup: \App\Telegram\CabinetButton::keyboard(),
         );
 
@@ -114,38 +113,7 @@ class RegistrationConversation extends Conversation
 
     private function downloadAvatar(Nutgram $bot, BotUser $botUser): void
     {
-        try {
-            $photos = $bot->getUserProfilePhotos(user_id: $botUser->telegram_id, limit: 1);
-
-            if (! $photos || $photos->total_count === 0) {
-                return;
-            }
-
-            // Largest size is the last in the first photo set
-            $photoSizes = $photos->photos[0];
-            $largest    = $photoSizes[count($photoSizes) - 1];
-
-            $fileInfo = $bot->getFile(file_id: $largest->file_id);
-
-            if (! $fileInfo?->file_path) {
-                return;
-            }
-
-            $token    = config('nutgram.token');
-            $response = Http::timeout(10)->get(
-                "https://api.telegram.org/file/bot{$token}/{$fileInfo->file_path}"
-            );
-
-            if (! $response->successful()) {
-                return;
-            }
-
-            $path = "avatars/{$botUser->telegram_id}.jpg";
-            Storage::disk('public')->put($path, $response->body());
-
-            $botUser->update(['avatar_path' => $path]);
-        } catch (\Throwable) {
-            // Не блокируем регистрацию из-за ошибки загрузки фото
-        }
+        // Не блокируем регистрацию из-за ошибки загрузки фото; сервис сам ничего не бросает
+        app(\App\Services\TelegramAvatar::class)->fetch($botUser);
     }
 }

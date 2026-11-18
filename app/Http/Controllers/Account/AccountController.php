@@ -139,6 +139,10 @@ class AccountController extends Controller
             'full_name'       => $request->validated('full_name'),
             'description'     => $request->validated('description'),
             'contacts_closed' => $request->boolean('contacts_closed'),
+        ] + ($request->has('notifications') ? [
+            // галочка «Получать новости и возможности в боте»; без поля в запросе настройка не меняется
+            'notifications_muted' => ! $request->boolean('notifications'),
+        ] : []) + [
             'contact_phone'     => $request->validated('contact_phone') ?: null,
             'contact_email'     => $request->validated('contact_email') ?: null,
             'contact_instagram' => $request->validated('contact_instagram') ?: null,

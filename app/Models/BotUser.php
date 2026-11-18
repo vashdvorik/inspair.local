@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class BotUser extends Model
 {
     use HasFactory;
-    public const STATUS_PENDING = 'pending';
     public const STATUS_APPROVED = 'approved';
-    public const STATUS_REJECTED = 'rejected';
+    /** Теневой бан: участник пользуется всем как обычно, но другие его не видят (списки, поиск, совпадения, игра). */
+    public const STATUS_BANNED = 'banned';
 
     protected $fillable = [
         'telegram_id',
@@ -78,24 +78,15 @@ class BotUser extends Model
         });
     }
 
-    public function scopePending(Builder $query): Builder
-    {
-        return $query->where('status', self::STATUS_PENDING);
-    }
-
+    /** Видимые участники: обычные, без забаненных. Все списки, поиск и игра берут людей отсюда. */
     public function scopeApproved(Builder $query): Builder
     {
         return $query->where('status', self::STATUS_APPROVED);
     }
 
-    public function scopeRejected(Builder $query): Builder
+    public function scopeBanned(Builder $query): Builder
     {
-        return $query->where('status', self::STATUS_REJECTED);
-    }
-
-    public function isPending(): bool
-    {
-        return $this->status === self::STATUS_PENDING;
+        return $query->where('status', self::STATUS_BANNED);
     }
 
     public function isApproved(): bool
@@ -103,9 +94,9 @@ class BotUser extends Model
         return $this->status === self::STATUS_APPROVED;
     }
 
-    public function isRejected(): bool
+    public function isBanned(): bool
     {
-        return $this->status === self::STATUS_REJECTED;
+        return $this->status === self::STATUS_BANNED;
     }
 
     /** Можно ли писать этому участнику (есть username и контакты не закрыты). */
@@ -122,5 +113,15 @@ class BotUser extends Model
     public function loginTokens(): HasMany
     {
         return $this->hasMany(LoginToken::class, 'telegram_id', 'telegram_id');
+    }
+
+    /** Адрес аватарки в кабинете (null, если фото ещё нет). ?v= меняется, когда фото обновилось. */
+    public function avatarUrl(): ?string
+    {
+        if (! $this->avatar_path) {
+            return null;
+        }
+
+        return route('account.avatar', $this->id).'?v='.($this->updated_at?->timestamp ?? 0);
     }
 }

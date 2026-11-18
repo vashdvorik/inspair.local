@@ -9,3 +9,9 @@ Artisan::command('inspire', function () {
 
 // Игра: пополнение пула квестов (когда игра запущена)
 \Illuminate\Support\Facades\Schedule::command('game:generate-quests')->everyThirtyMinutes()->withoutOverlapping();
+
+// Новые возможности с сайта уходят участникам в бот (каждая один раз)
+\Illuminate\Support\Facades\Schedule::command('opportunities:notify')->everyFifteenMinutes()->withoutOverlapping();
+
+// Рассылки, созданные администратором в админке: отправляются, когда придёт время
+\Illuminate\Support\Facades\Schedule::command('broadcasts:send')->everyMinute()->withoutOverlapping();

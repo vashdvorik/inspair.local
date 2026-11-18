@@ -4,11 +4,8 @@
 @section('description', 'Партнёры INSPIRE EDU Network: донор, университеты-организаторы и организации, поддерживающие Академии 2023 и 2025.')
 
 @php
-    $groups = [
-        'donor'   => ['Донор', 'Donor', 'Donator'],
-        'coorg'   => ['Организаторы', 'Organisers', 'Organizatori'],
-        'partner' => ['Партнёры', 'Partners', 'Parteneri'],
-    ];
+    $donors = array_values(array_filter($partners, fn ($x) => $x['group'] === 'donor'));
+    $partnerLogos = array_values(array_filter($partners, fn ($x) => $x['group'] !== 'donor'));
 @endphp
 
 @section('content')
@@ -25,7 +22,6 @@
         {!! $p('Университеты, международные организации и НПО, которые вместе с нами строят сообщество молодых лидеров Молдовы.', 'Universities, international organisations and NGOs that build the community of Moldova’s young leaders together with us.', 'Universități, organizații internaționale și ONG-uri care construiesc împreună cu noi comunitatea tinerilor lideri din Moldova.', 'i-lead i-in i-in-3') !!}
         <div class="flex flex-wrap gap-8 mt-8 i-in i-in-4">
             <div><div class="i-h2 i-grad-text stat-num">{{ count($partners) }}</div><p class="i-eyebrow" style="color:var(--muted);margin-top:4px">{!! $t('организаций', 'organisations', 'organizații') !!}</p></div>
-            <div><div class="i-h2 i-grad-text stat-num">{{ count(array_filter($partners, fn ($x) => $x['group'] === 'coorg')) }}</div><p class="i-eyebrow" style="color:var(--muted);margin-top:4px">{!! $t('университетов-организаторов', 'organising institutions', 'instituții organizatoare') !!}</p></div>
         </div>
     </div>
 </section>
@@ -38,23 +34,27 @@
                 <div class="i-spectrum-line" style="width:84px;margin-top:14px;"></div>
             </div>
         </div>
-        @foreach($groups as $key => $title)
-            @php $list = array_values(array_filter($partners, fn ($x) => $x['group'] === $key)); @endphp
-            @if($list)
-                <div class="par-group" style="margin-top:{{ $loop->first ? 0 : 38 }}px">
-                    <p class="group-title">{!! $t(...$title) !!}</p>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                        @foreach($list as $j => $pt)
-                            @if($pt['url'])
-                                <a class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}"@if(!empty($pt['scale'])) style="max-height:{{ round(64 * $pt['scale']) }}px;max-width:{{ round(100 * $pt['scale']) }}%" @endif alt="{{ $pt['name'] }}" loading="lazy"></a>
-                            @else
-                                <span class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}"@if(!empty($pt['scale'])) style="max-height:{{ round(64 * $pt['scale']) }}px;max-width:{{ round(100 * $pt['scale']) }}%" @endif alt="{{ $pt['name'] }}" loading="lazy"></span>
-                            @endif
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+        {{-- как на главной: плашка донора и общая стена логотипов в одном порядке --}}
+        @foreach($donors as $pt)
+            <a class="donor-band i-reveal" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}">
+                <img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy">
+                <span class="donor-band__text">
+                    <b class="i-eyebrow i-grad-text">{!! $t('Поддержка сети INSPIRE', 'Support of the INSPIRE network', 'Sprijin pentru rețeaua INSPIRE') !!}</b>
+                    <span>{!! $t('Посольство Королевства Нидерландов', 'Embassy of the Kingdom of the Netherlands', 'Ambasada Regatului Țărilor de Jos') !!}</span>
+                </span>
+                <span class="donor-band__go" aria-hidden="true">{!! $arrow !!}</span>
+            </a>
         @endforeach
+        <div class="logo-wall">
+            @foreach($partnerLogos as $j => $pt)
+                @php $imgStyle = ! empty($pt['scale']) ? 'max-height:'.round(64 * $pt['scale']).'px;max-width:'.round(100 * $pt['scale']).'%' : null; @endphp
+                @if($pt['url'])
+                    <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .05 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" @if($imgStyle) style="{{ $imgStyle }}" @endif alt="{{ $pt['name'] }}" loading="lazy"></a>
+                @else
+                    <span class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .05 }}s" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" @if($imgStyle) style="{{ $imgStyle }}" @endif alt="{{ $pt['name'] }}" loading="lazy"></span>
+                @endif
+            @endforeach
+        </div>
     </div>
 </section>
 

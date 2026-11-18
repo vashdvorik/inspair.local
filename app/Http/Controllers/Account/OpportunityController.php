@@ -17,4 +17,13 @@ class OpportunityController extends Controller
     {
         return view('account.opportunities.index', ['items' => OpportunityFeed::all()]);
     }
+
+    /** Полная страница возможности внутри кабинета: человек не уходит на сайт (в мини-приложении Telegram это сбивало). */
+    public function show(string $slug): View
+    {
+        $o = OpportunityFeed::find($slug);
+        abort_if($o === null, 404);
+
+        return view('account.opportunities.show', ['o' => $o]);
+    }
 }

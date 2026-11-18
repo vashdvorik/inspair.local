@@ -70,7 +70,8 @@ class OpportunitiesPageTest extends TestCase
         $session = ['account_telegram_id' => $u->telegram_id, '_account_expires' => now()->addDay()->timestamp];
 
         $html = $this->withSession($session)->get(route('account.opportunities.index'))->assertOk()->getContent();
-        $this->assertStringContainsString(route('opportunities.show', 'emotion-armenia'), $html);
+        $this->assertStringContainsString(route('account.opportunities.show', 'emotion-armenia'), $html);
+        $this->assertStringNotContainsString(route('opportunities.show', 'emotion-armenia'), $html);
         $this->assertStringContainsString('cab-opp', $html);
         $this->assertStringNotContainsString(route('account.index').'/opportunities/create', $html);
 

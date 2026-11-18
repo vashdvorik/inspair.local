@@ -16,8 +16,7 @@
     $cards = [
         ['label' => 'Всего заявок',      'value' => $totalMembers,      'color' => 'bg-gray-50   border-gray-200',  'text' => 'text-gray-800'],
         ['label' => 'Участников',        'value' => $approvedCount,     'color' => 'bg-green-50  border-green-200', 'text' => 'text-green-700'],
-        ['label' => 'Ожидают',           'value' => $pendingCount,      'color' => 'bg-yellow-50 border-yellow-200','text' => 'text-yellow-700'],
-        ['label' => 'Отклонено',         'value' => $rejectedCount,     'color' => 'bg-red-50    border-red-200',   'text' => 'text-red-700'],
+        ['label' => 'Теневой бан',       'value' => $bannedCount,       'color' => 'bg-red-50    border-red-200',   'text' => 'text-red-700'],
         ['label' => 'С профилем',        'value' => $withProfile,       'color' => 'bg-blue-50   border-blue-200',  'text' => 'text-blue-700'],
         ['label' => 'Возможности',       'value' => $opportunitiesTotal,'color' => 'bg-brand-50 border-brand-200','text' => 'text-brand-700'],
     ];
@@ -68,7 +67,7 @@
             </div>
             <div>
                 <div class="flex justify-between text-xs text-gray-500 mb-1">
-                    <span>Одобрено от всех заявок</span>
+                    <span>Видимых участников от всех</span>
                     @php $approvedPct = $totalMembers > 0 ? round($approvedCount / $totalMembers * 100) : 0; @endphp
                     <span class="font-semibold text-gray-700">{{ $approvedCount }} / {{ $totalMembers }} ({{ $approvedPct }}%)</span>
                 </div>
@@ -185,7 +184,7 @@
         <h2 class="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wider">Последние участники</h2>
 
         @if($latestMembers->isEmpty())
-        <p class="text-sm text-gray-400">Одобренных участников нет.</p>
+        <p class="text-sm text-gray-400">Участников пока нет.</p>
         @else
         <div class="space-y-3">
             @foreach($latestMembers as $member)
@@ -233,7 +232,7 @@
         $lines = [
             ['Дата формирования отчёта',                 $generatedAt],
             ['Всего зарегистрировалось в платформе',      $totalMembers . ' чел.'],
-            ['Одобрено и активно в сообществе',           $approvedCount . ' чел.'],
+            ['Активно в сообществе',           $approvedCount . ' чел.'],
             ['Заполнили профиль (описание)',               $withProfile . ' чел. (' . $profilePct . '%)'],
             ['AI-эмбеддинг вычислен (профиль в системе AI)', $withEmbedding . ' чел. (' . $embeddingPct . '%)'],
             ['Опубликовано возможностей (проекты/встречи/ивенты)', $opportunitiesTotal],

@@ -24,7 +24,8 @@ class BotUserFactory extends Factory
             'full_name'         => $this->faker->name(),
             'description'       => $this->faker->optional()->sentence(),
             'expectation'       => $this->faker->optional()->sentence(),
-            'status'            => \App\Models\BotUser::STATUS_PENDING,
+            'status'            => \App\Models\BotUser::STATUS_APPROVED,
+            'approved_at'       => now(),
         ];
     }
 
@@ -41,10 +42,8 @@ class BotUserFactory extends Factory
         return $this->state(fn () => ['is_moderator' => true]);
     }
 
-    public function pending(): static
+    public function banned(): static
     {
-        return $this->state(fn () => [
-            'status' => \App\Models\BotUser::STATUS_PENDING,
-        ]);
+        return $this->state(fn () => ['status' => \App\Models\BotUser::STATUS_BANNED]);
     }
 }

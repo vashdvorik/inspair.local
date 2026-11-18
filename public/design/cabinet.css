@@ -113,3 +113,32 @@
 .cab-opp__title { margin-top: 6px; color: var(--ink); font-size: 1.02rem; font-weight: 800; line-height: 1.3; }
 .cab-opp__text { margin-top: 6px; color: var(--muted); font-size: .85rem; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
 @media (max-width: 640px) { .cab-opp { grid-template-columns: minmax(0, 1fr); gap: 12px; } .cab-opp__body { padding: 0 6px 6px; } }
+
+/* ── «Возможности»: страница одной возможности внутри кабинета ── */
+.cab-oppd__back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 18px; color: var(--blue-700); font-size: .86rem; font-weight: 700; text-decoration: none; }
+.cab-oppd__back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cab-oppd { display: grid; grid-template-columns: minmax(0, 1fr) 270px; gap: 32px; align-items: start; }
+.cab-oppd__photo { margin: 0 0 20px; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 20px; background: var(--bg-tint); }
+.cab-oppd__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cab-oppd__meta { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: .75rem; }
+.cab-oppd__meta b { color: var(--blue-700); font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.cab-oppd__meta span { color: var(--muted); font-weight: 600; }
+.cab-oppd__title { margin: 8px 0 14px; color: var(--ink); font-size: 1.55rem; font-weight: 800; line-height: 1.25; letter-spacing: -.01em; text-wrap: balance; }
+.cab-oppd__lead { margin: 0; color: var(--ink-soft, #26405f); font-size: 1.02rem; line-height: 1.7; text-wrap: pretty; }
+.cab-oppd h2 { margin: 26px 0 10px; color: var(--ink); font-size: 1.05rem; font-weight: 800; }
+.cab-oppd p { text-wrap: pretty; }
+.cab-oppd__main > p:not(.cab-oppd__lead):not(.cab-oppd__note) { margin: 0; color: var(--ink-soft, #26405f); font-size: .96rem; line-height: 1.7; }
+.cab-oppd ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 9px; }
+.cab-oppd li { position: relative; padding-left: 24px; color: var(--ink-soft, #26405f); font-size: .96rem; line-height: 1.6; text-wrap: pretty; }
+.cab-oppd li::before { content: ""; position: absolute; left: 3px; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--sky); }
+.cab-oppd li:nth-child(5n+2)::before { background: var(--yellow); }
+.cab-oppd li:nth-child(5n+3)::before { background: #7bdc6d; }
+.cab-oppd li:nth-child(5n+4)::before { background: var(--orange); }
+.cab-oppd li:nth-child(5n)::before { background: var(--purple); }
+.cab-oppd__note { margin: 24px 0 0; padding: 13px 16px; border: 1px solid var(--blue-100); border-radius: 14px; background: var(--blue-50); color: var(--navy-800); font-size: .9rem; font-weight: 600; line-height: 1.55; }
+.cab-oppd__facts { position: sticky; top: 24px; padding: 20px 22px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--sh-xs); }
+.cab-oppd__facts dl { margin: 0; }
+.cab-oppd__facts dt { margin-top: 14px; color: var(--subtle); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.cab-oppd__facts dt:first-child { margin-top: 0; }
+.cab-oppd__facts dd { margin: 3px 0 0; color: var(--ink); font-size: .98rem; font-weight: 700; }
+@media (max-width: 900px) { .cab-oppd { grid-template-columns: minmax(0, 1fr); gap: 22px; } .cab-oppd__facts { position: static; } .cab-oppd__title { font-size: 1.35rem; } }

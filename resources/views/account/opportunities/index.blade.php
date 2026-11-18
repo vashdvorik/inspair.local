@@ -11,7 +11,7 @@
 
     <div class="cab-opps">
         @foreach($items as $o)
-            @php $href = route('opportunities.show', $o['slug']); @endphp
+            @php $href = route('account.opportunities.show', $o['slug']); @endphp
             <a href="{{ $href }}" class="cab-opp">
                 <span class="cab-opp__photo"><img src="{{ $o['image_url'] }}" alt="" width="320" height="220" loading="lazy"></span>
                 <span class="cab-opp__body">

@@ -151,6 +151,11 @@
                     <input type="checkbox" name="contacts_closed" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('contacts_closed', $accountUser->contacts_closed) ? 'checked' : '' }}>
                     <span><b>{{ $tr('Закрыть мои контакты', 'Hide my contacts', 'Ascunde contactele mele') }}</b><br><span class="text-xs text-gray-500">{{ $tr('Мой Telegram и кнопка «Написать» не показываются другим участникам. Я по-прежнему могу писать им сам.', 'My Telegram and the “Message” button are not shown to other participants. I can still write to them myself.', 'Telegramul meu și butonul „Scrie” nu sunt afișate celorlalți participanți. Eu pot în continuare să le scriu.') }}</span></span>
                 </label>
+                <label class="flex items-start gap-3 text-sm text-[#0e2442]">
+                    <input type="hidden" name="notifications" value="0">
+                    <input type="checkbox" name="notifications" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('notifications', ! $accountUser->notifications_muted) ? 'checked' : '' }}>
+                    <span><b>{{ $tr('Получать новости и возможности в боте', 'Get news and opportunities in the bot', 'Primește știri și oportunități în bot') }}</b><br><span class="text-xs text-gray-500">{{ $tr('Бот пришлёт сообщение, когда на сайте появится новая возможность: курс, программа или поездка за рубежом.', 'The bot will message you when a new opportunity appears on the site: a course, a programme or a trip abroad.', 'Botul îți va scrie când pe site apare o oportunitate nouă: un curs, un program sau o călătorie în străinătate.') }}</span></span>
+                </label>
                 @if($game->isEnabled())
                 <label class="flex items-start gap-3 text-sm text-[#0e2442]">
                     <input type="checkbox" name="quests_opt_out" value="1" class="mt-0.5 h-4 w-4 rounded border-gray-300" {{ old('quests_opt_out', $accountUser->quests_opt_out) ? 'checked' : '' }}>

@@ -29,8 +29,7 @@ class ImpactMetrics extends Page
         // ── Members ──────────────────────────────────────────────────
         $totalMembers   = BotUser::count();
         $approvedCount  = BotUser::approved()->count();
-        $pendingCount   = BotUser::pending()->count();
-        $rejectedCount  = BotUser::rejected()->count();
+        $bannedCount    = BotUser::banned()->count();
         $withProfile    = BotUser::approved()->whereNotNull('description')->where('description', '!=', '')->count();
         $withEmbedding  = BotUser::approved()->whereNotNull('embedding')->count();
 
@@ -88,8 +87,7 @@ class ImpactMetrics extends Page
         return [
             'totalMembers'       => $totalMembers,
             'approvedCount'      => $approvedCount,
-            'pendingCount'       => $pendingCount,
-            'rejectedCount'      => $rejectedCount,
+            'bannedCount'        => $bannedCount,
             'withProfile'        => $withProfile,
             'withEmbedding'      => $withEmbedding,
             'opportunitiesTotal' => $opportunitiesTotal,
