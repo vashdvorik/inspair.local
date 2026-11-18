@@ -11,18 +11,7 @@
 
     <div class="cab-opps">
         @foreach($items as $o)
-            @php $href = route('account.opportunities.show', $o['slug']); @endphp
-            <a href="{{ $href }}" class="cab-opp">
-                <span class="cab-opp__photo"><img src="{{ $o['image_url'] }}" alt="" width="320" height="220" loading="lazy"></span>
-                <span class="cab-opp__body">
-                    <span class="cab-opp__meta">
-                        <b>{{ $o['country'][$lang] ?? $o['country']['en'] }}</b>
-                        @if($o['dates'])<span>{{ $o['dates'][$lang] ?? $o['dates']['en'] }}</span>@endif
-                    </span>
-                    <span class="cab-opp__title">{{ $o['name'] }}</span>
-                    <span class="cab-opp__text">{{ $o['text'][$lang] ?? $o['text']['en'] }}</span>
-                </span>
-            </a>
+            @include('account.opportunities._card')
         @endforeach
     </div>
 

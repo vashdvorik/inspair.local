@@ -147,7 +147,7 @@
         <div class="flex min-w-0 flex-1 flex-col">
 
             {{-- Mobile header --}}
-            <header class="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-3 bg-white/95 px-4 lg:hidden" style="border-bottom:1px solid var(--line)">
+            <header class="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-3 bg-white/95 px-4 lg:hidden" style="border-bottom:1px solid var(--line)">
                 <button @click="sidebarOpen = true" class="flex h-10 w-10 items-center justify-center rounded-xl text-navy-800 transition hover:bg-brand-50" aria-label="{{ $tr('Открыть меню', 'Open menu', 'Deschide meniul') }}">
                     <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 </button>
@@ -172,6 +172,39 @@
                 @endif
                 @yield('content')
             </main>
+
+            {{-- Нижнее меню как в мобильном приложении: на телефоне до разделов можно дотянуться большим пальцем --}}
+            @php
+                $tabRoutes = ['account.index', 'account.people', 'account.game', 'account.opportunities.index', 'account.profile'];
+                $tabItems = collect($navItems)
+                    ->filter(fn ($i) => in_array($i['route'], $tabRoutes, true))
+                    ->reject(fn ($i) => $i['route'] === 'account.game' && ! $game->isEnabled())
+                    ->sortBy(fn ($i) => array_search($i['route'], $tabRoutes, true))
+                    ->values();
+                $hasMore = config('features.cabinet_matches') || config('features.cabinet_search') || config('features.cabinet_knowledge');
+                $tabShort = [
+                    'account.index' => $tr('Главная', 'Home', 'Acasă'),
+                    'account.people' => $tr('Люди', 'People', 'Oameni'),
+                    'account.game' => $tr('Игра', 'Game', 'Joc'),
+                    'account.opportunities.index' => $tr('Возможности', 'Opportunities', 'Oportunități'),
+                    'account.profile' => $tr('Профиль', 'Profile', 'Profil'),
+                ];
+            @endphp
+            <nav class="cab-tabbar lg:hidden" aria-label="{{ $tr('Разделы кабинета', 'Account sections', 'Secțiunile contului') }}">
+                @foreach($tabItems as $item)
+                    @php $on = request()->routeIs($item['route']) || request()->routeIs($item['route'] . '.*') || (isset($item['match']) && request()->routeIs($item['match'])); @endphp
+                    <a href="{{ route($item['route']) }}" class="cab-tab {{ $on ? 'is-active' : '' }}" @if($on) aria-current="page" @endif>
+                        <span class="cab-tab__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="{{ $item['path'] }}"/></svg></span>
+                        <span class="cab-tab__label">{{ $tabShort[$item['route']] ?? $item['label'] }}</span>
+                    </a>
+                @endforeach
+                @if($hasMore)
+                    <button type="button" class="cab-tab" @click="sidebarOpen = true">
+                        <span class="cab-tab__ico"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></span>
+                        <span class="cab-tab__label">{{ $tr('Ещё', 'More', 'Mai mult') }}</span>
+                    </button>
+                @endif
+            </nav>
 
         </div>
     </div>

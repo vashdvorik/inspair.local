@@ -1,5 +1,5 @@
 @extends('account.layout')
-@section('title', $o['name'])
+@section('title', $o['title'][$lang] ?? $o['name'])
 
 @php
     $d = $o['detail'][$lang] ?? $o['detail']['en'];
@@ -18,7 +18,7 @@
                 <b>{{ $o['country'][$lang] ?? $o['country']['en'] }}</b>
                 @if($o['dates'])<span>{{ $o['dates'][$lang] ?? $o['dates']['en'] }}</span>@endif
             </div>
-            <h1 class="cab-oppd__title">{{ $o['name'] }}</h1>
+            <h1 class="cab-oppd__title">{{ $o['title'][$lang] ?? $o['name'] }}</h1>
 
             <p class="cab-oppd__lead">{{ $d['lead'] }}</p>
 

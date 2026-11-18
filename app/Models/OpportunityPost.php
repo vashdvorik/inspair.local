@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Model;
 class OpportunityPost extends Model
 {
     protected $fillable = [
-        'slug', 'name', 'flag', 'country', 'start_date', 'end_date', 'deadline', 'posted_on',
+        'slug', 'name', 'title', 'flag', 'country', 'start_date', 'end_date', 'deadline', 'posted_on',
         'text', 'detail', 'image', 'source_url', 'published',
     ];
 
     protected $casts = [
+        'title'      => 'array',
         'country'    => 'array',
         'text'       => 'array',
         'detail'     => 'array',

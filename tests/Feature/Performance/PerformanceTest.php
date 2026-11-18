@@ -28,6 +28,16 @@ class PerformanceTest extends TestCase
     // ──────────────────────────────────────────────────────────────────────────
 
     /**
+     * Главная кабинета берёт «сообщество» и «возможности» из кэша (обновляется раз в пару минут). Бюджет запросов считаем
+     * на прогретом кэше, как на живом сайте: холодный первый заход одного человека не в счёт.
+     */
+    private function warmDashboardCache(): void
+    {
+        $warm = BotUser::factory()->approved()->create();
+        $this->withSession(['account_telegram_id' => $warm->telegram_id, '_account_expires' => now()->addDays(7)->timestamp])->get(route('account.index'));
+    }
+
+    /**
      * Каждый защищённый запрос делает SELECT в bot_users.
      * При 300 одновременных пользователях это 300 * (кол-во запросов/сессию) SELECT-ов.
      * Ожидаемый минимум: 1 запрос на запрос (без кеша).
@@ -36,6 +46,7 @@ class PerformanceTest extends TestCase
     public function test_middleware_executes_exactly_one_db_query_per_request(): void
     {
         $user = BotUser::factory()->approved()->moderator()->create();
+        $this->warmDashboardCache();
 
         DB::enableQueryLog();
 
@@ -71,6 +82,7 @@ class PerformanceTest extends TestCase
     public function test_dashboard_query_budget(): void
     {
         $user = BotUser::factory()->approved()->moderator()->create();
+        $this->warmDashboardCache();
 
         DB::enableQueryLog();
 
@@ -238,6 +250,7 @@ class PerformanceTest extends TestCase
     public function test_session_navigation_query_accumulation(): void
     {
         $user = BotUser::factory()->approved()->moderator()->create();
+        $this->warmDashboardCache();
 
         $routes = [
             route('account.index'),
@@ -250,6 +263,7 @@ class PerformanceTest extends TestCase
 
         foreach ($routes as $url) {
             DB::enableQueryLog();
+            DB::flushQueryLog();   // иначе журнал копится между страницами и сумма завышается
             $this->withSession(['account_telegram_id' => $user->telegram_id, '_account_expires' => now()->addDays(7)->timestamp])
                 ->get($url)
                 ->assertOk();
@@ -278,6 +292,7 @@ class PerformanceTest extends TestCase
     public function test_concurrent_users_query_count_is_linear(): void
     {
         $users = BotUser::factory()->approved()->moderator()->count(10)->create();
+        $this->warmDashboardCache();
 
         $totalQueries = 0;
         $queriesPerUser = [];

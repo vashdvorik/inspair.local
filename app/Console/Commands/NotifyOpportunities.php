@@ -102,7 +102,7 @@ class NotifyOpportunities extends Command
     {
         $where = trim(($o['flag'] ?? '').' '.($o['country']['ru'] ?? ''));
         $meta = implode(' · ', array_filter([$where, $o['dates']['ru'] ?? null]));
-        $lines = ['🌍 Новая возможность', '', $o['name'], $meta, '', $o['text']['ru'] ?? ($o['text']['en'] ?? '')];
+        $lines = ['🌍 Новая возможность', '', $o['title']['ru'] ?? $o['name'], $meta, '', $o['text']['ru'] ?? ($o['text']['en'] ?? '')];
         if (! empty($o['deadline_text']['ru'])) {
             $lines[] = '';
             $lines[] = 'Срок подачи заявок: '.$o['deadline_text']['ru'];

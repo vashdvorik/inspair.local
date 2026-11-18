@@ -52,6 +52,11 @@ class OpportunityPostResource extends Resource
         $en = $l === 'en';
 
         return Tab::make($title)->schema([
+            TextInput::make("title.{$l}")
+                ->label('Название на этом языке')
+                ->helperText('Пусто: показывается оригинальное название.')
+                ->maxLength(200)
+                ->columnSpanFull(),
             TextInput::make("country.{$l}")
                 ->label('Страна')
                 ->required($en)

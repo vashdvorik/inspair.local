@@ -15,6 +15,7 @@ use App\Services\GameService;
 use App\Services\MatchingService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\View\View;
 
@@ -105,9 +106,45 @@ class AccountController extends Controller
     /**
      * Dashboard / home page.
      */
-    public function index(): View
+    public function index(GameService $game): View
     {
-        return view('account.index');
+        /** @var BotUser $user */
+        $user = view()->shared('accountUser');
+
+        // что ещё не заполнено в профиле: из этого собирается индикатор и подсказка. Факты о себе здесь не просим:
+        // их участник пишет уже в игре
+        $steps = [
+            'avatar'      => (bool) $user->avatar_path,
+            'description' => mb_strlen(trim((string) $user->description)) >= 20,
+        ];
+        $completeness = (int) round(count(array_filter($steps)) / count($steps) * 100);
+
+        // новые лица сообщества (кэш на 2 минуты: главная открывается чаще всех страниц)
+        $community = Cache::remember('cabinet:home:community', 120, fn () => [
+            
+            'latest' => BotUser::approved()->latest('approved_at')->limit(9)->get(['id', 'full_name', 'avatar_path', 'description', 'updated_at']),
+        ]);
+
+        return view('account.index', [
+            'completeness' => $completeness,
+            'steps'        => $steps,
+            'newMembers'   => $community['latest']->where('id', '!=', $user->id)->take(8)->values(),
+            'opportunities' => $this->freshOpportunities(),
+            'opportunitiesTotal' => count(\App\Support\OpportunityFeed::all()),
+            'progress'     => $game->isEnabled() ? $game->progress($user) : null,
+        ]);
+    }
+
+    /** Для главной: возможности, на которые ещё можно подать заявку (или без срока). Если таких нет, просто последние.
+     *
+     * @return list<array<string, mixed>>
+     */
+    private function freshOpportunities(int $limit = 3): array
+    {
+        $all = \App\Support\OpportunityFeed::all();
+        $open = array_values(array_filter($all, fn (array $o) => empty($o['deadline']) || \Illuminate\Support\Carbon::parse($o['deadline'])->endOfDay()->isFuture()));
+
+        return array_slice($open ?: $all, 0, $limit);
     }
 
     /**

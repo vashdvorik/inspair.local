@@ -16,7 +16,7 @@
 @section('content')
 <section class="i-section" style="padding-top:124px">
     <div class="i-container">
-        <h1 class="i-sr-only">{{ $o['name'] }}</h1>
+        <h1 class="i-sr-only">{{ $o['title']['en'] }}</h1>
         <div class="opp-page">
             <div class="opp-page__main">
                 @foreach(['ru', 'en', 'ro'] as $l)

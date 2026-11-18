@@ -96,11 +96,23 @@ Route::get('/go/{code}', function (string $code) {
 // Переключатель языка в кабинете и на странице входа: ставит куку и возвращает на ту же страницу
 Route::get('/lang/{code}', function (\Illuminate\Http\Request $request, string $code) {
     abort_unless(in_array($code, \App\Support\Lang::LOCALES, true), 404);
-    $back = (string) url()->previous();
-    $sameSite = parse_url($back, PHP_URL_HOST) === $request->getHost();
 
-    return redirect($sameSite ? $back : '/')
-        ->withCookie(cookie(\App\Support\Lang::COOKIE, $code, 525600, '/', null, $request->isSecure(), false, false, 'lax'));
+    // Куда вернуть: адрес страницы передаётся в ссылке (?to=…), а не берётся из заголовка Referer. Внутри Telegram и в части
+    // браузеров Referer не приходит, и переключатель раньше выкидывал на главную страницу сайта или язык «не срабатывал».
+    $to = (string) $request->query('to');
+    $isLocalPath = str_starts_with($to, '/') && ! str_starts_with($to, '//') && ! str_contains($to, '\\') && ! preg_match('/[\r\n]/', $to);
+
+    if ($isLocalPath) {
+        $target = $to;
+    } else {
+        $back = (string) url()->previous();
+        $sameSite = parse_url($back, PHP_URL_HOST) === $request->getHost() && ! str_starts_with((string) parse_url($back, PHP_URL_PATH), '/lang/');
+        $target = $sameSite ? $back : '/';
+    }
+
+    return redirect($target)
+        ->withHeaders(['Cache-Control' => 'no-store'])
+        ->withCookie(\App\Support\Lang::cookie($code, $request->isSecure()));
 })->name('lang');
 
 Route::middleware(RequireAccountAuth::class)

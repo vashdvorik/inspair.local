@@ -66,6 +66,8 @@ final class OpportunityFeed
             return [
                 'slug'     => $p->slug,
                 'name'     => $p->name,
+                // название по языкам: пустой язык показывает оригинальное название
+                'title'    => collect(['ru', 'en', 'ro'])->mapWithKeys(fn ($l) => [$l => filled($p->title[$l] ?? null) ? $p->title[$l] : $p->name])->all(),
                 'flag'     => $p->flag,
                 'country'  => $t['country'],
                 'start'    => $p->start_date?->toDateString(),

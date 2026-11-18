@@ -17,6 +17,16 @@ final class Lang
 
     public const LOCALES = ['ru', 'en', 'ro'];
 
+    /**
+     * Кука языка. Кабинет открывается внутри Telegram: в Telegram Web и некоторых клиентах это iframe, где обычная
+     * кука (SameSite=Lax) не сохраняется, и переключатель «не срабатывал». Поэтому на https кука ставится как
+     * SameSite=None; Secure; Partitioned (так же, как сессионная). Без https (локальная разработка) остаётся Lax.
+     */
+    public static function cookie(string $code, bool $secure): \Symfony\Component\HttpFoundation\Cookie
+    {
+        return new \Symfony\Component\HttpFoundation\Cookie(self::COOKIE, $code, now()->addYear(), '/', null, $secure, false, false, $secure ? 'none' : 'lax', $secure);
+    }
+
     public static function current(): string
     {
         $request = request();

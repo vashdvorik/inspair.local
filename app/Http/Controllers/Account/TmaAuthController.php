@@ -49,10 +49,18 @@ class TmaAuthController extends Controller
         session(['account_telegram_id' => $user->telegram_id]);
         session()->put('_account_expires', now()->addDays(7)->timestamp);
 
-        return response()->json([
+        $response = response()->json([
             'ok'       => true,
             'redirect' => route('account.index'),
         ]);
+
+        // первый вход: язык кабинета берём из языка Telegram (ru, en, ro); выбранный вручную язык не трогаем
+        $tgLang = strtolower(substr((string) ($telegramUser['language_code'] ?? ''), 0, 2));
+        if (! in_array((string) $request->cookie(\App\Support\Lang::COOKIE), \App\Support\Lang::LOCALES, true) && in_array($tgLang, \App\Support\Lang::LOCALES, true)) {
+            $response->withCookie(\App\Support\Lang::cookie($tgLang, $request->isSecure()));
+        }
+
+        return $response;
     }
 
     /**

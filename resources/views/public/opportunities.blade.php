@@ -18,7 +18,7 @@
                             <span class="opp-row__country">{!! $tm($o['country']) !!}</span>
                             @if($o['dates'])<span class="opp-row__dates">{!! $tm($o['dates']) !!}</span>@endif
                         </p>
-                        <h2 class="opp-row__title"><a href="{{ $href }}">{{ $o['name'] }}</a></h2>
+                        <h2 class="opp-row__title"><a href="{{ $href }}">{!! $tm($o['title']) !!}</a></h2>
                         <p class="opp-row__text">{!! $tm($o['text']) !!}</p>
                         <a class="opp-row__more" href="{{ $href }}">{!! $t('Читать', 'Read', 'Citește') !!} <span aria-hidden="true">→</span></a>
                     </div>

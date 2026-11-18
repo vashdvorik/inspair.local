@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
  *  - если у посетителя нет куки inspire_cache с текущим CACHE_EPOCH, ответ несёт Clear-Site-Data: "cache"
  *    (браузер выбрасывает всё, что накопил этот сайт) и ставит куку, чтобы очистка не повторялась.
  *    Куки, сессия и localStorage не трогаются: выбранный язык и вход в кабинет сохраняются.
+ *    Кука ставится как SameSite=None; Secure; Partitioned: в iframe (Telegram Web) обычная кука не сохраняется, и очистка кэша шла бы при каждой странице.
  *
  * Чтобы заставить всех обновиться ещё раз, увеличьте CACHE_EPOCH в .env и выполните php artisan config:clear.
  */
@@ -41,7 +42,7 @@ class FreshPages
         $epoch = (string) config('app.cache_epoch');
         if ($request->isSecure() && (string) $request->cookies->get(self::COOKIE) !== $epoch) {
             $response->headers->set('Clear-Site-Data', '"cache"');
-            $response->headers->setCookie(new Cookie(self::COOKIE, $epoch, now()->addYear(), '/', null, true, true, false, Cookie::SAMESITE_LAX));
+            $response->headers->setCookie(new Cookie(self::COOKIE, $epoch, now()->addYear(), '/', null, true, true, false, Cookie::SAMESITE_NONE, true));
         }
 
         return $response;
