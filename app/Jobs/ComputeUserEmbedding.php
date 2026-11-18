@@ -28,7 +28,7 @@ class ComputeUserEmbedding implements ShouldQueue
 
     public function handle(EmbeddingService $embedder, MatchingService $matcher): void
     {
-        if (! config('ai.openrouter.key')) {
+        if (! \App\Services\Ai\OpenRouter::apiKey()) {
             return; // ИИ ещё не настроен: профиль сохраняется, векторы посчитает ai:recompute-embeddings
         }
 

@@ -6,6 +6,7 @@ namespace App\Filament\Pages;
 
 use App\Models\AiTaskSetting;
 use App\Models\AiUsageLog;
+use App\Models\AppSetting;
 use App\Services\Ai\OpenRouter;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -29,6 +30,9 @@ class AiSettings extends Page
     /** @var array<string, string> */
     public array $testResults = [];
 
+    /** Новый ключ OpenRouter, введённый в форме (после сохранения очищается и больше нигде не показывается). */
+    public string $newKey = '';
+
     public function mount(OpenRouter $ai): void
     {
         $this->rows = $ai->tasks();
@@ -39,6 +43,26 @@ class AiSettings extends Page
         $this->persist($ai);
 
         Notification::make()->title('Настройки сохранены')->success()->send();
+    }
+
+    public function saveKey(): void
+    {
+        $key = trim($this->newKey);
+        if (mb_strlen($key) < 20 || preg_match('/\s/', $key)) {
+            Notification::make()->title('Это не похоже на ключ')->body('Ключ OpenRouter выглядит как sk-or-v1-… и не содержит пробелов.')->danger()->send();
+
+            return;
+        }
+
+        AppSetting::putSecret(OpenRouter::KEY_SETTING, $key);
+        $this->newKey = '';
+        Notification::make()->title('Ключ сохранён')->body('Нажмите «Проверить» у любой задачи, чтобы убедиться, что он работает.')->success()->send();
+    }
+
+    public function removeKey(): void
+    {
+        AppSetting::putSecret(OpenRouter::KEY_SETTING, null);
+        Notification::make()->title('Ключ из админки удалён')->body(OpenRouter::keySource() === 'env' ? 'Используется ключ из файла .env.' : 'Ключ не задан: нейросеть не работает.')->warning()->send();
     }
 
     public function test(string $task, OpenRouter $ai): void
@@ -92,7 +116,9 @@ class AiSettings extends Page
         return [
             'stats'        => $stats,
             'recentErrors' => AiUsageLog::where('status', 'error')->latest('id')->limit(8)->get(),
-            'hasKey'       => (bool) config('ai.openrouter.key'),
+            'hasKey'       => (bool) OpenRouter::apiKey(),
+            'keySource'    => OpenRouter::keySource(),
+            'keyTail'      => ($k = OpenRouter::apiKey()) ? '…'.substr($k, -4) : null,
             'totalCost'    => (float) $stats->sum('cost'),
         ];
     }

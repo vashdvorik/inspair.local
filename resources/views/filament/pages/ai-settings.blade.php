@@ -1,10 +1,30 @@
 <x-filament-panels::page>
 
-@unless($hasKey)
-    <div class="rounded-xl border border-orange-200 bg-orange-50 p-4 text-sm text-orange-800">
-        Ключ не задан. Добавьте в <code>.env</code> строку <code>OPENROUTER_API_KEY=…</code> и выполните <code>php artisan config:clear</code>.
+{{-- Ключ OpenRouter: вводится здесь, хранится в базе зашифрованным и главнее строки из .env --}}
+<div class="rounded-xl border bg-white p-5 {{ $hasKey ? 'border-gray-200' : 'border-orange-200' }}">
+    <p class="mb-1 font-semibold text-gray-800">Ключ OpenRouter</p>
+
+    @if($hasKey)
+        <p class="mb-3 text-sm text-gray-500">
+            Ключ задан (<strong>{{ $keyTail }}</strong>),
+            {{ $keySource === 'admin' ? 'введён здесь, в админке.' : 'взят из файла .env на сервере.' }}
+            Чтобы заменить его, введите новый ниже: старый перестанет использоваться.
+        </p>
+    @else
+        <p class="mb-3 text-sm text-orange-800">Ключ не задан, поэтому нейросеть не работает (вопросы игры, совпадения, поиск, проверка текстов). Создайте ключ на <strong>openrouter.ai</strong> («Keys» → «Create Key») и вставьте его ниже.</p>
+    @endif
+
+    <div class="flex flex-wrap items-end gap-3">
+        <label class="min-w-[260px] flex-1 text-xs text-gray-500">{{ $hasKey ? 'Новый ключ' : 'Ключ' }}
+            <input type="password" autocomplete="off" placeholder="sk-or-v1-…" wire:model="newKey" wire:keydown.enter="saveKey"
+                   class="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-800"></label>
+        <button type="button" wire:click="saveKey" class="rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white">Сохранить ключ</button>
+        @if($keySource === 'admin')
+            <button type="button" wire:click="removeKey" wire:confirm="Удалить ключ, введённый в админке?" class="rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700">Удалить</button>
+        @endif
     </div>
-@endunless
+    <p class="mt-3 text-xs text-gray-400">Ключ хранится в базе в зашифрованном виде и после сохранения нигде не показывается целиком (только последние 4 знака). Никому его не пересылайте. Если ключ попал в чужие руки, удалите его на openrouter.ai и создайте новый.</p>
+</div>
 
 <div class="rounded-xl border border-gray-200 bg-white p-5">
     <p class="mb-1 text-sm text-gray-500">Один ключ OpenRouter на все задачи. Для каждой задачи укажите модель в формате <code>vendor/model</code> (например <code>openai/gpt-4o-mini</code>) и, при желании, запасную: она включится, если основная не ответит.</p>

@@ -6,6 +6,7 @@ namespace App\Services\Ai;
 
 use App\Models\AiTaskSetting;
 use App\Models\AiUsageLog;
+use App\Models\AppSetting;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use RuntimeException;
@@ -18,6 +19,34 @@ use Throwable;
 class OpenRouter
 {
     private const SETTINGS_CACHE_KEY = 'ai:task-settings';
+
+    /** Имя настройки, под которым ключ хранится в базе (зашифрованным). */
+    public const KEY_SETTING = 'openrouter_api_key';
+
+    /** Ключ OpenRouter: введённый в админке главнее строки OPENROUTER_API_KEY из .env. */
+    public static function apiKey(): ?string
+    {
+        try {
+            $stored = AppSetting::secret(self::KEY_SETTING);
+        } catch (Throwable) {
+            $stored = null;   // таблицы настроек ещё нет (до миграции)
+        }
+
+        return $stored ?: (config('ai.openrouter.key') ?: null);
+    }
+
+    /** Откуда взят ключ: admin, env или null. */
+    public static function keySource(): ?string
+    {
+        try {
+            if (AppSetting::secret(self::KEY_SETTING)) {
+                return 'admin';
+            }
+        } catch (Throwable) {
+        }
+
+        return config('ai.openrouter.key') ? 'env' : null;
+    }
 
     /** @return array<string, array<string, mixed>> все задачи с учётом переопределений */
     public function tasks(): array
@@ -135,7 +164,7 @@ class OpenRouter
     /** @param array<string, mixed> $cfg */
     private function guard(array $cfg): void
     {
-        if (! config('ai.openrouter.key')) {
+        if (! self::apiKey()) {
             throw new RuntimeException('Не задан OPENROUTER_API_KEY.');
         }
         if (! $cfg['enabled']) {
@@ -182,7 +211,7 @@ class OpenRouter
     {
         $cfg = config('ai.openrouter');
 
-        $response = Http::withToken((string) $cfg['key'])
+        $response = Http::withToken((string) self::apiKey())
             ->withHeaders(['HTTP-Referer' => $cfg['referer'], 'X-Title' => $cfg['title']])
             ->timeout((int) $cfg['timeout'])
             ->retry(2, 400, fn ($e) => ! ($e instanceof \Illuminate\Http\Client\RequestException) || $e->response->serverError() || $e->response->status() === 429, throw: false)
