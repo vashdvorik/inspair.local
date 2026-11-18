@@ -68,7 +68,7 @@
             {{-- Avatar --}}
             <div class="shrink-0">
                 @if($person->avatar_path)
-                <img src="{{ $person->avatarUrl() }}"
+                <img src="{{ $person->avatarUrl() }}" loading="lazy" decoding="async"
                      alt="{{ $person->full_name }}"
                      class="h-14 w-14 rounded-2xl object-cover"
                      style="box-shadow:0 2px 8px rgba(0,109,224,.2)">
