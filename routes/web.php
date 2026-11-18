@@ -110,6 +110,8 @@ Route::get('/lang/{code}', function (\Illuminate\Http\Request $request, string $
         $target = $sameSite ? $back : '/';
     }
 
+    $request->session()->put(\App\Support\Lang::COOKIE, $code);
+
     return redirect($target)
         ->withHeaders(['Cache-Control' => 'no-store'])
         ->withCookie(\App\Support\Lang::cookie($code, $request->isSecure()));

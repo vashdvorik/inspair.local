@@ -47,8 +47,21 @@
 <div class="rounded-xl border border-gray-200 bg-white p-5">
     <div class="mb-3 flex flex-wrap items-center justify-between gap-3">
         <p class="font-semibold text-gray-800">Последние квесты</p>
-        <button type="button" wire:click="generate" class="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700">Создать квесты сейчас</button>
+        <button type="button" wire:click="generate" @disabled($generating) wire:loading.attr="disabled" wire:target="generate"
+                class="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 disabled:cursor-wait disabled:opacity-60">
+            @if($generating)
+                <svg class="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" opacity=".25"/><path d="M21 12a9 9 0 0 0-9-9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                Создаём квесты…
+            @else
+                Создать квесты сейчас
+            @endif
+        </button>
     </div>
+    @if($generating)
+        <p wire:poll.3s="checkGeneration" class="mb-3 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-700">Генерация идёт в фоне, обычно 1–2 минуты. Страница обновится сама, повторно нажимать не нужно.</p>
+    @elseif($genResult)
+        <p class="mb-3 text-xs text-gray-500">Последний запуск ({{ $genResult['at'] }}): создано {{ $genResult['made'] }} из {{ $genResult['need'] }}@if($genResult['error']) · ошибка: {{ $genResult['error'] }}@endif</p>
+    @endif
     @forelse($recentQuests as $q)
         <div class="flex flex-wrap items-start justify-between gap-3 border-t border-gray-100 py-3">
             <div class="min-w-0">

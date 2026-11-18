@@ -25,6 +25,8 @@ class GameAdmin extends Page
 
     protected static ?int $navigationSort = 4;
 
+    public bool $wasGenerating = false;
+
     public function setMode(string $mode, GameService $game): void
     {
         $game->setMode($mode);
@@ -50,14 +52,41 @@ class GameAdmin extends Page
 
     public function generate(QuestService $quests): void
     {
-        $need = max(1, min($quests->poolDeficit() ?: 3, (int) config('game.generate_batch')));
-        try {
-            $made = $quests->generate($need);
-            Notification::make()->title("Создано квестов: {$made}")->{$made > 0 ? 'success' : 'warning'}()
-                ->body($made > 0 ? null : 'Не получилось: проверьте ключ и модели на странице «ИИ», нужно минимум 3 участника с заполненным профилем.')->send();
-        } catch (\Throwable $e) {
-            Notification::make()->title('Ошибка генерации')->body($e->getMessage())->danger()->send();
+        // уже идёт (в том числе из другой вкладки): второй раз не запускаем, иначе получится куча квестов
+        if (! \Illuminate\Support\Facades\Cache::add(\App\Jobs\GenerateQuestsJob::FLAG, now()->timestamp, now()->addMinutes(10))) {
+            Notification::make()->title('Генерация уже идёт')->body('Дождитесь окончания, результат появится здесь.')->warning()->send();
+
+            return;
         }
+
+        $need = max(1, min($quests->poolDeficit() ?: 3, (int) config('game.generate_batch')));
+        $this->wasGenerating = true;
+        \App\Jobs\GenerateQuestsJob::dispatch($need);
+
+        Notification::make()->title('Генерация запущена')->body('Идёт в фоне, обычно 1–2 минуты. Список обновится сам.')->success()->send();
+        $this->checkGeneration();
+    }
+
+    /** Опрос статуса, пока идёт генерация: по окончании показывает результат. */
+    public function checkGeneration(): void
+    {
+        if (! $this->wasGenerating || \Illuminate\Support\Facades\Cache::has(\App\Jobs\GenerateQuestsJob::FLAG)) {
+            return;
+        }
+        $this->wasGenerating = false;
+        $r = \Illuminate\Support\Facades\Cache::get(\App\Jobs\GenerateQuestsJob::RESULT);
+        if (! $r) {
+            return;
+        }
+        $n = Notification::make()->title("Создано квестов: {$r['made']} из {$r['need']}");
+        if ($r['error']) {
+            $n->body($r['error'])->danger();
+        } elseif ($r['made'] > 0) {
+            $n->success();
+        } else {
+            $n->body('Не получилось: проверьте ключ и модели на странице «ИИ», нужно минимум 3 участника с заполненным профилем.')->warning();
+        }
+        $n->send();
     }
 
     public function rejectQuest(int $id): void
@@ -90,6 +119,8 @@ class GameAdmin extends Page
             'levels'     => collect($game->levels())->map(fn ($def, $n) => [
                 'name' => $def['name']['ru'], 'color' => $def['color'], 'count' => BotUser::approved()->where('level', $n)->count(),
             ])->values(),
+            'generating' => \Illuminate\Support\Facades\Cache::has(\App\Jobs\GenerateQuestsJob::FLAG),
+            'genResult'  => \Illuminate\Support\Facades\Cache::get(\App\Jobs\GenerateQuestsJob::RESULT),
             'recentQuests' => Quest::with('subject')->latest()->limit(20)->get(),
         ];
     }

@@ -30,6 +30,13 @@ final class Lang
     public static function current(): string
     {
         $request = request();
+        // выбор хранится и в сессии: она в Telegram работает (по ней человек вошёл), а кука языка там бывает
+        // старой или секционированной, и браузер присылает не ту. Сессия надёжнее.
+        $fromSession = $request->hasSession() ? (string) $request->session()->get(self::COOKIE) : '';
+        if (in_array($fromSession, self::LOCALES, true)) {
+            return $fromSession;
+        }
+
         $cookie = (string) $request->cookie(self::COOKIE);
 
         if (in_array($cookie, self::LOCALES, true)) {

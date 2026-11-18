@@ -56,7 +56,7 @@ onMounted(loadState);
 
             <!-- я: уровень и очки, всегда на виду -->
             <div class="g-me g-card g-me--compact">
-                <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="44" />
+                <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="36" />
                 <div class="g-me-main">
                     <b>{{ me.name }}</b>
                     <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }} · {{ points(me.xp) }}</div>
@@ -123,7 +123,8 @@ onMounted(loadState);
 .g-center { text-align: center; }
 .g-hr { border: 0; border-top: 1px solid #e3ecf8; margin: 18px 0; }
 .g-sub { margin-top: 14px; padding: 14px; background: #f6faff; border-radius: 16px; }
-.g-me--compact { padding: 14px 16px; }
+.g-me--compact { padding: 10px 14px; margin-bottom: 10px; }
+.g-me--compact .g-xpn { display: none; }
 .g-tabs { display: flex; gap: 2px; margin: 0 0 14px; padding: 4px; background: #eaf3fe; border-radius: 16px; overflow-x: auto; scrollbar-width: none; }
 .g-tabs::-webkit-scrollbar { display: none; }
 .g-tabs button { flex: 1 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; border: 0; border-radius: 12px; padding: 9px 8px; background: none; color: #5b6f8d; font: 700 .78rem Montserrat, system-ui, sans-serif; cursor: pointer; transition: background .2s, color .2s; }
