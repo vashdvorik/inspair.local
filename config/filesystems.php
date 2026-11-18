@@ -38,6 +38,16 @@ return [
             'report' => false,
         ],
 
+        // фото «Возможностей»: лежат прямо в public/img/opportunities, ссылка public/storage не нужна
+        'opportunity_images' => [
+            'driver' => 'local',
+            'root' => public_path('img/opportunities'),
+            'url' => env('APP_URL', 'http://localhost').'/img/opportunities',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

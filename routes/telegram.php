@@ -16,6 +16,37 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 |--------------------------------------------------------------------------
 */
 
+// Кнопки под предупреждением нейросети: решения администратора прямо из Telegram
+$bot->onCallbackQueryData('mod:{action}:{userId}', function (Nutgram $bot, string $action, string $userId) {
+    if (! \App\Services\ModerationNotifier::isAdmin((int) $bot->userId())) {
+        $bot->answerCallbackQuery(text: 'Нет доступа', show_alert: true);
+
+        return;
+    }
+
+    $target = BotUser::find((int) $userId);
+    if (! $target) {
+        $bot->answerCallbackQuery(text: 'Участник не найден');
+
+        return;
+    }
+
+    if ($action === 'ban') {
+        \App\Services\ModerationActions::ban($target, 'Модерация: решение администратора в Telegram');
+        $result = '🙈 Участник скрыт от других (теневой бан). Снять бан можно в админке.';
+    } else {
+        \App\Services\ModerationActions::dismiss($target);
+        $result = '✅ Отмечено: нарушения нет.';
+    }
+
+    $bot->answerCallbackQuery(text: 'Готово');
+    try {
+        $bot->editMessageText(text: ($bot->callbackQuery()?->message?->text ?? '')."\n\n".$result, reply_markup: \SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup::make());
+    } catch (\Throwable) {
+        // сообщение могло устареть: решение всё равно применено
+    }
+});
+
 // Inline button: "С чего начать?" — инструкция для новых участников
 $bot->onCallbackQueryData('start_guide', function (Nutgram $bot) {
     $bot->answerCallbackQuery();

@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
@@ -31,11 +32,11 @@ class BotUserResource extends Resource
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-users';
 
-    protected static ?string $navigationLabel = 'Заявки';
+    protected static ?string $navigationLabel = 'Участники';
 
-    protected static ?string $modelLabel = 'Заявка';
+    protected static ?string $modelLabel = 'Участник';
 
-    protected static ?string $pluralModelLabel = 'Заявки';
+    protected static ?string $pluralModelLabel = 'Участники';
 
     protected static ?int $navigationSort = 1;
 
@@ -102,6 +103,12 @@ class BotUserResource extends Resource
         ]);
     }
 
+    /** Число открытых предупреждений нейросети для значка ⚠ в списке. */
+    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getEloquentQuery()->withCount(['moderationFlags as open_flags_count' => fn ($q) => $q->where('status', 'open')]);
+    }
+
     public static function table(Table $table): Table
     {
         return $table
@@ -113,6 +120,7 @@ class BotUserResource extends Resource
                 Tables\Columns\TextColumn::make('telegram_username')
                     ->label('Username')
                     ->formatStateUsing(fn (?string $state): string => $state ? "@{$state}" : '—')
+                    ->visibleFrom('md')
                     ->searchable(),
                 Tables\Columns\BadgeColumn::make('status')
                     ->label('Статус')
@@ -125,9 +133,16 @@ class BotUserResource extends Resource
                         BotUser::STATUS_BANNED   => 'Теневой бан',
                         default                  => $state,
                     }),
+                Tables\Columns\TextColumn::make('open_flags_count')
+                    ->label('⚠')
+                    ->badge()
+                    ->color('danger')
+                    ->formatStateUsing(fn ($state): string => $state ? '⚠ '.$state : '')
+                    ->tooltip('Нейросеть нашла подозрительное в текстах: раздел «Модерация»'),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->label('Подал заявку')
+                    ->label('Зарегистрирован')
                     ->dateTime('d.m.Y H:i')
+                    ->visibleFrom('lg')
                     ->sortable(),
             ])
             ->defaultSort('created_at', 'desc')
@@ -140,44 +155,48 @@ class BotUserResource extends Resource
                     ]),
             ])
             ->actions([
-                Action::make('ban')
-                    ->label('Теневой бан')
-                    ->icon('heroicon-o-eye-slash')
-                    ->color('danger')
-                    ->visible(fn (BotUser $record): bool => ! $record->isBanned())
-                    ->modalHeading('Теневой бан')
-                    ->modalDescription('Участник продолжит пользоваться кабинетом и игрой как обычно и не получит никаких сообщений, но другие участники перестанут его видеть: в списках, поиске, совпадениях и игре. Это можно отменить в любой момент.')
-                    ->form([
-                        Textarea::make('note')
-                            ->label('Заметка для администраторов (необязательно)')
-                            ->placeholder('Например: спам в профиле.')
-                            ->rows(3)
-                            ->maxLength(1000),
-                    ])
-                    ->action(function (BotUser $record, array $data): void {
-                        $record->update([
-                            'status'          => BotUser::STATUS_BANNED,
-                            'moderation_note' => filled($data['note'] ?? null) ? trim((string) $data['note']) : $record->moderation_note,
-                        ]);
+                ActionGroup::make([
+                    Action::make('ban')
+                        ->label('Теневой бан')
+                        ->icon('heroicon-o-eye-slash')
+                        ->color('danger')
+                        ->visible(fn (BotUser $record): bool => ! $record->isBanned())
+                        ->modalHeading('Теневой бан')
+                        ->modalDescription('Участник продолжит пользоваться кабинетом и игрой как обычно и не получит никаких сообщений, но другие участники перестанут его видеть: в списках, поиске, совпадениях и игре. Это можно отменить в любой момент.')
+                        ->form([
+                            Textarea::make('note')
+                                ->label('Заметка для администраторов (необязательно)')
+                                ->placeholder('Например: спам в профиле.')
+                                ->rows(3)
+                                ->maxLength(1000),
+                        ])
+                        ->action(function (BotUser $record, array $data): void {
+                            $record->update([
+                                'status'          => BotUser::STATUS_BANNED,
+                                'moderation_note' => filled($data['note'] ?? null) ? trim((string) $data['note']) : $record->moderation_note,
+                            ]);
 
-                        Notification::make()->title('Участник скрыт от других')->warning()->send();
-                    }),
+                            Notification::make()->title('Участник скрыт от других')->warning()->send();
+                        }),
 
-                Action::make('unban')
-                    ->label('Снять бан')
-                    ->icon('heroicon-o-eye')
-                    ->color('success')
-                    ->visible(fn (BotUser $record): bool => $record->isBanned())
-                    ->requiresConfirmation()
-                    ->action(function (BotUser $record): void {
-                        $record->update(['status' => BotUser::STATUS_APPROVED]);
+                    Action::make('unban')
+                        ->label('Снять бан')
+                        ->icon('heroicon-o-eye')
+                        ->color('success')
+                        ->visible(fn (BotUser $record): bool => $record->isBanned())
+                        ->requiresConfirmation()
+                        ->action(function (BotUser $record): void {
+                            $record->update(['status' => BotUser::STATUS_APPROVED]);
 
-                        Notification::make()->title('Участник снова виден всем')->success()->send();
-                    }),
+                            Notification::make()->title('Участник снова виден всем')->success()->send();
+                        }),
 
-                ViewAction::make(),
-                EditAction::make(),
-                DeleteAction::make(),
+                    ViewAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
+                    ->icon('heroicon-m-ellipsis-vertical')
+                    ->tooltip('Действия'),
             ])
             ->bulkActions([
                 BulkActionGroup::make([

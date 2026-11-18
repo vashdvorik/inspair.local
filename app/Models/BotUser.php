@@ -105,6 +105,11 @@ class BotUser extends Model
         return ! $this->contacts_closed && filled($this->telegram_username);
     }
 
+    public function moderationFlags(): HasMany
+    {
+        return $this->hasMany(ModerationFlag::class);
+    }
+
     public function facts(): HasMany
     {
         return $this->hasMany(ProfileFact::class)->orderBy('id');

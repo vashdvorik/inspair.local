@@ -10,15 +10,14 @@
 {{-- ══════════════════════════════════════════════════════ --}}
 {{-- ROW 1 — KEY NUMBERS                                     --}}
 {{-- ══════════════════════════════════════════════════════ --}}
-<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 mb-8">
+<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 mb-8">
 
     @php
     $cards = [
-        ['label' => 'Всего заявок',      'value' => $totalMembers,      'color' => 'bg-gray-50   border-gray-200',  'text' => 'text-gray-800'],
+        ['label' => 'Всего участников',      'value' => $totalMembers,      'color' => 'bg-gray-50   border-gray-200',  'text' => 'text-gray-800'],
         ['label' => 'Участников',        'value' => $approvedCount,     'color' => 'bg-green-50  border-green-200', 'text' => 'text-green-700'],
         ['label' => 'Теневой бан',       'value' => $bannedCount,       'color' => 'bg-red-50    border-red-200',   'text' => 'text-red-700'],
         ['label' => 'С профилем',        'value' => $withProfile,       'color' => 'bg-blue-50   border-blue-200',  'text' => 'text-blue-700'],
-        ['label' => 'Возможности',       'value' => $opportunitiesTotal,'color' => 'bg-brand-50 border-brand-200','text' => 'text-brand-700'],
     ];
     @endphp
 
@@ -31,9 +30,9 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════ --}}
-{{-- ROW 2 — PROFILE COMPLETENESS + OPPORTUNITIES BY TYPE   --}}
+{{-- ROW 2 — PROFILE COMPLETENESS   --}}
 {{-- ══════════════════════════════════════════════════════ --}}
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-8">
+<div class="grid grid-cols-1 gap-6 mb-8">
 
     {{-- Profile completeness --}}
     <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
@@ -79,40 +78,6 @@
         </div>
     </div>
 
-    {{-- Opportunities by type --}}
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-        <h2 class="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wider">Возможности по типу</h2>
-
-        @php
-        $typeConfig = [
-            'project' => ['emoji' => '🚀', 'label' => 'Проекты',      'bar' => 'bg-blue-400'],
-            'meeting' => ['emoji' => '🤝', 'label' => 'Встречи',       'bar' => 'bg-emerald-400'],
-            'event'   => ['emoji' => '🎉', 'label' => 'Мероприятия',   'bar' => 'bg-brand-400'],
-        ];
-        $maxOpp = max(array_values($oppByType) ?: [1]);
-        @endphp
-
-        @if($opportunitiesTotal === 0)
-        <p class="text-sm text-gray-400">Возможности ещё не публиковались.</p>
-        @else
-        <div class="space-y-3">
-            @foreach($typeConfig as $key => $cfg)
-            @php $cnt = $oppByType[$key] ?? 0; $pct = $maxOpp > 0 ? round($cnt / $maxOpp * 100) : 0; @endphp
-            <div>
-                <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
-                    <span>{{ $cfg['emoji'] }} {{ $cfg['label'] }}</span>
-                    <span class="font-semibold text-gray-700">{{ $cnt }}</span>
-                </div>
-                <div class="h-2.5 w-full rounded-full bg-gray-100">
-                    <div class="h-2.5 rounded-full {{ $cfg['bar'] }} transition-all"
-                         style="width: {{ $pct }}%"></div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        @endif
-    </div>
-
 </div>
 
 {{-- ══════════════════════════════════════════════════════ --}}
@@ -142,7 +107,7 @@
             <span class="text-[10px] font-semibold text-gray-700 opacity-0 group-hover:opacity-100 transition">{{ $cnt }}</span>
             <div class="w-full rounded-t-md bg-amber-400 transition-all hover:bg-amber-500"
                  style="height: {{ $heightPx }}px"
-                 title="{{ $label }}: {{ $cnt }} заявок"></div>
+                 title="{{ $label }}: {{ $cnt }} регистраций"></div>
             <span class="text-[10px] text-gray-400 leading-none">{{ $label }}</span>
         </div>
         @endforeach
@@ -150,34 +115,9 @@
 </div>
 
 {{-- ══════════════════════════════════════════════════════ --}}
-{{-- ROW 4 — OPP CHART + LATEST MEMBERS                     --}}
+{{-- ROW 4 — LATEST MEMBERS                     --}}
 {{-- ══════════════════════════════════════════════════════ --}}
-<div class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-8">
-
-    {{-- Opportunities chart --}}
-    <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-        <h2 class="mb-4 text-sm font-semibold text-gray-700 uppercase tracking-wider">Публикация возможностей (6 месяцев)</h2>
-
-        @php $maxOppM = max(array_values($oppChart) ?: [1]); @endphp
-
-        <div class="flex items-end gap-2 h-24">
-            @foreach($oppChart as $month => $cnt)
-            @php
-                $hPct  = $maxOppM > 0 ? round($cnt / $maxOppM * 100) : 0;
-                $hPx   = max(4, (int) round($hPct * 80 / 100));
-                [$yr, $mo] = explode('-', $month);
-                $lbl   = ($monthNames[$mo] ?? $mo) . ' ' . substr($yr, 2);
-            @endphp
-            <div class="flex flex-1 flex-col items-center gap-1 group">
-                <span class="text-[10px] font-semibold text-gray-700 opacity-0 group-hover:opacity-100 transition">{{ $cnt }}</span>
-                <div class="w-full rounded-t-md bg-brand-400 transition-all hover:bg-brand-500"
-                     style="height: {{ $hPx }}px"
-                     title="{{ $lbl }}: {{ $cnt }}"></div>
-                <span class="text-[10px] text-gray-400 leading-none">{{ $lbl }}</span>
-            </div>
-            @endforeach
-        </div>
-    </div>
+<div class="grid grid-cols-1 gap-6 mb-8">
 
     {{-- Latest approved members --}}
     <div class="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
@@ -195,7 +135,7 @@
                 <div class="min-w-0 flex-1">
                     <p class="text-sm font-semibold text-gray-800 truncate">{{ $member->full_name ?? '—' }}</p>
                     @if($member->telegram_username)
-                    <p class="text-xs text-gray-400">@{{ $member->telegram_username }}</p>
+                    <p class="text-xs text-gray-400">{{ '@'.$member->telegram_username }}</p>
                     @endif
                 </div>
                 @if($member->approved_at)
@@ -235,10 +175,6 @@
             ['Активно в сообществе',           $approvedCount . ' чел.'],
             ['Заполнили профиль (описание)',               $withProfile . ' чел. (' . $profilePct . '%)'],
             ['AI-эмбеддинг вычислен (профиль в системе AI)', $withEmbedding . ' чел. (' . $embeddingPct . '%)'],
-            ['Опубликовано возможностей (проекты/встречи/ивенты)', $opportunitiesTotal],
-            ['— из них Проектов',                         $oppByType['project'] ?? 0],
-            ['— из них Встреч',                           $oppByType['meeting'] ?? 0],
-            ['— из них Мероприятий',                      $oppByType['event']   ?? 0],
         ];
         @endphp
 

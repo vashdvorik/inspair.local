@@ -19,9 +19,9 @@ class GameAdmin extends Page
 
     protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-puzzle-piece';
 
-    protected static ?string $navigationLabel = 'Игра «Нити»';
+    protected static ?string $navigationLabel = 'Игра «Угадай, кто это»';
 
-    protected static ?string $title = 'Игра «Нити»';
+    protected static ?string $title = 'Игра «Угадай, кто это»';
 
     protected static ?int $navigationSort = 4;
 
@@ -45,7 +45,7 @@ class GameAdmin extends Page
         }
 
         $game->wipeData();
-        Notification::make()->title('Данные игры стёрты: очки, факты, нити и квесты удалены')->success()->send();
+        Notification::make()->title('Данные игры стёрты: очки, факты, связи и квесты удалены')->success()->send();
     }
 
     public function generate(QuestService $quests): void

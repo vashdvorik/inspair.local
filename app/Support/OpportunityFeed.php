@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Support;
 
+use App\Models\OpportunityPost;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 /**
  * Одна лента «Возможностей» (новости о международных поездках) для публичного сайта и для кабинета.
- * Записи лежат в resources/data/opportunities.json (их создаёт tools/instagram-post.py).
+ * Записи лежат в базе (таблица opportunity_posts), администратор добавляет их в админке: раздел «Возможности».
  */
 final class OpportunityFeed
 {
@@ -42,11 +44,43 @@ final class OpportunityFeed
         return PublicUi::content('opportunities')['title'];
     }
 
-    /** @return list<array<string, mixed>> */
+    private const CACHE_KEY = 'opportunity_feed';
+
+    /** Сбросить кэш ленты (вызывается при любой правке возможностей в админке). */
+    public static function forget(): void
+    {
+        Cache::forget(self::CACHE_KEY);
+    }
+
+    /**
+     * Опубликованные возможности из базы. Лента кэшируется: публичные страницы не ходят в базу на каждый запрос.
+     *
+     * @return list<array<string, mixed>>
+     */
     private static function raw(): array
     {
+        $items = Cache::rememberForever(self::CACHE_KEY, fn () => OpportunityPost::query()->where('published', true)->get()->map(function (OpportunityPost $p): array {
+            // пропущенный язык заменяется английским: на сайте не бывает пустых мест
+            $t = OpportunityPost::fillMissingLanguages(['country' => $p->country, 'text' => $p->text, 'detail' => $p->detail ?? []]);
+
+            return [
+                'slug'     => $p->slug,
+                'name'     => $p->name,
+                'flag'     => $p->flag,
+                'country'  => $t['country'],
+                'start'    => $p->start_date?->toDateString(),
+                'end'      => $p->end_date?->toDateString(),
+                'deadline' => $p->deadline?->toDateString(),
+                'date'     => $p->posted_on?->toDateString(),
+                'text'     => $t['text'],
+                'detail'   => $t['detail'],
+                'image'    => $p->image,
+                'url'      => $p->source_url,
+            ];
+        })->all());
+
         return array_values(array_filter(
-            PublicUi::content('opportunities')['items'],
+            $items,
             fn (array $i) => ! empty($i['slug']) && ! empty($i['name']) && ! empty($i['image']) && ! empty($i['text']),
         ));
     }

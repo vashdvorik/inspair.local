@@ -8,6 +8,7 @@ use App\Filament\Resources\BroadcastResource\Pages;
 use App\Models\Broadcast;
 use App\Services\BroadcastMessenger;
 use Filament\Actions\Action;
+use Filament\Actions\ActionGroup;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
@@ -52,7 +53,7 @@ class BroadcastResource extends Resource
 
     public static function form(Schema $schema): Schema
     {
-        return $schema->components([
+        return $schema->columns(1)->components([
             Section::make('Сообщение')->schema([
                 TextInput::make('title')
                     ->label('Название')
@@ -147,56 +148,60 @@ class BroadcastResource extends Resource
                 Tables\Columns\TextColumn::make('sent_at')->label('Отправлена')->dateTime('d.m.Y H:i')->placeholder('—'),
             ])
             ->actions([
-                Action::make('test')
-                    ->label('Тест себе')
-                    ->icon('heroicon-o-paper-airplane')
-                    ->color('gray')
-                    ->visible(fn (Broadcast $record): bool => $record->isEditable())
-                    ->modalHeading('Пробная отправка')
-                    ->modalDescription('Сообщение придёт только на этот Telegram ID. Свой ID можно узнать у бота @userinfobot. Человек должен хотя бы раз нажать /start в нашем боте.')
-                    ->form([TextInput::make('telegram_id')->label('Telegram ID')->numeric()->required()])
-                    ->action(function (Broadcast $record, array $data): void {
-                        try {
-                            app(BroadcastMessenger::class)->send((int) $data['telegram_id'], $record);
-                            Notification::make()->title('Тест отправлен')->success()->send();
-                        } catch (\Throwable $e) {
-                            Notification::make()->title('Не удалось отправить')->body(mb_substr($e->getMessage(), 0, 300))->danger()->send();
-                        }
-                    }),
+                ActionGroup::make([
+                    Action::make('test')
+                        ->label('Тест себе')
+                        ->icon('heroicon-o-paper-airplane')
+                        ->color('gray')
+                        ->visible(fn (Broadcast $record): bool => $record->isEditable())
+                        ->modalHeading('Пробная отправка')
+                        ->modalDescription('Сообщение придёт только на этот Telegram ID. Свой ID можно узнать у бота @userinfobot. Человек должен хотя бы раз нажать /start в нашем боте.')
+                        ->form([TextInput::make('telegram_id')->label('Telegram ID')->numeric()->required()])
+                        ->action(function (Broadcast $record, array $data): void {
+                            try {
+                                app(BroadcastMessenger::class)->send((int) $data['telegram_id'], $record);
+                                Notification::make()->title('Тест отправлен')->success()->send();
+                            } catch (\Throwable $e) {
+                                Notification::make()->title('Не удалось отправить')->body(mb_substr($e->getMessage(), 0, 300))->danger()->send();
+                            }
+                        }),
 
-                Action::make('send')
-                    ->label('Отправить')
-                    ->icon('heroicon-o-rocket-launch')
-                    ->color('success')
-                    ->visible(fn (Broadcast $record): bool => $record->status === Broadcast::DRAFT)
-                    ->requiresConfirmation()
-                    ->modalHeading('Отправить рассылку?')
-                    ->modalDescription(fn (Broadcast $record): string => 'Получат: '.$record->recipients()->count().' чел. '.($record->scheduled_at && $record->scheduled_at->isFuture() ? 'Уйдёт '.$record->scheduled_at->format('d.m.Y H:i').'.' : 'Отправка начнётся в течение минуты.').' Отменить после начала отправки нельзя.')
-                    ->action(function (Broadcast $record): void {
-                        $record->update(['status' => Broadcast::SCHEDULED]);
-                        Notification::make()->title('Рассылка поставлена в очередь')->success()->send();
-                    }),
+                    Action::make('send')
+                        ->label('Отправить')
+                        ->icon('heroicon-o-rocket-launch')
+                        ->color('success')
+                        ->visible(fn (Broadcast $record): bool => $record->status === Broadcast::DRAFT)
+                        ->requiresConfirmation()
+                        ->modalHeading('Отправить рассылку?')
+                        ->modalDescription(fn (Broadcast $record): string => 'Получат: '.$record->recipients()->count().' чел. '.($record->scheduled_at && $record->scheduled_at->isFuture() ? 'Уйдёт '.$record->scheduled_at->format('d.m.Y H:i').'.' : 'Отправка начнётся в течение минуты.').' Отменить после начала отправки нельзя.')
+                        ->action(function (Broadcast $record): void {
+                            $record->update(['status' => Broadcast::SCHEDULED]);
+                            Notification::make()->title('Рассылка поставлена в очередь')->success()->send();
+                        }),
 
-                Action::make('unschedule')
-                    ->label('Вернуть в черновик')
-                    ->icon('heroicon-o-arrow-uturn-left')
-                    ->color('warning')
-                    ->visible(fn (Broadcast $record): bool => $record->status === Broadcast::SCHEDULED)
-                    ->requiresConfirmation()
-                    ->action(fn (Broadcast $record) => $record->update(['status' => Broadcast::DRAFT])),
+                    Action::make('unschedule')
+                        ->label('Вернуть в черновик')
+                        ->icon('heroicon-o-arrow-uturn-left')
+                        ->color('warning')
+                        ->visible(fn (Broadcast $record): bool => $record->status === Broadcast::SCHEDULED)
+                        ->requiresConfirmation()
+                        ->action(fn (Broadcast $record) => $record->update(['status' => Broadcast::DRAFT])),
 
-                Action::make('duplicate')
-                    ->label('Копия')
-                    ->icon('heroicon-o-document-duplicate')
-                    ->color('gray')
-                    ->action(function (Broadcast $record) {
-                        $copy = Broadcast::create($record->only(['body', 'image_path', 'buttons', 'audience']) + ['title' => $record->title.' (копия)', 'status' => Broadcast::DRAFT]);
+                    Action::make('duplicate')
+                        ->label('Копия')
+                        ->icon('heroicon-o-document-duplicate')
+                        ->color('gray')
+                        ->action(function (Broadcast $record) {
+                            $copy = Broadcast::create($record->only(['body', 'image_path', 'buttons', 'audience']) + ['title' => $record->title.' (копия)', 'status' => Broadcast::DRAFT]);
 
-                        return redirect(static::getUrl('edit', ['record' => $copy]));
-                    }),
+                            return redirect(static::getUrl('edit', ['record' => $copy]));
+                        }),
 
-                EditAction::make(),
-                DeleteAction::make(),
+                    EditAction::make(),
+                    DeleteAction::make(),
+                ])
+                    ->icon('heroicon-m-ellipsis-vertical')
+                    ->tooltip('Действия'),
             ]);
     }
 

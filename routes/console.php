@@ -15,3 +15,6 @@ Artisan::command('inspire', function () {
 
 // Рассылки, созданные администратором в админке: отправляются, когда придёт время
 \Illuminate\Support\Facades\Schedule::command('broadcasts:send')->everyMinute()->withoutOverlapping();
+
+// Нейросеть проверяет тексты участников и отмечает подозрительное для администратора
+\Illuminate\Support\Facades\Schedule::command('moderation:scan')->everyFiveMinutes()->withoutOverlapping();
