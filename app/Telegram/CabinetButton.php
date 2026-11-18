@@ -18,7 +18,10 @@ final class CabinetButton
 {
     public static function url(): string
     {
-        return url('/app/account/login');
+        // Адрес берётся из APP_URL, а не из запроса: Mini App принимает только https, а за прокси запрос может выглядеть как http
+        $base = rtrim((string) config('app.url'), '/');
+
+        return ($base !== '' ? $base : url('/')).'/app/account/login';
     }
 
     public static function button(): InlineKeyboardButton

@@ -90,7 +90,7 @@
                     <button type="button" onclick="setLang('{{ $l }}')" id="btn-{{ $l }}" class="lang-btn">{{ strtoupper($l) }}</button>
                 @endforeach
             </div>
-            <a href="{{ route('account.login') }}" class="i-btn i-btn--sm hidden sm:inline-flex">{!! $tg !!}<span>{!! $t('Войти в кабинет', 'Sign in', 'Intră în cont') !!}</span></a>
+            <a href="{{ route('account.login') }}" target="_blank" rel="noopener" class="i-btn i-btn--sm hidden sm:inline-flex">{!! $tg !!}<span>{!! $t('Войти в кабинет', 'Sign in', 'Intră în cont') !!}</span></a>
             <button id="mobile-menu-btn" type="button" class="lg:hidden p-2 rounded-xl text-navy-800 hover:bg-brand-50 transition" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
                 <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -111,7 +111,7 @@
                     <a href="{{ route($m['route']) }}" class="mobile-nav-link px-4 py-3 rounded-xl text-sm font-bold transition {{ $isActive($m) ? 'bg-brand-100 text-navy-800' : 'text-gray-700 hover:bg-brand-50 hover:text-brand-700' }}">{!! $t(...$m['label']) !!}</a>
                 @endif
             @endforeach
-            <a href="{{ route('account.login') }}" class="i-btn i-btn--block mt-3">{!! $tg !!}<span>{!! $t('Войти в кабинет', 'Sign in', 'Intră în cont') !!}</span></a>
+            <a href="{{ route('account.login') }}" target="_blank" rel="noopener" class="i-btn i-btn--block mt-3">{!! $tg !!}<span>{!! $t('Войти в кабинет', 'Sign in', 'Intră în cont') !!}</span></a>
         </div>
     </div>
 </nav>

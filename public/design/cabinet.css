@@ -78,7 +78,6 @@
 .login-steps li { display: flex; align-items: flex-start; gap: 14px; font-size: .92rem; line-height: 1.5; color: var(--text); }
 .step-dot { flex: none; width: 30px; height: 30px; margin-top: -2px; border-radius: 50%; display: grid; place-items: center; font-size: .8rem; font-weight: 800; color: #fff; background: var(--grad-primary); box-shadow: var(--sh-primary); }
 .step-dot--2 { background: linear-gradient(135deg, var(--orange), var(--yellow)); box-shadow: 0 8px 20px rgba(255,108,11,.25); }
-.login-note { text-wrap: balance; margin: 18px 0 0; text-align: center; font-size: .8rem; color: var(--subtle); }
 .login-back { margin: 26px 0 0; text-align: center; font-size: .9rem; }
 .login-back a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: none; color: var(--muted); }
 .login-back a:hover { color: var(--blue-700); }
