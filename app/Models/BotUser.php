@@ -75,6 +75,7 @@ class BotUser extends Model
             \Illuminate\Support\Facades\DB::table('connections')->where('user_id', $user->id)->orWhere('target_id', $user->id)->delete();
             \Illuminate\Support\Facades\DB::table('xp_events')->where('bot_user_id', $user->id)->delete();
             \Illuminate\Support\Facades\DB::table('profile_facts')->where('bot_user_id', $user->id)->delete();
+            \Illuminate\Support\Facades\DB::table('moderation_flags')->where('bot_user_id', $user->id)->delete();
         });
     }
 
