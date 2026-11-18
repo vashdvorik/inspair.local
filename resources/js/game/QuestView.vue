@@ -108,16 +108,16 @@ onBeforeUnmount(() => clearInterval(timer));
         </div>
 
         <div v-else>
-            <div class="g-eyebrow">{{ t('game_title') }}</div>
             <h2 class="g-q">{{ quest.question }}</h2>
-            <p class="g-muted g-src">{{ t('ai_note') }}</p>
 
             <button v-for="o in quest.options" :key="o.id" class="g-opt"
                     :class="{ ok: result && o.id === result.correct_user_id, bad: result && chosen === o.id && !result.correct }"
                     :disabled="!!result || busy" @click="pick(o)">
-                <Avatar :person="o" :size="46" />
+                <Avatar :person="o" :size="38" />
                 <span><b>{{ o.name }}</b></span>
             </button>
+
+            <p v-if="!result" class="g-muted g-src">{{ t('ai_note') }}</p>
 
             <div v-if="result" class="g-res" :class="result.correct ? 'good' : 'miss'">
                 <b v-if="result.correct">{{ t('right', { name: result.subject?.name, points: points(result.gained) }) }}</b>
