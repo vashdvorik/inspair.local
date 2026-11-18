@@ -1,6 +1,6 @@
 <script setup>
 import { points, t } from './api';
-defineProps({ levels: Array, me: Object, checklist: Array });
+defineProps({ levels: Array, me: Object });
 </script>
 
 <template>
@@ -16,12 +16,5 @@ defineProps({ levels: Array, me: Object, checklist: Array });
             </div>
         </div>
 
-        <div class="g-eyebrow" style="margin-top:18px">{{ t('quick') }}</div>
-        <p class="g-muted" style="margin-bottom:6px">{{ t('quick_text') }}</p>
-        <div class="g-check" v-for="c in checklist" :key="c.key" :class="{ done: c.done }">
-            <span class="g-tick">{{ c.done ? '✓' : '' }}</span>
-            <span>{{ c.label }}</span>
-            <b>+{{ c.points }}</b>
-        </div>
     </div>
 </template>

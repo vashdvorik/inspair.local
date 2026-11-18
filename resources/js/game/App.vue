@@ -8,6 +8,7 @@ import LevelsView from './LevelsView.vue';
 import WaitingView from './WaitingView.vue';
 import RulesView from './RulesView.vue';
 import FactsView from './FactsView.vue';
+import ChecklistView from './ChecklistView.vue';
 
 const props = defineProps({ api: Object, locked: String });
 
@@ -20,20 +21,25 @@ const error = ref('');
 
 const lockedLabel = { people: t('section_people'), opportunities: t('section_opportunities') };
 const playable = computed(() => state.value && (state.value.launched || state.value.staff));
+const factsCount = computed(() => (state.value?.facts || []).length);
+const factsStart = 3;
+const factsDone = computed(() => factsCount.value >= factsStart);
 
 async function loadState() {
     try {
         state.value = await get(props.api.state);
         me.value = state.value.me;
+        // первый заход без фактов: сначала расскажите о себе, из фактов делаются вопросы для всех
+        tab.value = playable.value && factsDone.value ? 'quest' : 'facts';
     } catch (e) {
-        error.value = e.message;
+        error.value = e.status === 404 ? t('game_closed') : e.message;
     }
 }
 
 function onMe(m) { if (m) me.value = m; }
+function onNetworkChanged() { netKey.value += 1; }
 // после сохранения фактов сервер возвращает обновлённое состояние: очки, чек-лист и список фактов
 function onFactsSaved(s) { state.value = s; me.value = s.me; }
-function onNetworkChanged() { netKey.value += 1; }
 
 onMounted(loadState);
 </script>
@@ -48,53 +54,54 @@ onMounted(loadState);
                 {{ t('locked', { section: lockedLabel[locked] || locked }) }}
             </div>
 
-            <RulesView :rules="state.rules" :levels="state.levels" />
-
-            <div v-if="!playable" class="g-me g-card">
-                <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="52" />
+            <!-- я: уровень и очки, всегда на виду -->
+            <div class="g-me g-card g-me--compact">
+                <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="44" />
                 <div class="g-me-main">
                     <b>{{ me.name }}</b>
-                    <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }}</div>
-                    <div class="g-xpn"><span>{{ points(me.xp) }}</span></div>
+                    <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }} · {{ points(me.xp) }}</div>
+                    <div v-if="playable" class="g-xp"><div :style="{ width: me.percent + '%', background: me.level.color }"></div></div>
+                    <div v-if="playable && me.next" class="g-xpn"><span>{{ t('to_level', { name: me.next.name, n: me.next.from - me.xp }) }}</span></div>
                 </div>
             </div>
-            <WaitingView v-if="!playable" :waiting="state.waiting" :checklist="state.checklist" />
-            <div v-if="!playable" class="g-card">
-                <FactsView :facts="state.facts" :api="api" :max="state.rules.max_facts" @saved="onFactsSaved" />
+
+            <!-- игра ещё не запущена: сколько людей нужно для старта -->
+            <WaitingView v-if="!playable" :waiting="state.waiting" />
+
+            <!-- разделы -->
+            <nav class="g-tabs" role="tablist">
+                <button v-if="playable" role="tab" :class="{ on: tab === 'quest' }" @click="tab = 'quest'">{{ t('tab_play') }}</button>
+                <button role="tab" :class="{ on: tab === 'facts' }" @click="tab = 'facts'">
+                    {{ t('tab_facts') }}<i v-if="!factsDone" class="g-badge">{{ factsCount }}/{{ factsStart }}</i>
+                </button>
+                <button v-if="playable" role="tab" :class="{ on: tab === 'people' }" @click="tab = 'people'">{{ t('tab_people') }}</button>
+                <button role="tab" :class="{ on: tab === 'levels' }" @click="tab = 'levels'">{{ t('tab_levels') }}</button>
+            </nav>
+
+            <!-- играть: один вопрос на весь экран -->
+            <div v-show="tab === 'quest'" v-if="playable" class="g-card">
+                <QuestView :api="api" :facts-done="factsDone" @me="onMe" @levelup="levelUp = $event" @network-changed="onNetworkChanged" @goto="tab = $event" />
             </div>
 
-            <template v-else>
-                <!-- 1. я: уровень и очки -->
-                <div class="g-me g-card">
-                    <Avatar :person="{ name: me.name, avatar: me.avatar, level: me.level }" :size="52" />
-                    <div class="g-me-main">
-                        <b>{{ me.name }}</b>
-                        <div class="g-lvl" :style="{ color: me.level.color }"><i :style="{ background: me.level.color }"></i>{{ me.level.name }}</div>
-                        <div class="g-xp"><div :style="{ width: me.percent + '%', background: me.level.color }"></div></div>
-                        <div class="g-xpn"><span>{{ points(me.xp) }}</span><span v-if="me.next">{{ t('to_level', { name: me.next.name, n: me.next.from - me.xp }) }}</span><span v-else>{{ t('max_level') }}</span></div>
-                    </div>
-                </div>
+            <!-- мои факты и быстрые очки -->
+            <div v-if="tab === 'facts'" class="g-card">
+                <FactsView :facts="state.facts" :api="api" :max="state.rules.max_facts" :start="factsStart" @saved="onFactsSaved" />
+                <button v-if="playable && factsDone" class="g-btn g-btn--ghost g-btn--sm" style="margin-top:14px" @click="tab = 'quest'">{{ t('go_play') }}</button>
+                <hr class="g-hr">
+                <ChecklistView :checklist="state.checklist" :edit-url="state.edit_url" />
+            </div>
 
-                <!-- 2. вопрос -->
-                <div class="g-card">
-                    <QuestView :api="api" @me="onMe" @levelup="levelUp = $event" @network-changed="onNetworkChanged" />
-                </div>
+            <!-- кого я уже узнал(а) -->
+            <div v-if="playable" v-show="tab === 'people'" class="g-card">
+                <NetworkView :api="api" :refresh-key="netKey" @me="onMe" />
+            </div>
 
-                <!-- 3. кого я уже узнал(а) -->
-                <div class="g-card">
-                    <NetworkView :api="api" :refresh-key="netKey" @me="onMe" />
-                </div>
-
-                <!-- 4. факты о себе: правятся здесь же -->
-                <div class="g-card">
-                    <FactsView :facts="state.facts" :api="api" :max="state.rules.max_facts" @saved="onFactsSaved" />
-                </div>
-
-                <!-- 5. уровни и как набрать очки -->
-                <div class="g-card">
-                    <LevelsView :levels="state.levels" :me="me" :checklist="state.checklist" />
-                </div>
-            </template>
+            <!-- уровни и правила -->
+            <div v-if="tab === 'levels'" class="g-card">
+                <LevelsView :levels="state.levels" :me="me" />
+                <hr class="g-hr">
+                <RulesView :rules="state.rules" :levels="state.levels" />
+            </div>
         </template>
         <div v-if="levelUp" class="g-modal" @click.self="levelUp = null">
             <div class="g-modal-box">
@@ -114,6 +121,14 @@ onMounted(loadState);
 .g-muted { color: #5b6f8d; font-size: .84rem; line-height: 1.5; margin: 0; }
 .g-card { background: #fff; border: 1px solid #e3ecf8; border-radius: 22px; padding: 20px; margin-bottom: 14px; box-shadow: 0 8px 24px rgba(0, 56, 122, .06); }
 .g-center { text-align: center; }
+.g-hr { border: 0; border-top: 1px solid #e3ecf8; margin: 18px 0; }
+.g-sub { margin-top: 14px; padding: 14px; background: #f6faff; border-radius: 16px; }
+.g-me--compact { padding: 14px 16px; }
+.g-tabs { display: flex; gap: 2px; margin: 0 0 14px; padding: 4px; background: #eaf3fe; border-radius: 16px; overflow-x: auto; scrollbar-width: none; }
+.g-tabs::-webkit-scrollbar { display: none; }
+.g-tabs button { flex: 1 1 auto; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; border: 0; border-radius: 12px; padding: 9px 8px; background: none; color: #5b6f8d; font: 700 .78rem Montserrat, system-ui, sans-serif; cursor: pointer; transition: background .2s, color .2s; }
+.g-tabs button.on { background: #fff; color: #006de0; box-shadow: 0 2px 8px rgba(0, 56, 122, .1); }
+.g-badge { font-style: normal; padding: 1px 7px; border-radius: 99px; background: #ff6c0b; color: #fff; font-size: .68rem; }
 .g-facts-form { display: grid; gap: 8px; }
 .g-input { width: 100%; border: 1.5px solid #e3ecf8; border-radius: 14px; background: #f6faff; padding: 11px 14px; font: 500 .86rem Montserrat, system-ui, sans-serif; color: #10264a; outline: none; transition: border-color .2s, background .2s; }
 .g-input:focus { border-color: #019eff; background: #fff; box-shadow: 0 0 0 3px rgba(1, 158, 255, .15); }
@@ -171,7 +186,7 @@ onMounted(loadState);
 .g-lock { font-size: .78rem; color: #5b6f8d; margin: 4px 0; }
 
 .g-ladder { display: grid; gap: 6px; margin-top: 10px; }
-.g-step { display: flex; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 14px; border: 1px solid #e3ecf8; }
+.g-step { display: flex; gap: 12px; align-items: center; padding: 8px 12px; border-radius: 14px; background: #f6faff; }
 .g-step.cur { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); }
 .g-step ul { margin: 4px 0 0 16px; font-size: .78rem; color: #5b6f8d; }
 .g-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--c); flex: none; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: .8rem; }

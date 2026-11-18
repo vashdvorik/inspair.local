@@ -6,22 +6,12 @@ import { points, t } from './api';
 const props = defineProps({ rules: Object, levels: Array });
 const levelNames = computed(() => (props.levels || []).map((l) => l.name).join(', '));
 
-const KEY = 'inspire_game_rules_hidden';
-const open = ref(true);
-try { open.value = localStorage.getItem(KEY) !== '1'; } catch (e) { /* без хранилища правила просто видны */ }
-
-function toggle() {
-    open.value = !open.value;
-    try { localStorage.setItem(KEY, open.value ? '0' : '1'); } catch (e) { /* не критично */ }
-}
+const open = ref(true);   // правила живут на своей вкладке и всегда раскрыты
 </script>
 
 <template>
-    <div class="g-card g-rules">
-        <button class="g-rules-head" type="button" :aria-expanded="open" @click="toggle">
-            <span class="g-eyebrow">{{ t('how_to_play') }}</span>
-            <span class="g-rules-toggle">{{ open ? t('hide') : t('show_rules') }}</span>
-        </button>
+    <div class="g-rules">
+        <div class="g-eyebrow">{{ t('how_to_play') }}</div>
 
         <ol v-if="open" class="g-rules-list">
             <li>

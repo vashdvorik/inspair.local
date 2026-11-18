@@ -3,10 +3,10 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { get, post, points, t } from './api';
 import Avatar from './Avatar.vue';
 
-const props = defineProps({ api: Object });
-const emit = defineEmits(['me', 'levelup', 'network-changed']);
+const props = defineProps({ api: Object, factsDone: Boolean });
+const emit = defineEmits(['me', 'levelup', 'network-changed', 'goto']);
 
-const state = ref('loading'); // loading | ok | empty | wait | error
+const state = ref('loading'); // loading | ok | empty | wait | closed | error
 const quest = ref(null);
 const result = ref(null);
 const chosen = ref(null);
@@ -46,7 +46,8 @@ async function load() {
         }
     } catch (e) {
         error.value = e.message;
-        state.value = 'error';
+        // 404: игру выключили, пока страница была открыта; повторять запрос бессмысленно
+        state.value = e.status === 404 ? 'closed' : 'error';
     }
 }
 
@@ -74,6 +75,8 @@ async function pick(option) {
     }
 }
 
+function reload() { location.reload(); }
+
 onMounted(load);
 onBeforeUnmount(() => clearInterval(timer));
 </script>
@@ -82,18 +85,24 @@ onBeforeUnmount(() => clearInterval(timer));
     <div>
         <div v-if="state === 'loading'" class="g-muted">{{ t('loading_quest') }}</div>
 
-        <div v-else-if="state === 'empty'" class="g-card g-center">
+        <div v-else-if="state === 'empty'" class="g-center">
             <div class="g-big-emoji">🌱</div>
             <h3>{{ t('empty_title') }}</h3>
             <p class="g-muted">{{ t('empty_text') }}</p>
+            <div class="g-row" style="justify-content:center"><button class="g-btn" @click="emit('goto', 'facts')">{{ factsDone ? t('empty_more_facts') : t('empty_cta') }}</button></div>
         </div>
 
-        <div v-else-if="state === 'wait'" class="g-card g-center">
+        <div v-else-if="state === 'wait'" class="g-center">
             <h3>{{ t('rest', { n: wait }) }}</h3>
             <p class="g-muted">{{ t('rest_text') }}</p>
         </div>
 
-        <div v-else-if="state === 'error'" class="g-card g-center">
+        <div v-else-if="state === 'closed'" class="g-center">
+            <p class="g-muted">{{ t('game_closed') }}</p>
+            <div class="g-row" style="justify-content:center"><button class="g-btn g-btn--ghost" @click="reload">{{ t('reload') }}</button></div>
+        </div>
+
+        <div v-else-if="state === 'error'" class="g-center">
             <p class="g-muted">{{ error || t('load_failed') }}</p>
             <button class="g-btn" @click="load">{{ t('retry') }}</button>
         </div>

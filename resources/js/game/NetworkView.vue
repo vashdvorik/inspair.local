@@ -40,7 +40,7 @@ watch(() => props.refreshKey, load);
             </button>
         </div>
 
-        <div v-if="selected" class="g-card" style="margin-top:14px">
+        <div v-if="selected" class="g-sub">
             <div class="g-person">
                 <Avatar :person="selected" :size="56" />
                 <div>
