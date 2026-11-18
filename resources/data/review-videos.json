@@ -1,0 +1,130 @@
+{
+  "_note": "Видео-отзывы (YouTube Shorts) для ленты на главной. Порядок в ленте = порядок здесь. Имя известно только у первых пяти роликов: у остальных в названии на YouTube его нет. Латиница в en/ro написана по транскрипции, перед публикацией сверить.",
+  "title": {
+    "ru": "Видео-отзывы",
+    "en": "Video reviews",
+    "ro": "Video-recenzii"
+  },
+  "items": [
+    {
+      "id": "ZqY48tYQrtw",
+      "name": {
+        "ru": "Елена Герчу",
+        "en": "Elena Gherciu",
+        "ro": "Elena Gherciu"
+      }
+    },
+    {
+      "id": "5uP7EMwWUFA",
+      "name": {
+        "ru": "Диана Шурик",
+        "en": "Diana Shurik",
+        "ro": "Diana Șurik"
+      }
+    },
+    {
+      "id": "-QUkJqSIhhM",
+      "name": {
+        "ru": "Константин Узун",
+        "en": "Constantin Uzun",
+        "ro": "Constantin Uzun"
+      }
+    },
+    {
+      "id": "ubt7bgXbXmA",
+      "name": {
+        "ru": "Артём Сиротенко",
+        "en": "Artem Sirotenko",
+        "ro": "Artiom Sirotenco"
+      }
+    },
+    {
+      "id": "CKU21DayPHw",
+      "name": {
+        "ru": "Дилара Теджел",
+        "en": "Dilara Tejel",
+        "ro": "Dilara Tejel"
+      }
+    },
+    {
+      "id": "zsn_QtmW7Dc",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "YDJy2yXnemc",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "VPoC87jIBOQ",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "FwOzAjQrObA",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "Sj_kMh_SEWI",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "nFr7Y9D08_g",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "4NjApI_Bsr4",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "amBKwOL40WE",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "lUJKDeVvUTc",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    },
+    {
+      "id": "Xt2OCjEDtq0",
+      "name": {
+        "ru": "Участник Academy",
+        "en": "Academy participant",
+        "ro": "Participant Academy"
+      }
+    }
+  ]
+}

@@ -1145,19 +1145,581 @@
   },
   "hackathon": {
     "title": {
-      "en": "Hackathon 2026",
-      "ru": "Хакатон 2026",
-      "ro": "Hackathon 2026"
+      "ru": "Хакатон INSPIRE 2026",
+      "en": "INSPIRE Hackathon 2026",
+      "ro": "Hackathon INSPIRE 2026"
     },
-    "lead": {
-      "en": "We are working on the INSPIRE Hackathon 2026. Information will appear here very soon.",
-      "ru": "Мы работаем над хакатоном INSPIRE 2026. Информация скоро появится на этой странице.",
-      "ro": "Lucrăm la Hackathonul INSPIRE 2026. Informațiile vor apărea aici în curând."
+    "badge": {
+      "ru": "Мероприятие",
+      "en": "Event",
+      "ro": "Eveniment"
     },
-    "note": {
-      "en": "Join the network in Telegram to be the first to know about dates, format, and registration.",
-      "ru": "Присоединяйтесь к сети в Telegram, чтобы первыми узнать о датах, формате и регистрации.",
-      "ro": "Alătură-te rețelei în Telegram ca să afli primul despre date, format și înscriere."
+    "tagline": {
+      "ru": "Идеи, которые объединяют",
+      "en": "Ideas that unite",
+      "ro": "Idei care unesc"
+    },
+    "description": {
+      "ru": "Хакатон INSPIRE 2026: 20–21 ноября 2026, GreenTech Hub, Кишинёв. Межрегиональные студенческие команды, мини-гранты по 2 500 евро.",
+      "en": "INSPIRE Hackathon 2026: 20–21 November 2026 at the Green Tech Hub, Chișinău. Interregional student teams, mini-grants of €2,500 each.",
+      "ro": "Hackathon INSPIRE 2026: 20–21 noiembrie 2026 la Green Tech Hub, Chișinău. Echipe studențești interregionale, mini-granturi de câte 2 500 de euro."
+    },
+    "facts": [
+      {
+        "k": {
+          "ru": "Даты",
+          "en": "Dates",
+          "ro": "Date"
+        },
+        "v": {
+          "ru": "20–21 ноября 2026",
+          "en": "20–21 November 2026",
+          "ro": "20–21 noiembrie 2026"
+        }
+      },
+      {
+        "k": {
+          "ru": "Место",
+          "en": "Venue",
+          "ro": "Locul"
+        },
+        "v": {
+          "ru": "Green Tech Hub",
+          "en": "Green Tech Hub",
+          "ro": "Green Tech Hub"
+        },
+        "s": {
+          "ru": "Технический университет Молдовы, бул. Дачия, 41, Кишинёв",
+          "en": "Technical University of Moldova, 41 Dacia Blvd, Chișinău",
+          "ro": "Universitatea Tehnică a Moldovei, bd. Dacia 41, Chișinău"
+        }
+      },
+      {
+        "k": {
+          "ru": "Участники",
+          "en": "Participants",
+          "ro": "Participanți"
+        },
+        "v": {
+          "ru": "30 человек",
+          "en": "30 people",
+          "ro": "30 de persoane"
+        },
+        "s": {
+          "ru": "Студенты, магистранты и молодые исследователи 18–35 лет",
+          "en": "Students, master's students and young researchers aged 18–35",
+          "ro": "Studenți, masteranzi și tineri cercetători între 18 și 35 de ani"
+        }
+      },
+      {
+        "k": {
+          "ru": "Формат",
+          "en": "Format",
+          "ro": "Format"
+        },
+        "v": {
+          "ru": "2 дня",
+          "en": "2 days",
+          "ro": "2 zile"
+        },
+        "s": {
+          "ru": "Межрегиональные команды по 3⁠–⁠5 человек",
+          "en": "Interregional teams of 3⁠–⁠5 people",
+          "ro": "Echipe interregionale de 3⁠–⁠5 persoane"
+        }
+      },
+      {
+        "k": {
+          "ru": "Мини-гранты",
+          "en": "Mini-grants",
+          "ro": "Mini-granturi"
+        },
+        "v": {
+          "ru": "2 500 € на проект",
+          "en": "€2,500 per project",
+          "ro": "2 500 € per proiect"
+        },
+        "s": {
+          "ru": "Общий грантовый фонд 15 000 €",
+          "en": "Total grant fund €15,000",
+          "ro": "Fond total de granturi 15 000 €"
+        }
+      }
+    ],
+    "about": [
+      {
+        "ru": "Главная идея хакатона — превратить молодёжные инициативы в реальные совместные проекты. Обязательное условие участия — формирование межрегиональных студенческих команд.",
+        "en": "The main idea of the Hackathon is to transform youth initiatives into real collaborative projects. A key requirement for participation is the formation of interregional student teams.",
+        "ro": "Ideea principală a hackathonului este să transforme inițiativele tinerilor în proiecte colaborative reale. Condiția esențială de participare este formarea echipelor studențești interregionale."
+      },
+      {
+        "ru": "В течение двух дней участники получат практические навыки разработки и реализации проектов: научатся формулировать идеи и цели, определять целевые группы, планировать мероприятия, составлять бюджеты, оценивать ожидаемые результаты и обеспечивать устойчивость инициатив. Под руководством опытных менторов команды разработают собственные социокультурные проекты. Завершится хакатон питчингом перед экспертным жюри, которое выберет лучшие инициативы для мини-грантов.",
+        "en": "Over two days, participants will gain practical knowledge and skills in project development and implementation: how to formulate project ideas and objectives, identify target groups, plan activities, develop budgets, assess expected results, and ensure the sustainability of their initiatives. With guidance from experienced mentors, teams will develop their own sociocultural projects. The Hackathon will conclude with project pitches before an expert jury, which will select the best initiatives to receive mini-grants.",
+        "ro": "Timp de două zile, participanții vor căpăta cunoștințe și abilități practice de dezvoltare și implementare a proiectelor: vor învăța să formuleze idei și obiective, să identifice grupurile-țintă, să planifice activități, să elaboreze bugete, să evalueze rezultatele așteptate și să asigure sustenabilitatea inițiativelor. Cu sprijinul unor mentori cu experiență, echipele își vor dezvolta propriile proiecte socioculturale. Hackathonul se încheie cu prezentarea proiectelor în fața unui juriu de experți, care va alege cele mai bune inițiative pentru mini-granturi."
+      },
+      {
+        "ru": "Хакатон — только начало. Межрегиональные команды смогут воплотить свои проекты в течение периода до шести месяцев. В 2027 году состоится итоговое мероприятие: презентация результатов, обмен опытом команд и обсуждение дальнейшего развития сети INSPIRE.",
+        "en": "The Hackathon is only the beginning. Interregional teams will have up to six months to turn their ideas into reality. In 2027, a final event will showcase the results, facilitate the exchange of experiences among teams, and discuss the further development of the INSPIRE Network.",
+        "ro": "Hackathonul este doar începutul. Echipele interregionale vor avea la dispoziție până la șase luni pentru a-și pune ideile în practică. În 2027 va avea loc un eveniment final: prezentarea rezultatelor, schimbul de experiență între echipe și discuția despre dezvoltarea în continuare a rețelei INSPIRE."
+      }
+    ],
+    "themes_title": {
+      "ru": "Приоритетные темы",
+      "en": "Priority themes",
+      "ro": "Teme prioritare"
+    },
+    "themes": [
+      {
+        "ru": "Социальная инклюзия",
+        "en": "Social inclusion",
+        "ro": "Incluziune socială"
+      },
+      {
+        "ru": "Лидерство",
+        "en": "Leadership",
+        "ro": "Leadership"
+      },
+      {
+        "ru": "Межкультурный диалог",
+        "en": "Intercultural dialogue",
+        "ro": "Dialog intercultural"
+      },
+      {
+        "ru": "Сотрудничество",
+        "en": "Cooperation",
+        "ro": "Cooperare"
+      }
+    ],
+    "apply": {
+      "ru": "Подать заявку",
+      "en": "Apply now",
+      "ro": "Înscrie-te"
+    },
+    "apply_url": "https://events-businesshub.lovable.app/r/inspire",
+    "rules": {
+      "ru": "Положение о хакатоне",
+      "en": "Hackathon regulations",
+      "ro": "Regulamentul hackathonului"
+    },
+    "subtitle": {
+      "ru": "Инновационные решения для устойчивого развития и социальной сплочённости",
+      "en": "Innovative Solutions for Sustainable Development and Social Cohesion",
+      "ro": "Soluții inovatoare pentru dezvoltare durabilă și coeziune socială"
+    },
+    "ticker": {
+      "ru": "2 дня · 30 участников · межрегиональные команды · мини-гранты по 2 500 € · фонд 15 000 €",
+      "en": "2 days · 30 participants · interregional teams · mini-grants of €2,500 · €15,000 fund",
+      "ro": "2 zile · 30 de participanți · echipe interregionale · mini-granturi de 2 500 € · fond de 15 000 €"
+    },
+    "glance_title": {
+      "ru": "Коротко о хакатоне",
+      "en": "At a glance",
+      "ro": "Pe scurt"
+    },
+    "learn_title": {
+      "ru": "Чему вы научитесь",
+      "en": "What you will learn",
+      "ro": "Ce vei învăța"
+    },
+    "learn_lead": {
+      "ru": "Практические навыки разработки и реализации проектов, с наставниками рядом.",
+      "en": "Practical project development skills, with mentors by your side.",
+      "ro": "Abilități practice de dezvoltare a proiectelor, cu mentori alături."
+    },
+    "learn": [
+      {
+        "i": "bulb",
+        "t": {
+          "ru": "Формулировать идеи и цели проекта",
+          "en": "Formulate project ideas and objectives",
+          "ro": "Să formulezi idei și obiective de proiect"
+        }
+      },
+      {
+        "i": "users",
+        "t": {
+          "ru": "Определять целевые группы",
+          "en": "Identify target groups",
+          "ro": "Să identifici grupurile-țintă"
+        }
+      },
+      {
+        "i": "cal",
+        "t": {
+          "ru": "Планировать мероприятия",
+          "en": "Plan activities",
+          "ro": "Să planifici activități"
+        }
+      },
+      {
+        "i": "case",
+        "t": {
+          "ru": "Составлять бюджеты",
+          "en": "Develop budgets",
+          "ro": "Să elaborezi bugete"
+        }
+      },
+      {
+        "i": "award",
+        "t": {
+          "ru": "Оценивать ожидаемые результаты",
+          "en": "Assess expected results",
+          "ro": "Să evaluezi rezultatele așteptate"
+        }
+      },
+      {
+        "i": "leaf",
+        "t": {
+          "ru": "Обеспечивать устойчивость инициатив",
+          "en": "Ensure the sustainability of initiatives",
+          "ro": "Să asiguri sustenabilitatea inițiativelor"
+        }
+      }
+    ],
+    "journey_title": {
+      "ru": "Как это устроено",
+      "en": "How it works",
+      "ro": "Cum funcționează"
+    },
+    "journey": [
+      {
+        "w": {
+          "ru": "Заявка",
+          "en": "Apply",
+          "ro": "Înscriere"
+        },
+        "t": {
+          "ru": "Отбор участников",
+          "en": "Selection",
+          "ro": "Selecția participanților"
+        },
+        "d": {
+          "ru": "Конкурсный отбор через университеты-партнёры и открытую регистрацию. Приглашаем 30 студентов.",
+          "en": "Competitive selection through partner universities and open registration. 30 students are invited.",
+          "ro": "Selecție competitivă prin universitățile partenere și înscriere deschisă. Sunt invitați 30 de studenți."
+        }
+      },
+      {
+        "w": {
+          "ru": "20 ноября",
+          "en": "20 November",
+          "ro": "20 noiembrie"
+        },
+        "t": {
+          "ru": "День 1",
+          "en": "Day 1",
+          "ro": "Ziua 1"
+        },
+        "d": {
+          "ru": "Открытие, знакомство, постановка проблемы, выбор тематического направления и формирование межрегиональных команд.",
+          "en": "Opening, introductions, problem setting, choosing a thematic track and forming interregional teams.",
+          "ro": "Deschidere, cunoaștere, formularea problemei, alegerea direcției tematice și formarea echipelor interregionale."
+        }
+      },
+      {
+        "w": {
+          "ru": "21 ноября",
+          "en": "21 November",
+          "ro": "21 noiembrie"
+        },
+        "t": {
+          "ru": "День 2",
+          "en": "Day 2",
+          "ro": "Ziua 2"
+        },
+        "d": {
+          "ru": "Работа над прототипом с наставниками, проверка реализуемости, подготовка презентации.",
+          "en": "Working on the prototype with mentors, testing feasibility, preparing the pitch.",
+          "ro": "Lucrul la prototip cu mentorii, verificarea fezabilității, pregătirea prezentării."
+        }
+      },
+      {
+        "w": {
+          "ru": "Финал",
+          "en": "Finale",
+          "ro": "Finala"
+        },
+        "t": {
+          "ru": "Питчинг и жюри",
+          "en": "Pitches and jury",
+          "ro": "Prezentări și juriu"
+        },
+        "d": {
+          "ru": "Команды представляют проекты экспертному жюри. Лучшие инициативы получают мини-гранты по 2 500 €.",
+          "en": "Teams pitch to an expert jury. The best initiatives receive mini-grants of €2,500 each.",
+          "ro": "Echipele își prezintă proiectele în fața juriului de experți. Cele mai bune inițiative primesc mini-granturi de câte 2 500 €."
+        }
+      },
+      {
+        "w": {
+          "ru": "До 6 месяцев",
+          "en": "Up to 6 months",
+          "ro": "Până la 6 luni"
+        },
+        "t": {
+          "ru": "Реализация проектов",
+          "en": "Implementation",
+          "ro": "Implementarea proiectelor"
+        },
+        "d": {
+          "ru": "Межрегиональные команды воплощают свои идеи в жизнь при поддержке сети INSPIRE.",
+          "en": "Interregional teams turn their ideas into reality with the support of the INSPIRE network.",
+          "ro": "Echipele interregionale își pun ideile în practică cu sprijinul rețelei INSPIRE."
+        }
+      },
+      {
+        "w": {
+          "ru": "2027",
+          "en": "2027",
+          "ro": "2027"
+        },
+        "t": {
+          "ru": "Итоговое мероприятие",
+          "en": "Final event",
+          "ro": "Evenimentul final"
+        },
+        "d": {
+          "ru": "Презентация результатов, обмен опытом и обсуждение развития сети INSPIRE.",
+          "en": "Showcasing results, exchanging experience and discussing the future of the INSPIRE Network.",
+          "ro": "Prezentarea rezultatelor, schimb de experiență și discuții despre dezvoltarea rețelei INSPIRE."
+        }
+      }
+    ],
+    "tracks_title": {
+      "ru": "Тематические направления",
+      "en": "Thematic tracks",
+      "ro": "Direcții tematice"
+    },
+    "tracks_lead": {
+      "ru": "Выберите одно из направлений или предложите свою идею, если она служит целям хакатона.",
+      "en": "Choose a track or propose your own idea, as long as it serves the goals of the Hackathon.",
+      "ro": "Alege o direcție sau propune propria idee, dacă ea servește scopurilor hackathonului."
+    },
+    "tracks": [
+      {
+        "i": "globe",
+        "t": {
+          "ru": "Миростроительство через образование",
+          "en": "Peacebuilding through education",
+          "ro": "Construirea păcii prin educație"
+        },
+        "d": {
+          "ru": "Интерактивные образовательные инструменты, развивающие диалог, взаимопонимание и культуру мира.",
+          "en": "Interactive educational tools that foster dialogue, understanding and a culture of peace.",
+          "ro": "Instrumente educaționale interactive care dezvoltă dialogul, înțelegerea și cultura păcii."
+        }
+      },
+      {
+        "i": "bolt",
+        "t": {
+          "ru": "Спорт как пространство доверия",
+          "en": "Sport as a space of trust",
+          "ro": "Sportul ca spațiu al încrederii"
+        },
+        "d": {
+          "ru": "Совместные спортивные активности и цифровые инструменты для регулярного взаимодействия молодёжи.",
+          "en": "Joint sports activities and digital tools for regular interaction among young people.",
+          "ro": "Activități sportive comune și instrumente digitale pentru interacțiunea regulată a tinerilor."
+        }
+      },
+      {
+        "i": "heart",
+        "t": {
+          "ru": "Культура как мост доверия",
+          "en": "Culture as a bridge of trust",
+          "ro": "Cultura ca punte a încrederii"
+        },
+        "d": {
+          "ru": "Культурные, творческие и художественные практики для знакомства и сотрудничества между сообществами.",
+          "en": "Cultural, creative and artistic practices for connection and cooperation between communities.",
+          "ro": "Practici culturale, creative și artistice pentru cunoaștere și cooperare între comunități."
+        }
+      },
+      {
+        "i": "chat",
+        "t": {
+          "ru": "Молодёжь и диалог",
+          "en": "Youth and dialogue",
+          "ro": "Tineri și dialog"
+        },
+        "d": {
+          "ru": "Безопасные пространства и инструменты для общения молодых людей из трёх регионов.",
+          "en": "Safe spaces and tools for communication among young people from three regions.",
+          "ro": "Spații sigure și instrumente de comunicare pentru tinerii din trei regiuni."
+        }
+      },
+      {
+        "i": "code",
+        "t": {
+          "ru": "Цифровые мосты доверия",
+          "en": "Digital bridges of trust",
+          "ro": "Punți digitale ale încrederii"
+        },
+        "d": {
+          "ru": "Платформы, приложения, боты и сервисы для совместных проектов, обмена знаниями и межрегионального взаимодействия.",
+          "en": "Platforms, apps, bots and services for joint projects, knowledge exchange and interregional interaction.",
+          "ro": "Platforme, aplicații, boți și servicii pentru proiecte comune, schimb de cunoștințe și interacțiune interregională."
+        }
+      },
+      {
+        "i": "users",
+        "t": {
+          "ru": "Инклюзивное участие",
+          "en": "Inclusive participation",
+          "ro": "Participare incluzivă"
+        },
+        "d": {
+          "ru": "Решения, расширяющие возможности участия молодёжи из малых населённых пунктов и людей с инвалидностью.",
+          "en": "Solutions that widen participation for young people from small settlements and people with disabilities.",
+          "ro": "Soluții care extind oportunitățile de participare pentru tinerii din localități mici și persoanele cu dizabilități."
+        }
+      },
+      {
+        "i": "leaf",
+        "t": {
+          "ru": "Общее дело: волонтёрство и социальные инициативы",
+          "en": "Common cause: volunteering and social initiatives",
+          "ro": "Cauza comună: voluntariat și inițiative sociale"
+        },
+        "d": {
+          "ru": "Инструменты для совместного решения социальных и экологических задач.",
+          "en": "Tools for solving social and environmental challenges together.",
+          "ro": "Instrumente pentru rezolvarea împreună a provocărilor sociale și de mediu."
+        }
+      },
+      {
+        "i": "shield",
+        "t": {
+          "ru": "Медиаграмотность и противодействие стереотипам",
+          "en": "Media literacy and countering stereotypes",
+          "ro": "Educație media și combaterea stereotipurilor"
+        },
+        "d": {
+          "ru": "Решения, помогающие критически оценивать информацию и вести конструктивный диалог.",
+          "en": "Solutions that help evaluate information critically and hold constructive dialogue.",
+          "ro": "Soluții care ajută la evaluarea critică a informației și la un dialog constructiv."
+        }
+      },
+      {
+        "i": "bulb",
+        "t": {
+          "ru": "Открытое направление",
+          "en": "Open track",
+          "ro": "Direcția deschisă"
+        },
+        "d": {
+          "ru": "Собственная идея команды, которая напрямую способствует социальной сплочённости, диалогу или миростроительству.",
+          "en": "Your team's own idea that directly promotes social cohesion, dialogue or peacebuilding.",
+          "ro": "Ideea proprie a echipei, care contribuie direct la coeziunea socială, dialog sau construirea păcii."
+        }
+      }
+    ],
+    "deliver_title": {
+      "ru": "Что представляет команда",
+      "en": "What each team presents",
+      "ro": "Ce prezintă fiecare echipă"
+    },
+    "deliver": [
+      {
+        "ru": "Описание проблемы и целевой группы",
+        "en": "Description of the problem and target group",
+        "ro": "Descrierea problemei și a grupului-țintă"
+      },
+      {
+        "ru": "Предлагаемое решение и его отличие от существующих подходов",
+        "en": "The proposed solution and how it differs from existing approaches",
+        "ro": "Soluția propusă și deosebirea ei de abordările existente"
+      },
+      {
+        "ru": "Прототип, макет, сценарий работы или демонстрация ключевой функции (подойдут и no-code решения)",
+        "en": "A prototype, mock-up, workflow or demo of the key feature (no-code solutions are welcome)",
+        "ro": "Prototip, machetă, scenariu de lucru sau demonstrarea funcției-cheie (sunt binevenite și soluțiile no-code)"
+      },
+      {
+        "ru": "План тестирования решения с потенциальными пользователями",
+        "en": "A plan for testing the solution with potential users",
+        "ro": "Planul de testare a soluției cu potențialii utilizatori"
+      },
+      {
+        "ru": "Предварительный план реализации на 3–6 месяцев и бюджет",
+        "en": "A preliminary 3–6 month implementation plan and budget",
+        "ro": "Un plan preliminar de implementare pe 3–6 luni și bugetul"
+      },
+      {
+        "ru": "Презентация не более пяти минут, на русском, румынском или английском",
+        "en": "A presentation of up to five minutes, in Russian, Romanian or English",
+        "ro": "O prezentare de cel mult cinci minute, în rusă, română sau engleză"
+      }
+    ],
+    "criteria_title": {
+      "ru": "Что оценивает жюри",
+      "en": "What the jury looks at",
+      "ro": "Ce evaluează juriul"
+    },
+    "criteria": [
+      {
+        "ru": "Соответствие теме хакатона и ценностям INSPIRE: социальная сплочённость, межрегиональное сотрудничество",
+        "en": "Fit with the Hackathon theme and INSPIRE values: social cohesion, interregional cooperation",
+        "ro": "Corespondența cu tema hackathonului și valorile INSPIRE: coeziune socială, cooperare interregională"
+      },
+      {
+        "ru": "Актуальность проблемы и обоснованность потребности целевой группы",
+        "en": "Relevance of the problem and a well-founded need of the target group",
+        "ro": "Actualitatea problemei și temeiul nevoii grupului-țintă"
+      },
+      {
+        "ru": "Реализуемость решения и потенциал развития или масштабирования",
+        "en": "Feasibility and potential for further development or scaling",
+        "ro": "Fezabilitatea soluției și potențialul de dezvoltare sau scalare"
+      },
+      {
+        "ru": "Качество прототипа или демонстрации",
+        "en": "Quality of the prototype or demonstration",
+        "ro": "Calitatea prototipului sau a demonstrației"
+      },
+      {
+        "ru": "Инновационность и ожидаемый социальный эффект",
+        "en": "Innovation and expected social impact",
+        "ro": "Caracterul inovator și impactul social așteptat"
+      },
+      {
+        "ru": "Качество командной работы и ясность презентации",
+        "en": "Quality of teamwork and clarity of the presentation",
+        "ro": "Calitatea muncii în echipă și claritatea prezentării"
+      }
+    ],
+    "venue_title": {
+      "ru": "Где пройдёт хакатон",
+      "en": "Where it takes place",
+      "ro": "Unde are loc"
+    },
+    "venue": {
+      "name": {
+        "ru": "Green Tech Hub Технического университета Молдовы",
+        "en": "Green Tech Hub of the Technical University of Moldova",
+        "ro": "Green Tech Hub al Universității Tehnice a Moldovei"
+      },
+      "addr": {
+        "ru": "Кишинёв, бульвар Дачия, 41",
+        "en": "41 Dacia Boulevard, Chișinău",
+        "ro": "Chișinău, bulevardul Dacia 41"
+      },
+      "map": "https://www.openstreetmap.org/search?query=Bulevardul%20Dacia%2041%2C%20Chi%C8%99in%C4%83u",
+      "map_label": {
+        "ru": "Показать на карте",
+        "en": "Show on map",
+        "ro": "Arată pe hartă"
+      }
+    },
+    "cta_title": {
+      "ru": "Готовы превратить идею в проект?",
+      "en": "Ready to turn an idea into a project?",
+      "ro": "Ești gata să transformi o idee în proiect?"
+    },
+    "cta_text": {
+      "ru": "Соберите межрегиональную команду, представьте идею жюри и получите шанс на мини-грант.",
+      "en": "Form an interregional team, pitch your idea to the jury and get a chance at a mini-grant.",
+      "ro": "Formează o echipă interregională, prezintă ideea în fața juriului și ai șansa la un mini-grant."
     }
   },
   "publications": {

@@ -10,12 +10,36 @@
   ]
  },
  {
-  "img": "partners/usem.png",
-  "name": "University of European Studies of Moldova (USEM)",
-  "url": "https://usem.md/md/",
+  "img": "partners/utm.webp",
+  "name": "UTM",
+  "url": "",
+  "group": "partner",
+  "years": [],
+  "scale": 0.6
+ },
+ {
+  "img": "partners/green-tech-hub.webp",
+  "name": "Green Tech Hub",
+  "url": "",
+  "group": "partner",
+  "years": [],
+  "scale": 0.62
+ },
+ {
+  "img": "partners/ulim.png",
+  "name": "Free International University of Moldova (ULIM)",
+  "url": "https://ulim.md",
   "group": "coorg",
   "years": [
-   2023,
+   2025
+  ]
+ },
+ {
+  "img": "partners/asem.png",
+  "name": "Academy of Economic Studies of Moldova",
+  "url": "https://ase.md",
+  "group": "partner",
+  "years": [
    2025
   ]
  },
@@ -39,25 +63,6 @@
   ]
  },
  {
-  "img": "partners/ulim.png",
-  "name": "Free International University of Moldova (ULIM)",
-  "url": "https://ulim.md",
-  "group": "coorg",
-  "years": [
-   2025
-  ]
- },
- {
-  "img": "partners/innovation-agency.png",
-  "name": "Agency for Innovation and Development",
-  "url": "https://innovation.md/",
-  "group": "coorg",
-  "years": [
-   2023,
-   2025
-  ]
- },
- {
   "img": "partners/un-moldova.png",
   "name": "United Nations Moldova",
   "url": "https://moldova.un.org/",
@@ -76,18 +81,25 @@
   ]
  },
  {
-  "img": "partners/glia.png",
-  "name": "GLIA Impact Hub",
-  "url": "https://www.instagram.com/gliaimpacthub/",
+  "img": "partners/undp.webp",
+  "name": "UNDP",
+  "url": "",
+  "group": "partner",
+  "years": []
+ },
+ {
+  "img": "partners/icrc.png",
+  "name": "ICRC",
+  "url": "https://www.icrc.org/ru/where-we-work/republic-moldova",
   "group": "partner",
   "years": [
    2025
   ]
  },
  {
-  "img": "partners/education-academy.png",
-  "name": "Academy of Education",
-  "url": "https://education.md/",
+  "img": "partners/agency-for-peacebuilding.png",
+  "name": "Agency for Peacebuilding",
+  "url": "https://www.peaceagency.org/",
   "group": "partner",
   "years": [
    2023,
@@ -104,12 +116,41 @@
   ]
  },
  {
-  "img": "partners/agency-for-peacebuilding.png",
-  "name": "Agency for Peacebuilding",
-  "url": "https://www.peaceagency.org/",
+  "img": "partners/education-academy.png",
+  "name": "Academy of Education",
+  "url": "https://education.md/",
   "group": "partner",
   "years": [
    2023,
+   2025
+  ]
+ },
+ {
+  "img": "partners/innovation-agency.png",
+  "name": "Agency for Innovation and Development",
+  "url": "https://innovation.md/",
+  "group": "coorg",
+  "years": [
+   2023,
+   2025
+  ]
+ },
+ {
+  "img": "partners/usem.png",
+  "name": "University of European Studies of Moldova (USEM)",
+  "url": "https://usem.md/md/",
+  "group": "coorg",
+  "years": [
+   2023,
+   2025
+  ]
+ },
+ {
+  "img": "partners/glia.png",
+  "name": "GLIA Impact Hub",
+  "url": "https://www.instagram.com/gliaimpacthub/",
+  "group": "partner",
+  "years": [
    2025
   ]
  },
@@ -150,45 +191,9 @@
   ]
  },
  {
-  "img": "partners/ion-creanga.png",
-  "name": "Ion Creangă State Pedagogical University",
-  "url": "https://upsc.md/",
-  "group": "partner",
-  "years": [
-   2025
-  ]
- },
- {
-  "img": "partners/usm.png",
-  "name": "Moldova State University",
-  "url": "https://usm.md",
-  "group": "partner",
-  "years": [
-   2025
-  ]
- },
- {
-  "img": "partners/asem.png",
-  "name": "Academy of Economic Studies of Moldova",
-  "url": "https://ase.md",
-  "group": "partner",
-  "years": [
-   2025
-  ]
- },
- {
   "img": "partners/creative-industries.png",
   "name": "Association of Creative Industries",
   "url": "https://creativity.md",
-  "group": "partner",
-  "years": [
-   2025
-  ]
- },
- {
-  "img": "partners/icrc.png",
-  "name": "ICRC",
-  "url": "https://www.icrc.org/ru/where-we-work/republic-moldova",
   "group": "partner",
   "years": [
    2025
@@ -219,15 +224,6 @@
   "group": "partner",
   "years": [
    2025
-  ]
- },
- {
-  "img": "partners/drc.jpg",
-  "name": "Danish Refugee Council",
-  "url": "https://pro.drc.ngo/where-we-work/europe/moldova/",
-  "group": "partner",
-  "years": [
-   2023
   ]
  },
  {

@@ -46,9 +46,9 @@
                     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                         @foreach($list as $j => $pt)
                             @if($pt['url'])
-                                <a class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></a>
+                                <a class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" href="{{ $pt['url'] }}" target="_blank" rel="noopener" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}"@if(!empty($pt['scale'])) style="max-height:{{ round(64 * $pt['scale']) }}px;max-width:{{ round(100 * $pt['scale']) }}%" @endif alt="{{ $pt['name'] }}" loading="lazy"></a>
                             @else
-                                <span class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></span>
+                                <span class="logo-tile par-item i-reveal" data-years="{{ implode(',', $pt['years']) }}" style="--d:{{ ($j % 5) * .05 }}s" title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}"@if(!empty($pt['scale'])) style="max-height:{{ round(64 * $pt['scale']) }}px;max-width:{{ round(100 * $pt['scale']) }}%" @endif alt="{{ $pt['name'] }}" loading="lazy"></span>
                             @endif
                         @endforeach
                     </div>

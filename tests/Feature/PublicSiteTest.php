@@ -13,7 +13,7 @@ class PublicSiteTest extends TestCase
     public static function pages(): array
     {
         return array_combine(
-            $paths = ['/', '/events/hackathon-2026', '/events/schools-2025', '/events/schools-2025/school-1', '/events/schools-2025/school-2',
+            $paths = ['/', '/events/hackathon-2026', '/events/hackathon-2026/regulations', '/events/schools-2025', '/events/schools-2025/school-1', '/events/schools-2025/school-2',
                 '/events/schools-2025/school-3', '/events/school-2023', '/experts', '/photo', '/video', '/publications', '/partners'],
             array_map(fn ($p) => [$p], $paths),
         );
@@ -64,9 +64,10 @@ class PublicSiteTest extends TestCase
         $this->get('/academy-2025/school-2')->assertRedirect('/events/schools-2025/school-2')->assertStatus(301);
     }
 
-    public function test_hackathon_is_a_stub_and_publications_list_the_collection(): void
+    public function test_hackathon_page_regulations_and_publications_list_the_collection(): void
     {
-        $this->get('/events/hackathon-2026')->assertOk()->assertSee('Information will appear here very soon', false);
+        $this->get('/events/hackathon-2026')->assertOk()->assertSee('20–21 November 2026', false)->assertSee('events-businesshub.lovable.app/r/inspire', false)->assertSee(route('hackathon.regulations'), false);
+        $this->get('/events/hackathon-2026/regulations')->assertOk()->assertSee('Положение', false)->assertSee('Жюри и критерии оценки', false);
         $this->get('/publications')->assertOk()->assertSee('Leadership Through People and Ideas', false)->assertDontSee('We are preparing the Publications section', false);
     }
 

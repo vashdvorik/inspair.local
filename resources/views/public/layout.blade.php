@@ -43,7 +43,7 @@
 @php
     $menu = [
         ['route' => 'home', 'label' => ['Главная', 'Home', 'Acasă'], 'active' => ['home']],
-        ['label' => ['Мероприятия', 'Events', 'Evenimente'], 'active' => ['hackathon', 'academy2025*', 'academy2023'], 'children' => [
+        ['label' => ['Мероприятия', 'Events', 'Evenimente'], 'active' => ['hackathon', 'hackathon.regulations', 'academy2025*', 'academy2023'], 'children' => [
             ['route' => 'hackathon',   'label' => ['Хакатон 2026', 'Hackathon 2026', 'Hackathon 2026']],
             ['route' => 'academy2025', 'label' => ['Школы 2025', 'Schools 2025', 'Școli 2025']],
             ['route' => 'academy2023', 'label' => ['Школа 2023', 'School 2023', 'Școala 2023']],

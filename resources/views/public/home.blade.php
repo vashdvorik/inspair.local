@@ -177,7 +177,7 @@
         @php
             $E = $S['events'];
             $cards = [
-                ['badge' => ['ru' => 'Скоро', 'en' => 'Coming soon', 'ro' => 'În curând'], 'title' => $S['hackathon']['title'], 'dates' => ['ru' => '2026', 'en' => '2026', 'ro' => '2026'], 'place' => null, 'url' => route('hackathon'), 'tone' => 'orange'],
+                ['badge' => $S['hackathon']['badge'], 'title' => $S['hackathon']['title'], 'dates' => ['ru' => '20–21 ноября 2026', 'en' => '20–21 November 2026', 'ro' => '20–21 noiembrie 2026'], 'place' => ['ru' => 'Green Tech Hub, Кишинёв', 'en' => 'Green Tech Hub, Chișinău', 'ro' => 'Green Tech Hub, Chișinău'], 'url' => route('hackathon'), 'tone' => 'orange'],
                 ['badge' => ['ru' => 'Итоговая конференция', 'en' => 'Final Conference', 'ro' => 'Conferința finală'], 'title' => $E['final']['title'], 'dates' => $E['final']['date'], 'place' => $E['final']['place'], 'url' => route('academy2025') . '#final', 'tone' => 'purple'],
             ];
             foreach ($E['schools2025']['items'] as $sc) {
@@ -323,13 +323,14 @@
             <div class="i-spectrum-line" style="width:84px;margin:14px 0 14px;"></div>
             <p class="text-gray-500" style="max-width:56ch">{!! $tm($R['lead']) !!}</p>
         </div>
+        @include('public._review_stories')
         <div class="rv-grid">
             @foreach($reviews as $i => $r)
                 <figure class="rv-card i-reveal" style="--c:{{ $tones[$i % count($tones)] }};--d:{{ ($i % 3) * .06 }}s">
                     <svg class="rv-q" width="34" height="26" viewBox="0 0 34 26" aria-hidden="true"><path fill="currentColor" d="M0 26V14.4C0 6.3 4.3 1.1 12.2 0l1.1 3.9C8.9 5.1 7.2 8 7 11.5h6.2V26H0zm20.8 0V14.4C20.8 6.3 25.1 1.1 33 0l1 3.9c-4.4 1.2-6 4.1-6.2 7.6H34V26H20.8z"/></svg>
                     <blockquote>{!! $tm($r['text']) !!}</blockquote>
                     <figcaption>
-                        <img src="{{ $img($r['img']) }}" alt="{{ $r['name']['en'] }}" loading="lazy" width="56" height="56">
+                        <img src="{{ $img($r['img']) }}" alt="{{ $r['name']['en'] }}" loading="lazy" width="68" height="68">
                         <span><b>{!! $tm($r['name']) !!}</b><small>{!! $tm($r['city']) !!}</small></span>
                     </figcaption>
                 </figure>
@@ -378,7 +379,7 @@
             <a class="donor-band i-reveal" href="{{ $pt['url'] ?: route('partners') }}" @if($pt['url']) target="_blank" rel="noopener" @endif title="{{ $pt['name'] }}">
                 <img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy">
                 <span class="donor-band__text">
-                    <b class="i-eyebrow i-grad-text">{!! $t('Донор сети INSPIRE', 'Donor of the INSPIRE network', 'Donatorul rețelei INSPIRE') !!}</b>
+                    <b class="i-eyebrow i-grad-text">{!! $t('Поддержка сети INSPIRE', 'Support of the INSPIRE network', 'Sprijin pentru rețeaua INSPIRE') !!}</b>
                     <span>{!! $t('Посольство Королевства Нидерландов', 'Embassy of the Kingdom of the Netherlands', 'Ambasada Regatului Țărilor de Jos') !!}</span>
                 </span>
                 <span class="donor-band__go" aria-hidden="true">{!! $arrow !!}</span>
@@ -386,7 +387,7 @@
         @endforeach
         <div class="logo-wall">
             @foreach($partnerLogos as $j => $pt)
-                <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .05 }}s" href="{{ $pt['url'] ?: route('partners') }}" @if($pt['url']) target="_blank" rel="noopener" @endif title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}" alt="{{ $pt['name'] }}" loading="lazy"></a>
+                <a class="logo-tile i-reveal" style="--d:{{ ($j % 6) * .05 }}s" href="{{ $pt['url'] ?: route('partners') }}" @if($pt['url']) target="_blank" rel="noopener" @endif title="{{ $pt['name'] }}"><img src="{{ $img($pt['img']) }}"@if(!empty($pt['scale'])) style="max-height:{{ round(64 * $pt['scale']) }}px;max-width:{{ round(100 * $pt['scale']) }}%" @endif alt="{{ $pt['name'] }}" loading="lazy"></a>
             @endforeach
         </div>
     </div>

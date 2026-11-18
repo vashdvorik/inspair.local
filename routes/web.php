@@ -34,6 +34,7 @@ Route::withoutMiddleware([
 
     // Events: Hackathon 2026, Schools 2025, School 2023
     Route::get('/events/hackathon-2026', fn () => view('public.hackathon', ['site' => PublicUi::content('site')]))->name('hackathon');
+    Route::get('/events/hackathon-2026/regulations', fn () => view('public.hackathon-regulations', ['reg' => PublicUi::content('hackathon-regulations'), 'site' => PublicUi::content('site')]))->name('hackathon.regulations');
     Route::get('/events/schools-2025', function () {
         return view('public.academy2025.index', [
             'c'        => PublicUi::content('academy2025'),
