@@ -11,7 +11,7 @@ namespace App\Support;
 final class PublicUi
 {
     public const LANGS = ['ru', 'en', 'ro'];
-    public const BOT = 'https://t.me/Inspiremoldova_bot';
+    public const BOT = 'https://t.me/inspire_edu_bot';
 
     /** @var array<string, array> */
     private static array $cache = [];

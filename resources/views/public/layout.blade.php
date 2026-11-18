@@ -205,7 +205,7 @@
     window.addEventListener('load', function () {
         if (!window.Telegram || !window.Telegram.WebApp) return;
         var tgApp = window.Telegram.WebApp;
-        document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
+        document.querySelectorAll('a[href*="t.me/inspire_edu_bot"]').forEach(function (link) {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
                 tgApp.openTelegramLink(link.href);

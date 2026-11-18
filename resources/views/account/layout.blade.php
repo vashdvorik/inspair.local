@@ -222,7 +222,7 @@
         var logoutForm = document.querySelector('form[action*="logout"]');
         if (logoutForm) logoutForm.closest('div').style.display = 'none';
 
-        document.querySelectorAll('a[href*="t.me/Inspiremoldova_bot"]').forEach(function (link) {
+        document.querySelectorAll('a[href*="t.me/inspire_edu_bot"]').forEach(function (link) {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
                 tg.openTelegramLink(link.href);
