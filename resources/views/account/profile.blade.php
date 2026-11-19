@@ -53,6 +53,11 @@
             </div>
 
             <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Университет или организация', 'University or organization', 'Universitate sau organizație') }}</p>
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->organization ?: '—' }}</p>
+            </div>
+
+            <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Telegram</p>
                 <p class="mt-1 text-sm font-medium">
                     @if($accountUser->telegram_username)
@@ -80,10 +85,6 @@
             <div>
                 <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Почта', 'Email', 'E-mail') }}</p>
                 <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->contact_email ?: '—' }}</p>
-            </div>
-            <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Instagram</p>
-                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->contact_instagram ? '@'.$accountUser->contact_instagram : '—' }}</p>
             </div>
         </div>
     </div>

@@ -21,10 +21,10 @@ class BotUser extends Model
         'telegram_username',
         'contact_phone',
         'contact_email',
-        'contact_instagram',
         'avatar_path',
         'first_name',
         'full_name',
+        'organization',
         'description',
         'expectation',
         'status',
@@ -43,11 +43,13 @@ class BotUser extends Model
         'last_reminded_at',
         'region',
         'moderation_note',
+        'consent_at',
     ];
 
     protected $casts = [
         'telegram_id'          => 'integer',
         'approved_at'          => 'datetime',
+        'consent_at'           => 'datetime',
         'embedding'            => 'array',
         'embedding_updated_at' => 'datetime',
         'is_moderator'         => 'boolean',

@@ -41,7 +41,7 @@ class RecomputeEmbeddings extends Command
         foreach ($users as $user) {
             try {
                 $text = $embedder->textForUser(
-                    (string) ($user->description ?? ''),
+                    trim((string) ($user->organization ?? '').' '.(string) ($user->description ?? '')),
                     (string) ($user->expectation ?? ''),
                 );
 

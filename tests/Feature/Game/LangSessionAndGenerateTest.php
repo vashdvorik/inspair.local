@@ -35,4 +35,17 @@ class LangSessionAndGenerateTest extends TestCase
 
         Queue::assertPushed(GenerateQuestsJob::class, 1);
     }
+
+    public function test_stuck_generation_can_be_reset(): void
+    {
+        app(GameService::class)->setMode(GameService::MODE_LIVE);
+        Cache::put(GenerateQuestsJob::FLAG, now()->subMinutes(5)->timestamp, now()->addMinutes(5));
+        \Illuminate\Support\Facades\DB::table('jobs')->insert(['queue' => 'default', 'payload' => '{"displayName":"App\\Jobs\\GenerateQuestsJob"}', 'attempts' => 0, 'available_at' => time(), 'created_at' => time()]);
+        $this->actingAs(User::factory()->create());
+
+        Livewire::test(\App\Filament\Pages\GameAdmin::class)->assertSee('Сбросить')->call('cancelGeneration');
+
+        $this->assertFalse(Cache::has(GenerateQuestsJob::FLAG));
+        $this->assertSame(0, \Illuminate\Support\Facades\DB::table('jobs')->count());
+    }
 }

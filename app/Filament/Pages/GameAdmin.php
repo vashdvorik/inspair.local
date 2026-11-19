@@ -67,6 +67,18 @@ class GameAdmin extends Page
         $this->checkGeneration();
     }
 
+    /** Сбросить «зависшую» генерацию: убрать отметку и снять с очереди ещё не начатые задачи. */
+    public function cancelGeneration(): void
+    {
+        \Illuminate\Support\Facades\Cache::forget(\App\Jobs\GenerateQuestsJob::FLAG);
+        $removed = \Illuminate\Support\Facades\DB::table('jobs')->where('payload', 'like', '%GenerateQuestsJob%')->whereNull('reserved_at')->delete();
+        $this->wasGenerating = false;
+
+        Notification::make()->title('Генерация сброшена')
+            ->body($removed > 0 ? 'Ожидавшая задача снята с очереди.' : 'Если задача уже выполнялась, она может ещё закончиться и добавить квесты.')
+            ->success()->send();
+    }
+
     /** Опрос статуса, пока идёт генерация: по окончании показывает результат. */
     public function checkGeneration(): void
     {
@@ -120,6 +132,7 @@ class GameAdmin extends Page
                 'name' => $def['name']['ru'], 'color' => $def['color'], 'count' => BotUser::approved()->where('level', $n)->count(),
             ])->values(),
             'generating' => \Illuminate\Support\Facades\Cache::has(\App\Jobs\GenerateQuestsJob::FLAG),
+            'genSeconds' => ($t = \Illuminate\Support\Facades\Cache::get(\App\Jobs\GenerateQuestsJob::FLAG)) ? max(0, now()->timestamp - (int) $t) : 0,
             'genResult'  => \Illuminate\Support\Facades\Cache::get(\App\Jobs\GenerateQuestsJob::RESULT),
             'recentQuests' => Quest::with('subject')->latest()->limit(20)->get(),
         ];

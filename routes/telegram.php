@@ -52,7 +52,7 @@ $bot->onCallbackQueryData('start_guide', function (Nutgram $bot) {
     $bot->answerCallbackQuery();
 
     $bot->sendMessage(
-        "🚀 Как начать работу в Инспайр?\n\n"
+        "🚀 Как начать работу в INSPIRE EDU Network?\n\n"
         . "1️⃣ Открой кабинет\n"
         . "Нажми кнопку «Кабинет» рядом с полем ввода сообщения: откроется личный кабинет участника.\n\n"
         . "2️⃣ Заполни профиль\n"

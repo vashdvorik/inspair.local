@@ -173,6 +173,7 @@ class AccountController extends Controller
 
         $user->update([
             'full_name'       => $request->validated('full_name'),
+            'organization'    => $request->validated('organization') ?: null,
             'description'     => $request->validated('description'),
             'contacts_closed' => $request->boolean('contacts_closed'),
         ] + ($request->has('notifications') ? [
@@ -181,7 +182,6 @@ class AccountController extends Controller
         ] : []) + [
             'contact_phone'     => $request->validated('contact_phone') ?: null,
             'contact_email'     => $request->validated('contact_email') ?: null,
-            'contact_instagram' => $request->validated('contact_instagram') ?: null,
         ] + ($gameOn ? [
             // эти поля есть в форме только при включённой игре: иначе не трогаем сохранённые значения
             'quests_opt_out'      => $request->boolean('quests_opt_out'),

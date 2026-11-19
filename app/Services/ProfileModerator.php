@@ -9,7 +9,7 @@ use App\Models\ModerationFlag;
 use App\Services\Ai\OpenRouter;
 
 /**
- * Нейросеть читает всё, что участник написал о себе (имя, «о себе», Instagram, факты), и отмечает подозрительное:
+ * Нейросеть читает всё, что участник написал о себе (имя, организация, «о себе», факты), и отмечает подозрительное:
  * порнографию, оскорбления, ненависть, спам, бессмыслицу. Ничего не блокирует: создаёт предупреждения для администратора.
  */
 class ProfileModerator
@@ -29,7 +29,7 @@ class ProfileModerator
 
         $add('name', 'name', $user->full_name);
         $add('about', 'about', $user->description);
-        $add('instagram', 'instagram', $user->contact_instagram);
+        $add('organization', 'organization', $user->organization);
         foreach ($user->facts as $fact) {
             $add('fact_'.$fact->id, 'fact', $fact->body);
         }

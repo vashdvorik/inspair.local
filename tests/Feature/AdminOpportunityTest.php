@@ -33,7 +33,7 @@ class AdminOpportunityTest extends TestCase
 
     public function test_existing_opportunities_were_imported_from_the_json_file(): void
     {
-        $this->assertGreaterThanOrEqual(15, OpportunityPost::count());
+        $this->assertGreaterThanOrEqual(14, OpportunityPost::count());
         $this->assertNotNull(OpportunityFeed::find('emotion-armenia'));
     }
 

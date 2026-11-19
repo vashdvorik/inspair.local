@@ -60,7 +60,18 @@
         </button>
     </div>
     @if($generating)
-        <p wire:poll.3s="checkGeneration" class="mb-3 rounded-lg bg-blue-50 px-3 py-2 text-sm text-blue-700">Генерация идёт в фоне, обычно 1–2 минуты. Страница обновится сама, повторно нажимать не нужно.</p>
+        <div wire:poll.3s="checkGeneration" class="mb-3 flex flex-wrap items-center justify-between gap-3 rounded-lg px-3 py-2 text-sm {{ $genSeconds > 150 ? 'bg-orange-50 text-orange-700' : 'bg-blue-50 text-blue-700' }}">
+            <span>
+                @if($genSeconds > 150)
+                    Идёт уже {{ intdiv($genSeconds, 60) }} мин. Похоже, очередь не работает: проверьте, что на сервере запущен cron «schedule:run». Отметка снимется сама через 10 минут, или сбросьте её вручную.
+                @else
+                    Генерация идёт в фоне, обычно 1–2 минуты. Страница обновится сама, повторно нажимать не нужно.
+                @endif
+            </span>
+            @if($genSeconds > 60)
+                <button type="button" wire:click="cancelGeneration" wire:confirm="Сбросить генерацию?" class="rounded-lg border border-current px-3 py-1 text-xs font-semibold">Сбросить</button>
+            @endif
+        </div>
     @elseif($genResult)
         <p class="mb-3 text-xs text-gray-500">Последний запуск ({{ $genResult['at'] }}): создано {{ $genResult['made'] }} из {{ $genResult['need'] }}@if($genResult['error']) · ошибка: {{ $genResult['error'] }}@elseif($genResult['made'] === 0) · проверьте ключ и модели на странице «ИИ», нужно минимум 3 участника с заполненным профилем@endif</p>
     @endif

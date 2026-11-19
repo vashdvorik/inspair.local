@@ -55,12 +55,13 @@ class BotUserResource extends Resource
             Section::make('Контакты (видят только администраторы)')->schema([
                 TextInput::make('contact_phone')->label('Телефон')->disabled(),
                 TextInput::make('contact_email')->label('Почта')->disabled(),
-                TextInput::make('contact_instagram')->label('Instagram')->disabled(),
-            ])->columns(3),
+            ])->columns(2),
 
             Section::make('Анкета')->schema([
                 TextInput::make('full_name')
                     ->label('Имя и фамилия'),
+                TextInput::make('organization')
+                    ->label('Университет или организация'),
                 Textarea::make('description')
                     ->label('О себе')
                     ->rows(3),

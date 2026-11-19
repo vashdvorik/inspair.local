@@ -14,21 +14,18 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 class RegistrationConversation extends Conversation
 {
     protected ?string $fullName = null;
-    protected ?string $description = null;
+    protected ?string $description = null;   // университет или организация
+    protected ?string $phone = null;
+    protected ?string $email = null;
 
     public function start(Nutgram $bot): void
     {
-        $firstName = $bot->user()?->first_name ?? '';
+        $bot->sendMessage("Привет! 👋\n\nРад что ты здесь — это первый шаг к вступлению в INSPIRE EDU Network.\n\nЗадам несколько коротких вопросов — займёт 1 минуту.\n\nКак тебя зовут? (имя и фамилия)");
 
-        $bot->sendMessage(
-            text: "Привет! 👋\n\nРад что ты здесь — это первый шаг к вступлению в Инспайр сообщество.\n\nИнспайр — сообщество для молодых людей, которые ищут возможности для роста, партнерства и интересные мероприятия.\n\nЗадам несколько коротких вопросов — займёт 1 минуту.\n\nГотов?",
-            reply_markup: InlineKeyboardMarkup::make()
-                ->addRow(InlineKeyboardButton::make('Да', callback_data: 'reg:yes')),
-        );
-
-        $this->next('waitForConfirmation');
+        $this->next('handleName');
     }
 
+    /** Осталось для тех, кто начал регистрацию со старой кнопкой «Да»: новым участникам этот шаг не показывается. */
     public function waitForConfirmation(Nutgram $bot): void
     {
         if ($bot->callbackQuery()?->data === 'reg:yes') {
@@ -57,19 +54,17 @@ class RegistrationConversation extends Conversation
 
         $this->fullName = $text;
 
-        $bot->sendMessage(
-            text: "Кто ты и чем занимаешься?\n\nРоль, сфера, компания — в 2-3 предложениях.",
-        );
+        $bot->sendMessage('Напиши университет или организацию, которую ты представляешь.');
 
         $this->next('handleDescription');
     }
 
     public function handleDescription(Nutgram $bot): void
     {
-        $text = $bot->message()?->text;
+        $text = trim((string) $bot->message()?->text);
 
-        if (empty($text)) {
-            $bot->sendMessage('Пожалуйста, расскажи о себе текстом.');
+        if ($text === '') {
+            $bot->sendMessage('Пожалуйста, напиши название университета или организации текстом.');
             $this->next('handleDescription');
 
             return;
@@ -77,7 +72,75 @@ class RegistrationConversation extends Conversation
 
         $this->description = $text;
 
-        $this->save($bot);
+        $bot->sendMessage('Твой телефон');
+
+        $this->next('handlePhone');
+    }
+
+    public function handlePhone(Nutgram $bot): void
+    {
+        $text = trim((string) $bot->message()?->text);
+
+        if (! preg_match('/^\+?[0-9][0-9\s().-]{5,28}$/', $text)) {
+            $bot->sendMessage('Не похоже на номер телефона. Напиши, например: +373 600 00000');
+            $this->next('handlePhone');
+
+            return;
+        }
+
+        $this->phone = $text;
+
+        $bot->sendMessage('Твой email');
+
+        $this->next('handleEmail');
+    }
+
+    public function handleEmail(Nutgram $bot): void
+    {
+        $text = trim((string) $bot->message()?->text);
+
+        if ($text === '' || mb_strlen($text) > 120 || filter_var($text, FILTER_VALIDATE_EMAIL) === false) {
+            $bot->sendMessage('Не похоже на email. Напиши, например: name@example.com');
+            $this->next('handleEmail');
+
+            return;
+        }
+
+        $this->email = $text;
+
+        $bot->sendMessage(
+            text: "Согласие на обработку персональных данных\n\nЯ даю согласие на обработку предоставленных мной персональных данных (имя, название компании, телефон, электронная почта) в целях регистрации, обратной связи и информирования по вопросам участия в программах INSPIRE EDU.",
+            reply_markup: InlineKeyboardMarkup::make()
+                ->addRow(
+                    InlineKeyboardButton::make('✅ Согласен(на)', callback_data: 'reg:consent:yes'),
+                    InlineKeyboardButton::make('❌ Не согласен(на)', callback_data: 'reg:consent:no'),
+                ),
+        );
+
+        $this->next('handleConsent');
+    }
+
+    public function handleConsent(Nutgram $bot): void
+    {
+        $data = $bot->callbackQuery()?->data;
+
+        if ($data === 'reg:consent:yes') {
+            $bot->answerCallbackQuery();
+            $this->save($bot);
+
+            return;
+        }
+
+        if ($data === 'reg:consent:no') {
+            $bot->answerCallbackQuery();
+            $bot->sendMessage('Без согласия на обработку персональных данных мы не можем завершить регистрацию. Если передумаешь, нажми /start.');
+            $this->end();
+
+            return;
+        }
+
+        // Написали текст вместо нажатия кнопки: ждём выбор
+        $this->next('handleConsent');
     }
 
     private function save(Nutgram $bot): void
@@ -89,7 +152,10 @@ class RegistrationConversation extends Conversation
             'telegram_username' => $telegramUser->username,
             'first_name'        => $telegramUser->first_name,
             'full_name'         => $this->fullName,
-            'description'       => $this->description,
+            'organization'      => $this->description,
+            'contact_phone'     => $this->phone,
+            'contact_email'     => $this->email,
+            'consent_at'        => now(),
             'status'            => BotUser::STATUS_APPROVED,
             'approved_at'       => now(),
         ]);

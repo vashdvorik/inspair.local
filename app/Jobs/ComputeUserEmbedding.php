@@ -33,7 +33,7 @@ class ComputeUserEmbedding implements ShouldQueue
         }
 
         $text = $embedder->textForUser(
-            (string) ($this->user->description ?? ''),
+            trim((string) ($this->user->organization ?? '').' '.(string) ($this->user->description ?? '')),
             (string) ($this->user->expectation ?? ''),
         );
 

@@ -26,7 +26,8 @@ class ModerationFlag extends Model
     public const FIELDS = [
         'name'      => 'Имя',
         'about'     => 'О себе',
-        'instagram' => 'Instagram',
+        'organization' => 'Организация',
+        'instagram' => 'Instagram (старое)',
         'fact'      => 'Факт о себе',
     ];
 

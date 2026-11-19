@@ -49,6 +49,19 @@
                     @enderror
                 </div>
 
+                <div>
+                    <label for="organization" class="mb-1.5 block text-sm font-medium text-[#0e2442]">
+                        {{ $tr('Университет или организация', 'University or organization', 'Universitate sau organizație') }}
+                    </label>
+                    <input id="organization" type="text" name="organization"
+                           value="{{ old('organization', $accountUser->organization) }}"
+                           maxlength="160"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('organization') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('organization')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
+                </div>
+
                 <div class="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
                     <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">Telegram</p>
                     <p class="mt-1 text-sm font-medium">
@@ -131,14 +144,6 @@
                                   transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                   {{ $errors->has('contact_email') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
                     @error('contact_email')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
-                </div>
-                <div class="sm:col-span-2">
-                    <label for="contact_instagram" class="mb-1.5 block text-sm font-medium text-[#0e2442]">Instagram</label>
-                    <input id="contact_instagram" type="text" name="contact_instagram" value="{{ old('contact_instagram', $accountUser->contact_instagram) }}" maxlength="80" autocomplete="off" placeholder="@username"
-                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
-                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
-                                  {{ $errors->has('contact_instagram') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
-                    @error('contact_instagram')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
                 </div>
             </div>
         </div>

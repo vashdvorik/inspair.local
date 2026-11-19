@@ -8,7 +8,7 @@ use App\Models\BotUser;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-/** Дополнительные контакты в профиле: телефон, почта, Instagram. */
+/** Дополнительные контакты в профиле: телефон, почта, организация. */
 class ProfileContactsTest extends TestCase
 {
     use RefreshDatabase;
@@ -26,7 +26,7 @@ class ProfileContactsTest extends TestCase
         return ['account_telegram_id' => $u->telegram_id, '_account_expires' => now()->addDay()->timestamp];
     }
 
-    public function test_contacts_are_saved_and_instagram_link_becomes_a_username(): void
+    public function test_all_registration_data_can_be_edited_in_the_cabinet(): void
     {
         $u = $this->user();
 
@@ -34,13 +34,14 @@ class ProfileContactsTest extends TestCase
             'full_name' => 'Test User',
             'contact_phone' => '+373 600 12345',
             'contact_email' => 'me@example.com',
-            'contact_instagram' => 'https://www.instagram.com/my.name_1/?hl=en',
+            'organization' => 'Технический университет Молдовы',
         ])->assertRedirect(route('account.profile'));
 
         $u->refresh();
         $this->assertSame('+373 600 12345', $u->contact_phone);
         $this->assertSame('me@example.com', $u->contact_email);
-        $this->assertSame('my.name_1', $u->contact_instagram);
+        $this->assertSame('Технический университет Молдовы', $u->organization);
+        $this->assertSame('Test User', $u->full_name);
 
         // очищенные поля стираются
         $this->withSession($this->sess($u))->post(route('account.profile.update'), ['full_name' => 'Test User'])->assertRedirect();
@@ -55,21 +56,21 @@ class ProfileContactsTest extends TestCase
             'full_name' => 'Test User',
             'contact_phone' => 'call me maybe',
             'contact_email' => 'not-an-email',
-            'contact_instagram' => 'bad nick!',
-        ])->assertSessionHasErrors(['contact_phone', 'contact_email', 'contact_instagram']);
+            'organization' => str_repeat('я', 161),
+        ])->assertSessionHasErrors(['contact_phone', 'contact_email', 'organization']);
     }
 
-    public function test_other_participants_never_see_phone_email_or_instagram(): void
+    public function test_other_participants_never_see_phone_or_email(): void
     {
         $viewer = $this->user();
-        $person = $this->user(['contact_phone' => '+373 600 99999', 'contact_email' => 'person@example.com', 'contact_instagram' => 'person_ig']);
+        $person = $this->user(['contact_phone' => '+373 600 99999', 'contact_email' => 'person@example.com']);
 
         $this->withSession($this->sess($viewer))->get(route('account.people.show', $person))
-            ->assertOk()->assertDontSee('+373 600 99999')->assertDontSee('person@example.com')->assertDontSee('person_ig');
+            ->assertOk()->assertDontSee('+373 600 99999')->assertDontSee('person@example.com');
 
         // а сам участник видит свои контакты и подпись, кто их видит
         $this->withSession($this->sess($person))->get(route('account.profile'))
-            ->assertOk()->assertSee('+373 600 99999')->assertSee('person@example.com')->assertSee('@person_ig');
+            ->assertOk()->assertSee('+373 600 99999')->assertSee('person@example.com');
     }
 
     public function test_edit_form_has_the_contact_fields(): void
@@ -77,6 +78,6 @@ class ProfileContactsTest extends TestCase
         $u = $this->user(['contact_phone' => '+373 600 11111']);
 
         $this->withSession($this->sess($u))->get(route('account.profile.edit'))
-            ->assertOk()->assertSee('name="contact_phone"', false)->assertSee('name="contact_email"', false)->assertSee('name="contact_instagram"', false)->assertSee('+373 600 11111');
+            ->assertOk()->assertSee('name="contact_phone"', false)->assertSee('name="contact_email"', false)->assertSee('name="organization"', false)->assertDontSee('instagram', false)->assertSee('+373 600 11111');
     }
 }
