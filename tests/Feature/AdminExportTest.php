@@ -6,58 +6,78 @@ namespace Tests\Feature;
 
 use App\Filament\Resources\BotUserResource\Pages\ListBotUsers;
 use App\Models\BotUser;
-use App\Models\ProfileFact;
 use App\Models\User;
+use App\Support\BotUserExport;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Livewire\Livewire;
+use OpenSpout\Reader\XLSX\Reader;
 use Tests\TestCase;
 
 class AdminExportTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_admin_can_download_all_participants_as_csv(): void
+    /** @return array<int, array<int, mixed>> */
+    private function readBack(): array
+    {
+        $path = tempnam(sys_get_temp_dir(), 'x').'.xlsx';
+        app(BotUserExport::class)->writeTo($path);
+
+        $reader = new Reader();
+        $reader->open($path);
+        $rows = [];
+        foreach ($reader->getSheetIterator() as $sheet) {
+            foreach ($sheet->getRowIterator() as $row) {
+                $rows[] = $row->toArray();
+            }
+        }
+        $reader->close();
+        @unlink($path);
+
+        return $rows;
+    }
+
+    public function test_export_contains_only_the_registration_fields(): void
+    {
+        BotUser::factory()->create([
+            'full_name' => 'Анна Лунгу', 'organization' => 'УСМ, преподаватель', 'contact_phone' => '+373 600 11111',
+            'contact_email' => 'anna@example.com', 'city' => 'Кишинёв', 'description' => 'секрет о себе', 'expectation' => 'секрет ожиданий',
+        ]);
+
+        $rows = $this->readBack();
+
+        $this->assertSame(['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город'], $rows[0]);
+        $this->assertSame(['Анна Лунгу', 'УСМ, преподаватель', '+373 600 11111', 'anna@example.com', 'Кишинёв'], $rows[1]);
+        $this->assertCount(2, $rows);
+        $this->assertStringNotContainsString('секрет', json_encode($rows, JSON_UNESCAPED_UNICODE));
+    }
+
+    public function test_formula_like_text_stays_plain_text(): void
+    {
+        BotUser::factory()->create(['full_name' => '=HYPERLINK("x")']);
+
+        $this->assertSame('=HYPERLINK("x")', $this->readBack()[1][0]);
+    }
+
+    public function test_column_widths_fit_the_longest_value_within_limits(): void
+    {
+        $export = app(BotUserExport::class);
+        $rows = [['Анна', str_repeat('я', 160), '+373 600 11111', 'a@e.com', 'Кишинёв']];
+
+        $w = $export->widths($rows);
+
+        $this->assertSame(60.0, $w[1], 'длинная организация не шире предела, остальное переносится');
+        $this->assertGreaterThanOrEqual(14.0, $w[0]);
+        $this->assertGreaterThanOrEqual(strlen('+373 600 11111'), $w[2]);
+    }
+
+    public function test_admin_action_downloads_an_xlsx_file(): void
     {
         $this->actingAs(User::factory()->create());
-        $a = BotUser::factory()->create(['full_name' => 'Анна Лунгу', 'organization' => 'УСМ', 'contact_phone' => '+373 600 11111', 'contact_email' => 'anna@example.com', 'consent_at' => now()]);
-        BotUser::factory()->banned()->create(['full_name' => '=HYPERLINK("x")']);
-        ProfileFact::create(['bot_user_id' => $a->id, 'body' => 'Люблю горы']);
+        BotUser::factory()->create();
 
         ob_start();
         Livewire::test(ListBotUsers::class)->callAction('export')->assertHasNoActionErrors();
         ob_end_clean();
-    }
-
-    public function test_rows_contain_all_data_and_are_safe_for_excel(): void
-    {
-        $a = BotUser::factory()->create(['full_name' => 'Анна', 'organization' => 'УСМ', 'contact_phone' => '+373 600 11111', 'contact_email' => 'a@e.com']);
-        ProfileFact::create(['bot_user_id' => $a->id, 'body' => 'Люблю горы']);
-        $evil = BotUser::factory()->banned()->create(['full_name' => '=HYPERLINK("x")']);
-
-        $export = app(\App\Support\BotUserExport::class);
-        $row = $export->row($a->load('facts'));
-
-        $this->assertContains('УСМ', $row);
-        $this->assertContains('+373 600 11111', $row, 'телефон остаётся без апострофа');
-        $this->assertContains('a@e.com', $row);
-        $this->assertContains('@'.$a->telegram_username, $row, 'username без апострофа');
-        $this->assertContains('Люблю горы', $row);
-        $this->assertContains("'=HYPERLINK(\"x\")", $export->row($evil->load('facts')));
-        $this->assertContains('теневой бан', $export->row($evil));
-    }
-
-    public function test_download_response_is_utf8_csv_with_bom(): void
-    {
-        BotUser::factory()->create(['full_name' => 'Анна Лунгу']);
-
-        ob_start();
-        $response = app(\App\Support\BotUserExport::class)->download();
-        $response->sendContent();
-        $body = ob_get_clean();
-
-        $this->assertStringStartsWith("\xEF\xBB\xBF", $body);
-        $this->assertStringContainsString('Имя и фамилия', $body);
-        $this->assertStringContainsString('Анна Лунгу', $body);
-        $this->assertStringContainsString('text/csv', $response->headers->get('Content-Type'));
     }
 }

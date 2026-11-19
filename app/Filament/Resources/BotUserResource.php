@@ -61,7 +61,9 @@ class BotUserResource extends Resource
                 TextInput::make('full_name')
                     ->label('Имя и фамилия'),
                 TextInput::make('organization')
-                    ->label('Университет или организация'),
+                    ->label('Университет/организация и должность'),
+                TextInput::make('city')
+                    ->label('Город'),
                 Textarea::make('description')
                     ->label('О себе')
                     ->rows(3),

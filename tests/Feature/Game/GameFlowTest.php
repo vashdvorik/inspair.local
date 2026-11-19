@@ -280,7 +280,7 @@ class GameFlowTest extends TestCase
 
     // ───────────── профиль ─────────────
 
-    public function test_profile_update_saves_facts_privacy_and_pays_xp(): void
+    public function test_profile_update_saves_privacy_and_pays_xp_but_does_not_touch_facts(): void
     {
         $u = $this->player();
         $this->withSession($this->sess($u))->post(route('account.profile.update'), [
@@ -294,15 +294,10 @@ class GameFlowTest extends TestCase
         $u->refresh();
         $this->assertTrue($u->contacts_closed);
         $this->assertTrue($u->quests_opt_out);
-        $this->assertSame(2, $u->facts()->count());
-        $this->assertSame(50 + 15 + 15, $u->xp);
+        $this->assertSame(0, $u->facts()->count(), 'факты пишутся только в игре, а не в настройках профиля');
+        $this->assertSame(50, $u->xp);
 
-        // очистили поле факта: факт удалён
-        $fact = $u->facts()->first();
-        $this->withSession($this->sess($u))->post(route('account.profile.update'), [
-            'full_name' => 'Мария Петреску', 'facts' => [$fact->id => ''],
-        ])->assertRedirect();
-        $this->assertSame(1, $u->facts()->count());
+        $this->withSession($this->sess($u))->post(route('account.profile.update'), ['full_name' => 'Мария Петреску'])->assertRedirect();
         $this->assertFalse($u->fresh()->contacts_closed);
     }
 

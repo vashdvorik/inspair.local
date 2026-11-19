@@ -51,7 +51,7 @@
 
                 <div>
                     <label for="organization" class="mb-1.5 block text-sm font-medium text-[#0e2442]">
-                        {{ $tr('Университет или организация', 'University or organization', 'Universitate sau organizație') }}
+                        {{ $tr('Университет/организация и должность', 'University/organization and position', 'Universitate/organizație și funcție') }}
                     </label>
                     <input id="organization" type="text" name="organization"
                            value="{{ old('organization', $accountUser->organization) }}"
@@ -60,6 +60,15 @@
                                   transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
                                   {{ $errors->has('organization') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
                     @error('organization')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
+                </div>
+
+                <div>
+                    <label for="city" class="mb-1.5 block text-sm font-medium text-[#0e2442]">{{ $tr('Город', 'City', 'Oraș') }}</label>
+                    <input id="city" type="text" name="city" value="{{ old('city', $accountUser->city) }}" maxlength="80" autocomplete="address-level2"
+                           class="w-full rounded-xl border px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300
+                                  transition duration-150 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+                                  {{ $errors->has('city') ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-gray-50 focus:bg-white' }}">
+                    @error('city')<p class="mt-1.5 text-xs text-red-600">{{ $message }}</p>@enderror
                 </div>
 
                 <div class="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3">
@@ -101,29 +110,6 @@
             </div>
         </div>
 
-        {{-- Facts (feed the quests) --}}
-        @if($game->isEnabled())
-        <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-            <h2 class="mb-1 text-xs font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Факты о себе', 'Facts about you', 'Fapte despre tine') }}</h2>
-            <p class="mb-5 text-xs text-gray-500">{{ $tr('Короткие и живые: чем занимаешься в свободное время, о чём мечтаешь, что умеешь. За каждый факт', 'Short and lively: what you do in your free time, what you dream about, what you can do. Each fact earns', 'Scurte și vii: ce faci în timpul liber, la ce visezi, ce știi să faci. Pentru fiecare fapt primești') }} <b>+{{ $plural((int) config('game.xp.fact'), ['очко', 'очка', 'очков'], ['point', 'points'], ['punct', 'puncte', 'de puncte']) }}</b>{{ $tr(', а из них получаются загадки для других участников.', ', and they become riddles for other participants.', ', iar din ele se fac ghicitori pentru ceilalți participanți.') }}</p>
-            @php
-                $facts = $accountUser->facts;
-                $slots = max(0, min(config('game.max_facts') - $facts->count(), 3));
-            @endphp
-            <div class="space-y-3">
-                @foreach($facts as $f)
-                    <input type="text" name="facts[{{ $f->id }}]" value="{{ old('facts.'.$f->id, $f->body) }}" maxlength="300"
-                           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
-                @endforeach
-                @for($i = 0; $i < $slots; $i++)
-                    <input type="text" name="new_facts[]" maxlength="300" placeholder="{{ $tr('Например: перевожу субтитры к старым фильмам', 'For example: I translate subtitles for old films', 'De exemplu: traduc subtitrări pentru filme vechi') }}"
-                           class="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-[#0e2442] placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:bg-white">
-                @endfor
-            </div>
-            <p class="mt-2 text-xs text-gray-400">{{ $tr('Очистите поле, чтобы удалить факт. Всего до', 'Clear the field to delete a fact. Up to', 'Golește câmpul ca să ștergi un fapt. Maximum') }} {{ config('game.max_facts') }}{{ $tr('.', ' in total.', '.') }}</p>
-        </div>
-
-        @endif
 
         {{-- Contacts: shown to approved participants unless the profile hides them --}}
         <div class="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">

@@ -53,8 +53,13 @@
             </div>
 
             <div>
-                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Университет или организация', 'University or organization', 'Universitate sau organizație') }}</p>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Университет/организация и должность', 'University/organization and position', 'Universitate/organizație și funcție') }}</p>
                 <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->organization ?: '—' }}</p>
+            </div>
+
+            <div>
+                <p class="text-[10px] font-semibold uppercase tracking-widest text-gray-400">{{ $tr('Город', 'City', 'Oraș') }}</p>
+                <p class="mt-1 text-sm font-medium text-[#0e2442]">{{ $accountUser->city ?: '—' }}</p>
             </div>
 
             <div>

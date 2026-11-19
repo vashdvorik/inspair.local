@@ -14,9 +14,10 @@ use SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup;
 class RegistrationConversation extends Conversation
 {
     protected ?string $fullName = null;
-    protected ?string $description = null;   // университет или организация
+    protected ?string $description = null;   // университет/организация и должность
     protected ?string $phone = null;
     protected ?string $email = null;
+    protected ?string $city = null;
 
     public function start(Nutgram $bot): void
     {
@@ -54,7 +55,7 @@ class RegistrationConversation extends Conversation
 
         $this->fullName = $text;
 
-        $bot->sendMessage('Напиши университет или организацию, которую ты представляешь.');
+        $bot->sendMessage('Напиши университет/организацию и должность.');
 
         $this->next('handleDescription');
     }
@@ -83,7 +84,7 @@ class RegistrationConversation extends Conversation
         $text = trim((string) $bot->message()?->text);
 
         if ($text === '' || str_starts_with($text, '/')) {
-            $bot->sendMessage('Пожалуйста, напиши название университета или организации текстом.');
+            $bot->sendMessage('Пожалуйста, напиши университет/организацию и должность текстом.');
             $this->next('handleDescription');
 
             return;
@@ -126,6 +127,24 @@ class RegistrationConversation extends Conversation
         }
 
         $this->email = $text;
+
+        $bot->sendMessage('Напиши с какого ты города');
+
+        $this->next('handleCity');
+    }
+
+    public function handleCity(Nutgram $bot): void
+    {
+        $text = trim((string) $bot->message()?->text);
+
+        if ($text === '' || str_starts_with($text, '/') || mb_strlen($text) > 80 || preg_match('/\p{L}/u', $text) !== 1) {
+            $bot->sendMessage('Напиши, пожалуйста, название города текстом, например: Кишинёв');
+            $this->next('handleCity');
+
+            return;
+        }
+
+        $this->city = $text;
 
         $bot->sendMessage(
             text: "Согласие на обработку персональных данных\n\nЯ даю согласие на обработку предоставленных мной персональных данных (имя, название компании, телефон, электронная почта) в целях регистрации, обратной связи и информирования по вопросам участия в программах INSPIRE EDU.",
@@ -185,6 +204,7 @@ class RegistrationConversation extends Conversation
             'first_name'        => $telegramUser->first_name,
             'full_name'         => $this->fullName,
             'organization'      => $this->description,
+            'city'              => $this->city,
             'contact_phone'     => $this->phone,
             'contact_email'     => $this->email,
             'consent_at'        => now(),

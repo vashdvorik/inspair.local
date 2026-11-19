@@ -174,6 +174,7 @@ class AccountController extends Controller
         $user->update([
             'full_name'       => $request->validated('full_name'),
             'organization'    => $request->validated('organization') ?: null,
+            'city'            => $request->validated('city') ?: null,
             'description'     => $request->validated('description'),
             'contacts_closed' => $request->boolean('contacts_closed'),
         ] + ($request->has('notifications') ? [
@@ -188,7 +189,6 @@ class AccountController extends Controller
         ] : []));
 
         if ($gameOn) {
-            app(\App\Services\ProfileFacts::class)->sync($user, (array) $request->input('facts', []), (array) $request->input('new_facts', []));
             app(GameService::class)->syncProfileRewards($user->fresh());
         }
 

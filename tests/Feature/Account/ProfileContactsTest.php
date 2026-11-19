@@ -35,12 +35,14 @@ class ProfileContactsTest extends TestCase
             'contact_phone' => '+373 600 12345',
             'contact_email' => 'me@example.com',
             'organization' => 'Технический университет Молдовы',
+            'city' => 'Кишинёв',
         ])->assertRedirect(route('account.profile'));
 
         $u->refresh();
         $this->assertSame('+373 600 12345', $u->contact_phone);
         $this->assertSame('me@example.com', $u->contact_email);
         $this->assertSame('Технический университет Молдовы', $u->organization);
+        $this->assertSame('Кишинёв', $u->city);
         $this->assertSame('Test User', $u->full_name);
 
         // очищенные поля стираются

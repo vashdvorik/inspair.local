@@ -5,75 +5,101 @@ declare(strict_types=1);
 namespace App\Support;
 
 use App\Models\BotUser;
+use OpenSpout\Common\Entity\Row;
+use OpenSpout\Common\Entity\Style\Style;
+use OpenSpout\Writer\XLSX\Options;
+use OpenSpout\Writer\XLSX\Writer;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
- * Выгрузка всех участников файлом (CSV для Excel и Google Sheets) для администраторов.
- * Кодировка UTF-8 с BOM, разделитель «;»: так русский Excel открывает файл без «кракозябр» и без склеенных колонок.
+ * Выгрузка всех участников файлом Excel (.xlsx) для администраторов. В файле только то, что спрашивает бот при регистрации.
+ * Ширина колонок подбирается под самые длинные значения, текст переносится по строкам, шапка выделена жирным шрифтом.
  */
 class BotUserExport
 {
-    private const HEADERS = [
-        'ID', 'Telegram ID', 'Username', 'Имя и фамилия', 'Университет или организация', 'Телефон', 'Email',
-        'О себе', 'Чего ждёт от сообщества', 'Регион', 'Статус', 'Модератор', 'Регистрация', 'Согласие на обработку данных',
-        'Уровень', 'Очки', 'Факты о себе', 'Контакты закрыты', 'Новости в боте отключены', 'Последняя активность',
-    ];
+    private const HEADERS = ['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город'];
+
+    /** Самая узкая и самая широкая колонка в символах: длинные значения переносятся на следующую строку внутри ячейки. */
+    private const MIN_WIDTH = 14;
+    private const MAX_WIDTH = 60;
 
     public function download(): StreamedResponse
     {
-        $name = 'participants-'.now()->format('Y-m-d-His').'.csv';
+        $name = 'participants-'.now()->format('Y-m-d-His').'.xlsx';
 
         return response()->streamDownload(function (): void {
-            $out = fopen('php://output', 'w');
-            fwrite($out, "\xEF\xBB\xBF");
-            fputcsv($out, self::HEADERS, ';');
-
-            BotUser::query()->with('facts:id,bot_user_id,body')->orderBy('id')->chunkById(200, function ($users) use ($out): void {
-                foreach ($users as $user) {
-                    fputcsv($out, $this->row($user), ';');
-                }
-            });
-
-            fclose($out);
-        }, $name, ['Content-Type' => 'text/csv; charset=UTF-8']);
+            $path = tempnam(sys_get_temp_dir(), 'participants');
+            $this->writeTo($path);
+            readfile($path);
+            @unlink($path);
+        }, $name, ['Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet']);
     }
 
-    /** @return array<int, string|int> */
-    public function row(BotUser $u): array
+    /** Записывает файл по указанному пути. */
+    public function writeTo(string $path): void
     {
-        return array_map([$this, 'safe'], [
-            $u->id,
-            $u->telegram_id,
-            $u->telegram_username ? '@'.$u->telegram_username : '',
-            $u->full_name,
-            $u->organization,
-            $u->contact_phone,
-            $u->contact_email,
-            $u->description,
-            $u->expectation,
-            $u->region,
-            $u->status === BotUser::STATUS_APPROVED ? 'активен' : 'теневой бан',
-            $u->is_moderator ? 'да' : '',
-            $u->approved_at?->format('Y-m-d H:i'),
-            $u->consent_at?->format('Y-m-d H:i'),
-            $u->level,
-            $u->xp,
-            $u->facts->pluck('body')->implode(' | '),
-            $u->contacts_closed ? 'да' : '',
-            $u->notifications_muted ? 'да' : '',
-            $u->last_active_at?->format('Y-m-d H:i'),
-        ]);
-    }
+        $rows = $this->rows();
 
-    /** Защита от «формул» в Excel: текст, начинающийся с = + - @, получает ведущий апостроф (телефоны и @username остаются как есть). */
-    private function safe(mixed $v): string
-    {
-        $s = trim(str_replace(["\r\n", "\r", "\n"], ' ', (string) ($v ?? '')));
-
-        if ($s !== '' && preg_match('/^[=+\-@\t]/', $s) && ! preg_match('/^\+?[0-9][0-9\s().-]*$/', $s) && ! preg_match("/^@[A-Za-z0-9_.]+$/", $s)) {
-            return "'".$s;
+        $options = new Options();
+        foreach ($this->widths($rows) as $i => $width) {
+            $options->setColumnWidth($width, $i + 1);
         }
 
-        return $s;
+        $writer = new Writer($options);
+        $writer->openToFile($path);
+        $writer->getCurrentSheet()->setName('Участники');
+
+        $wrap = (new Style())->setShouldWrapText(true);
+        $head = (new Style())->setFontBold(true)->setShouldWrapText(true);
+
+        $writer->addRow(Row::fromValues(self::HEADERS, $head));
+        foreach ($rows as $row) {
+            $writer->addRow(Row::fromValues($row, $wrap));
+        }
+
+        $writer->close();
+    }
+
+    /** @return array<int, array<int, string>> */
+    public function rows(): array
+    {
+        $rows = [];
+
+        BotUser::query()->orderBy('id')->chunkById(500, function ($users) use (&$rows): void {
+            foreach ($users as $user) {
+                $rows[] = $this->row($user);
+            }
+        });
+
+        return $rows;
+    }
+
+    /** @return array<int, string> */
+    public function row(BotUser $u): array
+    {
+        return array_map(
+            static fn (mixed $v): string => trim(str_replace(["\r\n", "\r", "\n"], ' ', (string) ($v ?? ''))),
+            [$u->full_name, $u->organization, $u->contact_phone, $u->contact_email, $u->city],
+        );
+    }
+
+    /**
+     * Ширина каждой колонки в символах по самому длинному значению (с запасом), не уже и не шире заданных пределов.
+     *
+     * @param  array<int, array<int, string>>  $rows
+     * @return array<int, float>
+     */
+    public function widths(array $rows): array
+    {
+        $widths = [];
+        foreach (self::HEADERS as $i => $header) {
+            $longest = mb_strlen($header);
+            foreach ($rows as $row) {
+                $longest = max($longest, mb_strlen($row[$i] ?? ''));
+            }
+            $widths[$i] = (float) min(self::MAX_WIDTH, max(self::MIN_WIDTH, $longest + 3));
+        }
+
+        return $widths;
     }
 }

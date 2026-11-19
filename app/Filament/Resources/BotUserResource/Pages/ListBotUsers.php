@@ -17,7 +17,7 @@ class ListBotUsers extends ListRecords
     {
         return [
             Action::make('export')
-                ->label('Выгрузить всех (CSV)')
+                ->label('Выгрузить всех (Excel)')
                 ->icon('heroicon-o-arrow-down-tray')
                 ->color('gray')
                 ->action(fn () => app(BotUserExport::class)->download()),

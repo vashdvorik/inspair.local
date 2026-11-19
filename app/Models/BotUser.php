@@ -25,6 +25,7 @@ class BotUser extends Model
         'first_name',
         'full_name',
         'organization',
+        'city',
         'description',
         'expectation',
         'status',
