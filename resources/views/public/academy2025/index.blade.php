@@ -27,7 +27,7 @@
         <div>
             <p class="i-eyebrow i-in i-in-1">{!! $t('Академия 2025', 'Academy 2025', 'Academia 2025') !!}</p>
             <h1 class="i-h1 i-in i-in-2" style="margin:10px 0 16px;">INSPIRE <span class="i-grad-text">Leadership Academy</span> 2025</h1>
-            {!! $p('Помогаем молодым лидерам менять регион и мир к лучшему.', 'Empowering young leaders to drive regional and global change.', 'Împuternicim tinerii lideri să schimbe în bine regiunea și lumea.', 'i-lead i-in i-in-3') !!}
+            {!! $p('Помогаем молодым лидерам менять мир к лучшему.', 'Empowering young leaders to drive global change.', 'Împuternicim tinerii lideri să schimbe în bine lumea.', 'i-lead i-in i-in-3') !!}
             <div class="meta i-in i-in-4">
                 <span>{!! $icon('cal', 'w-5 h-5') !!}{!! $t('Май — декабрь 2025', 'May — December 2025', 'Mai — decembrie 2025') !!}</span>
                 <span>{!! $icon('pin', 'w-5 h-5') !!}{!! $t('Кишинёв · Комрат · Тирасполь', 'Chisinau · Comrat · Tiraspol', 'Chișinău · Comrat · Tiraspol') !!}</span>
