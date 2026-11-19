@@ -91,7 +91,7 @@ class AccountController extends Controller
 
         if (! $user) {
             return redirect()->route('account.login')
-                ->with('error', \App\Support\Lang::t('Сначала зарегистрируйтесь в боте: нажмите /start.', 'Register in the bot first: press /start.', 'Mai întâi înregistrează-te în bot: apasă /start.'));
+                ->with('error', \App\Support\Lang::t('Вы ещё не зарегистрированы. Нажмите «Старт» в боте и ответьте на его вопросы.', 'You are not registered yet. Press “Start” in the bot and answer its questions.', 'Nu ești înregistrat încă. Apasă „Start” în bot și răspunde la întrebările lui.'));
         }
 
         // Start session (7 days)

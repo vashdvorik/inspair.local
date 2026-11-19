@@ -43,10 +43,10 @@ class RegistrationConversation extends Conversation
 
     public function handleName(Nutgram $bot): void
     {
-        $text = $bot->message()?->text;
+        $text = trim((string) $bot->message()?->text);
 
-        if (empty($text)) {
-            $bot->sendMessage('Пожалуйста, введи имя и фамилию текстом.');
+        if (! self::looksLikeFullName($text)) {
+            $bot->sendMessage('Напиши, пожалуйста, имя и фамилию текстом, например: Анна Лунгу');
             $this->next('handleName');
 
             return;
@@ -59,11 +59,30 @@ class RegistrationConversation extends Conversation
         $this->next('handleDescription');
     }
 
+    /** Имя и фамилия: минимум два слова из букв, без цифр, ссылок и команд бота («/start»). */
+    public static function looksLikeFullName(string $text): bool
+    {
+        $text = trim($text);
+
+        if ($text === '' || mb_strlen($text) < 3 || mb_strlen($text) > 120 || str_starts_with($text, '/')) {
+            return false;
+        }
+
+        if (preg_match('/[0-9@]|https?:|www\./iu', $text)) {
+            return false;
+        }
+
+        $words = preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        $words = array_filter($words, static fn (string $w): bool => preg_match('/\p{L}{2,}/u', $w) === 1);
+
+        return count($words) >= 2;
+    }
+
     public function handleDescription(Nutgram $bot): void
     {
         $text = trim((string) $bot->message()?->text);
 
-        if ($text === '') {
+        if ($text === '' || str_starts_with($text, '/')) {
             $bot->sendMessage('Пожалуйста, напиши название университета или организации текстом.');
             $this->next('handleDescription');
 
@@ -125,8 +144,21 @@ class RegistrationConversation extends Conversation
         $data = $bot->callbackQuery()?->data;
 
         if ($data === 'reg:consent:yes') {
-            $bot->answerCallbackQuery();
-            $this->save($bot);
+            // Сразу отвечаем на нажатие и убираем кнопки: человек видит, что выбор принят, пока идёт сохранение
+            $bot->answerCallbackQuery(text: 'Принято ✅');
+            try {
+                $bot->editMessageReplyMarkup(reply_markup: InlineKeyboardMarkup::make());
+            } catch (\Throwable) {
+                // не критично
+            }
+
+            try {
+                $this->save($bot);
+            } catch (\Throwable $e) {
+                logger()->error('Registration failed', ['telegram_id' => $bot->userId(), 'error' => $e->getMessage()]);
+                $bot->sendMessage('Не получилось завершить регистрацию. Нажми /start и попробуй ещё раз. Если не поможет, напиши нам.');
+                $this->end();
+            }
 
             return;
         }
@@ -160,26 +192,19 @@ class RegistrationConversation extends Conversation
             'approved_at'       => now(),
         ]);
 
-        $this->downloadAvatar($bot, $botUser);
-
         // Compute embedding asynchronously — non-blocking
         ComputeUserEmbedding::dispatch($botUser);
 
         $firstName = explode(' ', (string) $this->fullName)[0];
 
-        \App\Telegram\CabinetButton::removeOldKeyboard($bot, $botUser->telegram_id);
-
+        // Сначала ответ человеку, всё остальное (фото из Telegram) после: это самые медленные вызовы
         $bot->sendMessage(
             "Привет, {$firstName}! 👋\n\nТы теперь в сообществе INSPIRE EDU Network.\n\nБот будет присылать тебе новости и возможности, которые публикуются на нашем сайте: курсы, программы и поездки за рубежом.\n\nВ личном кабинете тебя ждут участники сообщества, возможности и интерактивные игры.\nКабинет открывается кнопкой «Открыть кабинет» или кнопкой «Кабинет» рядом с полем ввода сообщения.",
             reply_markup: \App\Telegram\CabinetButton::keyboard(),
         );
 
         $this->end();
-    }
 
-    private function downloadAvatar(Nutgram $bot, BotUser $botUser): void
-    {
-        // Не блокируем регистрацию из-за ошибки загрузки фото; сервис сам ничего не бросает
-        app(\App\Services\TelegramAvatar::class)->fetch($botUser);
+        \App\Jobs\FetchTelegramAvatar::dispatch($botUser);
     }
 }

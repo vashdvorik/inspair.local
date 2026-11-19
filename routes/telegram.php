@@ -31,6 +31,8 @@ $bot->onCallbackQueryData('mod:{action}:{userId}', function (Nutgram $bot, strin
         return;
     }
 
+    $bot->answerCallbackQuery(text: 'Готово'); // сначала снимаем «часики» на кнопке, потом работа
+
     if ($action === 'ban') {
         \App\Services\ModerationActions::ban($target, 'Модерация: решение администратора в Telegram');
         $result = '🙈 Участник скрыт от других (теневой бан). Снять бан можно в админке.';
@@ -39,7 +41,6 @@ $bot->onCallbackQueryData('mod:{action}:{userId}', function (Nutgram $bot, strin
         $result = '✅ Отмечено: нарушения нет.';
     }
 
-    $bot->answerCallbackQuery(text: 'Готово');
     try {
         $bot->editMessageText(text: ($bot->callbackQuery()?->message?->text ?? '')."\n\n".$result, reply_markup: \SergiX44\Nutgram\Telegram\Types\Keyboard\InlineKeyboardMarkup::make());
     } catch (\Throwable) {
@@ -71,8 +72,8 @@ $bot->onCommand('start', function (Nutgram $bot) {
         return;
     }
 
-    \App\Telegram\CabinetButton::removeOldKeyboard($bot, $bot->chatId());
     sendCabinetHint($bot, $user);
+    cleanOldKeyboardOnce($bot, $user);
 })->description('Запустить бота');
 
 // Любое другое сообщение: незарегистрированного ведём в регистрацию, остальным напоминаем, как открыть кабинет
@@ -98,4 +99,15 @@ function sendCabinetHint(Nutgram $bot, BotUser $user): void
         "Привет, {$firstName}! Личный кабинет открывается по кнопке ниже или по кнопке «Кабинет» рядом с полем ввода сообщения.",
         reply_markup: \App\Telegram\CabinetButton::keyboard()
     );
+}
+
+/**
+ * Старая клавиатура («Матчи», «Чат») убирается двумя запросами к Telegram (отправить и удалить сообщение). Делаем это один раз
+ * на участника и уже после ответа, а не перед каждым ответом: так бот отвечает на два запроса к Telegram быстрее.
+ */
+function cleanOldKeyboardOnce(Nutgram $bot, BotUser $user): void
+{
+    if (\Illuminate\Support\Facades\Cache::add('kbd-cleaned:'.$user->telegram_id, 1, now()->addYear())) {
+        \App\Telegram\CabinetButton::removeOldKeyboard($bot, $user->telegram_id);
+    }
 }

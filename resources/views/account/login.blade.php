@@ -64,8 +64,8 @@
 
         {{-- Telegram Mini App: opened by someone who is not registered yet --}}
         <div class="login-card" id="tma-not-member" hidden style="text-align:center">
-            <h1>{{ $tr('Доступ пока закрыт', 'Access is closed for now', 'Accesul este închis deocamdată') }}</h1>
-            <p class="login-lead" style="margin-bottom:0">{{ $tr('Вы ещё не зарегистрированы. Напишите боту /start, и кабинет откроется сразу.', 'You are not registered yet. Send /start to the bot and your account opens right away.', 'Nu ești înregistrat încă. Trimite /start botului și contul se deschide imediat.') }}</p>
+            <h1>{{ $tr('Вы ещё не зарегистрированы', 'You are not registered yet', 'Nu ești înregistrat încă') }}</h1>
+            <p class="login-lead" style="margin-bottom:0">{{ $tr('Нажмите «Старт» в боте и ответьте на его вопросы, чтобы зарегистрироваться. После этого кабинет откроется.', 'Press “Start” in the bot and answer its questions to register. After that your account will open.', 'Apasă „Start” în bot și răspunde la întrebările lui ca să te înregistrezi. După aceea contul se va deschide.') }}</p>
         </div>
 
         <p class="login-back"><a href="/"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>{{ $tr('Вернуться на сайт', 'Back to the site', 'Înapoi la site') }}</a></p>
