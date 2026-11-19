@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class BotUserExport
 {
-    private const HEADERS = ['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город'];
+    private const HEADERS = ['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город', 'Согласие на обработку ПД'];
 
     /** Самая узкая и самая широкая колонка в символах: длинные значения переносятся на следующую строку внутри ячейки. */
     private const MIN_WIDTH = 14;
@@ -79,7 +79,7 @@ class BotUserExport
     {
         return array_map(
             static fn (mixed $v): string => trim(str_replace(["\r\n", "\r", "\n"], ' ', (string) ($v ?? ''))),
-            [$u->full_name, $u->organization, $u->contact_phone, $u->contact_email, $u->city],
+            [$u->full_name, $u->organization, $u->contact_phone, $u->contact_email, $u->city, $u->consent_at !== null ? 'Да' : ''],
         );
     }
 

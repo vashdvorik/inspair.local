@@ -84,14 +84,7 @@
   "years": [
    2025,
    2023
-  ],
-  "roleByYear": {
-   "2023": {
-    "ru": "Генеральный директор Индустриального парка Tracom",
-    "en": "CEO of Tracom Industrial Park",
-    "ro": "Director general al Parcului Industrial Tracom"
-   }
-  }
+  ]
  },
  {
   "key": "melinte",
@@ -191,9 +184,9 @@
    "ro": "Prof. dr. Serghei Zaharie"
   },
   "role": {
-   "en": "Rector of the Comrat State University of Moldova",
-   "ru": "Ректор Комратского государственного университета, Молдова",
-   "ro": "Rectorul Universității de Stat din Comrat"
+   "en": "Former Rector of the Comrat State University of Moldova",
+   "ru": "Бывший ректор Комратского государственного университета, Молдова",
+   "ro": "Fost rector al Universității de Stat din Comrat"
   },
   "img": "academy-2025/14.webp",
   "years": [
@@ -292,24 +285,6 @@
   ]
  },
  {
-  "key": "alexei",
-  "name": {
-   "en": "Mr. Solovtsov Alexei",
-   "ru": "Г-н Solovtsov Alexei",
-   "ro": "Dl Solovtsov Alexei"
-  },
-  "role": {
-   "en": "Association of Digital Transformations, Tiraspol",
-   "ru": "Ассоциация цифровых трансформаций, Тирасполь",
-   "ro": "Asociația Transformărilor Digitale, Tiraspol"
-  },
-  "img": "academy-2025/23.webp",
-  "years": [
-   2025,
-   2023
-  ]
- },
- {
   "key": "benedetti",
   "name": {
    "en": "Mr. Paolo Benedetti",
@@ -325,14 +300,7 @@
   "years": [
    2025,
    2023
-  ],
-  "roleByYear": {
-   "2023": {
-    "ru": "Бизнес-аналитик, Ataieu International",
-    "en": "Business Analytic, Ataieu International",
-    "ro": "Analist de business, Ataieu International"
-   }
-  }
+  ]
  },
  {
   "key": "dymchiuk",
@@ -364,7 +332,7 @@
    "ru": "Координатор-резидент ООН",
    "ro": "Coordonatoare Rezidentă ONU"
   },
-  "img": "academy-2025/17.webp",
+  "img": "academy-2025/oruc.webp",
   "years": [
    2025
   ]
@@ -398,7 +366,7 @@
    "ru": "Военный эксперт по гендерным вопросам, Вооружённые силы Нидерландов",
    "ro": "Expertă militară în probleme de gen, Forțele Armate Olandeze"
   },
-  "img": "academy-2025/18.webp",
+  "img": "academy-2025/heuvel.webp",
   "years": [
    2025
   ]
@@ -415,7 +383,7 @@
    "ru": "Глава миссии МККК в Молдове",
    "ro": "Șeful Misiunii CICR în Moldova"
   },
-  "img": "academy-2025/27.webp",
+  "img": "academy-2025/jeanty.webp",
   "years": [
    2025
   ]
@@ -466,7 +434,7 @@
    "ru": "Директор Центра гражданской вовлечённости, доцент политологии, USF",
    "ro": "Directoare a Centrului pentru implicare civică, conferențiară de științe politice, USF"
   },
-  "img": "academy-2025/20.webp",
+  "img": "academy-2025/mclauchlan.webp",
   "years": [
    2025
   ]
@@ -551,7 +519,7 @@
    "ru": "Архитектор, основатель города Козы",
    "ro": "Arhitect, fondatorul orașului Kozy"
   },
-  "img": "academy-2025/28.webp",
+  "img": "academy-2025/mirza.webp",
   "years": [
    2025
   ]
@@ -670,7 +638,7 @@
    "ru": "Основатель, CEO Technovator",
    "ro": "Fondator, CEO Technovator"
   },
-  "img": "academy-2025/23.webp",
+  "img": "academy-2025/nemciuc.webp",
   "years": [
    2025
   ]
@@ -683,9 +651,9 @@
    "ro": "Dna Liubov Mitioglo"
   },
   "role": {
-   "en": "Manager, Tekwill Comrat",
-   "ru": "Менеджер, Tekwill Комрат",
-   "ro": "Manager, Tekwill Comrat"
+   "en": "Manager, Green Tech Hub, UTM",
+   "ru": "Менеджер, Green Tech Hub, UTM",
+   "ro": "Manager, Green Tech Hub, UTM"
   },
   "img": "academy-2025/mitioglo.webp",
   "years": [
@@ -704,7 +672,7 @@
    "ru": "Президент НКО «Сценарий»",
    "ro": "Președinte, ONG „Scenario”"
   },
-  "img": "academy-2025/25.webp",
+  "img": "academy-2025/levitskaia.webp",
   "years": [
    2025
   ]
@@ -722,23 +690,6 @@
    "ro": "ONG Progen, director de programe"
   },
   "img": "academy-2025/25.webp",
-  "years": [
-   2025
-  ]
- },
- {
-  "key": "olga",
-  "name": {
-   "en": "Ms. Kiseliova Olga",
-   "ru": "Г-жа Kiseliova Olga",
-   "ro": "Dna Kiseliova Olga"
-  },
-  "role": {
-   "en": "Director, Association of Creative Industries, Tiraspol",
-   "ru": "Директор Ассоциации креативных индустрий, Тирасполь",
-   "ro": "Director al Asociației Industriilor Creative, Tiraspol"
-  },
-  "img": "academy-2025/26.webp",
   "years": [
    2025
   ]
@@ -853,9 +804,9 @@
    "ro": "Dl Andrei Chiciuc"
   },
   "role": {
-   "en": "President of ANACEC, Moldova",
-   "ru": "Президент ANACEC, Молдова",
-   "ro": "Președinte ANACEC, Moldova"
+   "en": "Expert, SAMER Moldova",
+   "ru": "Эксперт, SAMER Moldova",
+   "ro": "Expert, SAMER Moldova"
   },
   "img": "academy-2023/08-10.webp",
   "years": [
@@ -925,41 +876,7 @@
    "ru": "Ассоциация молодых дипломатов Молдовы",
    "ro": "Asociația Tinerilor Diplomați din Moldova"
   },
-  "img": null,
-  "years": [
-   2025
-  ]
- },
- {
-  "key": "cazacu",
-  "name": {
-   "ru": "Г-жа Adriana Cazacu",
-   "en": "Ms. Adriana Cazacu",
-   "ro": "Dna Adriana Cazacu"
-  },
-  "role": {
-   "ru": "Доктор филологии, государственный секретарь Министерства образования и исследований",
-   "en": "Doctor of Philology, Secretary of State, Ministry of Education and Research",
-   "ro": "Doctor în filologie, secretar de stat, Ministerul Educației și Cercetării"
-  },
-  "img": null,
-  "years": [
-   2025
-  ]
- },
- {
-  "key": "cepoi",
-  "name": {
-   "ru": "Г-жа Corina Cepoi",
-   "en": "Ms. Corina Cepoi",
-   "ro": "Dna Corina Cepoi"
-  },
-  "role": {
-   "ru": "Руководитель проекта, Internews Moldova",
-   "en": "Chief of Party, Internews Moldova",
-   "ro": "Șef de proiect, Internews Moldova"
-  },
-  "img": null,
+  "img": "academy-2025/hotineanu.webp",
   "years": [
    2025
   ]

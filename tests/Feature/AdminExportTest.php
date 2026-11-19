@@ -41,13 +41,13 @@ class AdminExportTest extends TestCase
     {
         BotUser::factory()->create([
             'full_name' => 'Анна Лунгу', 'organization' => 'УСМ, преподаватель', 'contact_phone' => '+373 600 11111',
-            'contact_email' => 'anna@example.com', 'city' => 'Кишинёв', 'description' => 'секрет о себе', 'expectation' => 'секрет ожиданий',
+            'contact_email' => 'anna@example.com', 'city' => 'Кишинёв', 'consent_at' => now(), 'description' => 'секрет о себе', 'expectation' => 'секрет ожиданий',
         ]);
 
         $rows = $this->readBack();
 
-        $this->assertSame(['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город'], $rows[0]);
-        $this->assertSame(['Анна Лунгу', 'УСМ, преподаватель', '+373 600 11111', 'anna@example.com', 'Кишинёв'], $rows[1]);
+        $this->assertSame(['Имя и фамилия', 'Университет/организация и должность', 'Телефон', 'Email', 'Город', 'Согласие на обработку ПД'], $rows[0]);
+        $this->assertSame(['Анна Лунгу', 'УСМ, преподаватель', '+373 600 11111', 'anna@example.com', 'Кишинёв', 'Да'], $rows[1]);
         $this->assertCount(2, $rows);
         $this->assertStringNotContainsString('секрет', json_encode($rows, JSON_UNESCAPED_UNICODE));
     }

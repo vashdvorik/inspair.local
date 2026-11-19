@@ -149,10 +149,7 @@ class RegistrationConversation extends Conversation
         $bot->sendMessage(
             text: "Согласие на обработку персональных данных\n\nЯ даю согласие на обработку предоставленных мной персональных данных (имя, название компании, телефон, электронная почта) в целях регистрации, обратной связи и информирования по вопросам участия в программах INSPIRE EDU.",
             reply_markup: InlineKeyboardMarkup::make()
-                ->addRow(
-                    InlineKeyboardButton::make('✅ Согласен(на)', callback_data: 'reg:consent:yes'),
-                    InlineKeyboardButton::make('❌ Не согласен(на)', callback_data: 'reg:consent:no'),
-                ),
+                ->addRow(InlineKeyboardButton::make('✅ Да', callback_data: 'reg:consent:yes')),
         );
 
         $this->next('handleConsent');
